@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import ProjectIndex from "./pages/Project/Index";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/project" element={<ProjectIndex />} />
           </Routes>
         </BrowserRouter>
       </div>
