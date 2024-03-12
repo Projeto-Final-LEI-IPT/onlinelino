@@ -28,7 +28,7 @@ class NavbarHome extends React.Component {
                             <span className="navbar-text">|</span>
                             <Nav.Link href="/team">EQUIPA</Nav.Link>
                             <span className="navbar-text">|</span>
-                            <Nav.Link href="#biografia">BIOGRAFIA</Nav.Link>
+                            <Nav.Link href="/biography">BIOGRAFIA</Nav.Link>
                             <span className="navbar-text">|</span>
                             <Nav.Link href="#contactos">CONTACTOS</Nav.Link>
                         </Nav>
