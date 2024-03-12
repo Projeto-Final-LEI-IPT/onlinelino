@@ -1,6 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ProjectIndex from "./pages/Project/Index";
+import TeamIndex from "./pages/Team";
+import BiographyIndex from "./pages/Biography";
+import ContactsIndex from "./pages/Contacts";
+import MapIndex from "./pages/Project/Map";
+import BibliographyIndex from "./pages/Project/Bibliography";
+
 
 function App() {
   return (
@@ -10,6 +16,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/project" element={<ProjectIndex />} />
+            <Route path="/team" element={<TeamIndex />} />
+            <Route path="/biography" element={<BiographyIndex />} />
+            <Route path="/contacts" element={<ContactsIndex />} />
+            {/*  */}
+            <Route path="/project/map" element={<MapIndex />} />
+            <Route path="/project/bibliography" element={<BibliographyIndex />} />
           </Routes>
         </BrowserRouter>
       </div>

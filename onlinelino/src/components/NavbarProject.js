@@ -18,11 +18,11 @@ class NavbarProject extends React.Component {
                 <Navbar className="bg" style={{ backgroundColor: '#fff6db' }}>
                     <Container>
                         <Nav className="mr-auto">
-                            <Nav.Link href="#projeto" style={{ paddingLeft: '0' }}>CRONOLOGIA</Nav.Link>
+                            <Nav.Link href="/project" style={{ paddingLeft: '0' }}>CRONOLOGIA</Nav.Link>
                             <span className="navbar-text">|</span>
-                            <Nav.Link href="#equipa">MAPA</Nav.Link>
+                            <Nav.Link href="/project/map">MAPA</Nav.Link>
                             <span className="navbar-text">|</span>
-                            <Nav.Link href="#biografia">BIBLIOGRAFIA</Nav.Link>
+                            <Nav.Link href="/project/bibliography">BIBLIOGRAFIA</Nav.Link>
                         </Nav>
                         <Form inline className="ml-auto">
                             <Row>

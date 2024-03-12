@@ -26,11 +26,11 @@ class NavbarHome extends React.Component {
                         <Nav className="mr-auto">
                             <Nav.Link href="/project" style={{ paddingLeft: '0' }}>PROJETO</Nav.Link>
                             <span className="navbar-text">|</span>
-                            <Nav.Link href="#equipa">EQUIPA</Nav.Link>
+                            <Nav.Link href="/team">EQUIPA</Nav.Link>
                             <span className="navbar-text">|</span>
-                            <Nav.Link href="#biografia">BIOGRAFIA</Nav.Link>
+                            <Nav.Link href="/biography">BIOGRAFIA</Nav.Link>
                             <span className="navbar-text">|</span>
-                            <Nav.Link href="#contactos">CONTACTOS</Nav.Link>
+                            <Nav.Link href="/contacts">CONTACTOS</Nav.Link>
                         </Nav>
                     </Container>
                 </Navbar>

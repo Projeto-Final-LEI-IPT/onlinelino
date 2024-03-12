@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import NavbarHome from "../../components/NavbarHome";
 import NavbarProject from "../../components/NavbarProject";
 import Container from "react-bootstrap/esm/Container";
 
-class ProjectIndex extends React.Component {
+class MapIndex extends React.Component {
     // constructor(props) {
     //     super(props);
     // }
@@ -16,11 +16,11 @@ class ProjectIndex extends React.Component {
                 <NavbarProject />
                 <br />
                 <Container>
-                    <p>Index</p>
+                    <p>Map</p>
                 </Container>
             </>
         );
     }
 }
 
-export default ProjectIndex;
+export default MapIndex;

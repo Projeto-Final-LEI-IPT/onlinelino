@@ -1,9 +1,8 @@
-import React from 'react';
-import NavbarHome from "../../components/NavbarHome";
-import NavbarProject from "../../components/NavbarProject";
+import React from "react";
+import NavbarHome from "../components/NavbarHome";
 import Container from "react-bootstrap/esm/Container";
 
-class ProjectIndex extends React.Component {
+class TeamIndex extends React.Component {
     // constructor(props) {
     //     super(props);
     // }
@@ -13,14 +12,12 @@ class ProjectIndex extends React.Component {
             <>
                 <NavbarHome />
                 <br />
-                <NavbarProject />
-                <br />
                 <Container>
-                    <p>Index</p>
+                    <p>Team</p>
                 </Container>
             </>
         );
     }
 }
 
-export default ProjectIndex;
+export default TeamIndex;
