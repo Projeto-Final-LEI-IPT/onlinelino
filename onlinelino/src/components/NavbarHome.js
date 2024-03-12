@@ -30,7 +30,7 @@ class NavbarHome extends React.Component {
                             <span className="navbar-text">|</span>
                             <Nav.Link href="/biography">BIOGRAFIA</Nav.Link>
                             <span className="navbar-text">|</span>
-                            <Nav.Link href="#contactos">CONTACTOS</Nav.Link>
+                            <Nav.Link href="/contacts">CONTACTOS</Nav.Link>
                         </Nav>
                     </Container>
                 </Navbar>
