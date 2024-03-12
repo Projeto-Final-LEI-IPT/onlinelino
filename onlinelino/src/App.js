@@ -5,6 +5,7 @@ import TeamIndex from "./pages/Team";
 import BiographyIndex from "./pages/Biography";
 import ContactsIndex from "./pages/Contacts";
 import MapIndex from "./pages/Project/Map";
+import BibliographyIndex from "./pages/Project/Bibliography";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/contacts" element={<ContactsIndex />} />
             {/*  */}
             <Route path="/project/map" element={<MapIndex />} />
+            <Route path="/project/bibliography" element={<BibliographyIndex />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -22,7 +22,7 @@ class NavbarProject extends React.Component {
                             <span className="navbar-text">|</span>
                             <Nav.Link href="/project/map">MAPA</Nav.Link>
                             <span className="navbar-text">|</span>
-                            <Nav.Link href="#biografia">BIBLIOGRAFIA</Nav.Link>
+                            <Nav.Link href="/project/bibliography">BIBLIOGRAFIA</Nav.Link>
                         </Nav>
                         <Form inline className="ml-auto">
                             <Row>
