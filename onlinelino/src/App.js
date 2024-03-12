@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ProjectIndex from "./pages/Project/Index";
+import TeamIndex from "./pages/Team";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/project" element={<ProjectIndex />} />
+            <Route path="/team" element={<TeamIndex />} />
           </Routes>
         </BrowserRouter>
       </div>
