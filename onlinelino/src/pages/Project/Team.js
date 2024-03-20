@@ -3,7 +3,7 @@ import NavbarHome from "../../components/NavbarHome";
 import NavbarProject from "../../components/NavbarProject";
 import Container from "react-bootstrap/esm/Container";
 
-class BibliographyIndex extends React.Component {
+class TeamIndex extends React.Component {
     // constructor(props) {
     //     super(props);
     // }
@@ -16,11 +16,11 @@ class BibliographyIndex extends React.Component {
                 <NavbarProject />
                 <br />
                 <Container>
-                    <p>Bibliografia</p>
+                    <p>Equipa</p>
                 </Container>
             </>
         );
     }
 }
 
-export default BibliographyIndex;
+export default TeamIndex;

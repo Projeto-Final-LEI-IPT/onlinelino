@@ -1,9 +1,9 @@
 import React from "react";
 import NavbarHome from "../../components/NavbarHome";
-import NavbarProject from "../../components/NavbarProject";
+import NavbarBuilding from "../../components/NavbarBuilding";
 import Container from "react-bootstrap/esm/Container";
 
-class BibliographyIndex extends React.Component {
+class MapIndex extends React.Component {
     // constructor(props) {
     //     super(props);
     // }
@@ -13,14 +13,14 @@ class BibliographyIndex extends React.Component {
             <>
                 <NavbarHome />
                 <br />
-                <NavbarProject />
+                <NavbarBuilding />
                 <br />
                 <Container>
-                    <p>Bibliografia</p>
+                    <p>Mapa</p>
                 </Container>
             </>
         );
     }
 }
 
-export default BibliographyIndex;
+export default MapIndex;

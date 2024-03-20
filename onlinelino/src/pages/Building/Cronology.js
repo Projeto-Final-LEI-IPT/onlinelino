@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
 import NavbarHome from "../../components/NavbarHome";
-import NavbarProject from "../../components/NavbarProject";
+import NavbarBuilding from '../../components/NavbarBuilding';
+import Timeline from "../../components/Timeline";
 import Container from "react-bootstrap/esm/Container";
 
-class MapIndex extends React.Component {
+class CronologyIndex extends React.Component {
     // constructor(props) {
     //     super(props);
     // }
@@ -13,14 +14,14 @@ class MapIndex extends React.Component {
             <>
                 <NavbarHome />
                 <br />
-                <NavbarProject />
+                <NavbarBuilding />
                 <br />
                 <Container>
-                    <p>Map</p>
+                    <Timeline />
                 </Container>
             </>
         );
     }
 }
 
-export default MapIndex;
+export default CronologyIndex;

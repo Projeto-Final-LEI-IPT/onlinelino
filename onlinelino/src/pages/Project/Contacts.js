@@ -1,8 +1,9 @@
 import React from "react";
-import NavbarHome from "../components/NavbarHome";
+import NavbarHome from "../../components/NavbarHome";
+import NavbarProject from "../../components/NavbarProject";
 import Container from "react-bootstrap/esm/Container";
 
-class BiographyIndex extends React.Component {
+class ContactsIndex extends React.Component {
     // constructor(props) {
     //     super(props);
     // }
@@ -12,12 +13,14 @@ class BiographyIndex extends React.Component {
             <>
                 <NavbarHome />
                 <br />
+                <NavbarProject />
+                <br />
                 <Container>
-                    <p>Biography</p>
+                    <p>Contactos</p>
                 </Container>
             </>
         );
     }
 }
 
-export default BiographyIndex;
+export default ContactsIndex;

@@ -1,27 +1,37 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import ProjectIndex from "./pages/Project/Index";
-import TeamIndex from "./pages/Team";
-import BiographyIndex from "./pages/Biography";
-import ContactsIndex from "./pages/Contacts";
-import MapIndex from "./pages/Project/Map";
+import DescriptionIndex from "./pages/Project/Description";
 import BibliographyIndex from "./pages/Project/Bibliography";
-
+import TeamIndex from "./pages/Project/Team";
+import ContactsIndex from "./pages/Project/Contacts";
+import GenericIndex from "./pages/Biography/Generic";
+import AboutIndex from "./pages/Biography/About";
+import ProjectIndex from "./pages/Building/Index";
+import CronologyIndex from "./pages/Building/Cronology";
+import MapIndex from "./pages/Building/Map";
+import ListIndex from "./pages/Building/List";
 
 function App() {
   return (
     <div className="App">
-        <div className="bg-gray-100 min-h-screen flex flex-col justify-between">
+      <div className="bg-gray-100 min-h-screen flex flex-col justify-between">
         <BrowserRouter>
           <Routes>
+            {/* Homepage */}
             <Route path="/" element={<Home />} />
-            <Route path="/project" element={<ProjectIndex />} />
-            <Route path="/team" element={<TeamIndex />} />
-            <Route path="/biography" element={<BiographyIndex />} />
-            <Route path="/contacts" element={<ContactsIndex />} />
-            {/*  */}
-            <Route path="/project/map" element={<MapIndex />} />
-            <Route path="/project/bibliography" element={<BibliographyIndex />} />
+            {/* Project */}
+            <Route path="/projeto/descricao" element={<DescriptionIndex />} />
+            <Route path="/projeto/bibliografia" element={<BibliographyIndex />} />
+            <Route path="/projeto/equipa" element={<TeamIndex />} />
+            <Route path="/projeto/contactos" element={<ContactsIndex />} />
+            {/* Biography */}
+            <Route path="/biografia" element={<GenericIndex />} />
+            <Route path="/biografia/sobre" element={<AboutIndex />} />
+            {/* Building */}
+            <Route path="/obra" element={<ProjectIndex />} />
+            <Route path="/obra/cronologia" element={<CronologyIndex />} />
+            <Route path="/obra/mapa" element={<MapIndex />} />
+            <Route path="/obra/lista" element={<ListIndex />} />
           </Routes>
         </BrowserRouter>
       </div>
