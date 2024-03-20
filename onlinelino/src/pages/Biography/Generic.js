@@ -1,8 +1,9 @@
 import React from "react";
-import NavbarHome from "../components/NavbarHome";
+import NavbarHome from "../../components/NavbarHome";
+import NavbarBiography from "../../components/NavbarBiography";
 import Container from "react-bootstrap/esm/Container";
 
-class BiographyIndex extends React.Component {
+class GenericIndex extends React.Component {
     // constructor(props) {
     //     super(props);
     // }
@@ -12,12 +13,14 @@ class BiographyIndex extends React.Component {
             <>
                 <NavbarHome />
                 <br />
+                <NavbarBiography />
+                <br />
                 <Container>
-                    <p>Biography</p>
+                    <p>Generica</p>
                 </Container>
             </>
         );
     }
 }
 
-export default BiographyIndex;
+export default GenericIndex;
