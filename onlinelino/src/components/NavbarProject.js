@@ -2,10 +2,6 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 class NavbarProject extends React.Component {
     // constructor(props) {
@@ -18,26 +14,14 @@ class NavbarProject extends React.Component {
                 <Navbar className="bg" style={{ backgroundColor: '#fff6db' }}>
                     <Container>
                         <Nav className="mr-auto">
-                            <Nav.Link href="/project" style={{ paddingLeft: '0' }}>CRONOLOGIA</Nav.Link>
+                            <Nav.Link href="/projeto/descricao" style={{ paddingLeft: '0' }}>DESCRIÇÃO</Nav.Link>
                             <span className="navbar-text">|</span>
-                            <Nav.Link href="/project/map">MAPA</Nav.Link>
+                            <Nav.Link href="/projeto/bibliografia">BIBLIOGRAFIA</Nav.Link>
                             <span className="navbar-text">|</span>
-                            <Nav.Link href="/project/bibliography">BIBLIOGRAFIA</Nav.Link>
+                            <Nav.Link href="/projeto/equipa">EQUIPA</Nav.Link>
+                            <span className="navbar-text">|</span>
+                            <Nav.Link href="/projeto/contactos">CONTACTOS</Nav.Link>
                         </Nav>
-                        <Form inline className="ml-auto">
-                            <Row>
-                                <Col xs="auto">
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Search"
-                                        className="mr-sm-2"
-                                    />
-                                </Col>
-                                <Col xs="auto">
-                                    <Button type="submit">Submit</Button>
-                                </Col>
-                            </Row>
-                        </Form>
                     </Container>
                 </Navbar>
             </>

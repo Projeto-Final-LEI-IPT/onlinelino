@@ -1,5 +1,6 @@
 import React from "react";
-import NavbarHome from "../components/NavbarHome";
+import NavbarHome from "../../components/NavbarHome";
+import NavbarProject from "../../components/NavbarProject";
 import Container from "react-bootstrap/esm/Container";
 
 class TeamIndex extends React.Component {
@@ -12,8 +13,10 @@ class TeamIndex extends React.Component {
             <>
                 <NavbarHome />
                 <br />
+                <NavbarProject />
+                <br />
                 <Container>
-                    <p>Team</p>
+                    <p>Equipa</p>
                 </Container>
             </>
         );

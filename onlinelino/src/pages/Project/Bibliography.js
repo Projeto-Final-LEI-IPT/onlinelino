@@ -16,7 +16,7 @@ class BibliographyIndex extends React.Component {
                 <NavbarProject />
                 <br />
                 <Container>
-                    <p>Bibliography</p>
+                    <p>Bibliografia</p>
                 </Container>
             </>
         );
