@@ -39,7 +39,7 @@ function Timeline() {
   return (
     <div className="timeline" ref={timelineRef}>
       <h2>Cronologia</h2>
-      <svg className="timeline-graphic" width="100%" height="50">
+      <svg className="timeline-graphic" width="100%" height="60">
         {/* Draw the x-axis */}
         <line x1="0" y1="30" x2="100%" y2="30" style={{ stroke: 'black', strokeWidth: '2' }} />
 
@@ -55,6 +55,7 @@ function Timeline() {
                 r="5"
                 className={`timeline-dot ${selectedYear === year ? 'selected' : ''}`}
                 onClick={() => handleEventClick(year, eventsForYear)}
+                style={{ cursor: 'pointer' }} // Change cursor to pointer when hovered over
               />
               <text
                 x={`${xPos}%`}
