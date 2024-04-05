@@ -11,8 +11,8 @@
         "typology": "AAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/1/rot11.JPG",
-            "img/roteiro/1/rot12.JPG"
+            "img/rot11.JPG",
+            "img/rot12.JPG"
         ]
     },
     {
@@ -27,8 +27,8 @@
         "typology": "BAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/2/rot21.jpg",
-            "img/roteiro/2/rot22.png"
+            "img/rot21.jpg",
+            "img/rot22.png"
         ]
     },
     {
@@ -43,9 +43,9 @@
         "typology": "CAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/4/rot41.jpg",
-            "img/roteiro/4/rot42.jpeg",
-            "img/roteiro/4/rot43.JPG"
+            "img/rot41.jpg",
+            "img/rot42.jpeg",
+            "img/rot43.JPG"
         ]
     },
     {
@@ -60,8 +60,8 @@
         "typology": "DAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/5/rot51.JPG",
-            "img/roteiro/5/rot52.JPG"
+            "img/rot51.JPG",
+            "img/rot52.JPG"
         ]
     },
     {
@@ -76,7 +76,7 @@
         "typology": "EAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/6/rot61.JPG",
+            "img/rot61.JPG",
             "img/roteiro/6/rot62.JPG",
             "img/roteiro/6/rot63.JPG"
         ]
@@ -93,9 +93,9 @@
         "typology": "FAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/7/rot71.JPG",
-            "img/roteiro/7/rot72.JPG",
-            "img/roteiro/7/rot73.JPG"
+            "img/rot71.JPG",
+            "img/rot72.JPG",
+            "img/rot73.JPG"
         ]
     },
     {
@@ -110,8 +110,8 @@
         "typology": "GAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/8/rot81.jpg",
-            "img/roteiro/8/rot82.jpg"
+            "img/rot81.jpg",
+            "img/rot82.jpg"
         ]
     },
     {
@@ -126,8 +126,8 @@
         "typology": "HAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/9/rot91.JPG",
-            "img/roteiro/9/rot92.JPG"
+            "img/rot91.JPG",
+            "img/rot92.JPG"
         ]
     },
     {
@@ -142,7 +142,7 @@
         "typology": "IAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/10/rot101.JPG"
+            "img/rot101.JPG"
         ]
     },
     {
@@ -157,7 +157,7 @@
         "typology": "JAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/11/rot111.jpg",
+            "img/rot111.jpg",
             "img/roteiro/11/rot112.jpg"
         ]
     },
@@ -173,8 +173,8 @@
         "typology": "KAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/12/rot121.JPG",
-            "img/roteiro/12/rot122.JPG"
+            "img/rot121.JPG",
+            "img/rot122.JPG"
         ]
     },
     {
@@ -189,7 +189,7 @@
         "typology": "LAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/13/rot131.jpg"
+            "img/rot131.jpg"
         ]
     },
     {
@@ -204,8 +204,8 @@
         "typology": "MAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/14/rot141.JPG",
-            "img/roteiro/14/rot142.JPG"
+            "img/rot141.JPG",
+            "img/rot142.JPG"
         ]
     },
     {
@@ -220,7 +220,7 @@
         "typology": "NAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/15/rot151.JPG"
+            "img/rot151.JPG"
         ]
     },
     {
@@ -235,8 +235,8 @@
         "typology": "OAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/16/rot161.JPG",
-            "img/roteiro/16/rot162.JPG"
+            "img/rot161.JPG",
+            "img/rot162.JPG"
         ]
     },
     {
@@ -251,8 +251,8 @@
         "typology": "PAA",
         "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "images": [
-            "img/roteiro/17/rot171.JPG",
-            "img/roteiro/17/rot172.JPG"
+            "img/rot171.JPG",
+            "img/rot172.JPG"
         ]
     }
 ]
