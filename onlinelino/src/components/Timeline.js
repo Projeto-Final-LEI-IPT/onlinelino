@@ -75,14 +75,22 @@ function Timeline() {
       {/* Display event details for selected year */}
       {selectedYear && (
         <div className="event-details">
-          <h4>Events for {selectedYear}</h4>
+          <h4>Obras construídas em {selectedYear}</h4>
           {selectedEvents.map(event => (
             <div key={event.id}>
               <br />
-              <h4>{event.title}</h4>
-              <p>{event.info}</p>
+              {event.images.length > 0 && (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <img src={`../${event.images[0]}`} alt={event.title} style={{ maxWidth: '200px', marginRight: '10px', maxHeight: '150px' }} />
+                  <div>
+                    <h4>{event.title}</h4>
+                    <p>{event.info}</p>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
+        <br />
         </div>
       )}
     </div>
