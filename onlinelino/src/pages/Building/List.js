@@ -2,7 +2,7 @@ import React from "react";
 import NavbarHome from "../../components/NavbarHome";
 import NavbarBuilding from "../../components/NavbarBuilding";
 import Container from "react-bootstrap/esm/Container";
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { Link } from "react-router-dom"; 
 import data from '../../assets/data.json';
 
 class ListIndex extends React.Component {
