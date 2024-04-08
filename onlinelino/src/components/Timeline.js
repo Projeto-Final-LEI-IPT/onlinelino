@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import data from '../assets/data.json';
+import { Link } from "react-router-dom"; 
 
 function Timeline() {
   const [selectedYear, setSelectedYear] = useState(null);
@@ -80,17 +81,22 @@ function Timeline() {
             <div key={event.id}>
               <br />
               {event.images.length > 0 && (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <img src={`../${event.images[0]}`} alt={event.title} style={{ maxWidth: '200px', marginRight: '10px', maxHeight: '150px' }} />
-                  <div>
-                    <h4>{event.title}</h4>
-                    <p>{event.info}</p>
-                  </div>
+                <div key={event.id}>
+                  <Link key={event.id} to={`/obra/${event.id}`} style={{ textDecoration: 'none', color: 'inherit' }}> {/* Wrap each item with Link */}
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <img src={`../${event.images[0]}`} alt={event.title} style={{ maxWidth: '200px', marginRight: '10px', maxHeight: '150px' }} />
+                      <div>
+                        <h4>{event.title}</h4>
+                        <p>{event.info}</p>
+                      </div>
+                    </div>
+                  </Link>
+                  <br />
                 </div>
               )}
             </div>
           ))}
-        <br />
+          <br />
         </div>
       )}
     </div>
