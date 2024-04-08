@@ -4,6 +4,7 @@ import NavbarBuilding from "../../components/NavbarBuilding";
 import Container from "react-bootstrap/esm/Container";
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import data from '../../assets/data.json'; 
+import { Link } from 'react-router-dom'; 
 
 const libraries = ['places']; // Libraries needed for Google Maps
 
@@ -84,7 +85,7 @@ const MapIndex = () => {
             <br />
             {/* Container for the map */}
             <Container ref={mapContainerRef} style={{ width: '100%', height: '50vh' }}>
-                <p>Mapa</p>
+                <h4>Mapa de obras</h4>
                 {/* GoogleMap component */}
                 <GoogleMap
                     mapContainerStyle={{ width: '100%', height: '100%' }}
@@ -109,7 +110,9 @@ const MapIndex = () => {
                             onCloseClick={() => setSelectedBuilding(null)}
                         >
                             <div>
-                                <h3>{selectedBuilding.title}</h3>
+                                <Link to={`/obra/${selectedBuilding.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <h3>{selectedBuilding.title}</h3>
+                                </Link>
                             </div>
                         </InfoWindow>
                     )}

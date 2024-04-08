@@ -10,6 +10,7 @@ import ProjectIndex from "./pages/Building/Index";
 import CronologyIndex from "./pages/Building/Cronology";
 import MapIndex from "./pages/Building/Map";
 import ListIndex from "./pages/Building/List";
+import BuildingDetails from "./pages/Building/Details";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/obra/cronologia" element={<CronologyIndex />} />
             <Route path="/obra/mapa" element={<MapIndex />} />
             <Route path="/obra/lista" element={<ListIndex />} />
+            <Route path="/obra/:id/" element={<BuildingDetails />} />
           </Routes>
         </BrowserRouter>
       </div>
