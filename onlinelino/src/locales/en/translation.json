@@ -1,0 +1,25 @@
+{
+    "navbarHome": {
+        "label": "Raul Lino in Médio Tejo",
+        "project": "PROJECT",
+        "biography": "BIOGRAPHY",
+        "building": "BUILDING",
+        "search": "Search",
+        "submit": "Submit"
+    },
+    "navbarProject": {
+        "description": "DESCRIPTION",
+        "bibliography": "BIBLIOGRAPHY",
+        "team": "TEAM",
+        "contacts": "CONTACTS"
+    },
+    "navbarBiography": {
+        "generic": "GENERIC",
+        "about": "ABOUT WORKING IN MEDIO TEJO"
+    },
+    "navbarBuilding": {
+        "chronology": "CHRONOLOGY",
+        "map": "MAP",
+        "list": "LIST"
+    }
+}
