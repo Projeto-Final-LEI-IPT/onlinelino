@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next';
 
 function BibliographyIndex() {
     // bibliographyPage.text
-    const { t: text } = useTranslation('translation', { keyPrefix: 'bibliographyPage.text' });
-    const b = [];
+    const { t: b } = useTranslation('translation', { keyPrefix: 'bibliographyPage.text' });
+    const text = [];
     for (let i = 0; i < 50; i++) {
-        if (!text([i]).includes("bibliographyPage.text")) {
-            b.push(text([i]));
+        if (!b([i]).includes("bibliographyPage.text")) {
+            text.push(b([i]));
         }
     }
     // bibliographyPage.biography
@@ -26,7 +26,7 @@ function BibliographyIndex() {
                 <h4>{t('bibliographyPage.bibliography')}</h4>
                 <br/>
                 <ul>
-                    {b.map((paragraph, index) => (
+                    {text.map((paragraph, index) => (
                         <>
                             <li key={index}>{paragraph}</li>
                             <br />
