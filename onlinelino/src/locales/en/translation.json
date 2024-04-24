@@ -21,5 +21,171 @@
         "chronology": "CHRONOLOGY",
         "map": "MAP",
         "list": "LIST"
-    }
+    },
+    "homePage": {
+        "summary": [
+            "OnlineLino is a website dedicated to the architectural work of Raul Lino da Silva or Raul Lino (1879-1974), which provides information on the architect's building legacy in the Médio Tejo region.",
+            "The portal provides entries for drawings, documents and images of the projects built and identified on site, as well as images, documentary films and a biography of the architect Raul Lino."
+        ],
+        "developed": [
+            "OnlineLino is a website dedicated to the architectural work of Raul Lino da Silva or Raul Lino (1879-1974), which provides information on the architect's building legacy in the Médio Tejo region.",
+            "The building legacy of Raul Lino da Silva (1879-1974), a renowned Portuguese architect, is scattered throughout Portugal. His architectural projects for the city of Abrantes were studied in the research project “Raul Lino - an itinerary through the heritage of Abrantes” (RauLino| Abrt). This study revealed the need to aggregate, systematize and publicize his architectural projects for municipalities in the current Médio Tejo region, which are not sufficiently publicized or are not even associated with their author.",
+            "The project behind the development of the OnLineLino site was conceived at the R&D Center of the Polytechnic Institute of Tomar, Centro de Tecnologia Restauro e Valorização das Artes (TECHN&ART), in partnership with the Calouste Gulbenkian Foundation (FCG). The main aim of this partnership is to share and provide access to the documentation relating to Raul Lino's architectural estate held in the FCG's Art Library. The aim is to make available and aggregate the information scattered across different archives and sources, and to facilitate organized access to it.",
+            "This project was funded by the Foundation for Science and Technology under the CFPI2023/08 program.",
+            "The OnLineLino project was carried out by researchers from TECHN&ART and students from the Editorial Design Master's and Computer Engineering Degree courses at the Polytechnic Institute of Tomar."
+        ]
+    },
+    "bibliographyPage": {
+        "text": [
+            "A/RES/70/1. (2015). Resolution adopted by the General Assembly on 25 September, Seventieth session. United Nations.",
+            "CE - Comissão Europeia (2018). Uma Nova Agenda para a Cultura. Disponível em: https://eur-lex.europa.eu/legal-content/PT/TXT/PDF/?uri=CELEX:52018DC0267.",
+            "Domenichini, R. (2023). Architectural archives, a resource for knowledge and collective memory. Boletim do Arquivo da Universidade de Coimbra, Extra 1, 37-51.",
+            "ICA – International Council on Archives (2000). A guide to the archival care of architectural records. 19th-20th centuries. https://www.ica.org/en/guide-archival-care-architectural-records-19th-20th-centuries. ",
+            "Letellier. R.; Schmid, W. & and LeBlanc, F. (2007). Recording, Documentation, and Information Management for the Conservation of Heritage Places guiding principles. 2 vol.; Getty Conservation Institute.",
+            "Münster, S. (2017). A survey on topics, researchers and cultures in the field of digital heritage. ISPRS Annals, Photogrammetry, Remote Sensing and Spatial Information Sciences, IV-2/W2, 157–162, https://doi.org/10.5194/isprs-annals-IV-2-W2-157-2017.",
+            "Münster, S., Apollonio, F. I., Bell, P., Kuroczynski, P., Di Lenardo, I., Rinaudo, F., and Tamborrino, R.: (2019). Digital cultural heritage meets digital humanities. Int. Arch. Photogrammetry, Remote Sensing and Spatial Information Sciences, XLII-2/W15, 813–820, https://doi.org/10.5194/isprs-archives-XLII-2-W15-813-2019, 2019.",
+            "Ocejo, Y; Romero, R.; Domenichini, R.; Garzón, G.; O'Riordan, C.; Simon, A. & Sousa, A. (2019). Proceedings of the International Congress on Architectural Archives: Professional Experiences in a Cultural Diversity, International Congress on Architectural Archives. Arquivo Distrital de Braga, 2021. DOI https://doi.org/10.21814/1822.70577. Available at the University of Minho RepositóriUM http://hdl.handle.net/1822/70577.",
+            "Orlandi, L. & Marsili, G. (2019). Digital Humanities and Cultural Heritage Preservation: The Case of the BYZART (Byzantine Art and Archaeology on Europeana) Project.",
+            "Robertson, P., Sharples, J. & Imrie, N., (2014). Mackintosh Architecture: Context, Making and Meaning. Catalogue. University of Glasgow, Glasgow.",
+            "Wierre, F. (2010). Les archives comme outils de représentation de l'œuvre. Sociétés & Représentations, 30, 173-180. https://doi.org/10.3917/sr.030.0173."
+        ]
+    },
+    "teamPage": {
+        "investigators": [
+            "Anabela Mendes Moreira",
+            "Inês Domingues Serrano",
+            "Paulo Alexandre Gomes dos Santos",
+            "Pedro Alexandre Santos de Matos",
+            "Regina Aparecida Delfino"
+        ],
+        "collaborators": [
+            "Ana Maria Fuzeiro Grácio, student",
+            "Ana Xavier Mimoso, student"
+        ]
+    },
+    "contactsPage": {
+        "text": [
+            "Anabela Mendes Moreira - anamoreira@ipt.pt",
+            "Inês Serrano - inesserrano@ipt.pt",
+            "Paulo Alexandre Gomes dos Santos - psantos@ipt.pt",
+            "Regina Aparecida Delfino - re.delfino@ipt.pt"
+        ]
+    },
+    "biographyPage": {
+        "generic": "Raul Lino da Silva or Raul Lino (1879-1974) began his education in England and Germany, having attended the Handwerker und Kunstgeweberschule in Hanover, where he studied carpentry and furniture design, and the Technische Hochschule. He did his practical training in the studio of Professor Albrecht Haupt, who studied Renaissance architecture in Portugal. In 1897, he returned to Lisbon to begin what would become a long and productive career in architecture. His English and German experience placed him at the center of a culture that was reflected both in his architectural practice and in his various written publications, adjusting European learning to the nationalist program.",
+        "videos": [
+            "https://arquivos.rtp.pt/conteudos/raul-lino/",
+            "https://www.rtp.pt/play/p1349/e150469/linhas-e-palavras [Miguel Real talks about Raul Lino]",
+            "https://gulbenkian.pt/historia-das-exposicoes/audio-visuals/85/ [Opening of the exhibition in 1970 at FCG]"
+        ],
+        "otherLinks": [
+            "https://www.ebad.info/silva-raul-lino-da",
+            "https://museu.parlamento.pt/DetalhesAutor?authorId=512",
+            "https://gulbenkian.pt/biblioteca-arte/artist/raul-lino/",
+            "https://cm-sintra.pt/sintra-em-agenda-arquivo/raul-lino-actualidade-de-um-mestre",
+            "https://www.alpiarcense.com/cronicas-do-outeiro-raul-lino-o-arquiteto-da-casa-dos-patudos/",
+            "https://www.researchgate.net/publication/277218597_Ser_moderno_em_1900_a_arquitectura_de_Ventura_Terra_e_Raul_Lino "
+        ],
+        "about": "The Médio Tejo is a sub-region located in the centre of the country. It includes the municipalities of Abrantes, Alcanena, Constância, Entroncamento, Ferreira do Zêzere, Mação, Ourém, Sardoal, Sertã, Tomar, Torres Novas, Vila de Rei and Vila Nova da Barquinha.",
+        "image": ""
+    },
+    "buildingsPage": {
+        "buildingsProjects": [
+            "Raul Lino's architectural work is spread throughout Portugal. His architectural production has been the subject of several studies, with particular emphasis on the buildings constructed in Lisbon, Sintra and Cascais, namely the so-called “Moroccan houses”, built in the first decade of the 20th century.",
+            "In addition to his architectural legacy, Raul Lino is also the author of a number of written publications, including “A Nossa Casa - Apontamentos sobre o bom gosto na construção de casas simples”, 1918; “Casa Portuguesa”, 1929; “Casas Portuguesas - Alguns apontamentos sobre o arquitectar das casas simples”, 1933; “Auriverde jornada: recordações de uma viagem ao Brasil”, 1937; and “Quatro palavras sobre Urbanização”, 1945.",
+            "Raul Lino's architectural collection of more than 600 projects can be found at the Calouste Gulbenkian Foundation Art Library (CGAL)."
+        ],
+        "videos": [
+            "https://www.rtp.pt/play/p5656/e439639/visita-guiada  [Casa do Cipreste]",
+            "https://www.rtp.pt/play/p3373/e308698/visita-guiada  [Casa dos Patudos]",
+            "https://www.rtp.pt/play/p3373/e289865/visita-guiada  [Casa Roque Gameiro]",
+            "https://content.gulbenkian.pt/inarte/videos/reg.85_CDR635_Raul%20Lino.mp4",
+            "https://arquivos.rtp.pt/conteudos/uma-casa-portuguesa/"
+        ],
+        "otherLinks": [
+            "https://arquivomunicipal3.cm-lisboa.pt/x-arqweb/Result.aspx?id=13024&type=Autoridade",
+            "https://www.publico.pt/2010/12/11/jornal/tres-casas-de-raul-lino-classificadas--de-interesse-publico-no-monte-estoril-20810106",
+            "http://www.jornaldesintra.com/2014/03/historia-local-raul-lino-2/",
+            "https://www.publico.pt/2014/04/21/culturaipsilon/noticia/ha-uma-casa-raul-lino-no-porto-1632932",
+            "https://sigarra.up.pt/faup/pt/noticias_geral.ver_noticia?p_nr=8937",
+            "https://historiasdebolso.home.blog/2019/01/06/premio-valmor-de-1930-casa-portuguesa-de-sacadura-cabral-demolido-em-1982/",
+            "https://serradesintra.net/casa-do-cipreste/",
+            "https://www.acorianooriental.pt/noticia/unica-moradia-projetada-de-raiz-pelo-arquiteto-raul-lino-nos-acores-esta-a-venda",
+            "https://patrimonium.pt/museus/casa-roque-gameiro/",
+            "https://gulbenkian.pt/biblioteca-arte/staged-nature-zoo-of-zoos/"
+        ],
+        "buildingsProjectsMedioTejo": [
+            "Raul Lino received commissions for projects in what is now the Médio Tejo region. The first project identified is dated 1919 and refers to a house for José Serra da Motta, located at Rua Luís de Camões, in the urban center of Abrantes.",
+            "The CGAL's collection includes 33 architectural projects for the municipalities of the current Médio Tejo region, 23 of which are for the municipality of Abrantes, and the rest for Alcanena (1), Constância (1), Mação (1), Ourém (1), Sardoal (1), Tomar (3), Torres Novas (1) and Vila Nova da Barquinha (1). These projects correspond to new constructions, conversions and extensions of existing buildings, urban arrangements, tombs, schools, a building for the headquarters of a cultural and recreational club (link), a pedestal (link) for a statue and a tower for a transformer station (link).",
+            "The architect was commissioned to design the headquarters building of the Sociedade da Assembleia de Abrantes (link) by this local recreational club in 1923. Its construction was completed in 1924, but it was only inaugurated in 1928, and is currently property of the same society."
+        ],
+        "images": [
+            "",
+            ""
+        ],
+        "imagesSubtitle": [
+            "House designed by Raul Lino (1919 project) located at Rua Luís de Camões in Abrantes (192?) [Credits: FCG].",
+            "Postcard of the headquarters building of the Abrantes Assembly Society (192?)."
+        ]
+    },
+    "buildings": [
+        {
+            "id": 1,
+            "title": "House, Abrantes",
+            "year": "1919 (original project)",
+            "typology": "Single-family building",
+            "location": "Rua Luís de Camões, 28",
+            "coordinates": [
+                39.461147,
+                -8.199511
+            ],
+            "info": [
+                "This residential building is located on the edge of Abrantes' historic center and was probably Raul Lino's first project in the city of Abrantes. It was intended for the home and studio of José Serra da Motta.",
+                "The house is located on a steeply sloping site, at the confluence of Rua Luís de Camões and Rua do Montepio Abrantino, and has two floors and an attic. Highlights of the building include the porch supported on five columns and facing west, the dormer windows that provide natural light to the attic, and the two large chimneys decorated with red clay ceramic elements similar to those that are part of the staircase railing on the rear elevation of the house."
+            ],
+            "images": [
+                "img/rot11.JPG",
+                "img/rot12.JPG"
+            ],
+            "imagesSubtitle": [
+                "House designed for José Serra da Motta in 1919: view of the side façade, from Rua do Montepio Abrantino, up the street (2021).",
+                "House designed for José Serra da Motta in 1919: view of the main and side façades, from Rua do Montepio Abrantino, down the street (2021)."
+            ],
+            "links": [
+                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=LP133878647D3.269775&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!188332~!0&ri=3&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=3&limitbox_1=COL01+=+RL",
+                "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=25172"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Headquarters Building of Sociedade da Assembleia de Abrantes, Abrantes",
+            "year": "1923 (original project)",
+            "typology": "Cultural and recreational club building",
+            "location": "Largo General Avelar Machado (at the confluence of Rua Montepio Abrantino and Rua de Nossa Senhora da Conceição)",
+            "coordinates": [
+                39.461147,
+                -8.199511
+            ],
+            "info": [
+                "The building, designed in 1923 to house the headquarters of the Abrantes Assembly Society, was completed in 1924 and inaugurated in 1928. It currently remains the property of the Abrantes Assembly Society, which was set up in 1920. This building is classified as a Monument of Municipal Interest, according to Abrantes City Council Notice, Edital no. 20/2014 of April 11.",
+                "Raul Lino's project proposes a multi-functional space with a ballroom, a reading room, two rooms for card games and one for billiards. The building is located at the western end of Largo General Avelar Machado, which was formed from the demolition of the hermitage of S. Sebastião, at the intersection with Rua do Montepio Abrantino. This location, in a steeply sloping area, marked some of the architect's design solutions, mentioned by the architect in the article “Que aspecto devemos dar às casas do Povo?” published in 1947 in the Mensário das Casas do Povo “com a sujeita a determinado terreno, aliás ingrato e bastante difícil de se aproveitar. […] No exterior teve-se em atenção o carácter local das construções tradicionais, de molde que o que se fez não fosse destoar da fisionomia geral da terra” (translated: with the subject to a certain terrain, ungrateful and quite difficult to take advantage of. [...] On the outside, attention was paid to the local character of traditional buildings, so that what was done would not clash with the general physiognomy of the land.)",
+                "The building's main entrance, on Largo General Avelar Machado, is protected by a porch with cylindrical columns, where the polychrome tile wainscoting stands out. The building also features two adjacent but distinct porches facing north; the kneecaps that protect the windows of the rooms on the south façade; the ceramic tile roof and Portuguese-style eaves; the stonework obelisks on the roof; and the chimneys.",
+                "Inside, the building includes a party room with a stage, a reading room and three games rooms, as well as a kitchen with a pantry and toilets. The slope of the land was used to accommodate commercial stores and warehouses.",
+                "Raul Lino also designed the pedestal for the bust of General Avelar Machado, a prominent figure in Abrantes, which was inaugurated in 1929 in the square of the same name, in front of the Abrantes Assembly Society building."
+            ],
+            "images": [
+                "img/rot21.JPG",
+                "img/rot22.JPG"
+            ],
+            "imagesSubtitle": [
+                "Main façade of the Headquarters building of Sociedade da Assembleia de Abrantes (2019).",
+                "News of the inauguration of the headquarters building of Sociedade da Assembleia de Abrantes, on January 7, 1928, published in Voga -- semanário ilustrado da mulher, no.16, year 1, 15 de december 1928, page 2."
+            ],
+            "links": [
+                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=H713388H01185.273416&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!188774~!3&ri=2&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=2&limitbox_1=COL01+=+RL",
+                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=H713388H01185.273416&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!193838~!22&ri=2&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=2&limitbox_1=COL01+=+RL",
+                "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=24995"
+            ]
+        }
+    ]
 }
