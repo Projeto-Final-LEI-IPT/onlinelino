@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next';
 
 function ContactsIndex() {
     // contactsPage.text
-    const { t: text } = useTranslation('translation', { keyPrefix: 'contactsPage.text' });
-    const b = [];
+    const { t: c } = useTranslation('translation', { keyPrefix: 'contactsPage.text' });
+    const contacts = [];
     for (let i = 0; i < 50; i++) {
-        if (!text([i]).includes("contactsPage.text")) {
-            b.push(text([i]));
+        if (!c([i]).includes("contactsPage.text")) {
+            contacts.push(c([i]));
         }
     }
     // bibliographyPage.biography
@@ -24,9 +24,9 @@ function ContactsIndex() {
             <br />
             <Container>
                 <h4>{t('contactsPage.contacts')}</h4>
-                <br/>
+                <br />
                 <ul>
-                    {b.map((paragraph, index) => (
+                    {contacts.map((paragraph, index) => (
                         <>
                             <li key={index}>{paragraph}</li>
                             <br />
