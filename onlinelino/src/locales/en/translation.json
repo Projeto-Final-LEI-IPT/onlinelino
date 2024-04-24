@@ -52,6 +52,9 @@
         ]
     },
     "teamPage": {
+        "team": "Team",
+        "inv": "Investigators:",
+        "col": "Collaborators:",
         "investigators": [
             "Anabela Mendes Moreira",
             "Inês Domingues Serrano",
