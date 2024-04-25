@@ -48,7 +48,6 @@ function GenericIndex() {
                             <li key={index}>
                                 <a href="{paragraph}" target="_blank">
                                     {paragraph}
-                                    {/* here */}
                                 </a>
                                 <br />
                                 <span>{videosSubtitle[index]}</span>
