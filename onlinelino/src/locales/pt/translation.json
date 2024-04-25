@@ -15,7 +15,7 @@
     },
     "navbarBiography": {
         "generic": "GENÉRICA",
-        "about": "SOBRE O TRABALHO NO MÉDIO TEJO"
+        "about": "SOBRE O MÉDIO TEJO"
     },
     "navbarBuilding": {
         "chronology": "CRONOLOGIA",
@@ -78,11 +78,18 @@
     },
     "biographyPage": {
         "generic": "Raul Lino da Silva ou Raul Lino (1879-1974) iniciou a sua formação na Inglaterra e Alemanha, tendo frequentado a escola de artes e ofícios nas vertentes de carpintaria e desenho de móveis, Handwerker und Kunstgeweberschule em Hannover, e a Technische Hochschule. Realizou a formação prática no atelier do Professor Albrecht Haupt, que dedicou um estudo à arquitetura do Renascimento em Portugal. Em 1897, regressou a Lisboa para iniciar o que viria a ser uma longa e produtiva carreira na arquitetura. A experiência inglesa e alemã situou-o no centro de uma cultura que se refletiu, quer na sua prática arquitetónica, quer nas suas várias publicações escritas, ajustando a aprendizagem europeia ao programa nacionalista. ",
+        "v": "Filmes",
         "videos": [
             "https://arquivos.rtp.pt/conteudos/raul-lino/",
-            "https://www.rtp.pt/play/p1349/e150469/linhas-e-palavras [Miguel Real fala sobre Raul Lino]",
-            "https://gulbenkian.pt/historia-das-exposicoes/audio-visuals/85/ [Inauguração da exposição em 1970 na FCG]"
+            "https://www.rtp.pt/play/p1349/e150469/linhas-e-palavras",
+            "https://gulbenkian.pt/historia-das-exposicoes/audio-visuals/85/"
         ],
+        "videosSubtitle": [
+            "",
+            "[Miguel Real fala sobre Raul Lino]",
+            "[Inauguração da exposição em 1970 na FCG]"
+        ],
+        "l": "Outros links",
         "otherLinks": [
             "https://www.ebad.info/silva-raul-lino-da",
             "https://museu.parlamento.pt/DetalhesAutor?authorId=512",

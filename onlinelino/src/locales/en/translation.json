@@ -15,7 +15,7 @@
     },
     "navbarBiography": {
         "generic": "GENERIC",
-        "about": "ABOUT WORKING IN MEDIO TEJO"
+        "about": "ABOUT MEDIO TEJO"
     },
     "navbarBuilding": {
         "chronology": "CHRONOLOGY",
@@ -78,11 +78,18 @@
     },
     "biographyPage": {
         "generic": "Raul Lino da Silva or Raul Lino (1879-1974) began his education in England and Germany, having attended the Handwerker und Kunstgeweberschule in Hanover, where he studied carpentry and furniture design, and the Technische Hochschule. He did his practical training in the studio of Professor Albrecht Haupt, who studied Renaissance architecture in Portugal. In 1897, he returned to Lisbon to begin what would become a long and productive career in architecture. His English and German experience placed him at the center of a culture that was reflected both in his architectural practice and in his various written publications, adjusting European learning to the nationalist program.",
+        "v": "Videos",
         "videos": [
             "https://arquivos.rtp.pt/conteudos/raul-lino/",
-            "https://www.rtp.pt/play/p1349/e150469/linhas-e-palavras [Miguel Real talks about Raul Lino]",
-            "https://gulbenkian.pt/historia-das-exposicoes/audio-visuals/85/ [Opening of the exhibition in 1970 at FCG]"
+            "https://www.rtp.pt/play/p1349/e150469/linhas-e-palavras",
+            "https://gulbenkian.pt/historia-das-exposicoes/audio-visuals/85/"
         ],
+        "videosSubtitle": [
+            "",
+            "[Miguel Real talks about Raul Lino]",
+            "[Opening of the exhibition in 1970 at FCG]"
+        ],
+        "l": "Other links",
         "otherLinks": [
             "https://www.ebad.info/silva-raul-lino-da",
             "https://museu.parlamento.pt/DetalhesAutor?authorId=512",
