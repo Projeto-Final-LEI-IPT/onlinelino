@@ -102,18 +102,28 @@
         "image": ""
     },
     "buildingsPage": {
+        "title": "Obras e Projectos",
         "buildingsProjects": [
             "A obra arquitetónica de Raul Lino encontra-se disseminada por todo o território nacional. A sua produção arquitetónica tem sido objeto de diversos estudos, com particular destaque para os edifícios construídos em Lisboa, Sintra e Cascais, nomeadamente as designadas “casas marroquinas”, construídas na primeira década do século XX.",
             "Para além do legado arquitetónico, Raul Lino também é autor de um conjunto de publicações escritas, designadamente “A Nossa Casa – Apontamentos sobre o bom gosto na construção de casas simples”, 1918; “Casa Portuguesa”, 1929; “Casas Portuguesas – Alguns apontamentos sobre o arquitectar das casas simples”, 1933; Auriverde jornada: recordações de uma viagem ao Brasil“, 1937; e “Quatro palavras sobre Urbanização”, 1945. ",
             "O espólio de arquitetura de Raul Lino, mais de 600 projetos, encontra-se na Biblioteca de Arte da Fundação Calouste Gulbenkian (BAFCG)."
         ],
+        "v": "Filmes",
         "videos": [
-            "https://www.rtp.pt/play/p5656/e439639/visita-guiada  [Casa do Cipreste]",
-            "https://www.rtp.pt/play/p3373/e308698/visita-guiada  [Casa dos Patudos]",
-            "https://www.rtp.pt/play/p3373/e289865/visita-guiada  [Casa Roque Gameiro]",
+            "https://www.rtp.pt/play/p5656/e439639/visita-guiada  ",
+            "https://www.rtp.pt/play/p3373/e308698/visita-guiada  ",
+            "https://www.rtp.pt/play/p3373/e289865/visita-guiada  ",
             "https://content.gulbenkian.pt/inarte/videos/reg.85_CDR635_Raul%20Lino.mp4",
             "https://arquivos.rtp.pt/conteudos/uma-casa-portuguesa/"
         ],
+        "videosSubtitle": [
+            "[Casa do Cipreste]",
+            "[Casa dos Patudos]",
+            "[Casa Roque Gameiro] ",
+            "",
+            ""
+        ],
+        "l": "Outros links",
         "otherLinks": [
             "https://arquivomunicipal3.cm-lisboa.pt/x-arqweb/Result.aspx?id=13024&type=Autoridade",
             "https://www.publico.pt/2010/12/11/jornal/tres-casas-de-raul-lino-classificadas--de-interesse-publico-no-monte-estoril-20810106",
@@ -126,6 +136,7 @@
             "https://patrimonium.pt/museus/casa-roque-gameiro/",
             "https://gulbenkian.pt/biblioteca-arte/staged-nature-zoo-of-zoos/"
         ],
+        "title2": "Obras e Projectos na região do Médio Tejo",
         "buildingsProjectsMedioTejo": [
             "Raul Lino recebeu encomendas para projetos destinados à atual região do Médio Tejo. O primeiro projeto identificado está datado de 1919 e refere-se a uma moradia para José Serra da Motta (link), localizada na Rua Luís de Camões, no centro urbano de Abrantes. ",
             "No acervo existente na BAFCG estão identificados 33 projetos de arquitetura destinados aos municípios da atual região do Médio Tejo, 23 dos quais para o concelho de Abrantes, e os restantes para Alcanena (1), Constância (1), Mação (1), Ourém (1), Sardoal (1), Tomar (3), Torres Novas (1) e Vila Nova da Barquinha (1). Estes projetos correspondem a novas construções, a transformações e ampliações de edifícios existentes, arranjos urbanísticos, jazigos, escolas, um edifício para a sede de um clube cultural e recreativo (link), um pedestal (link) destinado a estátua e uma torre para posto de transformação (link).",
@@ -133,7 +144,7 @@
         ],
         "images": [
             "",
-            ""
+            "img/postal_assembleia_de_abrantes.jpeg"
         ],
         "imagesSubtitle": [
             "Moradia da autoria de Raul Lino, localizada na Rua Luís de Camões, em Abrantes (192?) [Créditos de imagem: ---].",
