@@ -151,6 +151,14 @@
             "Postcard of the headquarters building of the Abrantes Assembly Society (192?)."
         ]
     },
+    "buildingsDetailsPage": {
+        "year": "Year of project",
+        "type": "Type",
+        "location": "Location",
+        "images": "Fotos",
+        "links": "Links",
+        "bibliography": "Bibliography"
+    },
     "buildings": [
         {
             "id": 1,
@@ -167,8 +175,8 @@
                 "The house is located on a steeply sloping site, at the confluence of Rua Luís de Camões and Rua do Montepio Abrantino, and has two floors and an attic. Highlights of the building include the porch supported on five columns and facing west, the dormer windows that provide natural light to the attic, and the two large chimneys decorated with red clay ceramic elements similar to those that are part of the staircase railing on the rear elevation of the house."
             ],
             "images": [
-                "img/rot11.JPG",
-                "img/rot12.JPG"
+                "../img/rot11.JPG",
+                "../img/rot12.JPG"
             ],
             "imagesSubtitle": [
                 "House designed for José Serra da Motta in 1919: view of the side façade, from Rua do Montepio Abrantino, up the street (2021).",
@@ -197,8 +205,8 @@
                 "Raul Lino also designed the pedestal for the bust of General Avelar Machado, a prominent figure in Abrantes, which was inaugurated in 1929 in the square of the same name, in front of the Abrantes Assembly Society building."
             ],
             "images": [
-                "img/rot21.JPG",
-                "img/rot22.JPG"
+                "../img/rot21.JPG",
+                "../img/rot22.png"
             ],
             "imagesSubtitle": [
                 "Main façade of the Headquarters building of Sociedade da Assembleia de Abrantes (2019).",

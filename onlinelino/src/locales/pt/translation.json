@@ -151,6 +151,14 @@
             "Postal ilustrado do edifício sede da Sociedade da Assembleia de Abrantes (192?)."
         ]
     },
+    "buildingsDetailsPage": {
+        "year": "Data do projeto",
+        "type": "Tipologia",
+        "location": "Localização",
+        "images": "Fotos",
+        "links": "Links",
+        "bibliography": "Bibliografia"
+    },
     "buildings": [
         {
             "id": 1,
@@ -167,8 +175,8 @@
                 "A moradia insere-se num terreno de acentuado declive, na confluência entre a Rua Luís de Camões e a Rua do Montepio Abrantino, desenvolve-se em dois pisos e inclui sótão. No edifício, destacam-se o alpendre suportado em cinco colunas e orientado a Poente, as trapeiras que asseguram luz natural ao sótão, as duas grandes chaminés decoradas com elementos cerâmicos de barro vermelho semelhantes aos que integram a guarda da escada no alçado posterior da habitação."
             ],
             "images": [
-                "img/rot11.JPG",
-                "img/rot12.JPG"
+                "../img/rot11.JPG",
+                "../img/rot12.JPG"
             ],
             "imagesSubtitle": [
                 "Moradia projetada para José Serra da Motta em 1919: vista da fachada lateral, a partir da Rua do Montepio Abrantino, no sentido ascendente da rua (2021).",
@@ -197,8 +205,8 @@
                 "Raul Lino projetou igualmente o pedestal para o busto do General Avelar Machado, figura proeminente de Abrantes, que foi inaugurado em 1929, no largo com o mesmo nome, em frente ao edifício da Sociedade da Assembleia de Abrantes."
             ],
             "images": [
-                "img/rot21.JPG",
-                "img/rot22.JPG"
+                "../img/rot21.JPG",
+                "../img/rot22.png"
             ],
             "imagesSubtitle": [
                 "Fachada principal do edifício da Sociedade da Assembleia de Abrantes (2019).",
