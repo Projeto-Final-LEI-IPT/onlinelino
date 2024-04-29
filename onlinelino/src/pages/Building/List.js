@@ -9,12 +9,19 @@ function ListIndex() {
     const { t } = useTranslation();
 
     // buildings.[i].title + ", " + buildings.[i].year
-    const list = [];
+    const buildings = [];
     for (let i = 0; i < 50; i++) {
-        if (!t(`buildings.${i}.title`).includes("title") && !t(`buildings.${i}.year`).includes("year")) {
-            list.push(t(`buildings.${i}.title`).toString() + ", " + t(`buildings.${i}.year`).toString());
+        const title = t(`buildings.${i}.title`);
+        const year = t(`buildings.${i}.year`);
+
+        if (!title.includes("title") && !year.includes("year")) {
+            buildings.push({
+                title: title,
+                year: parseInt(year)
+            });
         }
     }
+    buildings.sort((a, b) => a.year - b.year);
 
     return (
         <>
@@ -26,14 +33,15 @@ function ListIndex() {
                 <h4>{t('listPage.title')}</h4>
                 <br />
                 <ul>
-                    {list.map((paragraph, index) => (
+                    {buildings.map((paragraph, index) => (
                         <>
                             <Link key={index} to={`/obra/${index + 1}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                <li key={index}>{paragraph}</li>
+                                <li key={index}>{paragraph.title}, {paragraph.year}</li>
                             </Link>
                             <br />
                         </>
                     ))}
+                    {/* {buildings} */}
                 </ul>
             </Container>
         </>
