@@ -171,7 +171,8 @@
         {
             "id": 1,
             "title": "House, Abrantes",
-            "year": "1919 (original project)",
+            "year": "1919",
+            "year2": "(original project)",
             "typology": "Single-family building",
             "location": "Rua Luís de Camões, 28",
             "coordinates": [
@@ -198,7 +199,8 @@
         {
             "id": 2,
             "title": "Headquarters Building of Sociedade da Assembleia de Abrantes, Abrantes",
-            "year": "1923 (original project)",
+            "year": "1923",
+            "year2": "(original project)",
             "typology": "Cultural and recreational club building",
             "location": "Largo General Avelar Machado (at the confluence of Rua Montepio Abrantino and Rua de Nossa Senhora da Conceição)",
             "coordinates": [

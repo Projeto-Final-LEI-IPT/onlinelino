@@ -54,7 +54,7 @@ function BuildingDetails() {
             <br />
             <Container>
                 <h2>{t(`buildings.${id - 1}.title`)}</h2>
-                <p>{t('buildingsDetailsPage.year')}: {t(`buildings.${id - 1}.year`)}</p>
+                <p>{t('buildingsDetailsPage.year')}: {t(`buildings.${id - 1}.year`)} {t(`buildings.${id - 1}.year2`)}</p>
                 <p>{t('buildingsDetailsPage.type')}: {t(`buildings.${id - 1}.typology`)}</p>
                 <p>{t('buildingsDetailsPage.location')}: {t(`buildings.${id - 1}.location`)}</p>
                 <br />

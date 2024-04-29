@@ -171,7 +171,8 @@
         {
             "id": 1,
             "title": "Moradia, Abrantes",
-            "year": "1919 (projeto original)",
+            "year": "1919",
+            "year2": "(projeto original)",
             "typology": "Edifício de habitação unifamiliar",
             "location": "Rua Luís de Camões, 28",
             "coordinates": [
@@ -198,7 +199,8 @@
         {
             "id": 2,
             "title": "Edifício da Sede da Sociedade da Assembleia de Abrantes, Abrantes",
-            "year": "1923 (projeto original)",
+            "year": "1923",
+            "year2": "(projeto original)",
             "typology": "Edifício para clube cultural e recreativo",
             "location": "Largo General Avelar Machado (na confluência da Rua Montepio Abrantino com a Rua de Nossa Senhora da Conceição)",
             "coordinates": [
