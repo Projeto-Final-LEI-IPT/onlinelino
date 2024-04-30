@@ -152,12 +152,7 @@
         ]
     },
     "listPage": {
-        "title": "Lista de Obras",
-        "": "",
-        "": "",
-        "": "",
-        "": "",
-        "": ""
+        "title": "Lista de Obras"
     },
     "buildingsDetailsPage": {
         "year": "Data do projeto",
@@ -176,8 +171,8 @@
             "typology": "Edifício de habitação unifamiliar",
             "location": "Rua Luís de Camões, 28",
             "coordinates": [
-                39.461147,
-                -8.199511
+                0,
+                0
             ],
             "info": [
                 "Este edifício para habitação está implantado no limite do núcleo histórico de Abrantes, foi provavelmente o primeiro projeto de Raul Lino na cidade de Abrantes. Destinou-se à casa e atelier de José Serra da Motta.",
@@ -204,8 +199,8 @@
             "typology": "Edifício para clube cultural e recreativo",
             "location": "Largo General Avelar Machado (na confluência da Rua Montepio Abrantino com a Rua de Nossa Senhora da Conceição)",
             "coordinates": [
-                39.461147,
-                -8.199511
+                1,
+                1
             ],
             "info": [
                 "O edifício, projetado em 1923 para instalar a sede da Sociedade da Assembleia de Abrantes, ficou concluído em 1924 e foi inaugurado em 1928. Atualmente mantém-se como propriedade da Sociedade da Assembleia de Abrantes, constituída em 1920. Este edifício está classificado como Monumento de Interesse Municipal, de acordo com o Edital n.º 20/2014 da Câmara Municipal de Abrantes de 11 abril.",
