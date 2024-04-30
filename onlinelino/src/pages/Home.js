@@ -1,6 +1,5 @@
 import React from "react";
 import NavbarHome from "../components/NavbarHome";
-import NavbarProject from "../components/NavbarProject";
 import Container from "react-bootstrap/esm/Container";
 import { useTranslation } from 'react-i18next';
 
@@ -25,8 +24,6 @@ function Home() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <NavbarProject />
             <br />
             <Container>
                 {summary.map((paragraph, index) => (
