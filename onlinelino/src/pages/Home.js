@@ -12,14 +12,6 @@ function Home() {
             summary.push(s([i]));
         }
     }
-    // homePage.developed
-    const { t: d } = useTranslation('translation', { keyPrefix: 'homePage.developed' });
-    const developed = [];
-    for (let i = 0; i < 50; i++) {
-        if (!d([i]).includes("homePage.developed")) {
-            developed.push(d([i]));
-        }
-    }
 
     return (
         <>
@@ -27,10 +19,6 @@ function Home() {
             <br />
             <Container>
                 {summary.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                ))}
-                <hr></hr>
-                {developed.map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                 ))}
             </Container>
