@@ -2,25 +2,52 @@ import React from "react";
 import NavbarHome from "../../components/NavbarHome";
 import NavbarProject from "../../components/NavbarProject";
 import Container from "react-bootstrap/esm/Container";
+import { useTranslation } from 'react-i18next';
 
-class TeamIndex extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    render() {
-        return (
-            <>
-                <NavbarHome />
-                <br />
-                <NavbarProject />
-                <br />
-                <Container>
-                    <p>Equipa</p>
-                </Container>
-            </>
-        );
+function TeamIndex() {
+    const { t } = useTranslation();
+    // teamPage.investigators
+    const { t: s } = useTranslation('translation', { keyPrefix: 'teamPage.investigators' });
+    const summary = [];
+    for (let i = 0; i < 50; i++) {
+        if (!s([i]).includes("teamPage.investigators")) {
+            summary.push(s([i]));
+        }
     }
+    // teamPage.collaborators
+    const { t: d } = useTranslation('translation', { keyPrefix: 'teamPage.collaborators' });
+    const developed = [];
+    for (let i = 0; i < 50; i++) {
+        if (!d([i]).includes("teamPage.collaborators")) {
+            developed.push(d([i]));
+        }
+    }
+
+    return (
+        <>
+            <NavbarHome />
+            <br />
+            <NavbarProject />
+            <br />
+            <Container>
+                <h4>{t('teamPage.team')}</h4>
+                <br />
+                <h5>{t('teamPage.inv')}</h5>
+                {summary.map((paragraph, index) => (
+                    <ul>
+                        <li key={index}>{paragraph}</li>
+                    </ul>
+                ))}
+                <hr></hr>
+                <h5>{t('teamPage.col')}</h5>
+                {developed.map((paragraph, index) => (
+                    <ul>
+                        <li key={index}>{paragraph}</li>
+                    </ul>
+                ))}
+            </Container>
+        </>
+    );
 }
 
 export default TeamIndex;

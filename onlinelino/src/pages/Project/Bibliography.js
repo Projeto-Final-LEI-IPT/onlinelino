@@ -2,25 +2,40 @@ import React from "react";
 import NavbarHome from "../../components/NavbarHome";
 import NavbarProject from "../../components/NavbarProject";
 import Container from "react-bootstrap/esm/Container";
+import { useTranslation } from 'react-i18next';
 
-class BibliographyIndex extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    render() {
-        return (
-            <>
-                <NavbarHome />
-                <br />
-                <NavbarProject />
-                <br />
-                <Container>
-                    <p>Bibliografia</p>
-                </Container>
-            </>
-        );
+function BibliographyIndex() {
+    // bibliographyPage.text
+    const { t: b } = useTranslation('translation', { keyPrefix: 'bibliographyPage.text' });
+    const text = [];
+    for (let i = 0; i < 50; i++) {
+        if (!b([i]).includes("bibliographyPage.text")) {
+            text.push(b([i]));
+        }
     }
+    // bibliographyPage.biography
+    const { t } = useTranslation();
+
+    return (
+        <>
+            <NavbarHome />
+            <br />
+            <NavbarProject />
+            <br />
+            <Container>
+                <h4>{t('bibliographyPage.bibliography')}</h4>
+                <br/>
+                <ul>
+                    {text.map((paragraph, index) => (
+                        <>
+                            <li key={index}>{paragraph}</li>
+                            <br />
+                        </>
+                    ))}
+                </ul>
+            </Container>
+        </>
+    );
 }
 
 export default BibliographyIndex;

@@ -2,25 +2,22 @@ import React from "react";
 import NavbarHome from "../../components/NavbarHome";
 import NavbarBiography from "../../components/NavbarBiography";
 import Container from "react-bootstrap/esm/Container";
+import { useTranslation } from 'react-i18next';
 
-class AboutIndex extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    render() {
-        return (
-            <>
-                <NavbarHome />
-                <br />
-                <NavbarBiography />
-                <br />
-                <Container>
-                    <p>Sobre o trabalho no Medio Tejo</p>
-                </Container>
-            </>
-        );
-    }
+function AboutIndex() {
+    const { t } = useTranslation();
+    return (
+        <>
+            <NavbarHome />
+            <br />
+            <NavbarBiography />
+            <br />
+            <Container>
+                <p>{t('biographyPage.about')}</p>
+            </Container>
+        </>
+    );
 }
+
 
 export default AboutIndex;
