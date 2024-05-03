@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
+import { Link } from 'react-router-dom';
 
 function NavbarHome() {
     const { t } = useTranslation();
@@ -26,11 +27,11 @@ function NavbarHome() {
             <Navbar className="bg" style={{ backgroundColor: '#ffda84' }}>
                 <Container>
                     <Nav className="mr-auto">
-                        <Nav.Link href="/projeto/descricao" style={{ paddingLeft: '0' }}>{t('navbarHome.project')}</Nav.Link>
+                        <Link to="/projeto/descricao" className="nav-link" style={{ paddingLeft: '0' }}>{t('navbarHome.project')}</Link>
                         <span className="navbar-text">|</span>
-                        <Nav.Link href="/biografia">{t('navbarHome.biography')}</Nav.Link>
+                        <Link to="/biografia" className="nav-link">{t('navbarHome.biography')}</Link>
                         <span className="navbar-text">|</span>
-                        <Nav.Link href="/obra">{t('navbarHome.building')}</Nav.Link>
+                        <Link to="/obra" className="nav-link">{t('navbarHome.building')}</Link>
                     </Nav>
                     <Form inline className="ml-auto">
                         <Row>

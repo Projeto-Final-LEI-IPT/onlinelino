@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 function NavbarProject() {
     const { t } = useTranslation();
@@ -11,13 +12,13 @@ function NavbarProject() {
             <Navbar className="bg" style={{ backgroundColor: '#fff6db' }}>
                 <Container>
                     <Nav className="mr-auto">
-                        <Nav.Link href="/projeto/descricao" style={{ paddingLeft: '0' }}>{t('navbarProject.description')}</Nav.Link>
+                        <Link to="/projeto/descricao" className="nav-link" style={{ paddingLeft: '0' }}>{t('navbarProject.description')}</Link>
                         <span className="navbar-text">|</span>
-                        <Nav.Link href="/projeto/bibliografia">{t('navbarProject.bibliography')}</Nav.Link>
+                        <Link to="/projeto/bibliografia" className="nav-link">{t('navbarProject.bibliography')}</Link>
                         <span className="navbar-text">|</span>
-                        <Nav.Link href="/projeto/equipa">{t('navbarProject.team')}</Nav.Link>
+                        <Link to="/projeto/equipa" className="nav-link">{t('navbarProject.team')}</Link>
                         <span className="navbar-text">|</span>
-                        <Nav.Link href="/projeto/contactos">{t('navbarProject.contacts')}</Nav.Link>
+                        <Link to="/projeto/contactos" className="nav-link">{t('navbarProject.contacts')}</Link>
                     </Nav>
                 </Container>
             </Navbar>
