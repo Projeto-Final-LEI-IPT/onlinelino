@@ -153,6 +153,9 @@
             "Postal ilustrado do edifício sede da Sociedade da Assembleia de Abrantes (192?)."
         ]
     },
+    "mapPage": {
+        "title": "Mapa com a locallização das obras"
+    },
     "listPage": {
         "title": "Lista de Obras"
     },

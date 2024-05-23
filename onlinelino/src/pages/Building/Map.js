@@ -109,7 +109,7 @@ const MapIndex = () => {
             <br />
             {/* Container for the map */}
             <Container ref={mapContainerRef} style={{ width: '100%', height: '50vh' }}>
-                <h4>Mapa de obras</h4>
+                <h4>{t('mapPage.title')}</h4>
                 {/* GoogleMap component */}
                 <GoogleMap
                     mapContainerStyle={{ width: '100%', height: '100%' }}

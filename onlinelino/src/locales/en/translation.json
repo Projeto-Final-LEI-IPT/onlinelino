@@ -153,6 +153,9 @@
             "Postcard of the headquarters building of the Abrantes Assembly Society (192?)."
         ]
     },
+    "mapPage": {
+        "title": "Map with the location of the buildings"
+    },
     "listPage": {
         "title": "List of Buildings"
     },
