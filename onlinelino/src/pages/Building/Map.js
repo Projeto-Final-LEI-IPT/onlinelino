@@ -13,22 +13,25 @@ const MapIndex = () => {
     const data = useMemo(() => {
         const newData = [];
         for (let i = 0; i < 50; i++) {
-            const title = t(`buildings.${i}.title`);
-            const year = t(`buildings.${i}.year`);
-            const latitudes = parseFloat(t(`buildings.${i}.coordinates.0`));
-            const longitudes = parseFloat(t(`buildings.${i}.coordinates.1`));
-            const images = t(`buildings.${i}.images.0`);
+            if (t(`buildings.${i}.coordBool`)) {
+                const title = t(`buildings.${i}.title`);
+                const year = t(`buildings.${i}.year`);
+                const latitudes = parseFloat(t(`buildings.${i}.coordinates.0`));
+                const longitudes = parseFloat(t(`buildings.${i}.coordinates.1`));
+                const images = t(`buildings.${i}.images.0`);
 
-            if (!title.includes("title") && !year.includes("year") && !images.includes("images")) {
-                newData.push({
-                    id: i+1, 
-                    title: title,
-                    year: parseInt(year),
-                    latitudes: latitudes,
-                    longitudes: longitudes,
-                    image: images
-                });
+                if (!title.includes("title") && !year.includes("year") && !images.includes("images")) {
+                    newData.push({
+                        id: i + 1,
+                        title: title,
+                        year: parseInt(year),
+                        latitudes: latitudes,
+                        longitudes: longitudes,
+                        image: images
+                    });
+                }
             }
+
         }
         return newData;
     }, [t]);

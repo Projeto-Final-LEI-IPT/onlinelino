@@ -178,6 +178,7 @@
             "year2": "(projeto original)",
             "typology": "Edifício de habitação unifamiliar",
             "location": "Rua Luís de Camões, 28",
+            "coordBool": true,
             "coordinates": [
                 39.461140579216774,
                 -8.199443172359098
@@ -206,6 +207,7 @@
             "year2": "(projeto original)",
             "typology": "Edifício para clube cultural e recreativo",
             "location": "Largo General Avelar Machado (na confluência da Rua Montepio Abrantino com a Rua de Nossa Senhora da Conceição)",
+            "coordBool": true,
             "coordinates": [
                 39.46116326496176,
                 -8.198836006083296
@@ -238,6 +240,7 @@
             "year2": "-1934 (projeto original)",
             "typology": "Equipamento técnico e edifício de apoio",
             "location": "Alcanena",
+            "coordBool": false,
             "coordinates": [
             ],
             "info": [
