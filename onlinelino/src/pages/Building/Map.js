@@ -1,17 +1,44 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import NavbarHome from "../../components/NavbarHome";
 import NavbarBuilding from "../../components/NavbarBuilding";
 import Container from "react-bootstrap/esm/Container";
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import data from '../../assets/data.json'; 
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const libraries = ['places']; // Libraries needed for Google Maps
 
 const MapIndex = () => {
+    const { t } = useTranslation();
+    const data = useMemo(() => {
+        const newData = [];
+        for (let i = 0; i < 50; i++) {
+            if (t(`buildings.${i}.coordBool`)) {
+                const title = t(`buildings.${i}.title`);
+                const year = t(`buildings.${i}.year`);
+                const latitudes = parseFloat(t(`buildings.${i}.coordinates.0`));
+                const longitudes = parseFloat(t(`buildings.${i}.coordinates.1`));
+                const images = t(`buildings.${i}.images.0`);
+
+                if (!title.includes("title") && !year.includes("year") && !images.includes("images")) {
+                    newData.push({
+                        id: i + 1,
+                        title: title,
+                        year: parseInt(year),
+                        latitudes: latitudes,
+                        longitudes: longitudes,
+                        image: images
+                    });
+                }
+            }
+
+        }
+        return newData;
+    }, [t]);
+
     // Load the Google Maps API
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyBgydpzpaz7A19z5hPqOFAWkVl67lhTLls', // Replace with your Google Maps API key
+        googleMapsApiKey: 'AIzaSyBgydpzpaz7A19z5hPqOFAWkVl67lhTLls',
         libraries,
     });
 
@@ -26,8 +53,8 @@ const MapIndex = () => {
     // Effect to calculate map center and bounds when data and Google Maps API are loaded
     useEffect(() => {
         if (isLoaded && data.length > 0) {
-            const latitudes = data.map(location => location.coordinates[0]);
-            const longitudes = data.map(location => location.coordinates[1]);
+            const latitudes = data.map(location => location.latitudes);
+            const longitudes = data.map(location => location.longitudes);
             const minLat = Math.min(...latitudes);
             const maxLat = Math.max(...latitudes);
             const minLng = Math.min(...longitudes);
@@ -42,7 +69,7 @@ const MapIndex = () => {
                 west: minLng
             });
         }
-    }, [isLoaded]);
+    }, [isLoaded, data]);
 
     // Effect to resize map container when window is resized
     useEffect(() => {
@@ -85,7 +112,7 @@ const MapIndex = () => {
             <br />
             {/* Container for the map */}
             <Container ref={mapContainerRef} style={{ width: '100%', height: '50vh' }}>
-                <h4>Mapa de obras</h4>
+                <h4>{t('mapPage.title')}</h4>
                 {/* GoogleMap component */}
                 <GoogleMap
                     mapContainerStyle={{ width: '100%', height: '100%' }}
@@ -94,24 +121,26 @@ const MapIndex = () => {
                     onLoad={map => map.fitBounds(mapBounds)}
                 >
                     {/* Render markers for each location */}
-                    {data.map((location, index) => (
+                    {data.map((location) => (
                         <Marker
-                            key={index}
-                            position={{ lat: location.coordinates[0], lng: location.coordinates[1] }}
+                            key={location.id} // Ensure unique key for each marker
+                            position={{ lat: location.latitudes, lng: location.longitudes }}
                             title={location.title}
                             onClick={() => handleMarkerClick(location)}
                         />
                     ))}
 
                     {/* Render InfoWindow for selected building */}
-                    {selectedBuilding && selectedBuilding.coordinates && (
+                    {selectedBuilding && (
                         <InfoWindow
-                            position={{ lat: selectedBuilding.coordinates[0], lng: selectedBuilding.coordinates[1] }}
+                            position={{ lat: selectedBuilding.latitudes, lng: selectedBuilding.longitudes }}
                             onCloseClick={() => setSelectedBuilding(null)}
                         >
                             <div>
                                 <Link to={`/obra/${selectedBuilding.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    <h3>{selectedBuilding.title}</h3>
+                                    <img className="rounded mx-auto d-block" src={selectedBuilding.image} alt="" style={{ maxWidth: '50px', maxHeight: '50px' }} />
+                                    <br />
+                                    <p>{selectedBuilding.title}, {selectedBuilding.year}</p>
                                 </Link>
                             </div>
                         </InfoWindow>

@@ -33,7 +33,7 @@ function NavbarHome() {
                         <span className="navbar-text">|</span>
                         <Link to="/obra" className="nav-link">{t('navbarHome.building')}</Link>
                     </Nav>
-                    <Form inline className="ml-auto">
+                    <Form className="ml-auto">
                         <Row>
                             <Col xs="auto">
                                 <Form.Control

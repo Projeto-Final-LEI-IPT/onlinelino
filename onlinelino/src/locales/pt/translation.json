@@ -26,7 +26,9 @@
         "summary": [
             "OnlineLino é um arquivo digital dedicado à obra arquitetónica de Raul Lino da Silva ou Raul Lino (1879-1974), que disponibiliza informação sobre o legado construtivo do arquiteto, na região do Médio Tejo.",
             "O portal fornece entradas para desenhos, documentos e imagens dos projetos construídos e identificados no local, e também para imagens, filmes documentais sobre a biografia do arquiteto Raul Lino."
-        ],
+        ]
+    },
+    "descriptionPage": {
         "developed": [
             "OnlineLino é um arquivo digital dedicado à obra arquitetónica de Raul Lino da Silva ou Raul Lino (1879-1974), que disponibiliza informação sobre o legado arquitetónico e construtivo do arquiteto, destinado à região do Médio Tejo.",
             "O legado construtivo de Raul Lino da Silva (1879-1974), reconhecido arquiteto português, encontra-se disperso por todo o território nacional. Os seus projetos de arquitetura destinados à cidade de Abrantes foram objeto de estudo no projeto de investigação “Raul Lino – um itinerário pelo património em Abrantes” (RauLino| Abrt). Através deste estudo foi possível constatar a necessidade de agregar, sistematizar e divulgar os projetos de arquitetura da sua autoria destinados a municípios inscritos na atual região do Médio Tejo que não estão suficientemente divulgados, ou que não são sequer associados ao seu autor.",
@@ -151,6 +153,12 @@
             "Postal ilustrado do edifício sede da Sociedade da Assembleia de Abrantes (192?)."
         ]
     },
+    "cronologyPage": {
+        "title": "Cronologia"
+    },
+    "mapPage": {
+        "title": "Mapa com a locallização das obras"
+    },
     "listPage": {
         "title": "Lista de Obras"
     },
@@ -170,9 +178,10 @@
             "year2": "(projeto original)",
             "typology": "Edifício de habitação unifamiliar",
             "location": "Rua Luís de Camões, 28",
+            "coordBool": true,
             "coordinates": [
-                0,
-                0
+                39.461140579216774,
+                -8.199443172359098
             ],
             "info": [
                 "Este edifício para habitação está implantado no limite do núcleo histórico de Abrantes, foi provavelmente o primeiro projeto de Raul Lino na cidade de Abrantes. Destinou-se à casa e atelier de José Serra da Motta.",
@@ -198,9 +207,10 @@
             "year2": "(projeto original)",
             "typology": "Edifício para clube cultural e recreativo",
             "location": "Largo General Avelar Machado (na confluência da Rua Montepio Abrantino com a Rua de Nossa Senhora da Conceição)",
+            "coordBool": true,
             "coordinates": [
-                1,
-                1
+                39.46116326496176,
+                -8.198836006083296
             ],
             "info": [
                 "O edifício, projetado em 1923 para instalar a sede da Sociedade da Assembleia de Abrantes, ficou concluído em 1924 e foi inaugurado em 1928. Atualmente mantém-se como propriedade da Sociedade da Assembleia de Abrantes, constituída em 1920. Este edifício está classificado como Monumento de Interesse Municipal, de acordo com o Edital n.º 20/2014 da Câmara Municipal de Abrantes de 11 abril.",
@@ -221,6 +231,30 @@
                 "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=H713388H01185.273416&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!188774~!3&ri=2&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=2&limitbox_1=COL01+=+RL",
                 "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=H713388H01185.273416&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!193838~!22&ri=2&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=2&limitbox_1=COL01+=+RL",
                 "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=24995"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Torre e edifício para posto de transformação, Alcanena",
+            "year": "1932",
+            "year2": "-1934 (projeto original)",
+            "typology": "Equipamento técnico e edifício de apoio",
+            "location": "Alcanena",
+            "coordBool": false,
+            "coordinates": [
+            ],
+            "info": [
+                "Este equipamento, uma torre de transformação de energia elétrica, foi uma encomenda da Câmara Municipal de Alcanena. Na memória descritiva do projeto refere-se que as Comissões de Turismo e Propaganda têm exigido uma maior integração dos edifícios com a paisagem. É nessa perspetiva que Raul Lino projeta esta torre técnica, inspirada na construção “portuguesa, tradicional,” mas “usando o moderno processo de construir em betão armado”."
+            ],
+            "images": [
+                "../img/rot31.jpg"
+            ],
+            "imagesSubtitle": [
+                "Desenho da torre de transformação para Alcanena, com base nos alçados do projeto original."
+            ],
+            "links": [
+                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=17YDA92980626.290837&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!189333~!0&ri=1&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=alcanena&index=.GW&uindex=&aspect=subtab86&menu=search&ri=1&limitbox_1=COL01+=+RL",
+                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=17YDA92980626.290837&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!189415~!1&ri=1&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=alcanena&index=.GW&uindex=&aspect=subtab86&menu=search&ri=1&limitbox_1=COL01+=+RL"
             ]
         }
     ]

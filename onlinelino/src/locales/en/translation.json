@@ -153,6 +153,12 @@
             "Postcard of the headquarters building of the Abrantes Assembly Society (192?)."
         ]
     },
+    "cronologyPage": {
+        "title": "Cronology"
+    },
+    "mapPage": {
+        "title": "Map with the location of the buildings"
+    },
     "listPage": {
         "title": "List of Buildings"
     },
@@ -172,9 +178,10 @@
             "year2": "(original project)",
             "typology": "Single-family building",
             "location": "Rua Luís de Camões, 28",
+            "coordBool": true,
             "coordinates": [
-                0,
-                0
+                39.461147,
+                -8.199511
             ],
             "info": [
                 "This residential building is located on the edge of Abrantes' historic center and was probably Raul Lino's first project in the city of Abrantes. It was intended for the home and studio of José Serra da Motta.",
@@ -200,9 +207,10 @@
             "year2": "(original project)",
             "typology": "Cultural and recreational club building",
             "location": "Largo General Avelar Machado (at the confluence of Rua Montepio Abrantino and Rua de Nossa Senhora da Conceição)",
+            "coordBool": true,
             "coordinates": [
-                1,
-                1
+                39.46116326496176,
+                -8.198836006083296
             ],
             "info": [
                 "The building, designed in 1923 to house the headquarters of the Abrantes Assembly Society, was completed in 1924 and inaugurated in 1928. It currently remains the property of the Abrantes Assembly Society, which was set up in 1920. This building is classified as a Monument of Municipal Interest, according to Abrantes City Council Notice, Edital no. 20/2014 of April 11.",
@@ -223,6 +231,30 @@
                 "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=H713388H01185.273416&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!188774~!3&ri=2&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=2&limitbox_1=COL01+=+RL",
                 "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=H713388H01185.273416&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!193838~!22&ri=2&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=2&limitbox_1=COL01+=+RL",
                 "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=24995"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Tower and building of a transformer station, Alcanena",
+            "year": "1932-1934 (original project)",
+            "year2": "-1934 (original project)",
+            "typology": "Technical equipment and building",
+            "location": "Alcanena (not identified)",
+            "coordBool": false,
+            "coordinates": [
+            ],
+            "info": [
+                "This piece of equipment, an electricity transformation tower, was commissioned by Alcanena Town Council. The project description states that the Comissões de Turismo e Propaganda (National organization for tourism under the Estado Novo) had demanded that the buildings be better integrated with the landscape. It was with this in mind that Raul Lino designed this technical tower, inspired by the traditional Portuguese construction, but using the modern technology of reinforced concrete."
+            ],
+            "images": [
+                "../img/rot31.jpg"
+            ],
+            "imagesSubtitle": [
+                "Drawing of the transformation tower for Alcanena, based on the elevations of the original project."
+            ],
+            "links": [
+                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=17YDA92980626.290837&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!189333~!0&ri=1&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=alcanena&index=.GW&uindex=&aspect=subtab86&menu=search&ri=1&limitbox_1=COL01+=+RL",
+                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=17YDA92980626.290837&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!189415~!1&ri=1&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=alcanena&index=.GW&uindex=&aspect=subtab86&menu=search&ri=1&limitbox_1=COL01+=+RL"
             ]
         }
     ]
