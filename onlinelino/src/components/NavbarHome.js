@@ -27,7 +27,7 @@ function NavbarHome() {
             <Navbar className="bg" style={{ backgroundColor: '#ffda84' }}>
                 <Container>
                     <Nav className="mr-auto">
-                        <Link to="/projeto/descricao" onClick={()=> window.location.reload} className="nav-link" style={{ paddingLeft: '0' }}>{t('navbarHome.project')}</Link>
+                        <Link reloadDocument to="/projeto/descricao" className="nav-link" style={{ paddingLeft: '0' }}>{t('navbarHome.project')}</Link>
                         <span className="navbar-text">|</span>
                         <Link to="/biografia" className="nav-link">{t('navbarHome.biography')}</Link>
                         <span className="navbar-text">|</span>
