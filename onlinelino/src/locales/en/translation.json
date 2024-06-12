@@ -168,93 +168,705 @@
         "location": "Location",
         "images": "Fotos",
         "links": "Links",
-        "bibliography": "Bibliography"
+        "bibliography": "Sources and bibliography"
     },
     "buildings": [
         {
             "id": 1,
             "title": "House, Abrantes",
             "year": "1919",
-            "year2": "(original project)",
-            "typology": "Single-family building",
+            "year2": "",
             "location": "Rua Luís de Camões, 28",
+            "typology": "Single-family building (original project)",
             "coordBool": true,
             "coordinates": [
-                39.461147,
-                -8.199511
+                39.46130034837089,
+                -8.199608824278481
             ],
             "info": [
                 "This residential building is located on the edge of Abrantes' historic center and was probably Raul Lino's first project in the city of Abrantes. It was intended for the home and studio of José Serra da Motta.",
-                "The house is located on a steeply sloping site, at the confluence of Rua Luís de Camões and Rua do Montepio Abrantino, and has two floors and an attic. Highlights of the building include the porch supported on five columns and facing west, the dormer windows that provide natural light to the attic, and the two large chimneys decorated with red clay ceramic elements similar to those that are part of the staircase railing on the rear elevation of the house."
+                "The house is located on a steeply sloping site, at the confluence of Rua Luís de Camões and Rua do Montepio Abrantino, and has two floors and an attic. Highlights of the building include the porch supported on five columns and facing west, the dormer windows that provide natural light to the attic, and the two large chimneys decorated with red clay ceramic elements similar to those that are part of the staircase railing on the rear elevation of the house. (missing text)",
+                "(missing text)"
             ],
             "images": [
-                "../img/rot11.JPG",
-                "../img/rot12.JPG"
+                "../img/rot11.bmp",
+                "../img/rot12.JPG",
+                "../img/rot13.JPG"
             ],
             "imagesSubtitle": [
+                "(missing text)",
                 "House designed for José Serra da Motta in 1919: view of the side façade, from Rua do Montepio Abrantino, up the street (2021).",
                 "House designed for José Serra da Motta in 1919: view of the main and side façades, from Rua do Montepio Abrantino, down the street (2021)."
-            ],
-            "links": [
-                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=LP133878647D3.269775&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!188332~!0&ri=3&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=3&limitbox_1=COL01+=+RL",
-                "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=25172"
             ]
         },
         {
             "id": 2,
-            "title": "Headquarters Building of Sociedade da Assembleia de Abrantes, Abrantes",
-            "year": "1923",
-            "year2": "(original project)",
-            "typology": "Cultural and recreational club building",
-            "location": "Largo General Avelar Machado (at the confluence of Rua Montepio Abrantino and Rua de Nossa Senhora da Conceição)",
+            "title": "Quinta da Fábrica Abrantes, Abrantes (missing text)",
+            "year": "1922",
+            "year2": "",
+            "location": "Avenida do Paiol",
+            "typology": "(missing text)",
             "coordBool": true,
             "coordinates": [
-                39.46116326496176,
-                -8.198836006083296
+                39.453393670793595,
+                -8.198651777560325
             ],
             "info": [
-                "The building, designed in 1923 to house the headquarters of the Abrantes Assembly Society, was completed in 1924 and inaugurated in 1928. It currently remains the property of the Abrantes Assembly Society, which was set up in 1920. This building is classified as a Monument of Municipal Interest, according to Abrantes City Council Notice, Edital no. 20/2014 of April 11.",
-                "Raul Lino's project proposes a multi-functional space with a ballroom, a reading room, two rooms for card games and one for billiards. The building is located at the western end of Largo General Avelar Machado, which was formed from the demolition of the hermitage of S. Sebastião, at the intersection with Rua do Montepio Abrantino. This location, in a steeply sloping area, marked some of the architect's design solutions, mentioned by the architect in the article “Que aspecto devemos dar às casas do Povo?” published in 1947 in the Mensário das Casas do Povo “com a sujeita a determinado terreno, aliás ingrato e bastante difícil de se aproveitar. […] No exterior teve-se em atenção o carácter local das construções tradicionais, de molde que o que se fez não fosse destoar da fisionomia geral da terra” (translated: with the subject to a certain terrain, ungrateful and quite difficult to take advantage of. [...] On the outside, attention was paid to the local character of traditional buildings, so that what was done would not clash with the general physiognomy of the land.)",
-                "The building's main entrance, on Largo General Avelar Machado, is protected by a porch with cylindrical columns, where the polychrome tile wainscoting stands out. The building also features two adjacent but distinct porches facing north; the kneecaps that protect the windows of the rooms on the south façade; the ceramic tile roof and Portuguese-style eaves; the stonework obelisks on the roof; and the chimneys.",
-                "Inside, the building includes a party room with a stage, a reading room and three games rooms, as well as a kitchen with a pantry and toilets. The slope of the land was used to accommodate commercial stores and warehouses.",
-                "Raul Lino also designed the pedestal for the bust of General Avelar Machado, a prominent figure in Abrantes, which was inaugurated in 1929 in the square of the same name, in front of the Abrantes Assembly Society building."
+                "(missing text)"
             ],
             "images": [
-                "../img/rot21.JPG",
+                "../img/rot21.jpg",
                 "../img/rot22.png"
             ],
             "imagesSubtitle": [
-                "Main façade of the Headquarters building of Sociedade da Assembleia de Abrantes (2019).",
-                "News of the inauguration of the headquarters building of Sociedade da Assembleia de Abrantes, on January 7, 1928, published in Voga -- semanário ilustrado da mulher, no.16, year 1, 15 de december 1928, page 2."
-            ],
-            "links": [
-                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=H713388H01185.273416&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!188774~!3&ri=2&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=2&limitbox_1=COL01+=+RL",
-                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=H713388H01185.273416&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!193838~!22&ri=2&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=2&limitbox_1=COL01+=+RL",
-                "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=24995"
+                "(missing text)",
+                "(missing text)"
             ]
         },
         {
             "id": 3,
-            "title": "Tower and building of a transformer station, Alcanena",
-            "year": "1932-1934 (original project)",
-            "year2": "-1934 (original project)",
-            "typology": "Technical equipment and building",
-            "location": "Alcanena (not identified)",
-            "coordBool": false,
+            "title": "Headquarters Building of Sociedade da Assembleia de Abrantes, Abrantes",
+            "year": "1923",
+            "year2": "",
+            "location": "Largo General Avelar Machado",
+            "typology": "Cultural and recreational club building",
+            "coordBool": true,
             "coordinates": [
+                39.46121752921235,
+                -8.198837675946207
             ],
             "info": [
-                "This piece of equipment, an electricity transformation tower, was commissioned by Alcanena Town Council. The project description states that the Comissões de Turismo e Propaganda (National organization for tourism under the Estado Novo) had demanded that the buildings be better integrated with the landscape. It was with this in mind that Raul Lino designed this technical tower, inspired by the traditional Portuguese construction, but using the modern technology of reinforced concrete."
+                "The building, designed in 1923 to house the headquarters of the Abrantes Assembly Society, was completed in 1924 and inaugurated in 1928. It currently remains the property of the Abrantes Assembly Society, which was set up in 1920. This building is classified as a Monument of Municipal Interest, according to Abrantes City Council Notice, Edital no. 20/2014 of April 11.",
+                "Raul Lino's project proposes a multi-functional space with a ballroom, a reading room, two rooms for card games and one for billiards. The building is located at the western end of Largo General Avelar Machado, which was formed from the demolition of the hermitage of S. Sebastião, at the intersection with Rua do Montepio Abrantino. This location, in a steeply sloping area, marked some of the architect's design solutions, mentioned by the architect in the article “Que aspecto devemos dar às casas do Povo?” published in 1947 in the Mensário das Casas do Povo “com a sujeita a determinado terreno, aliás ingrato e bastante difícil de se aproveitar. […] No exterior teve-se em atenção o carácter local das construções tradicionais, de molde que o que se fez não fosse destoar da fisionomia geral da terra” (translated: with the subject to a certain terrain, ungrateful and quite difficult to take advantage of. [...] On the outside, attention was paid to the local character of traditional buildings, so that what was done would not clash with the general physiognomy of the land.)",
+                "The building's main entrance, on Largo General Avelar Machado, is protected by a porch with cylindrical columns, where the polychrome tile wainscoting stands out. The building also features two adjacent but distinct porches facing north; the kneecaps that protect the windows of the rooms on the south façade; the ceramic tile roof and Portuguese-style eaves; the stonework obelisks on the roof; and the chimneys. (missing text)",
+                "(missing text)"
             ],
             "images": [
-                "../img/rot31.jpg"
+                "../img/rot31.jpeg",
+                "../img/rot32.png",
+                "../img/rot33.jpg",
+                "../img/rot34.jpg",
+                "../img/rot35.JPG"
             ],
             "imagesSubtitle": [
-                "Drawing of the transformation tower for Alcanena, based on the elevations of the original project."
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "House, Constância",
+            "year": "1924",
+            "location": "Constância",
+            "typology": "(missing text)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [],
+            "images": [],
+            "imagesSubtitle": []
+        },
+        {
+            "id": 5,
+            "title": "Edifício de Habitação, Abrantes (missing text)",
+            "year": "1924",
+            "year2": "e 1942",
+            "location": "Rua de S. Pedro, nº 8",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.4628486067387,
+                -8.19609914139947
             ],
-            "links": [
-                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=17YDA92980626.290837&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!189333~!0&ri=1&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=alcanena&index=.GW&uindex=&aspect=subtab86&menu=search&ri=1&limitbox_1=COL01+=+RL",
-                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=17YDA92980626.290837&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!189415~!1&ri=1&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=alcanena&index=.GW&uindex=&aspect=subtab86&menu=search&ri=1&limitbox_1=COL01+=+RL"
+            "info": [
+                "(missing text)",
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot51.JPG",
+                "../img/rot52.JPG",
+                "../img/rot53.JPG",
+                "../img/rot54.bmp"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 6,
+            "title": "House, Abrantes",
+            "year": "1924",
+            "year2": "e 1948",
+            "location": "Rua Dom Afonso Henriques, nº 25",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.463565303475804,
+                -8.201341066959458
+            ],
+            "info": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot61.JPG",
+                "../img/rot62.JPG",
+                "../img/rot63.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Grave site, Abrantes",
+            "year": "1924",
+            "year2": "",
+            "location": "São Miguel do Rio Torto, Carvalhal",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.41758174178155,
+                -8.210797742103564
+            ],
+            "info": [],
+            "images": [
+                "../img/rot71.jpeg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 8,
+            "title": "House, Ourém, Fátima",
+            "year": "1927",
+            "year2": "",
+            "location": "Fátima, Ourém",
+            "typology": "(missing text)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [],
+            "images": [],
+            "imagesSubtitle": []
+        },
+        {
+            "id": 9,
+            "title": "Pedestal for bust of General Avelar Machado, Abrantes",
+            "year": "1928",
+            "year2": "",
+            "location": "Largo General Avelar Machado",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.46121752921235,
+                -8.198837675946207
+            ],
+            "info": [
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot91.JPG",
+                "../img/rot92.JPG",
+                "../img/rot93.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 10,
+            "title": "House, Abrantes",
+            "year": "1929",
+            "year2": "e 1963",
+            "location": "Rua Tenente Valadim, nº 3 e 5",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.46175151900504,
+                -8.197672228161696
+            ],
+            "info": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot101.jpg",
+                "../img/rot102.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 11,
+            "title": "House, Vila Nova da Barquinha",
+            "year": "1930",
+            "year2": "",
+            "location": "Praia do Ribatejo, Constância",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.46577892193933,
+                -8.349420279626765
+            ],
+            "info": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot111.jpg",
+                "../img/rot112.jpg",
+                "../img/rot113.jpg",
+                "../img/rot114.jpg",
+                "../img/rot115.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 12,
+            "title": "House, Torres Novas",
+            "year": "1931",
+            "year2": "",
+            "location": "Torres Novas",
+            "typology": "(missing text)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [],
+            "imagesSubtitle": []
+        },
+        {
+            "id": 13,
+            "title": "Urban design, Sardoal",
+            "year": "1932",
+            "year2": "e 1934",
+            "location": "Centro urbano de Sardoal",
+            "typology": "(missing text)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [
+                "../img/rot131.jpg",
+                "../img/rot132.jpg",
+                "../img/rot133.jpg",
+                "../img/rot134.jpg",
+                "../img/rot135.jpg",
+                "../img/rot136.jpg",
+                "../img/rot137.jpg",
+                "../img/rot138.jpg",
+                "../img/rot139.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 14,
+            "title": "Edifício do Posto de Transformação, Alcanena (missing text)",
+            "year": "1932",
+            "year2": "",
+            "location": "Alcanena ",
+            "typology": "(missing text)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [],
+            "imagesSubtitle": []
+        },
+        {
+            "id": 15,
+            "title": "Tower and building of a transformer station, Alcanena",
+            "year": "1932",
+            "year2": "e 1934 (original project)",
+            "typology": "(missing text)",
+            "location": "Alcanena",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "This piece of equipment, an electricity transformation tower, was commissioned by Alcanena Town Council. The project description states that the Comissões de Turismo e Propaganda (National organization for tourism under the Estado Novo) had demanded that the buildings be better integrated with the landscape. It was with this in mind that Raul Lino designed this technical tower, inspired by the traditional Portuguese construction, but using the modern technology of reinforced concrete. (missing text)"
+            ],
+            "images": [
+                "../img/rot151.jpg"
+            ],
+            "imagesSubtitle": [
+                "Drawing of the transformation tower for Alcanena, based on the elevations of the original project. (missing text)"
+            ]
+        },
+        {
+            "id": 16,
+            "title": "Urban design, Mação",
+            "year": "1934",
+            "year2": "",
+            "location": "Mação ((missing text))",
+            "typology": "(missing text)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [
+                "../img/rot161.jpg",
+                "../img/rot162.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 17,
+            "title": "House, Abrantes",
+            "year": "1935",
+            "year2": "",
+            "location": "Rua José Estevão, nº 20",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.46315780929322,
+                -8.198171330823566
+            ],
+            "info": [
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot171.jpg",
+                "../img/rot172.png",
+                "../img/rot713.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 18,
+            "title": "House, Abrantes",
+            "year": "1935",
+            "year2": "",
+            "location": "Rua General Manuel António Mourato, nº 11",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.463200535655595,
+                -8.198082057091964
+            ],
+            "info": [
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot181.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 19,
+            "title": "House, Abrantes",
+            "year": "1935",
+            "year2": "",
+            "location": "Rua do Arcediago, nº 19",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.462925238598096,
+                -8.196886394673387
+            ],
+            "info": [
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot191.JPG",
+                "../img/rot192.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 20,
+            "title": "House, Abrantes",
+            "year": "1936",
+            "year2": "",
+            "location": "Rua de Santa Isabel nº 28 e 30",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.461816132073785,
+                -8.197358477514825
+            ],
+            "info": [
+                "(missing text)",
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot201.JPG",
+                "../img/rot202.JPG",
+                "../img/rot202.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 21,
+            "title": "House, Abrantes",
+            "year": "1938",
+            "year2": "",
+            "location": "Rua Dom Afonso Henriques nº 9 a 11",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.46385336317629,
+                -8.201003961766888
+            ],
+            "info": [
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot211.JPG",
+                "../img/rot212.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 22,
+            "title": "Moradia, Alferrarede (missing text)",
+            "year": "1938",
+            "year2": "",
+            "location": "Alferrarede",
+            "typology": "(missing text)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot221.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 23,
+            "title": "Garage, Abrantes",
+            "year": "1939",
+            "year2": "",
+            "location": "Rua Dom Afonso Henriques (ao lado do nº 25)",
+            "typology": "(missing text)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "(missing text)",
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot231.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 24,
+            "title": "House, Abrantes",
+            "year": "1939",
+            "year2": "e 1941",
+            "location": "Rua Dom Afonso Henriques nº 13 a 15",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.46378712823677,
+                -8.20108733009068
+            ],
+            "info": [
+                "(missing text)",
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot241.JPG",
+                "../img/rot242.JPG",
+                "../img/rot243.bmp"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 25,
+            "title": "House, Abrantes",
+            "year": "1940",
+            "year2": "",
+            "location": "Rua 5 de outubro de 1910, nº 16",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.46500822867063,
+                -8.197535319879464
+            ],
+            "info": [
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot251.JPG",
+                "../img/rot252.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 26,
+            "title": "Kindergarten João de Deus 1, Tomar",
+            "year": "1945",
+            "year2": "e 1946",
+            "location": "Rua Miguel Maria Ferreira",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.605909,
+                -8.405876
+            ],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [
+                "../img/rot261.JPG",
+                "../img/rot262.jpg",
+                "../img/rot263.jpg",
+                "../img/rot264.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 27,
+            "title": "Kindergarten João de Deus 2, Tomar",
+            "year": "1945",
+            "year2": "e 1946",
+            "location": "Rua de Leiria",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.608152,
+                -8.417457
+            ],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [
+                "../img/rot271.jpg",
+                "../img/rot272.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 28,
+            "title": "Grave site, Tomar",
+            "year": "1945",
+            "year2": "",
+            "location": "Santa Maria do Olival, Tomar",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.60272627829137,
+                -8.40791477291339
+            ],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [
+                "../img/rot281.jpg",
+                "../img/rot282.jpg",
+                "../img/rot283.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 29,
+            "title": "Palacete, Abrantes (missing text)",
+            "year": "1965",
+            "year2": "",
+            "location": "Rua Grande nº 46-52",
+            "typology": "(missing text)",
+            "coordBool": true,
+            "coordinates": [
+                39.463349938394856,
+                -8.196668381385852
+            ],
+            "info": [
+                "(missing text)"
+            ],
+            "images": [
+                "../img/rot291.bmp",
+                "../img/rot292.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
             ]
         }
     ]

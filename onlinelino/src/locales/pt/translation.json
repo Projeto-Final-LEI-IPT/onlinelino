@@ -168,93 +168,708 @@
         "location": "Localização",
         "images": "Fotos",
         "links": "Links",
-        "bibliography": "Bibliografia"
+        "bibliography": "Fontes e bibliografia"
     },
     "buildings": [
         {
             "id": 1,
             "title": "Moradia, Abrantes",
             "year": "1919",
-            "year2": "(projeto original)",
-            "typology": "Edifício de habitação unifamiliar",
+            "year2": "",
             "location": "Rua Luís de Camões, 28",
+            "typology": "Habitação unifamiliar (projeto original)",
             "coordBool": true,
             "coordinates": [
-                39.461140579216774,
-                -8.199443172359098
+                39.46130034837089,
+                -8.199608824278481
             ],
             "info": [
                 "Este edifício para habitação está implantado no limite do núcleo histórico de Abrantes, foi provavelmente o primeiro projeto de Raul Lino na cidade de Abrantes. Destinou-se à casa e atelier de José Serra da Motta.",
-                "A moradia insere-se num terreno de acentuado declive, na confluência entre a Rua Luís de Camões e a Rua do Montepio Abrantino, desenvolve-se em dois pisos e inclui sótão. No edifício, destacam-se o alpendre suportado em cinco colunas e orientado a Poente, as trapeiras que asseguram luz natural ao sótão, as duas grandes chaminés decoradas com elementos cerâmicos de barro vermelho semelhantes aos que integram a guarda da escada no alçado posterior da habitação."
+                "A moradia insere-se num terreno de acentuado declive, na confluência entre a Rua Luís de Camões e a Rua do Montepio Abrantino, desenvolve-se em dois pisos e inclui sótão. No edifício, destacam-se o alpendre suportado em cinco colunas e orientado a Poente, as trapeiras que asseguram luz natural ao sótão, as duas grandes chaminés decoradas com elementos cerâmicos de barro vermelho semelhantes aos que integram a guarda da escada no alçado posterior da habitação. A disposição que estes elementos cerâmicos apresentam é replicada noutros edifícios projetados por Raul Lino, por exemplo: chaminé do edifício da Sociedade da Assembleia de Abrantes (3), muro de vedação da moradia localizada em Vila Nova da Barquinha (11), na guarda da varanda da moradia localizada na Rua do Arcediago em Abrantes (19).",
+                "As janelas do primeiro piso são protegidas com gelosias cuja cor contrasta com a da parede da moradia, à semelhança do edifício da Assembleia da Sociedade de Abrantes que viria a ser construído em 1924."
             ],
             "images": [
-                "../img/rot11.JPG",
-                "../img/rot12.JPG"
+                "../img/rot11.bmp",
+                "../img/rot12.JPG",
+                "../img/rot13.JPG"
             ],
             "imagesSubtitle": [
+                "(missing text)",
                 "Moradia projetada para José Serra da Motta em 1919: vista da fachada lateral, a partir da Rua do Montepio Abrantino, no sentido ascendente da rua (2021).",
                 "Moradia projetada para José Serra da Motta em 1919: vista sobre a fachada principal e lateral, a partir da Rua do Montepio Abrantino, no sentido descendente da rua (2021)."
-            ],
-            "links": [
-                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=LP133878647D3.269775&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!188332~!0&ri=3&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=3&limitbox_1=COL01+=+RL",
-                "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=25172"
             ]
         },
         {
             "id": 2,
-            "title": "Edifício da Sede da Sociedade da Assembleia de Abrantes, Abrantes",
-            "year": "1923",
-            "year2": "(projeto original)",
-            "typology": "Edifício para clube cultural e recreativo",
-            "location": "Largo General Avelar Machado (na confluência da Rua Montepio Abrantino com a Rua de Nossa Senhora da Conceição)",
+            "title": "Quinta da Fábrica Abrantes, Abrantes",
+            "year": "1922",
+            "year2": "",
+            "location": "Avenida do Paiol",
+            "typology": "Habitação unifamiliar (projeto de reconstrução/remodelação)",
             "coordBool": true,
             "coordinates": [
-                39.46116326496176,
-                -8.198836006083296
+                39.453393670793595,
+                -8.198651777560325
             ],
             "info": [
-                "O edifício, projetado em 1923 para instalar a sede da Sociedade da Assembleia de Abrantes, ficou concluído em 1924 e foi inaugurado em 1928. Atualmente mantém-se como propriedade da Sociedade da Assembleia de Abrantes, constituída em 1920. Este edifício está classificado como Monumento de Interesse Municipal, de acordo com o Edital n.º 20/2014 da Câmara Municipal de Abrantes de 11 abril.",
-                "O projeto de Raul Lino propõe um espaço polifuncional onde se prevê um salão de baile, uma sala de leitura, duas salas para jogos de vasa (cartas) e uma para bilhar. A implantação do edifício, no remate poente do Largo General Avelar Machado, que se formou a partir da demolição da ermida de S. Sebastião, no cruzamento com a Rua do Montepio Abrantino. Esta implantação, numa zona de declive acentuado, marcou algumas soluções projetuais do arquiteto, mencionadas pelo arquiteto no artigo “Que aspecto devemos dar às casas do Povo?” publicado em 1947 no Mensário das Casas do Povo “com a sujeita a determinado terreno, aliás ingrato e bastante difícil de se aproveitar. […] No exterior teve-se em atenção o carácter local das construções tradicionais, de molde que o que se fez não fosse destoar da fisionomia geral da terra”.",
-                "A entrada principal do edifício, no Largo General Avelar Machado, está protegida por um alpendre de colunas cilíndricas, onde se destaca o lambril de azulejos policromado. No edifício evidenciam-se ainda os dois alpendres adjacentes, mas distintos entre si, e orientados a Norte; as rótulas que protegem as janelas das salas na fachada Sul; a cobertura de telha cerâmica e o beiral à portuguesa; os obeliscos de cantaria sobre a cobertura; e as chaminés.",
-                "No interior, o edifício integra um salão para festas dotado de palco, uma sala de leitura e três salas de jogos, para além da cozinha com copa e das instalações sanitárias. O declive do terreno foi aproveitado para acomodar lojas comerciais e armazéns.",
-                "Raul Lino projetou igualmente o pedestal para o busto do General Avelar Machado, figura proeminente de Abrantes, que foi inaugurado em 1929, no largo com o mesmo nome, em frente ao edifício da Sociedade da Assembleia de Abrantes."
+                "O projeto desenvolvido por Raul Lino refere-se à ampliação de um edifício existente designado por Quinta da Fábrica e encomendado pela família Soares Mendes. A memória descritiva evidencia a preocupação de integrar as soluções arquitetónicas e construtivas com a construção pré-existente."
             ],
             "images": [
-                "../img/rot21.JPG",
+                "../img/rot21.jpg",
                 "../img/rot22.png"
             ],
             "imagesSubtitle": [
-                "Fachada principal do edifício da Sociedade da Assembleia de Abrantes (2019).",
-                "Notícia da inauguração do edifício da sede da Sociedade da Assembleia de Abrantes, a 7 de janeiro de 1928 publicada em Voga - semanário ilustrado da mulher, nº 16, ano 1, 15 de dezembro 1928, pág. 2."
-            ],
-            "links": [
-                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=H713388H01185.273416&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!188774~!3&ri=2&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=2&limitbox_1=COL01+=+RL",
-                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=H713388H01185.273416&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!193838~!22&ri=2&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=abrantes&index=.GW&uindex=&aspect=subtab86&menu=search&ri=2&limitbox_1=COL01+=+RL",
-                "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=24995"
+                "(missing text)",
+                "(missing text)"
             ]
         },
         {
             "id": 3,
-            "title": "Torre e edifício para posto de transformação, Alcanena",
-            "year": "1932",
-            "year2": "-1934 (projeto original)",
-            "typology": "Equipamento técnico e edifício de apoio",
-            "location": "Alcanena",
-            "coordBool": false,
+            "title": "Edifício da Sede da Sociedade da Assembleia de Abrantes, Abrantes",
+            "year": "1923",
+            "year2": "",
+            "location": "Largo General Avelar Machado",
+            "typology": "Sede de associação cultural e recreativa (projeto original)",
+            "coordBool": true,
             "coordinates": [
+                39.46121752921235,
+                -8.198837675946207
             ],
             "info": [
-                "Este equipamento, uma torre de transformação de energia elétrica, foi uma encomenda da Câmara Municipal de Alcanena. Na memória descritiva do projeto refere-se que as Comissões de Turismo e Propaganda têm exigido uma maior integração dos edifícios com a paisagem. É nessa perspetiva que Raul Lino projeta esta torre técnica, inspirada na construção “portuguesa, tradicional,” mas “usando o moderno processo de construir em betão armado”."
+                "O edifício, projetado em 1923 para instalar a sede da Sociedade da Assembleia de Abrantes, ficou concluído em 1924 e foi inaugurado em 1928. Atualmente mantém-se como propriedade da Sociedade da Assembleia de Abrantes, constituída em 1920. Este edifício está classificado como Monumento de Interesse Municipal, de acordo com o Edital n.º 20/2014 da Câmara Municipal de Abrantes de 11 abril.",
+                "O projeto de Raul Lino propõe um espaço polifuncional onde se prevê um salão de baile, uma sala de leitura, duas salas para jogos de vasa (cartas) e uma para bilhar. A implantação do edifício, no remate poente do Largo General Avelar Machado, que se formou a partir da demolição da ermida de S. Sebastião, no cruzamento com a Rua do Montepio Abrantino. Esta implantação, numa zona de declive acentuado, marcou algumas soluções projetuais do arquiteto, mencionadas pelo arquiteto no artigo “Que aspecto devemos dar às casas do Povo?” publicado em 1947 no Mensário das Casas do Povo “com a sujeita a determinado terreno, aliás ingrato e bastante difícil de se aproveitar. […] No exterior teve-se em atenção o carácter local das construções tradicionais, de molde que o que se fez não fosse destoar da fisionomia geral da terra”.",
+                "A entrada principal do edifício, no Largo General Avelar Machado, está protegida por um alpendre de colunas cilíndricas, onde se destaca o lambril de azulejos policromado. No edifício evidenciam-se ainda os dois alpendres adjacentes, mas distintos entre si, e orientados a Norte; as rótulas que protegem as janelas das salas na fachada Sul; a cobertura de telha cerâmica e o beirado à portuguesa; os pináculos de cantaria sobre a cobertura; e as chaminés. Os alpendres orientados a Norte prolongam para o espaço exterior as salas principais do edifício: o salão de baile e a sala de leitura. Para além destas salas, o edifício integra três salas de jogos, da cozinha com copa, instalações sanitárias para homens e mulheres e zonas de circulação. O declive do terreno foi aproveitado para acomodar lojas comerciais e armazéns.",
+                "Raul Lino projetou igualmente o pedestal para o busto do General Avelar Machado, figura proeminente de Abrantes, que foi inaugurado em 1929, em frente ao edifício da Sociedade da Assembleia de Abrantes."
             ],
             "images": [
-                "../img/rot31.jpg"
+                "../img/rot31.jpeg",
+                "../img/rot32.png",
+                "../img/rot33.jpg",
+                "../img/rot34.jpg",
+                "../img/rot35.JPG"
             ],
             "imagesSubtitle": [
-                "Desenho da torre de transformação para Alcanena, com base nos alçados do projeto original."
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Moradia, Constância",
+            "year": "1924",
+            "year2": "",
+            "location": "Constância",
+            "typology": "Habitação unifamiliar (projeto original)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [],
+            "images": [],
+            "imagesSubtitle": []
+        },
+        {
+            "id": 5,
+            "title": "Edifício de Habitação, Abrantes",
+            "year": "1924",
+            "year2": "e 1942",
+            "location": "Rua de S. Pedro, nº 8",
+            "typology": "Habitação unifamiliar (projeto de alteração)",
+            "coordBool": true,
+            "coordinates": [
+                39.4628486067387,
+                -8.19609914139947
             ],
-            "links": [
-                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=17YDA92980626.290837&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!189333~!0&ri=1&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=alcanena&index=.GW&uindex=&aspect=subtab86&menu=search&ri=1&limitbox_1=COL01+=+RL",
-                "https://www.biblartepac.gulbenkian.pt/ipac20/ipac.jsp?session=17YDA92980626.290837&profile=ba&source=~!fcgbga&view=subscriptionsummary&uri=full=3100024~!189415~!1&ri=1&aspect=subtab86&menu=search&ipp=200&spp=200&staffonly=&term=alcanena&index=.GW&uindex=&aspect=subtab86&menu=search&ri=1&limitbox_1=COL01+=+RL"
+            "info": [
+                "Este edifício partiu de uma pré-existência e foi sucessivamente alterado em várias ocasiões. A primeira intervenção de Raul Lino data de 1924, e refere-se a uma ampliação, em que foi acrescentado o segundo piso e o sótão, em traça semelhante ao edifício original. O esquema compositivo, simétrico através de eixo central materializado pelos vãos de janela de sacada, apresenta ainda um corpo lateral, destacado, por ligeira curvatura e onde se localiza a entrada, marcada por portão. Mais tarde, em 1942, Raul Lino volta a intervir no edifício, desenhando uma nova configuração dos vãos de fachada.",
+                "No exterior do edifício sobressaem as gelosias ou rótulas das janelas dos rés-do-chão, e os remates em arco nas zonas de acesso, bem como a cor das rótulas e das portas de entrada. Destacam-se ainda as janelas de vidrinhos e o beiral à portuguesa."
+            ],
+            "images": [
+                "../img/rot51.JPG",
+                "../img/rot52.JPG",
+                "../img/rot53.JPG",
+                "../img/rot54.bmp"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Edifício de Habitação, Abrantes",
+            "year": "1924",
+            "year2": "e 1948",
+            "location": "Rua Dom Afonso Henriques, nº 25",
+            "typology": "Habitação unifamiliar (projeto original: 1924; projeto de ampliação: 1948)",
+            "coordBool": true,
+            "coordinates": [
+                39.463565303475804,
+                -8.201341066959458
+            ],
+            "info": [
+                "Este edifício resultante do projeto de 1924 insere-se numa artéria limítrofe ao centro histórico e consiste num edifício de dois pisos e cave de composição centralizada.",
+                "No rés-do-chão situam-se as zonas sociais da habitação, e o primeiro andar destina-se à zona privada e íntima com quartos, outros compartimentos de apoio, e um oratório que se situa sobre a fachada principal, alinhado com o eixo central.",
+                "A fachada principal apresenta eixo central destacado, adossado por pilastras de cantaria com cornija saliente a rematar o volume. Na fachada principal, evidencia-se ainda a trapeira que também serve de frontal no alinhamento da entrada principal do edifício, a bandeira de vidrinhos que são replicados na parte superior dos restantes envidraçados de vão reto. No projeto são pormenorizadas as guardas metálicas, em barrinhas, destinadas às varandas da fachada posterior.",
+                "Em 1948, foi requerido um projeto de ampliação, implantado no lote adjacente, tendo sido construído um corpo contíguo ao edifício existente, que também sofreu, nessa campanha de obras, algumas alterações na distribuição e na organização dos aposentos."
+            ],
+            "images": [
+                "../img/rot61.JPG",
+                "../img/rot62.JPG",
+                "../img/rot63.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Mausoléu, Cemitério de S. Miguel de Rio Torto",
+            "year": "1924",
+            "year2": "",
+            "location": "São Miguel do Rio Torto, Carvalhal",
+            "typology": "Arquitetura Fúnebre",
+            "coordBool": true,
+            "coordinates": [
+                39.41758174178155,
+                -8.210797742103564
+            ],
+            "info": [],
+            "images": [
+                "../img/rot71.jpeg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Moradia, Fátima",
+            "year": "1927",
+            "year2": "",
+            "location": "Fátima, Ourém",
+            "typology": "Habitação unifamiliar",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [],
+            "images": [],
+            "imagesSubtitle": []
+        },
+        {
+            "id": 9,
+            "title": "Pedestal do Busto do General Avelar Machado, Abrantes",
+            "year": "1928",
+            "year2": "",
+            "location": "Largo General Avelar Machado",
+            "typology": "Arte pública/Pedestal (projeto original)",
+            "coordBool": true,
+            "coordinates": [
+                39.46121752921235,
+                -8.198837675946207
+            ],
+            "info": [
+                "Em 1928, Raul Lino desenha o pedestal para o busto do general Avelar Machado (1848-1909), da autoria de Ângelo Teixeira. O conjunto, busto e pedestal, foi inaugurado em 1929, e localiza-se no largo fronteiro ao edifício da sede da Sociedade da Assembleia de Abrantes (e da entrada principal deste edifício)."
+            ],
+            "images": [
+                "../img/rot91.JPG",
+                "../img/rot92.JPG",
+                "../img/rot93.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 10,
+            "title": "Edifício de Habitação, Abrantes",
+            "year": "1929",
+            "year2": "e 1963",
+            "location": "Rua Tenente Valadim, nº 3 e 5",
+            "typology": "Habitação unifamiliar (projeto original: 1929; projeto de ampliação: 1963)",
+            "coordBool": true,
+            "coordinates": [
+                39.46175151900504,
+                -8.197672228161696
+            ],
+            "info": [
+                "O projeto original para este edifício de habitação situado na proximidade do Jardim da República em Abrantes, teria sido realizado, por Raul Lino em 1929. Trata-se de um edifico que se desenvolve em dois pisos e é rematado por um terraço. Em 1963 sucedeu-lhe uma ampliação, no lote adjacente, e que resultou na construção de um edifício autónomo, em continuidade com a composição da fachada pré-existente. Raul Lino definiu, na memória descritiva do projeto de alteração, a aplicação de “materiais idênticos aos da primitiva fachada”.",
+                "O projeto de alteração do edifício, datado de 1963, menciona para uma estrutura de betão armado.",
+                "No piso térreo, a fachada principal é revestida com elementos pétreos de corte regular até ao limite inferior das janelas. A porta de entrada é encimada por elementos de cantaria que definem um triângulo. No projeto inicial, a cobertura incluiu duas trapeiras, formalmente distintas entre si, com vista para a Rua Tenente Valadim."
+            ],
+            "images": [
+                "../img/rot101.jpg",
+                "../img/rot102.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 11,
+            "title": "Moradia, Vila Nova da Barquinha",
+            "year": "1930",
+            "year2": "",
+            "location": "Praia do Ribatejo, Constância",
+            "typology": "Habitação unifamiliar",
+            "coordBool": true,
+            "coordinates": [
+                39.46577892193933,
+                -8.349420279626765
+            ],
+            "info": [
+                "O projeto refere-se a uma moradia unifamiliar encomendado por Eliseu Vieira da Cruz em 1930, e foi implantada em terreno desnivelado segundo a orientação Norte-Sul. A entrada principal do edifício está orientada a Norte e é protegida por um alpendre de pilares de cantaria cilíndricos. A fachada Sul inclui um alpendre sobre uma zona coberta com estrutura em arcos que protege a entrada posterior, situada a cota inferior à da entrada principal.",
+                "As caixilharias das janelas apresentam as partes móveis de cor branca em contraste com a cor verde das partes fixas, que é comum à das guardas metálicas das varandas do edifício. As janelas do edifício são de vidrinhos.",
+                "A cobertura apresenta beiral à portuguesa com a face inferior das telhas pintada de verde, assim como o revestimento lateral das trapeiras. Na cobertura destacam-se ainda os remates superiores nos cantos, com esferas e pináculos de cantaria, assim como as chaminés.",
+                "Em terreno contíguo a esta moradia, a escassos metros de distância, foi edificada outra, que partindo do mesmo projeto corresponde ao seu espelho."
+            ],
+            "images": [
+                "../img/rot111.jpg",
+                "../img/rot112.jpg",
+                "../img/rot113.jpg",
+                "../img/rot114.jpg",
+                "../img/rot115.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 12,
+            "title": "Moradia, Torres Novas",
+            "year": "1931",
+            "year2": "",
+            "location": "Torres Novas",
+            "typology": "Habitação unifamiliar",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [],
+            "imagesSubtitle": []
+        },
+        {
+            "id": 13,
+            "title": "Arranjos Exteriores, Sardoal",
+            "year": "1932",
+            "year2": "e 1934",
+            "location": "Centro urbano de Sardoal",
+            "typology": "Arranjo urbanístico",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [
+                "../img/rot131.jpg",
+                "../img/rot132.jpg",
+                "../img/rot133.jpg",
+                "../img/rot134.jpg",
+                "../img/rot135.jpg",
+                "../img/rot136.jpg",
+                "../img/rot137.jpg",
+                "../img/rot138.jpg",
+                "../img/rot139.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 14,
+            "title": "Edifício do Posto de Transformação, Alcanena",
+            "year": "1932",
+            "year2": "",
+            "location": "Alcanena ",
+            "typology": "Infraestrutura - Posto de Transformação de energia (projeto original)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [],
+            "imagesSubtitle": []
+        },
+        {
+            "id": 15,
+            "title": "Torre e edifício para posto de transformação, Alcanena",
+            "year": "1932",
+            "year2": "e 1934 (projeto original)",
+            "typology": "Infraestrutura - Posto de Transformação (projeto original)",
+            "location": "Alcanena",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Esta torre de transformação foi uma encomenda da Câmara Municipal de Alcanena. Na memória descritiva do projeto refere-se que as Comissões de Turismo e Propaganda têm exigido uma maior integração dos edifícios com a paisagem. É com esta premissa que Raul Lino projeta esta torre técnica, inspirada na construção “portuguesa, tradicional,” mas “usando o moderno processo de construir em betão armado”. "
+            ],
+            "images": [
+                "../img/rot151.jpg"
+            ],
+            "imagesSubtitle": [
+                "Representação 3D da Torre para o posto de Transformação, com base nos desenhos do projeto."
+            ]
+        },
+        {
+            "id": 16,
+            "title": "Projeto Urbano, Mação",
+            "year": "1934",
+            "year2": "",
+            "location": "Mação (Este projeto não foi executado)",
+            "typology": "Arranjo urbanístico Projeto urbano",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [
+                "../img/rot161.jpg",
+                "../img/rot162.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 17,
+            "title": "Edifício de Habitação, Abrantes",
+            "year": "1935",
+            "year2": "",
+            "location": "Rua José Estevão, nº 20",
+            "typology": "Habitação unifamiliar (projeto de alteração)",
+            "coordBool": true,
+            "coordinates": [
+                39.46315780929322,
+                -8.198171330823566
+            ],
+            "info": [
+                "O projeto de Raul Lino parte de um edifício existente de três pisos localizado no centro histórico de Abrantes, no qual o arquiteto alterou a composição do terceiro piso, e transformou o vão único de janela original em dois (vãos). Foram ainda acrescentados dois óculos laterais no primeiro e no segundo pisos, que no projeto de Raul Lino apresentam forma circular, mas que foram concretizados em losango, tal como evidencia a fachada atual."
+            ],
+            "images": [
+                "../img/rot171.jpg",
+                "../img/rot172.png",
+                "../img/rot713.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 18,
+            "title": "Edifício de Habitação, Abrantes",
+            "year": "1935",
+            "year2": "",
+            "location": "Rua General Manuel António Mourato, nº 11",
+            "typology": "Habitação unifamiliar (projeto de alteração)",
+            "coordBool": true,
+            "coordinates": [
+                39.463200535655595,
+                -8.198082057091964
+            ],
+            "info": [
+                "Este projeto de Raul Lino propôs a ampliação de um edifício térreo pré-existente e localizado no centro histórico de Abrantes, num lote estreito e profundo. Ao edifício existente foram acrescidos dois pisos ligados por uma escada interior. O projeto deste edifício encontra-se no Arquivo Municipal Eduardo Campos, em Abrantes."
+            ],
+            "images": [
+                "../img/rot181.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 19,
+            "title": "Moradia, Abrantes",
+            "year": "1935",
+            "year2": "",
+            "location": "Rua do Arcediago, nº 19",
+            "typology": "Habitação unifamiliar (projeto original)",
+            "coordBool": true,
+            "coordinates": [
+                39.462925238598096,
+                -8.196886394673387
+            ],
+            "info": [
+                "O projeto deste edifício corresponde a uma habitação de carácter urbano, que se desenvolve em dois pisos, e que apresenta uma loggia aberta no primeiro piso, em arcada tripla, sobre a Rua do Arcediago. Esta varanda coberta apresenta elementos semelhantes aos do edifício da Sede da Sociedade de Abrantes (3), designadamente a disposição dos elementos cerâmicos da guarda que são semelhantes aos que se encontram na chaminé (em 3), e os arcos e pilares circulares da varanda que remetem para a varanda alpendrada orientada a Norte (em 3)."
+            ],
+            "images": [
+                "../img/rot191.JPG",
+                "../img/rot192.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 20,
+            "title": "Edifício de Habitação, Abrantes",
+            "year": "1936",
+            "year2": "",
+            "location": "Rua de Santa Isabel nº 28 e 30",
+            "typology": "Habitação unifamiliar (projeto de alteração)",
+            "coordBool": true,
+            "coordinates": [
+                39.461816132073785,
+                -8.197358477514825
+            ],
+            "info": [
+                "O projeto de Raul Lino teve como ponto de partida um edifício existente de dois pisos (rés do chão +1) no centro histórico de Abrantes, ao qual foi acrescido um piso. O piso térreo destinou-se a estabelecimento comercial, e os pisos superiores a habitação.",
+                "Segundo a memória descritiva, as paredes exteriores são de tijolo de burro, assim como as divisórias interiores e o telhado de valadio (de telha solta) com telha à portuguesa, com cimalha e beirado."
+            ],
+            "images": [
+                "../img/rot201.JPG",
+                "../img/rot202.JPG",
+                "../img/rot202.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 21,
+            "title": "Edifício de Habitação, Abrantes",
+            "year": "1938",
+            "year2": "",
+            "location": "Rua Dom Afonso Henriques nº 9 a 11",
+            "typology": "Habitação unifamiliar (projeto de alteração)",
+            "coordBool": true,
+            "coordinates": [
+                39.46385336317629,
+                -8.201003961766888
+            ],
+            "info": [
+                "Neste projeto, Raul Lino é chamado a realizar um projeto de alterações num edifico existente de três pisos, com a fachada revestida a azulejos. O projeto consiste num conjunto de alterações modificações no interior da habitação, com o intuito de adequar os espaços interiores e melhorar as suas condições de conforto. No exterior são foram acrescentadas três mansardas, duas sobre o logradouro, e a outra, no centro da fachada principal, sobre a rua."
+            ],
+            "images": [
+                "../img/rot211.JPG",
+                "../img/rot212.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 22,
+            "title": "Moradia, Alferrarede",
+            "year": "1938",
+            "year2": "",
+            "location": "Alferrarede",
+            "typology": "Habitação unifamiliar (projeto original)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Esta construção refere-se a uma habitação unifamiliar edificada numa zona rural, em Alferrarede. No edifício sobressaem o alpendre da entrada principal com pilares de elementos cerâmicos, as janelas de vidrinhos, o beiral à portuguesa e a chaminé."
+            ],
+            "images": [
+                "../img/rot221.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 23,
+            "title": "Garagem, Abrantes",
+            "year": "1939",
+            "year2": "",
+            "location": "Rua Dom Afonso Henriques (ao lado do nº 25)",
+            "typology": "Garagem (projeto original)",
+            "coordBool": false,
+            "coordinates": [],
+            "info": [
+                "Este pequeno projeto destinou-se à construção de uma garagem, no lugar de uma pré-existência, um “barracão”, na proximidade do edifício de habitação que Raul Lino projetou em 1924 para Guilherme Moura Neves, e que foi ampliado posteriormente (em 1948). Num lote estreito, o projeto propôs assim a construção de uma garagem, de serviço à habitação. O desnível do terreno permitiu que se projetassem outras dependências com acessos diferenciados.",
+                "Ao nível da rua funcionam a garagem, quarto e instalações sanitárias, com acesso pela fachada lateral. No plano do quintal, destaca-se ainda um volume onde se acomodam duas divisões, uma para arrumos do quintal e outra para uma cozinha."
+            ],
+            "images": [
+                "../img/rot231.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 24,
+            "title": "Edifício de Habitação, Abrantes",
+            "year": "1939",
+            "year2": "e 1941",
+            "location": "Rua Dom Afonso Henriques nº 13 a 15",
+            "typology": "Habitação unifamiliar (projeto original: 1939; projeto de ampliação: 1941)",
+            "coordBool": true,
+            "coordinates": [
+                39.46378712823677,
+                -8.20108733009068
+            ],
+            "info": [
+                "O projeto corresponde à construção de um edifício de habitação que se desenvolve em dois pisos com cave, numa planta de acentuada horizontalidade.  Com uma divisão funcional interior quadripartida, oferece um alçado dividido em quatro módulos compositivos, com pequenas diferenças entre si, destacando-se a zona de entrada, que integra porta e janela do primeiro piso numa faixa vertical enquadrada por pilastras.",
+                "No edifício destacam-se as guardas metálicas das varandas (semelhantes às guardas metálicas da varanda alpendrada do edifício da Assembleia de Abrantes), as cantarias que rematam os vãos das janelas em sacada e as portas, bem como a chaminé do edifício."
+            ],
+            "images": [
+                "../img/rot241.JPG",
+                "../img/rot242.JPG",
+                "../img/rot243.bmp"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 25,
+            "title": "Edifício de Habitação, Abrantes",
+            "year": "1940",
+            "year2": "",
+            "location": "Rua 5 de outubro de 1910, nº 16",
+            "typology": "Habitação unifamiliar (projeto de alteração)",
+            "coordBool": true,
+            "coordinates": [
+                39.46500822867063,
+                -8.197535319879464
+            ],
+            "info": [
+                "O projeto de alterações, propostas por Raul Lino, para este edifício de habitação situado perto da igreja de S. Vicente e do Largo da Ferraria, inclui modificações importantes que reconfiguraram a sua fachada principal, com a supressão da balaustrada, e a execução da cobertura rematada por sanca. Foram também adicionadas trapeiras, e foi proposto o redesenho e a substituição das molduras, das carpintarias e das serralharias dos vãos das portas e das janelas."
+            ],
+            "images": [
+                "../img/rot251.JPG",
+                "../img/rot252.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 26,
+            "title": "Jardim-Escola João de Deus 1",
+            "year": "1945",
+            "year2": "e 1946",
+            "location": "Rua Miguel Maria Ferreira",
+            "typology": "Edifício escolar (projeto original)",
+            "coordBool": true,
+            "coordinates": [
+                39.605909,
+                -8.405876
+            ],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [
+                "../img/rot261.JPG",
+                "../img/rot262.jpg",
+                "../img/rot263.jpg",
+                "../img/rot264.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 27,
+            "title": "Jardim-Escola João de Deus 2",
+            "year": "1945",
+            "year2": "e 1946",
+            "location": "Rua de Leiria",
+            "typology": "Edifício escolar (projeto original)",
+            "coordBool": true,
+            "coordinates": [
+                39.608152,
+                -8.417457
+            ],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [
+                "../img/rot271.jpg",
+                "../img/rot272.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 28,
+            "title": "Jazigo, Tomar",
+            "year": "1945",
+            "year2": "",
+            "location": "Santa Maria do Olival, Tomar",
+            "typology": "Arquitetura fúnebre",
+            "coordBool": true,
+            "coordinates": [
+                39.60272627829137,
+                -8.40791477291339
+            ],
+            "info": [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
+                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+            ],
+            "images": [
+                "../img/rot281.jpg",
+                "../img/rot282.jpg",
+                "../img/rot283.jpg"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)",
+                "(missing text)"
+            ]
+        },
+        {
+            "id": 29,
+            "title": "Palacete, Abrantes",
+            "year": "1965",
+            "year2": "",
+            "location": "Rua Grande nº 46-52",
+            "typology": "Habitação unifamiliar (projeto de alteração)",
+            "coordBool": true,
+            "coordinates": [
+                39.463349938394856,
+                -8.196668381385852
+            ],
+            "info": [
+                "Palacete oitocentista, de dois pisos, com o piso inferior revestido a azulejo monocromático, está situado numa das artérias principais da cidade de Abrantes, que estabelecia a ligação entre as igrejas paroquiais de S. Vicente e de S João Batista. Em 1968, terá sido intervencionado no seu interior por Raul Lino, com projeto de jardim de Gonçalo Ribeiro Telles Foi classificado em 1977 como imóvel de interesse municipal."
+            ],
+            "images": [
+                "../img/rot291.bmp",
+                "../img/rot292.JPG"
+            ],
+            "imagesSubtitle": [
+                "(missing text)",
+                "(missing text)"
             ]
         }
     ]
