@@ -37,7 +37,7 @@ function App() {
               <Route path="/projeto/contactos" element={<ContactsIndex />} />
               <Route path="/biografia" element={<GenericIndex />} />
               <Route path="/biografia/sobre" element={<AboutIndex />} />
-              <Route path="/obra" element={<ProjectIndex />} />
+              <Route path="/obra/detalhes" element={<ProjectIndex />} />
               <Route path="/obra/cronologia" element={<CronologyIndex />} />
               <Route path="/obra/mapa" element={<MapIndex />} />
               <Route path="/obra/lista" element={<ListIndex />} />
