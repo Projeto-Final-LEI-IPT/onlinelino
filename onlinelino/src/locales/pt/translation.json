@@ -1,11 +1,8 @@
 {
     "navbarHome": {
-        "label": "Raul Lino no Médio Tejo",
         "project": "PROJETO",
         "biography": "BIOGRAFIA",
-        "building": "OBRA",
-        "search": "Pesquisa",
-        "submit": "Pesquisar"
+        "building": "OBRA"
     },
     "navbarProject": {
         "description": "DESCRIÇÃO",
