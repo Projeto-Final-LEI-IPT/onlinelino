@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../style/Navbar.css';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const NavbarHome = () => {
     const [activeDropdown, setActiveDropdown] = useState(null);
-    const location = useLocation();
     const { t } = useTranslation();
-
-    useEffect(() => {
-        // Check the current path to set the active dropdown on initial render or path change
-        const path = location.pathname;
-
-        // if (path.startsWith('/obra')) {
-        //     setActiveDropdown(2);
-        // }
-    }, [location]);
 
     const handleDropdownToggle = (index) => {
         setActiveDropdown(index);
