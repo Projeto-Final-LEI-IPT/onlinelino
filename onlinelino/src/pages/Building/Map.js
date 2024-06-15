@@ -124,6 +124,10 @@ const MapIndex = () => {
                             position={{ lat: location.latitudes, lng: location.longitudes }}
                             title={location.title}
                             onClick={() => handleMarkerClick(location)}
+                            icon={{
+                                url: "../img/ponto.png", 
+                                scaledSize: new window.google.maps.Size(50, 50) // Size of the marker
+                              }}
                         />
                     ))}
 
