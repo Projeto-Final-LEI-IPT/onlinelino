@@ -1,6 +1,5 @@
 import React from 'react';
 import NavbarHome from "../../components/NavbarHome";
-import NavbarBuilding from '../../components/NavbarBuilding';
 import Container from "react-bootstrap/esm/Container";
 
 import { useTranslation } from 'react-i18next';
@@ -66,8 +65,6 @@ function BuildingIndex() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <NavbarBuilding />
             <br />
             <Container>
                 <h4>{t('buildingsPage.title')}</h4>

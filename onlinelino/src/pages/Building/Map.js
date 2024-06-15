@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import NavbarHome from "../../components/NavbarHome";
-import NavbarBuilding from "../../components/NavbarBuilding";
 import Container from "react-bootstrap/esm/Container";
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { Link } from 'react-router-dom';
@@ -107,8 +106,6 @@ const MapIndex = () => {
     return (
         <>
             <NavbarHome />
-            <br />
-            <NavbarBuilding />
             <br />
             {/* Container for the map */}
             <Container ref={mapContainerRef} style={{ width: '100%', height: '50vh' }}>

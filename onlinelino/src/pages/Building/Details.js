@@ -1,6 +1,5 @@
 import React from 'react';
 import NavbarHome from "../../components/NavbarHome";
-import NavbarBuilding from '../../components/NavbarBuilding';
 import Container from "react-bootstrap/esm/Container";
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -49,8 +48,6 @@ function BuildingDetails() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <NavbarBuilding />
             <br />
             <Container>
                 <h2>{t(`buildings.${id - 1}.title`)}</h2>

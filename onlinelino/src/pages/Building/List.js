@@ -1,6 +1,5 @@
 import React from "react";
 import NavbarHome from "../../components/NavbarHome";
-import NavbarBuilding from "../../components/NavbarBuilding";
 import Container from "react-bootstrap/esm/Container";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
@@ -26,8 +25,6 @@ function ListIndex() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <NavbarBuilding />
             <br />
             <Container>
                 <h4>{t('listPage.title')}</h4>

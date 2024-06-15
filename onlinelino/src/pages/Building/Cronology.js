@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import NavbarHome from "../../components/NavbarHome";
-import NavbarBuilding from '../../components/NavbarBuilding';
 import Container from "react-bootstrap/esm/Container";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
@@ -66,8 +65,6 @@ function CronologyIndex() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <NavbarBuilding />
             <br />
             <Container>
                 <div className="timeline" ref={timelineRef}>

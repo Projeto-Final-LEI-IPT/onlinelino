@@ -1,6 +1,5 @@
 import React from "react";
 import NavbarHome from "../../components/NavbarHome";
-import NavbarBiography from "../../components/NavbarBiography";
 import Container from "react-bootstrap/esm/Container";
 import { useTranslation } from 'react-i18next';
 
@@ -34,8 +33,6 @@ function GenericIndex() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <NavbarBiography />
             <br />
             <Container>
                 <p>{t('biographyPage.generic')}</p>
