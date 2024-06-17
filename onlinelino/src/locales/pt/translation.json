@@ -154,9 +154,6 @@
     "cronologyPage": {
         "title": "Cronologia"
     },
-    "mapPage": {
-        "title": "Mapa com a locallização das obras"
-    },
     "buildingsDetailsPage": {
         "year": "Data do projeto",
         "type": "Tipologia",
