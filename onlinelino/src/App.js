@@ -11,7 +11,7 @@ import ContactsIndex from "./pages/Project/Contacts";
 import GenericIndex from "./pages/Biography/Generic";
 import AboutIndex from "./pages/Biography/About";
 import ProjectIndex from "./pages/Building/Index";
-import CronologyIndex from "./pages/Building/Cronology";
+import ChronologyIndex from "./pages/Building/Chronology";
 import MapIndex from "./pages/Building/Map";
 import ListIndex from "./pages/Building/List";
 import BuildingDetails from "./pages/Building/Details";
@@ -38,7 +38,7 @@ function App() {
               <Route path="/biografia" element={<GenericIndex />} />
               <Route path="/biografia/sobre" element={<AboutIndex />} />
               <Route path="/obra/detalhes" element={<ProjectIndex />} />
-              <Route path="/obra/cronologia" element={<CronologyIndex />} />
+              <Route path="/obra/cronologia" element={<ChronologyIndex />} />
               <Route path="/obra/mapa" element={<MapIndex />} />
               <Route path="/obra/lista" element={<ListIndex />} />
               <Route path="/obra/:id/" element={<BuildingDetails />} />

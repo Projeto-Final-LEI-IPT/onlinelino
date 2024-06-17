@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import NavbarHome from "../../components/NavbarHome";
+import NavbarCronology from "../../components/NavbarChronology";
 import Container from "react-bootstrap/esm/Container";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 
-function CronologyIndex() {
+function ChronologyIndex() {
     const [selectedYear, setSelectedYear] = useState(null);
     const [selectedEvents, setSelectedEvents] = useState([]);
     const [markerPosition, setMarkerPosition] = useState(null);
@@ -64,7 +64,7 @@ function CronologyIndex() {
 
     return (
         <>
-            <NavbarHome />
+            <NavbarCronology />
             <br />
             <Container>
                 <div className="timeline" ref={timelineRef}>
@@ -141,4 +141,4 @@ function CronologyIndex() {
     );
 }
 
-export default CronologyIndex;
+export default ChronologyIndex;
