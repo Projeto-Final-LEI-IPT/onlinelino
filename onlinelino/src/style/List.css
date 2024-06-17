@@ -1,0 +1,17 @@
+.list-item {
+    display: flex; 
+}
+
+.text-year {
+    color: white;
+    background-color: #FBAB1F;
+    font-weight: bold; 
+    margin: 0px;
+}
+
+.text-title {
+    color: #155945;
+    padding-left: 5px;
+    font-weight: bold;
+    margin: 0px;
+}
