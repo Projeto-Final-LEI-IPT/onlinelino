@@ -181,9 +181,9 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot11.bmp",
-                "../img/rot12.JPG",
-                "../img/rot13.JPG"
+                "../img/roteiro/rot11.bmp",
+                "../img/roteiro/rot12.JPG",
+                "../img/roteiro/rot13.JPG"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -207,8 +207,8 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot21.jpg",
-                "../img/rot22.png"
+                "../img/roteiro/rot21.jpg",
+                "../img/roteiro/rot22.png"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -234,11 +234,11 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot31.jpeg",
-                "../img/rot32.png",
-                "../img/rot33.jpg",
-                "../img/rot34.jpg",
-                "../img/rot35.JPG"
+                "../img/roteiro/rot31.jpeg",
+                "../img/roteiro/rot32.png",
+                "../img/roteiro/rot33.jpg",
+                "../img/roteiro/rot34.jpg",
+                "../img/roteiro/rot35.JPG"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -278,10 +278,10 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot51.JPG",
-                "../img/rot52.JPG",
-                "../img/rot53.JPG",
-                "../img/rot54.bmp"
+                "../img/roteiro/rot51.JPG",
+                "../img/roteiro/rot52.JPG",
+                "../img/roteiro/rot53.JPG",
+                "../img/roteiro/rot54.bmp"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -308,9 +308,9 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot61.JPG",
-                "../img/rot62.JPG",
-                "../img/rot63.JPG"
+                "../img/roteiro/rot61.JPG",
+                "../img/roteiro/rot62.JPG",
+                "../img/roteiro/rot63.JPG"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -332,7 +332,7 @@
             ],
             "info": [],
             "images": [
-                "../img/rot71.jpeg"
+                "../img/roteiro/rot71.jpeg"
             ],
             "imagesSubtitle": [
                 "(missing text)"
@@ -367,9 +367,9 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot91.JPG",
-                "../img/rot92.JPG",
-                "../img/rot93.JPG"
+                "../img/roteiro/rot91.JPG",
+                "../img/roteiro/rot92.JPG",
+                "../img/roteiro/rot93.JPG"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -395,8 +395,8 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot101.jpg",
-                "../img/rot102.jpg"
+                "../img/roteiro/rot101.jpg",
+                "../img/roteiro/rot102.jpg"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -421,11 +421,11 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot111.jpg",
-                "../img/rot112.jpg",
-                "../img/rot113.jpg",
-                "../img/rot114.jpg",
-                "../img/rot115.jpg"
+                "../img/roteiro/rot111.jpg",
+                "../img/roteiro/rot112.jpg",
+                "../img/roteiro/rot113.jpg",
+                "../img/roteiro/rot114.jpg",
+                "../img/roteiro/rot115.jpg"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -465,15 +465,15 @@
                 "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
             ],
             "images": [
-                "../img/rot131.jpg",
-                "../img/rot132.jpg",
-                "../img/rot133.jpg",
-                "../img/rot134.jpg",
-                "../img/rot135.jpg",
-                "../img/rot136.jpg",
-                "../img/rot137.jpg",
-                "../img/rot138.jpg",
-                "../img/rot139.jpg"
+                "../img/roteiro/rot131.jpg",
+                "../img/roteiro/rot132.jpg",
+                "../img/roteiro/rot133.jpg",
+                "../img/roteiro/rot134.jpg",
+                "../img/roteiro/rot135.jpg",
+                "../img/roteiro/rot136.jpg",
+                "../img/roteiro/rot137.jpg",
+                "../img/roteiro/rot138.jpg",
+                "../img/roteiro/rot139.jpg"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -516,7 +516,7 @@
                 "This piece of equipment, an electricity transformation tower, was commissioned by Alcanena Town Council. The project description states that the Comissões de Turismo e Propaganda (National organization for tourism under the Estado Novo) had demanded that the buildings be better integrated with the landscape. It was with this in mind that Raul Lino designed this technical tower, inspired by the traditional Portuguese construction, but using the modern technology of reinforced concrete. (missing text)"
             ],
             "images": [
-                "../img/rot151.jpg"
+                "../img/roteiro/rot151.jpg"
             ],
             "imagesSubtitle": [
                 "Drawing of the transformation tower for Alcanena, based on the elevations of the original project. (missing text)"
@@ -536,8 +536,8 @@
                 "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
             ],
             "images": [
-                "../img/rot161.jpg",
-                "../img/rot162.jpg"
+                "../img/roteiro/rot161.jpg",
+                "../img/roteiro/rot162.jpg"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -560,9 +560,9 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot171.jpg",
-                "../img/rot172.png",
-                "../img/rot713.jpg"
+                "../img/roteiro/rot171.jpg",
+                "../img/roteiro/rot172.png",
+                "../img/roteiro/rot173.jpg"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -586,7 +586,7 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot181.JPG"
+                "../img/roteiro/rot181.JPG"
             ],
             "imagesSubtitle": [
                 "(missing text)"
@@ -608,8 +608,8 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot191.JPG",
-                "../img/rot192.JPG"
+                "../img/roteiro/rot191.JPG",
+                "../img/roteiro/rot192.JPG"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -633,9 +633,9 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot201.JPG",
-                "../img/rot202.JPG",
-                "../img/rot202.jpg"
+                "../img/roteiro/rot201.JPG",
+                "../img/roteiro/rot202.JPG",
+                "../img/roteiro/rot203.jpg"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -659,8 +659,8 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot211.JPG",
-                "../img/rot212.JPG"
+                "../img/roteiro/rot211.JPG",
+                "../img/roteiro/rot212.JPG"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -680,7 +680,7 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot221.jpg"
+                "../img/roteiro/rot221.jpg"
             ],
             "imagesSubtitle": [
                 "(missing text)"
@@ -700,7 +700,7 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot231.JPG"
+                "../img/roteiro/rot231.JPG"
             ],
             "imagesSubtitle": [
                 "(missing text)"
@@ -723,9 +723,9 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot241.JPG",
-                "../img/rot242.JPG",
-                "../img/rot243.bmp"
+                "../img/roteiro/rot241.JPG",
+                "../img/roteiro/rot242.JPG",
+                "../img/roteiro/rot243.bmp"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -749,8 +749,8 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot251.JPG",
-                "../img/rot252.JPG"
+                "../img/roteiro/rot251.JPG",
+                "../img/roteiro/rot252.JPG"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -774,10 +774,10 @@
                 "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
             ],
             "images": [
-                "../img/rot261.JPG",
-                "../img/rot262.jpg",
-                "../img/rot263.jpg",
-                "../img/rot264.jpg"
+                "../img/roteiro/rot261.JPG",
+                "../img/roteiro/rot262.jpg",
+                "../img/roteiro/rot263.jpg",
+                "../img/roteiro/rot264.jpg"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -803,8 +803,8 @@
                 "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
             ],
             "images": [
-                "../img/rot271.jpg",
-                "../img/rot272.jpg"
+                "../img/roteiro/rot271.jpg",
+                "../img/roteiro/rot272.jpg"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -828,9 +828,9 @@
                 "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
             ],
             "images": [
-                "../img/rot281.jpg",
-                "../img/rot282.jpg",
-                "../img/rot283.jpg"
+                "../img/roteiro/rot281.jpg",
+                "../img/roteiro/rot282.jpg",
+                "../img/roteiro/rot283.jpg"
             ],
             "imagesSubtitle": [
                 "(missing text)",
@@ -854,8 +854,8 @@
                 "(missing text)"
             ],
             "images": [
-                "../img/rot291.bmp",
-                "../img/rot292.JPG"
+                "../img/roteiro/rot291.bmp",
+                "../img/roteiro/rot292.JPG"
             ],
             "imagesSubtitle": [
                 "(missing text)",
