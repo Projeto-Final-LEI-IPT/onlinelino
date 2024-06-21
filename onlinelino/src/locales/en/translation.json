@@ -189,6 +189,9 @@
                 "(missing text)",
                 "House designed for José Serra da Motta in 1919: view of the side façade, from Rua do Montepio Abrantino, up the street (2021).",
                 "House designed for José Serra da Motta in 1919: view of the main and side façades, from Rua do Montepio Abrantino, down the street (2021)."
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot1.jpg", "color": "yellow"}
             ]
         },
         {
@@ -213,6 +216,10 @@
             "imagesSubtitle": [
                 "(missing text)",
                 "(missing text)"
+            ]
+            ,
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot2.jpg", "color": "green"}
             ]
         },
         {
@@ -246,6 +253,9 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot3.jpg", "color": "yellow"}
             ]
         },
         {
@@ -259,7 +269,8 @@
             "coordinates": [],
             "info": [],
             "images": [],
-            "imagesSubtitle": []
+            "imagesSubtitle": [],
+            "images-chrono": []
         },
         {
             "id": 5,
@@ -288,6 +299,9 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot5.jpg", "color": "yellow"}
             ]
         },
         {
@@ -316,6 +330,9 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot6.jpg", "color": "green"}
             ]
         },
         {
@@ -336,6 +353,9 @@
             ],
             "imagesSubtitle": [
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot7.jpg", "color": "green"}
             ]
         },
         {
@@ -349,7 +369,8 @@
             "coordinates": [],
             "info": [],
             "images": [],
-            "imagesSubtitle": []
+            "imagesSubtitle": [],
+            "images-chrono": []
         },
         {
             "id": 9,
@@ -375,6 +396,9 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot9.jpg", "color": "green"}
             ]
         },
         {
@@ -401,6 +425,9 @@
             "imagesSubtitle": [
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot10.jpg", "color": "yellow"}
             ]
         },
         {
@@ -433,7 +460,8 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
-            ]
+            ],
+            "images-chrono": []
         },
         {
             "id": 12,
@@ -449,7 +477,8 @@
                 "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
             ],
             "images": [],
-            "imagesSubtitle": []
+            "imagesSubtitle": [],
+            "images-chrono": []
         },
         {
             "id": 13,
@@ -485,6 +514,9 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot13.jpg", "color": "green"}
             ]
         },
         {
@@ -501,7 +533,8 @@
                 "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
             ],
             "images": [],
-            "imagesSubtitle": []
+            "imagesSubtitle": [],
+            "images-chrono": []
         },
         {
             "id": 15,
@@ -520,6 +553,9 @@
             ],
             "imagesSubtitle": [
                 "Drawing of the transformation tower for Alcanena, based on the elevations of the original project. (missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot15.jpg", "color": "green"}
             ]
         },
         {
@@ -542,6 +578,9 @@
             "imagesSubtitle": [
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot16.jpg", "color": "yellow"}
             ]
         },
         {
@@ -568,6 +607,9 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot17.jpg", "color": "green"}
             ]
         },
         {
@@ -590,6 +632,9 @@
             ],
             "imagesSubtitle": [
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot18.jpg", "color": "green"}
             ]
         },
         {
@@ -614,6 +659,9 @@
             "imagesSubtitle": [
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot19.jpg", "color": "yellow"}
             ]
         },
         {
@@ -641,6 +689,9 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot20.jpg", "color": "green"}
             ]
         },
         {
@@ -665,6 +716,9 @@
             "imagesSubtitle": [
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot21.jpg", "color": "yellow"}
             ]
         },
         {
@@ -684,6 +738,9 @@
             ],
             "imagesSubtitle": [
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot22.jpg", "color": "green"}
             ]
         },
         {
@@ -704,6 +761,9 @@
             ],
             "imagesSubtitle": [
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot23.jpg", "color": "yellow"}
             ]
         },
         {
@@ -731,6 +791,9 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot24.jpg", "color": "yellow"}
             ]
         },
         {
@@ -755,6 +818,9 @@
             "imagesSubtitle": [
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot25.jpg", "color": "green"}
             ]
         },
         {
@@ -784,6 +850,9 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot26.jpg", "color": "yellow"}
             ]
         },
         {
@@ -809,6 +878,9 @@
             "imagesSubtitle": [
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot27.jpg", "color": "green"}
             ]
         },
         {
@@ -836,6 +908,9 @@
                 "(missing text)",
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot28.jpg", "color": "yellow"}
             ]
         },
         {
@@ -860,6 +935,9 @@
             "imagesSubtitle": [
                 "(missing text)",
                 "(missing text)"
+            ],
+            "images-chrono": [
+                {"image": "../img/roteiro_chrono/rot29.jpg", "color": "green"}
             ]
         }
     ]
