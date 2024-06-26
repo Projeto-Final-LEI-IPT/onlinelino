@@ -37,7 +37,7 @@ const MapIndex = () => {
 
     // Load the Google Maps API
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyBgydpzpaz7A19z5hPqOFAWkVl67lhTLls',
+        googleMapsApiKey: 'AIzaSyBsIx2lJVWnAwR087TB4Bs-l3xVRTGyqQY',
         libraries,
     });
 
@@ -106,7 +106,7 @@ const MapIndex = () => {
     return (
         <>
             <NavbarHome />
-            <br />
+            {/* <br /> */}
             {/* Container for the map */}
             <Container ref={mapContainerRef} style={{ width: '100%', height: '50vh' }}>
                 {/* GoogleMap component */}
