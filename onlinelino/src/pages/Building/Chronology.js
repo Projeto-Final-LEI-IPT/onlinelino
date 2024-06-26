@@ -64,7 +64,7 @@ function ChronologyIndex() {
                                     {!paragraph.imageChrono.includes('images-chrono') && (
                                         <img src={paragraph.imageChrono} alt="" />
                                     )}
-                                    <p className="text-year">{paragraph.year2}</p>
+                                    <p className="text-year-chrono">{paragraph.year2}</p>
                                 </div>
                             </Link>
                         </React.Fragment>

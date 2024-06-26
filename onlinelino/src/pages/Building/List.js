@@ -35,8 +35,8 @@ function ListIndex() {
                         <>
                             <Link key={index} to={`/obra/${index + 1}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <li className="list-item" key={index}>
-                                    <p className="text-year">{paragraph.year2}</p> 
-                                    <p className="text-title">{paragraph.title}</p>
+                                    <p className="text-year-list">{paragraph.year2}</p> 
+                                    <p className="text-title-list">{paragraph.title}</p>
                                 </li>
                             </Link>
                             <br />

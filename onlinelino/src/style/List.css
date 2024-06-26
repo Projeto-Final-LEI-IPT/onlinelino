@@ -2,14 +2,14 @@
     display: flex; 
 }
 
-.text-year {
+.text-year-list {
     color: white;
     background-color: #FBAB1F;
     font-weight: bold; 
     margin: 0px;
 }
 
-.text-title {
+.text-title-list {
     color: #155945;
     padding-left: 5px;
     font-weight: bold;
