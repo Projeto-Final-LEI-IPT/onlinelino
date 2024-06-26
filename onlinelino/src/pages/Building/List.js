@@ -19,7 +19,7 @@ function ListIndex() {
             buildings.push({
                 title: title,
                 year: parseInt(year),
-                year2: year+year2
+                year2: year + year2
             });
         }
     }
@@ -32,15 +32,14 @@ function ListIndex() {
             <Container>
                 <ul>
                     {buildings.map((paragraph, index) => (
-                        <>
-                            <Link key={index} to={`/obra/${index + 1}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                <li className="list-item" key={index}>
-                                    <p className="text-year-list">{paragraph.year2}</p> 
-                                    <p className="text-title-list">{paragraph.title}</p>
-                                </li>
-                            </Link>
-                            <br />
-                        </>
+                        <Link key={index} to={`/obra/${index + 1}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <li className="list-item" key={index}>
+                                <div className="text-year-list">
+                                    <span className="year-highlight">{paragraph.year2}</span>
+                                </div>
+                                <div className="text-title-list">{paragraph.title}</div>
+                            </li>
+                        </Link>
                     ))}
                 </ul>
             </Container>

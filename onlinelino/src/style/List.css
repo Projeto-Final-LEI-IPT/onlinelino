@@ -1,17 +1,24 @@
 .list-item {
-    display: flex; 
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    /* Space between items */
 }
 
 .text-year-list {
-    color: white;
-    background-color: #FBAB1F;
-    font-weight: bold; 
-    margin: 0px;
+    min-width: 100px;
+    /* Adjust width as needed */
+    margin-right: 10px;
+    text-align: right;
 }
 
 .text-title-list {
-    color: #155945;
-    padding-left: 5px;
+    flex-grow: 1;
+}
+
+.year-highlight {
+    background-color: #FBAB1F;
+    padding: 2px 5px;
+    color: white;
     font-weight: bold;
-    margin: 0px;
 }
