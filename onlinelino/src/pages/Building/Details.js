@@ -7,9 +7,10 @@ import { useTranslation } from 'react-i18next';
 function BuildingDetails() {
     const { id } = useParams();
     const { t } = useTranslation();
+    let string = "";
 
     // buildings.N.info
-    let string = "buildings." + (id - 1).toString() + ".info"
+    string = "buildings." + (id - 1).toString() + ".info"
     const info = [];
     for (let i = 0; i < 50; i++) {
         if (!t(`buildings.${id - 1}.info.${i}`).includes(string)) {
@@ -32,12 +33,27 @@ function BuildingDetails() {
             imagesSubtitle.push(t(`buildings.${id - 1}.imagesSubtitle.${i}`));
         }
     }
-    // buildings.N.links
-    string = "buildings." + (id - 1).toString() + ".links"
+    // buildings.N.links.I.fonte
     const links = [];
     for (let i = 0; i < 50; i++) {
-        if (!t(`buildings.${id - 1}.links.${i}`).includes(string)) {
-            links.push(t(`buildings.${id - 1}.links.${i}`));
+        const fonte = t(`buildings.${id - 1}.links.${i}.fonte`);
+        if (!fonte.includes("fonte")) {
+            const biblio = [];
+            for (let j = 0; j < 50; j++) {
+                const text = t(`buildings.${id - 1}.links.${i}.biblio.${j}.text`);
+                const link = t(`buildings.${id - 1}.links.${i}.biblio.${j}.links`);
+
+                if (!text.includes("text") && !link.includes("links")) {
+                    biblio.push({
+                        text: text,
+                        link: link
+                    });
+                }
+            }
+            links.push({
+                fonte: fonte,
+                biblio: biblio
+            });
         }
     }
 
@@ -56,32 +72,39 @@ function BuildingDetails() {
                 <p>{t('buildingsDetailsPage.location')}: {t(`buildings.${id - 1}.location`)}</p>
                 <br />
                 {info.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
+                    <p key={`info-${index}`}>{paragraph}</p>
                 ))}
                 <br />
-                <p>{t(`buildingsDetailsPage.images`)}:</p>
+                {images.length > 0 && (
+                    <p>{t(`buildingsDetailsPage.images`)}:</p>
+                )}
                 {images.map((image, index) => (
-                    <div key={index}>
+                    <div key={`img-${index}`}>
                         <img className="rounded mx-auto d-block" src={image} alt="" style={{ maxWidth: '500px', maxHeight: '500px' }} />
                         <p className="text-center">{imagesSubtitle[index]}</p>
                         <br />
                     </div>
                 ))}
                 <br />
-                <p>{t(`buildingsDetailsPage.links`)}:</p>
+                <p>{t(`buildingsDetailsPage.bibliography`)}:</p>
                 <ul>
-                    {links.map((paragraph, index) => (
-                        <>
-                            <li key={index}>
-                                <a href="{paragraph}" target="_blank">
-                                    {paragraph}
-                                </a>
-                            </li>
-                            <br />
-                        </>
+                    {links.map((linkItem, linkIndex) => (
+                        <li key={`link-${linkIndex}`}>
+                            {linkItem.fonte}
+                            <ul>
+                                {linkItem.biblio.map((biblioItem, biblioIndex) => (
+                                    <>
+                                        <li key={`biblio-${linkIndex}-${biblioIndex}`}>
+                                            <a href={biblioItem.link} target="_blank" rel="noopener noreferrer">
+                                                {biblioItem.text}
+                                            </a>
+                                        </li>
+                                    </>
+                                ))}
+                            </ul>
+                        </li>
                     ))}
                 </ul>
-
             </Container>
         </>
     );
