@@ -1,0 +1,12 @@
+/* Define the custom font */
+@font-face {
+    font-family: 'FiraSans';
+    src: url('./FiraSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply the custom font globally */
+body {
+    font-family: 'FiraSans', Arial, sans-serif; /* Use the custom font with fallbacks */
+}
