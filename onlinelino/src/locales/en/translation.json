@@ -173,20 +173,21 @@
     "buildings": [
         {
             "id": 1,
-            "title": "House, Abrantes",
+            "title": "Residential Building, Abrantes",
             "year": "1919",
             "year2": "",
             "location": "Rua Luís de Camões, 28",
-            "typology": "Single-family building (original project)",
+            "typology": "Single family house (original project)",
             "coordBool": true,
             "coordinates": [
                 39.46130034837089,
                 -8.199608824278481
             ],
             "info": [
-                "This residential building is located on the edge of Abrantes' historic center and was probably Raul Lino's first project in the city of Abrantes. It was intended for the home and studio of José Serra da Motta.",
-                "The house is located on a steeply sloping site, at the confluence of Rua Luís de Camões and Rua do Montepio Abrantino, and has two floors and an attic. Highlights of the building include the porch supported on five columns and facing west, the dormer windows that provide natural light to the attic, and the two large chimneys decorated with red clay ceramic elements similar to those that are part of the staircase railing on the rear elevation of the house. (missing text)",
-                "(missing text)"
+                "This house, located on the edge of the historic centre of Abrantes, was probably Raul Lino's first project in the city of Abrantes. It was the house/studio of José Serra da Motta (1883-1943), a lawyer and watercolour painter.",
+                "The property is located on a steeply sloping plot between Rua Luís de Camões and Rua do Montepio Abrantino. It has two floors and includes an attic. The building features a porch supported on five columns and facing west, dormer windows that provide natural light to the attic, two large chimneys decorated with red clay ceramic elements similar to those used in the staircase at the rear of the house.",
+                "The arrangement of those ceramic elements is replicated in other Raul Lino’s design details such as: the chimney of Sociedade da Assembleia da Abrantes headquarters (3), the fence of the house at Vila Nova da Barquinha (11), the balcony guard of the house in Rua do Arcediago, Abrantes (19).",
+                "The windows on the first floor are protected by shutters whose colour contrasts with the wall of the house, just like the Sociedade Assembleia de Abrantes headquarters built in 1924."
             ],
             "images": [
                 "../img/rot11.bmp",
@@ -194,52 +195,96 @@
                 "../img/rot13.JPG"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "House designed for José Serra da Motta in 1919: view of the side façade, from Rua do Montepio Abrantino, up the street (2021).",
-                "House designed for José Serra da Motta in 1919: view of the main and side façades, from Rua do Montepio Abrantino, down the street (2021)."
+                "Rear facade, (Arquivo Municipal Eduardo Campos, date: between 1969 and 2018)",
+                "View from Rua do Montepio Abrantino (2022)",
+                "Chimney and porche detail (2022)"
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1919). Casa Unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 80.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=188332&img=26436"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=188332&img=26437"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "fonte": "IPA.00025172",
+                    "biblio": [
+                        {
+                            "text": "[Link SIPA]",
+                            "links": "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=25172"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 2,
-            "title": "Quinta da Fábrica Abrantes, Abrantes (missing text)",
+            "title": "Quinta da Fábrica Abrantes, Abrantes",
             "year": "1922",
             "year2": "",
             "location": "Avenida do Paiol",
-            "typology": "(missing text)",
+            "typology": "Single family house (reconstruction/renovation or remodelling)",
             "coordBool": true,
             "coordinates": [
                 39.453393670793595,
                 -8.198651777560325
             ],
             "info": [
-                "(missing text)"
+                "The project developed by Raul Lino refers to an extension of an existing building called Quinta da Fábrica and was commissioned by the Soares Mendes family. The construction description confirms Lino’s concern on integrate architectural and constructive solutions within the pre-existing building."
             ],
             "images": [
                 "../img/rot21.jpg",
                 "../img/rot22.png"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)"
+                "Location of Quinta da Fábrica (2022)",
+                "Quinta da Fábrica building (2022)"
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1922). Casa Unifamiliar, Rossio de Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 135.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=188552&img=27562"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=188552&img=27563"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 3,
-            "title": "Headquarters Building of Sociedade da Assembleia de Abrantes, Abrantes",
+            "title": "Assembleia de Abrantes Headquarter, Abrantes",
             "year": "1923",
             "year2": "",
             "location": "Largo General Avelar Machado",
-            "typology": "Cultural and recreational club building",
+            "typology": "Headquarters of cultural and recreational association (original plan)",
             "coordBool": true,
             "coordinates": [
                 39.46121752921235,
                 -8.198837675946207
             ],
             "info": [
-                "The building, designed in 1923 to house the headquarters of the Abrantes Assembly Society, was completed in 1924 and inaugurated in 1928. It currently remains the property of the Abrantes Assembly Society, which was set up in 1920. This building is classified as a Monument of Municipal Interest, according to Abrantes City Council Notice, Edital no. 20/2014 of April 11.",
-                "Raul Lino's project proposes a multi-functional space with a ballroom, a reading room, two rooms for card games and one for billiards. The building is located at the western end of Largo General Avelar Machado, which was formed from the demolition of the hermitage of S. Sebastião, at the intersection with Rua do Montepio Abrantino. This location, in a steeply sloping area, marked some of the architect's design solutions, mentioned by the architect in the article “Que aspecto devemos dar às casas do Povo?” published in 1947 in the Mensário das Casas do Povo “com a sujeita a determinado terreno, aliás ingrato e bastante difícil de se aproveitar. […] No exterior teve-se em atenção o carácter local das construções tradicionais, de molde que o que se fez não fosse destoar da fisionomia geral da terra” (translated: with the subject to a certain terrain, ungrateful and quite difficult to take advantage of. [...] On the outside, attention was paid to the local character of traditional buildings, so that what was done would not clash with the general physiognomy of the land.)",
-                "The building's main entrance, on Largo General Avelar Machado, is protected by a porch with cylindrical columns, where the polychrome tile wainscoting stands out. The building also features two adjacent but distinct porches facing north; the kneecaps that protect the windows of the rooms on the south façade; the ceramic tile roof and Portuguese-style eaves; the stonework obelisks on the roof; and the chimneys. (missing text)",
-                "(missing text)"
+                "The building, designed in 1923 to house the headquarters of the Sociedade Assembleia de Abrantes, was completed in 1924 and inaugurated in 1928. It currently remains the property of the Sociedade da Assembleia de Abrantes, that was established in 1920. This building is classified as “Monumento de Interesse Municipal”, according to Abrantes City Council Notice nº. 20/2014 of 11 April.",
+                "The building is located on the western edge of Largo General Avelar Machado. This location, in a  steeply sloping plot, determined some of the architect's design solutions, mentioned in the article “Que aspecto devemos dar às casas do Povo?” that was published in 1947 in the “Mensário das Casas do Povo: “with subjection to a terrain, which is ungrateful and quite difficult to take advantage of […] On the exterior, attention was paid to the local character of traditional buildings, so that what was done would not clash with the general appearance of the environment”",
+                "The main entrance to the building, in Largo General Avelar Machado, is protected by a porch of cylindrical columns featuring a wainscot of polychrome tiles. The two adjacent but distinct north-facing porches, the window lattices in the rooms on the south façade, the ceramic tile roof and the Portuguese-style eaves, the stone pinnacles on the roof and the chimneys are worthy of note.",
+                "Inside there is a ballroom with a stage, a reading room and three games rooms, as well as a kitchen with pantry and sanitary conveniences. The slope of the land was used to accommodate commercial premises and warehouses.",
+                "Raul Lino also designed the pedestal for the bust of General Avelar Machado, a prominent figure in Abrantes, which was inaugurated in 1929 in front of the Sociedade Assembleia de Abrantes Assembly Society building.",
+                "The main entrance to the building, in Largo General Avelar Machado, is protected by a porch of cylindrical columns featuring a wainscot of polychrome tiles. The two adjacent but distinct north-facing porches, the window lattices in the rooms on the south façade, the ceramic tile roof and the Portuguese-style eaves, the stone obelisks on the roof and the chimneys are worthy of note."
             ],
             "images": [
                 "../img/rot31.jpeg",
@@ -249,40 +294,108 @@
                 "../img/rot35.JPG"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "Postcard of Assembleia de Abrantes building, (Arquivo Municipal Eduardo Campos, n.d.).",
+                "Main entrance porche of Sociedade Assembleia de Abrantes headquarter (2022)",
+                "South facade of Sociedade Assembleia de Abrantes headquarter (2022)",
+                "North facade of Sociedade Assembleia de Abrantes headquarter (2022)",
+                "Porche and main entrance detail of Sociedade Assembleia de Abrantes headquarter (2022)"
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1923). Sede da Assembleia de Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cotas RL 163 e RL 654.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=188774&img=27288"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=188774&img=27289"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=188774&img=27290"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "fonte": "IPA.00024995",
+                    "biblio": [
+                        {
+                            "text": "[Link SIPA]",
+                            "links": "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=24995"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "fonte": "LINO, R. (1947). “Que aspecto devemos dar às casas do Povo?”, Mensário das Casas do Povo, 12: 10-11."
+                },
+                {
+                    "id": 4,
+                    "fonte": "CARREIRAS, J. (2023). Assembleia de Abrantes. Edição de autor."
+                },
+                {
+                    "id": 5,
+                    "fonte": "OLIVEIRA, C. (2012). “A Vós, A Nossa Casa. Intersecções na arquitectura do espaço público na obra de Raul Lino: A ‘Assembleia de Abrantes’”. In Symposium on Research in Architecture and Urban Design. Porto: Faculdade de Arquitectura da Universidade do Porto."
+                },
+                {
+                    "id": 6,
+                    "fonte": "OLIVEIRA, C. (2013). “Equipamentos e transformações modernas no espaço público de Abrantes: Três exemplos”. In Actas PNUM 2013, Forma Urbana nos Territórios de Influência Portuguesa: Análise, Desenho, Quantificação. Coimbra: Department of Civil Engineering of the University of Coimbra. 1001-1011."
+                },
+                {
+                    "id": 7,
+                    "fonte": "OLIVEIRA, C., Jaramillo, J. (2016). “Arquitectura e pública-acção A Nossa Casa no Mensário das Casas do Povo: três projectos de Raul Lino”. In A conquista social do território. Arquitetura e corporativismo no Estado Novo, Ferreira, F., Mendes, F., Pereira, N. (coord.). Coimbra: Edições Tenacitas. 79-103."
+                }
             ]
         },
         {
             "id": 4,
-            "title": "House, Constância",
+            "title": "Residential Building, Constância",
             "year": "1924",
+            "year2": "",
             "location": "Constância",
-            "typology": "(missing text)",
+            "typology": "Single family house (original project)",
             "coordBool": false,
             "coordinates": [],
-            "info": [],
+            "info": [
+                "This project corresponds to a commission from Adriano Burguete for an economically built house, which should therefore dispense with ‘costly and in this case useless ornaments’ since ‘(...) the good effect therefore results only from the proportions, material and color of the whole work and, later - from its connection with the surrounding terrain by means of shrubs, climbing plants, etc.’.",
+                "Raul Lino refers a building with a balcony and porches, whose exterior walls, painted white or pink, should contrast with the green color of the wooden structures of the porches and the fixed window frames. In the design report, the movable part of the window frames and muntins are referred to as white.",
+                "As a cost-effective building, Raul Lino admits the use of concrete components (‘cast in cement’) to simulate traditional stonework elements, such as the thresholds, sills, porch columns and balcony half-posts, as these are more expensive. The architect uses the same argument to justify the exterior floor coverings in brick or terracotta. Lino also explains the integration of ‘local materials and building processes’ through the use of exposed pebbles in the porch and balcony walls. (Note: The sentences in quotation marks are quotes by Raul Lino; The quotes from Raul Lino were freely translated)."
+            ],
             "images": [],
-            "imagesSubtitle": []
+            "imagesSubtitle": [],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1924). Casa Unifamiliar, Constância. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 184.",
+                    "biblio": [
+                        {
+                            "text": "[Architecture design spec]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=193196&img=29091"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": 5,
-            "title": "Edifício de Habitação, Abrantes (missing text)",
+            "title": "Residential Building, Abrantes",
             "year": "1924",
-            "year2": "e 1942",
+            "year2": "and 1942",
             "location": "Rua de S. Pedro, nº 8",
-            "typology": "(missing text)",
+            "typology": "Single-family house (alteration plan)",
             "coordBool": true,
             "coordinates": [
                 39.4628486067387,
                 -8.19609914139947
             ],
             "info": [
-                "(missing text)",
-                "(missing text)"
+                "This building takes as a starting point a pre-existing one and has undergone numerous renovations throughout its history.",
+                "The first intervention by Raul Lino dates from 1924 and consists of an extension in which the second floor and the attic were added in a similar style to the original building.  The compositional arrangement, symmetrical through the central axis was materialised by the balcony window bays, and features a lateral volumetry, with a subtle curvature with the entrance marked by a gate. Later, in 1942, Raul Lino designed the new configuration of the façade windows.",
+                "The exterior of the building is characterised by the shutters on the ground floor windows and the arched finishes in the access areas, as well as the colour of the shutters and entrance doors. Also noteworthy are the glass windows and the Portuguese-style eaves."
             ],
             "images": [
                 "../img/rot51.JPG",
@@ -291,28 +404,55 @@
                 "../img/rot54.bmp"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "Main facade of the building (2021)",
+                "Entrance door detail (2021)",
+                "Access area detail (2021)",
+                "Photo of the main facade (Arquivo Municipal Eduardo Campos, n.d.)"
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1924). Casa Unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 198.",
+                    "biblio": [
+                        {
+                            "text": "[Drawing details]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=188888&img=27689"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "fonte": "IPA.00026340",
+                    "biblio": [
+                        {
+                            "text": "[Link SIPA]",
+                            "links": "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=26340"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "fonte": "CMA/AMEC: Processo 10.5.3, 1942"
+                }
             ]
         },
         {
             "id": 6,
-            "title": "House, Abrantes",
+            "title": "Residential Building, Abrantes",
             "year": "1924",
-            "year2": "e 1948",
+            "year2": "and 1948",
             "location": "Rua Dom Afonso Henriques, nº 25",
-            "typology": "(missing text)",
+            "typology": "Single-family house (original plan from 1924; extension plan, 1948)",
             "coordBool": true,
             "coordinates": [
                 39.463565303475804,
                 -8.201341066959458
             ],
             "info": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "The building, originally designed in 1924, is located in a street on the edge of the historic centre and consists of a two-storey building with a basement positioned centrally.",
+                "On the ground floor are the social/public areas of the house, and on the first floor the private and intimate area which includes the bedrooms, other support compartments, and an oratory.",
+                "The main façade has a prominent central axis, adjoined by ashlar pilasters with a detached cornice topping the volume. Also, noteworthy the dormer window that also serves as the front in line with the building's main entrance, the small glass panel that are replicated in the upper part of the remaining straight-span glazing. The project details the metal bar railings, in little bars, for the balconies of the rear facade.",
+                "In 1948, an extension project was requested and a structure was erected in the plot adjacent to the existing building, which also underwent, as part of this campaign of works, some changes in room layout and distribution."
             ],
             "images": [
                 "../img/rot61.JPG",
@@ -320,112 +460,208 @@
                 "../img/rot63.JPG"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "Main facade (2021)",
+                "Entrance door (2021)",
+                "Main facade – Extension plan"
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1924). Casa Unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 199.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=188894&img=27691"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "fonte": "LINO, R. (1948). Casa Unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 505.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192390&img=28703"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "fonte": "IPA.00026333",
+                    "biblio": [
+                        {
+                            "text": "[Link SIPA]",
+                            "links": " http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=26333"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "fonte": "CMA/AMEC: Processo 0193, 1940, processo 0032, 1945 e processo 0942, 1952"
+                },
+                {
+                    "id": 5,
+                    "fonte": "ROCHA, Mafalda (2019). Casa- Família(s): Vivências e Memórias as Intervenções de Raul Lino em Abrantes. Dissertação de Mestrado integrado da FAUP."
+                }
             ]
         },
         {
             "id": 7,
-            "title": "Grave site, Abrantes",
+            "title": "Mausoleum, Cemetery of S. Miguel do Rio Torto",
             "year": "1924",
             "year2": "",
             "location": "São Miguel do Rio Torto, Carvalhal",
-            "typology": "(missing text)",
+            "typology": "Funerary Architecture",
             "coordBool": true,
             "coordinates": [
                 39.41758174178155,
                 -8.210797742103564
             ],
-            "info": [],
+            "info": [
+                "This building, located in the cemetery of S. Miguel do Rio Torto, was commissioned by the Martins family and built in 1924, according to the inscription engraved above the door. The building, with a simple composition, has portico, housing a small atrium, that precedes the chapel entrance, volumetrically detached and with a gabled roof."
+            ],
             "images": [
                 "../img/rot71.jpeg"
             ],
             "imagesSubtitle": [
-                "(missing text)"
+                "Entrance view of the mausoleum (2022)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1902-74). Projeto de mausoléu, Carvalhal, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 614."
+                }
             ]
         },
         {
             "id": 8,
-            "title": "House, Ourém, Fátima",
+            "title": "Residential Building, Fátima",
             "year": "1927",
             "year2": "",
             "location": "Fátima, Ourém",
-            "typology": "(missing text)",
+            "typology": "Single-family house",
             "coordBool": false,
             "coordinates": [],
             "info": [],
             "images": [],
-            "imagesSubtitle": []
+            "imagesSubtitle": [],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1927). Casa unifamiliar, Fátima. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 239.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189065&img=27796"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": 9,
-            "title": "Pedestal for bust of General Avelar Machado, Abrantes",
+            "title": "Pedestal for the Bust of General Avelar Machado, Abrantes",
             "year": "1928",
             "year2": "",
             "location": "Largo General Avelar Machado",
-            "typology": "(missing text)",
+            "typology": "Public art/Pedestal (original plan)",
             "coordBool": true,
             "coordinates": [
                 39.46121752921235,
                 -8.198837675946207
             ],
             "info": [
-                "(missing text)"
+                "In 1928, Raul Lino designed the pedestal for the bust of General Avelar Machado (1848-1909) by Ângelo Teixeira. The set was inaugurated in 1929 and is located in the square in front of the headquarters building of the Sociedade da Assembleia de Abrantes (the main entrance to this building)."
             ],
             "images": [
-                "../img/rot91.JPG",
+                "../img/rot91.jpg",
                 "../img/rot92.JPG",
                 "../img/rot93.JPG"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "Inauguration of the bust of General Avelar Machado (1929).",
+                "View of the bust at Praça General Avelar Machado (2022).",
+                "View of the bust at Praça General Avelar Machado (2022)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1928). Monumento ao General Avelar Machado, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 244.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189093&img=27805"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 10,
-            "title": "House, Abrantes",
+            "title": "Residential Building, Abrantes",
             "year": "1929",
-            "year2": "e 1963",
-            "location": "Rua Tenente Valadim, nº 3 e 5",
-            "typology": "(missing text)",
+            "year2": "and 1963",
+            "location": "Rua Tenente Valadim, nos. 3 and 5",
+            "typology": "Single-family house (original plan from 1929; extension plan, 1963)",
             "coordBool": true,
             "coordinates": [
                 39.46175151900504,
                 -8.197672228161696
             ],
             "info": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "The original plan for this residential building located near the Jardim da República in Abrantes was drawn up by Raul Lino in 1929. In 1963 (AMEC record is from 1959), an extension took place in the adjoining plot, which resulted in the construction of a separate building, maintaining the pre-existing façade composition and materials, and with a reinforced concrete structure.",
+                "On the ground floor, the main façade is covered with stone elements with regular cuts up to the windowsill. The entrance door is topped by stone elements that define a triangle. In the original plan, the roof included two formally distinct dormer windows, overlooking Rua Tenente Valadim."
             ],
             "images": [
                 "../img/rot101.jpg",
                 "../img/rot102.jpg"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)"
+                "Main facade (2022).",
+                "Main facade (2022)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1929). Casa Unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 271.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189228&img=27882"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189228&img=27883"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189228&img=27884"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "fonte": "CMA/AMEC: Processo nº 19, reg. 3396 de 1961."
+                }
             ]
         },
         {
             "id": 11,
-            "title": "House, Vila Nova da Barquinha",
+            "title": "Residential Building, Vila Nova da Barquinha",
             "year": "1930",
             "year2": "",
             "location": "Praia do Ribatejo, Constância",
-            "typology": "(missing text)",
+            "typology": "Single-family house",
             "coordBool": true,
             "coordinates": [
                 39.46577892193933,
                 -8.349420279626765
             ],
             "info": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "The project is for a single-family house commissioned by Eliseu Vieira da Cruz in 1930, and was built on uneven ground with a north-south orientation. The main entrance to the building faces north and is sheltered by a porch with cylindrical section ashlar pillars. The south facade includes a porch over a covered area with an arched structure that shields the rear entrance, located at a lower level than the main entrance.",
+                "The window frame has white movable elements in contrast to the green color of the fixed elements, which is common to the metal railings on the building's balconies. The building's windows are finished with tiny glasses.",
+                "The roof is covered with portuguese eaves with the underside of the tiles painted green, as is the side cladding of the dormers. The roof also features the upper corner finishes, with spheres and stone pinnacles, as well as the chimneys.",
+                "On the plot adjacent to this house, just a few meters away, another building was built symmetrically, based on the same project."
             ],
             "images": [
                 "../img/rot111.jpg",
@@ -435,11 +671,31 @@
                 "../img/rot115.jpg"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "View of main and east facade (2024).",
+                "Main facade (2024).",
+                "Detail from main facade (2024).",
+                "View of west facade (2024).",
+                "Fence wall detail (2024)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1929). Casa Unifamiliar, Praia do Ribatejo. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 277.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189254&img=27902"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189254&img=27903"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189254&img=27904"
+                        }
+                    ]
+                }
             ]
         },
         {
@@ -448,28 +704,53 @@
             "year": "1931",
             "year2": "",
             "location": "Torres Novas",
-            "typology": "(missing text)",
+            "typology": "Single-family house",
             "coordBool": false,
             "coordinates": [],
             "info": [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
-                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+                "The commission for this project came from Evaristo Matos Branco, who was a notary and mayor of Torres Novas between 1958 and 1962.",
+                "It is a three-storey building with an attic roof and includes a small chapel. On the main façade, faced east, a porch shelters the entrance to the house.",
+                "The first and second floors would correspond to the family compartments, with vertical communication ensured by a generously staircase. The ground floor, partly in the basement, due to the unevenness of the plot, has a lower ceiling height and is possibly used as a facility area. The detail drawings, related to the carpentry details - doors, panels, window frames - of the billiard rooms, dining room and drawing room, suggest that the house would include a relatively developed social/public reception area with specific spaces."
             ],
             "images": [],
-            "imagesSubtitle": []
+            "imagesSubtitle": [],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1931). Casa Unifamiliar, Torres Novas. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 291.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189304&img=27951"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189304&img=27951"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189304&img=27953"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": 13,
             "title": "Urban design, Sardoal",
-            "year": "1932",
-            "year2": "e 1934",
-            "location": "Centro urbano de Sardoal",
-            "typology": "(missing text)",
+            "year": "1934",
+            "year2": "",
+            "location": "Sardoal urban centre",
+            "typology": "Urban  development",
             "coordBool": false,
             "coordinates": [],
             "info": [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
-                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+                "The “improvements of Sardoal”, as Raul Lino calls this set of urban-scale projects/interventions in various areas of the town, were commissioned by the Sardoal Town Council in 1933. According to the journal “Correio de Abrantes”, a year earlier, on 7 August 1932, Raul Lino visited the town invited by Manuel Serras Pereira, brother of the mayor Lúcio Serras Pereira.",
+                "There were identified four built projects: the reconstruction of the pillory, the fountainhead, the fence wall and gates of the old anti-tuberculosis center, and the pergola and ”Ramal Bellevue”. This last project was probably demolished in the 1980s [1].",
+                "In the town center, in Praça da República, next to the town hall, Raul Lino collaborated in the reconstruction of the old pillory, in the approximate location where there was a fountain – then moved closer to the old prison [3], having also designed the cobblestone pavement of the base in an octagonal shape. The pavement that surrounding the pillory base was designed with a geometric pattern, which has not been executed.",
+                "The commission for this work was recorded in 1933 council meeting: “The former pillory had been demolished (…) and this council decided to rebuild it using the scattered elements of the pillory that still exist, and based on the memories of people who saw it erected in its place, already quite dismantled, and in order not to lose a valuable historical monument, it commissioned the Chief Secretary of this council to sketch a design that would serve as a basis for its reconstruction. The architect Raul Lino perfected this design in its artistic details, so that the construction site could proceed with its execution without difficulty (…) with the stepped base of the pillory made  in Tomar stonework and the column in marble. (…) [2]",
+                "In the same square, the architect also designed a fountain, fitted on the raised walkway of Rua Monte do Sardoal.",
+                "At the beginning of Rua 5 de Outubro, Raul Lino had designed a long perimeter fence wall that runs alongside the plot of the former anti-tuberculosis establishment, with a simple masonry design with hollow triangular elements, and, in the design of the two gates, he included the figure of the sardão, a lizard that is represented in the town's arms."
             ],
             "images": [
                 "../img/rot131.jpg",
@@ -483,214 +764,390 @@
                 "../img/rot139.jpg"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "Pillory, Praça da República (2024).",
+                "Fountain and pergola, Praça da República (2024).",
+                "Fountain, Praça da República (2024).",
+                "Pergola next to the fountain, Praça da República (2024).",
+                "Fence wall, Rua 5 de Outubro, (2024).",
+                "Fence Wall detail, Rua 5 de Outubro (2024).",
+                "Gate, Rua 5 de Outubro (2024).",
+                "Gate detail, Rua 5 de Outubro (2024).",
+                "Pergola of Ramal bellevue, Rua das Olarias?, pre-1980."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1932-34). Câmara Municipal do Concelho do Sardoal. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 311.",
+                    "biblio": [
+                        {
+                            "text": "[Desenhos do projeto, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189408&img=26662"
+                        },
+                        {
+                            "text": "[Desenhos do projeto, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189408&img=26663"
+                        },
+                        {
+                            "text": "[Desenhos do projeto, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189408&img=26664"
+                        },
+                        {
+                            "text": "[Desenhos do projeto, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189408&img=26665"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "fonte": "[1]",
+                    "biblio": [
+                        {
+                            "text": "[Link]",
+                            "links": "https://www.sardoalmemoria.net/home/patrimonio-cultural/arquitecto-raul-lino-projectos-e-estudos-elaborados-para-a-vila-de-sardoal"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "fonte": "[2]",
+                    "biblio": [
+                        {
+                            "text": "[Link]",
+                            "links": "https://memoriassardoalenses.net/sobre-o-actual-pelourinho/"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "fonte": "[3]",
+                    "biblio": [
+                        {
+                            "text": "[Link]",
+                            "links": "https://memoriassardoalenses.net/um-percurso-por-fontes/"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "fonte": "IPA. 00002078 - Pelourinho",
+                    "biblio": [
+                        {
+                            "text": "[Link SIPA]",
+                            "links": "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=2078"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 14,
-            "title": "Edifício do Posto de Transformação, Alcanena (missing text)",
+            "title": "Transformer Substation Building, Alcanena",
             "year": "1932",
             "year2": "",
-            "location": "Alcanena ",
-            "typology": "(missing text)",
+            "location": "Alcanena",
+            "typology": "Network infrastructure - Transformer substation (original project)",
             "coordBool": false,
             "coordinates": [],
             "info": [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
-                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+                "Transformation stations are structures usually in the form of a cabin or tower, in which medium-voltage electrical energy is transformed into low-voltage electrical energy for transmission through the network. In this transformer station building, designed in 1932, the architect presents a rectangular cross section tower, with interior access through a spiral staircase. Externally, the tower is topped with a pyramid-shaped roof, replicating the shape of some church bell towers roofs."
             ],
             "images": [],
-            "imagesSubtitle": []
+            "imagesSubtitle": [],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1932). Distribuição de energia eléctrica em Alcanena, edifício do posto de transformação. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 325.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189415&img=26667"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": 15,
-            "title": "Tower and building of a transformer station, Alcanena",
+            "title": "Transformer Substation Tower, Alcanena",
             "year": "1932",
-            "year2": "e 1934 (original project)",
-            "typology": "(missing text)",
+            "year2": "and 1934",
+            "typology": "Network infrastructure - Transformer substation (original project)",
             "location": "Alcanena",
             "coordBool": false,
             "coordinates": [],
             "info": [
-                "This piece of equipment, an electricity transformation tower, was commissioned by Alcanena Town Council. The project description states that the Comissões de Turismo e Propaganda (National organization for tourism under the Estado Novo) had demanded that the buildings be better integrated with the landscape. It was with this in mind that Raul Lino designed this technical tower, inspired by the traditional Portuguese construction, but using the modern technology of reinforced concrete. (missing text)"
+                "This transformation tower was commissioned by Alcanena Town Council. The project description states that the Tourism and Propaganda Commissions had demanded greater integration of the buildings with the landscape. It was with this in mind that Raul Lino designed this technical tower, inspired by ‘traditional Portuguese ‘construction, but ‘using the modern process of building in reinforced concrete’ (Note: The sentences in quotation marks are quotes by Raul Lino; The quotes from Raul Lino were freely translated)."
             ],
             "images": [
                 "../img/rot151.jpg"
             ],
             "imagesSubtitle": [
-                "Drawing of the transformation tower for Alcanena, based on the elevations of the original project. (missing text)"
+                "3D representation of the tower for the transformer substation, based on the project drawings."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1932-34). Projeto de Torre para Posto de Transformação, 1932-34. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 298.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189333&img=27967"
+                        },
+                        {
+                            "text": "[Architectural design report, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189333&img=27968"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 16,
-            "title": "Urban design, Mação",
+            "title": "Urban Planning, Mação",
             "year": "1934",
             "year2": "",
-            "location": "Mação ((missing text))",
-            "typology": "(missing text)",
+            "location": "Mação (This project has not been completed)",
+            "typology": "Urban plannning",
             "coordBool": false,
             "coordinates": [],
             "info": [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
-                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+                "About the so-called “economic beautification plan” by Raul Lino, we only know the sketch that the architect presented in 1934. It refers to a perspective in which Raul Lino presents the possible urban arrangement of a square located on the edge of the town. The drawing proposes a belvedere framed by a pergola and, in the area of the square furthest back, next to the wall that limits it, should be placed a set of seats sheltered by a porch, in a nook softened by the construction of a fountain. In this project, the use of minimal elements is intended to create maximum effect, creating a mediation zone, an uncovered atrium, which would precede the entrance to the town."
             ],
             "images": [
                 "../img/rot161.jpg",
                 "../img/rot162.jpg"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)"
+                "Probable location of the urban arrangement of Raul Lino that was not carried out: confluence between Rua da Ladeira and N3 (2024).",
+                "Probable location of the urban arrangement of Raul Lino that was not carried out: confluence between Rua da Ladeira and N3 (2024)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1934). Esboço de uma ideia para o Plano Económico de Embelezamento da Entrada da Vila de Mação Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 329.",
+                    "biblio": [
+                        {
+                            "text": "[Draft project, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189480&img=26669"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 17,
-            "title": "House, Abrantes",
+            "title": "Residential Buildind, Abrantes",
             "year": "1935",
             "year2": "",
-            "location": "Rua José Estevão, nº 20",
-            "typology": "(missing text)",
+            "location": "Rua José Estevão, no. 20",
+            "typology": "Single-family house (alteration project)",
             "coordBool": true,
             "coordinates": [
                 39.46315780929322,
                 -8.198171330823566
             ],
             "info": [
-                "(missing text)"
+                "Raul Lino's plan develops from an existing three-storey building located in the historic centre of Abrantes, in which the architect changed the composition of the third floor and converted the original single window opening into two. Two side openings were also added on the first and second floors, which in Raul Lino's project had a circular shape, but which were made into a rhombus (as evidenced by the current façade)."
             ],
             "images": [
                 "../img/rot171.jpg",
                 "../img/rot172.png",
-                "../img/rot713.jpg"
+                "../img/rot173.jpg"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "Postcard Delcampe (c. 1957).",
+                "Side view of the building's main façade (2022).",
+                "Front view of the building's main façade (2022)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1935). Casa unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 342.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189538&img=28057"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 18,
-            "title": "House, Abrantes",
+            "title": "Residential Building, Abrantes",
             "year": "1935",
             "year2": "",
-            "location": "Rua General Manuel António Mourato, nº 11",
-            "typology": "(missing text)",
+            "location": "Rua General Manuel António Mourato, no. 11",
+            "typology": "Single-family house (alteration project)",
             "coordBool": true,
             "coordinates": [
                 39.463200535655595,
                 -8.198082057091964
             ],
             "info": [
-                "(missing text)"
+                "This project by Raul Lino proposed the enlargement of a pre-existing ground floor building located in the old town of Abrantes in a narrow and deep plot. Two floors were added to the existing building connected by an interior staircase. The project for this building can be found in the Arquivo Municipal Eduardo Campos (local Archive) in Abrantes."
             ],
             "images": [
                 "../img/rot181.JPG"
             ],
             "imagesSubtitle": [
-                "(missing text)"
+                "Building’s façade on Rua General António Mourato (2022)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "CMA/AMEC: processo nº 10.5.3-0Q0Q80/1934"
+                }
             ]
         },
         {
             "id": 19,
-            "title": "House, Abrantes",
+            "title": "Residential Building, Abrantes",
             "year": "1935",
             "year2": "",
             "location": "Rua do Arcediago, nº 19",
-            "typology": "(missing text)",
+            "typology": "Single-family house (alteration project)",
             "coordBool": true,
             "coordinates": [
                 39.462925238598096,
                 -8.196886394673387
             ],
             "info": [
-                "(missing text)"
+                "The design of this building corresponds to a two-storey urban dwelling with an open loggia on the second floor, with a triple arcade overlooking Rua do Arcediago. This covered balcony has elements similar to those of the Sociedade da Assembleia de Abrantes Headquarters building (building 3), namely the arrangement of the ceramic elements of the railing, which are similar to those found in the chimney (building 3), and the circular arches and pillars of the balcony, which refer to the north-facing porch (building 3)."
             ],
             "images": [
                 "../img/rot191.JPG",
                 "../img/rot192.JPG"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)"
+                "Main façade of the building (2021).",
+                "Detail of the building's loggia (2021)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1935). Casa unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 340.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189536&img=28053"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 20,
-            "title": "House, Abrantes",
+            "title": "Residential Building, Abrantes",
             "year": "1936",
             "year2": "",
-            "location": "Rua de Santa Isabel nº 28 e 30",
-            "typology": "(missing text)",
+            "location": "Rua de Santa Isabel no. 28 and no.30",
+            "typology": "Single-family house (alteration project)",
             "coordBool": true,
             "coordinates": [
                 39.461816132073785,
                 -8.197358477514825
             ],
             "info": [
-                "(missing text)",
-                "(missing text)"
+                "Raul Lino's project started with an existing two-storey building (ground floor and upper floor) in downtown Abrantes to which one floor was added. The ground floor was intended for commercial premises and the upper floors for residential purposes.",
+                "According to the architectural design description, the exterior walls are made of solid brick, as are the interior partitions. The exterior walls are laid in one layer, while the interior walls are laid in half layers. The roof is described as ‘telhado de valadio’ (made of loose tiles) covered with Portuguese tiles, with cornice and eaves. (Note: The expressions in quotation marks are quotes by Raul Lino.)."
             ],
             "images": [
                 "../img/rot201.JPG",
                 "../img/rot202.JPG",
-                "../img/rot202.jpg"
+                "../img/rot203.jpg"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "Main façade of the building (2021).",
+                "Entrance door to the building (2021).",
+                "Detail drawing of the roof of the building, included in the project elements, Arquivo Municipal Eduardo Campos (1936)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "CMA/AMEC: processo nº 10.5.3-000062-1936"
+                }
             ]
         },
         {
             "id": 21,
-            "title": "House, Abrantes",
+            "title": "Residential Building, Abrantes",
             "year": "1938",
             "year2": "",
-            "location": "Rua Dom Afonso Henriques nº 9 a 11",
-            "typology": "(missing text)",
+            "location": "Rua Dom Afonso Henriques no. 9 and no. 11",
+            "typology": "Single-family house (alteration project)",
             "coordBool": true,
             "coordinates": [
                 39.46385336317629,
                 -8.201003961766888
             ],
             "info": [
-                "(missing text)"
+                "In this project, Raul Lino is commissioned to design the renovation of an existing three-storey building with a tiled façade.  The plan includes a number of alterations inside the house, with the aim of adapting the interior spaces and improving its comfort and usability. On the outside, three dormer windows were added, two facing the patio and the other in the center of the main façade facing the street."
             ],
             "images": [
                 "../img/rot211.JPG",
                 "../img/rot212.JPG"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)"
+                "Main façade of the building (2021).",
+                "Upper floors of the building's main façade (2021)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1939). Casa unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 423.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=191742&img=28355"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=191742&img=28356"
+                        },
+                        {
+                            "text": "[Postal mail, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=191742&img=28358"
+                        },
+                        {
+                            "text": "[Architectural design report, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=191742&img=28357"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "fonte": "ROCHA, Mafalda (2019). Casa- Família(s): Vivências e Memórias as Intervenções de Raul Lino em Abrantes. Dissertação de Mestrado integrado da FAUP."
+                }
             ]
         },
         {
             "id": 22,
-            "title": "Moradia, Alferrarede (missing text)",
+            "title": "Residential Building, Abrantes",
             "year": "1938",
             "year2": "",
             "location": "Alferrarede",
-            "typology": "(missing text)",
+            "typology": "Single-family house (alteration plan)",
             "coordBool": false,
             "coordinates": [],
             "info": [
-                "(missing text)"
+                "This building is a single-family house built in a rural area in Alferrarede. The main entrance porch with ceramic brick pillars, the glass windows, the Portuguese-style eaves and the chimney stand out."
             ],
             "images": [
                 "../img/rot221.jpg"
             ],
             "imagesSubtitle": [
-                "(missing text)"
+                "External view of the building (2021)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1939). Casa unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 386."
+                },
+                {
+                    "id": 2,
+                    "fonte": "ROCHA, Mafalda (2019). Casa- Família(s): Vivências e Memórias as Intervenções de Raul Lino em Abrantes. Dissertação de Mestrado integrado da FAUP."
+                }
             ]
         },
         {
@@ -698,36 +1155,52 @@
             "title": "Garage, Abrantes",
             "year": "1939",
             "year2": "",
-            "location": "Rua Dom Afonso Henriques (ao lado do nº 25)",
-            "typology": "(missing text)",
+            "location": "Rua Dom Afonso Henriques (next to no. 25)",
+            "typology": "Garage (original project)",
             "coordBool": false,
             "coordinates": [],
             "info": [
-                "(missing text)",
-                "(missing text)"
+                "This small project was for the construction of a garage in place of a pre-existing structure - a “shed”- close to the residential building that Raul Lino designed in 1924 for Guilherme Moura Neves, and which was later enlarged (in 1948). The project concerned the construction, on a narrow plot, of a garage to serve the dwelling. The unevenness of the terrain has made it possible to design outbuildings with separate accesses. ",
+                "On the level of the street there is a garage, a bedroom and sanitary facilities, with access from the side façade. On the backyard level, there is also a volume housing two rooms, one for backyard storage and the other for a kitchen."
             ],
             "images": [
                 "../img/rot231.JPG"
             ],
             "imagesSubtitle": [
-                "(missing text)"
+                "Exterior view of the garage (2021)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1939). Projeto de uma garagem. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 404.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189819&img=28260"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "fonte": "ROCHA, Mafalda (2019). Casa- Família(s): Vivências e Memórias as Intervenções de Raul Lino em Abrantes. Dissertação de Mestrado integrado da FAUP."
+                }
             ]
         },
         {
             "id": 24,
             "title": "House, Abrantes",
             "year": "1939",
-            "year2": "e 1941",
+            "year2": "and 1941",
             "location": "Rua Dom Afonso Henriques nº 13 a 15",
-            "typology": "(missing text)",
+            "typology": "Single-family house (original project: 1939; alteration project to enlarge the existing building: 1941)",
             "coordBool": true,
             "coordinates": [
                 39.46378712823677,
                 -8.20108733009068
             ],
             "info": [
-                "(missing text)",
-                "(missing text)"
+                "The project concerns the construction of a two-storey residential building with a basement in a markedly horizontal layout. The elevation is divided into four modules, with small differences between them. The entrance area stands out, integrating the door and window of the second floor in a vertical strip framed by pilasters.",
+                "In the building, it is worth noting the metal railings of the balconies (similar to the metal railings of the porch balcony of the Assembleia de Abrantes building), the stonework that marks the openings of the balcony windows and the doors, as well as the building's chimney."
             ],
             "images": [
                 "../img/rot241.JPG",
@@ -735,50 +1208,111 @@
                 "../img/rot243.bmp"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "Main façade of the building (2021).",
+                "Detail on the main façade of the building (2021).",
+                "Main façade of the building, Arquivo Municipal Eduardo Campos (c. 1970)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1939). Casa unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 434.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192219&img=28384"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192219&img=28385"
+                        },
+                        {
+                            "text": "[Postal mail, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192219&img=28386"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "fonte": "ROCHA, Mafalda (2019). Casa- Família(s): Vivências e Memórias as Intervenções de Raul Lino em Abrantes. Dissertação de Mestrado integrado da FAUP."
+                },
+                {
+                    "id": 3,
+                    "fonte": "IPA.00026334",
+                    "biblio": [
+                        {
+                            "text": "[Link SIPA]",
+                            "links": "http://www.monumentos.gov.pt/site/app_pagesuser/SIPA.aspx?id=26334"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "fonte": "CMA/AMEC: Processo 3149, 1942 e processo 3169, 1942"
+                }
             ]
         },
         {
             "id": 25,
-            "title": "House, Abrantes",
+            "title": "Residential Building, Abrantes",
             "year": "1940",
             "year2": "",
-            "location": "Rua 5 de outubro de 1910, nº 16",
-            "typology": "(missing text)",
+            "location": "Rua 5 de Outubro de 1910, no. 16",
+            "typology": "Single-family house (alteration project)",
             "coordBool": true,
             "coordinates": [
                 39.46500822867063,
                 -8.197535319879464
             ],
             "info": [
-                "(missing text)"
+                "The alteration plan proposed by Raul Lino for this residential building located near the S. Vicente church and Largo da Ferraria includes important modifications such as the reconfiguration of its main façade with the removal of the balustrade and a new cornice ceiling. Dormer windows were also added and the frames, joinery and metalwork of the door and window frames were redesigned and replaced."
             ],
             "images": [
                 "../img/rot251.JPG",
                 "../img/rot252.JPG"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)"
+                "Main facade of the building (2022).",
+                "Main entrance of the building (2022)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1940). Casa unifamiliar, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 422.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=191737&img=28351"
+                        },
+                        {
+                            "text": "[Architectural design report, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=191737&img=28352"
+                        },
+                        {
+                            "text": "[Postal mail, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=191737&img=28353"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 26,
-            "title": "Kindergarten João de Deus 1, Tomar",
+            "title": "Kindergarten João de Deus 1",
             "year": "1945",
-            "year2": "e 1946",
+            "year2": "and 1946",
             "location": "Rua Miguel Maria Ferreira",
-            "typology": "(missing text)",
+            "typology": "School building (original project)",
             "coordBool": true,
             "coordinates": [
                 39.605909,
                 -8.405876
             ],
             "info": [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
-                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+                "João de Deus de Nogueira Ramos (1830 - 1896), who became known as João de Deus, was an important Portuguese pedagogue and poet who is recognized for having proposed a method of teaching reading for children.",
+                "The first kindergarten, based on the methodology by João de Deus, was built in Coimbra in 1911. The project was designed by Raul Lino in 1909 and served as model for other buildings in different locations, as in Lisbon which building was inaugurated in 1915. Between 1911 and 1957 Raul Lino designed eleven kindergarten projects based on João de Deus methodology. Lino's work designing school spaces also included the Alcântara primary school (1916), the model 1 primary schools, North, Centre and South, in 1918; and the project types (1933-1935) for the Estado Novo primary schools to be built in the Portugues regions of Algarve, Alentejo, Ribatejo and Extremadura.",
+                "The construction of two kindergartens on João de Deus method in Tomar was part of the will of the benefactor Miguel Maria Ferreira (1871-1945). The donation in the form of money (worth 1,800 escudos) was announced to Tomar Town Council in 1945 by Miguel Ferrreira widow, Júlia Ferreira.",
+                "The first school was inaugurated on 9 January 1955 (building 26), in the urban expansion zone which resulted from the General Urbanization Plan for Tomar in 1942. Near the historic center, in Rua de Leiria, the second kindergarten opened in 1962 (building 27). João de Deus Ramos, the founder's son, who died in 1953, also supervised the project at an early stage.",
+                "The project, whose drawings have been deposited at the Calouste Gulbenkian Foundation, consists of two site plans, two elevations - front and back - construction details and a drawing of the perimeter wall relating to the Rua de Leiria project. Raul Lino's designs for this institution follow a model, with some variations. However, there are some constants, particularly in terms of the organization of the floor plan, with the entrance in a central position, usually with an arched opening that houses a generous covered area, and which communicates directly with the museum, the core of this type of school. To the side are the classrooms, canteen and other services."
             ],
             "images": [
                 "../img/rot261.JPG",
@@ -787,52 +1321,130 @@
                 "../img/rot264.jpg"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "News published in the local press on June 28th in the newspaper “O Templário” (1953).",
+                "Main façade of the João de Deus kindergarten building in Tomar (2024).",
+                "Fachada principal do edifício do jardim de infância João de Deus, em Tomar (2024).",
+                "Main entrance to the João de Deus kindergarten building in Tomar (2024)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (195-460). Projecto de Jardim-Escola João de Deus, Tomar, projecto a realizar pelo legado do benemérito Miguel Maria Ferreira. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 473.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192320&img=28578"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192320&img=28579"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192320&img=28580"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192320&img=28581"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192320&img=28582"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "fonte": "Lino, Raul (1916). Edifícios escolares de Raúl Lino”, revista Atlântida, nº 4, 15 de fevereiro de 1916, p. 331-336.",
+                    "biblio": [
+                        {
+                            "text": "[Link]",
+                            "links": "https://hemerotecadigital.cm-lisboa.pt/obras/atlantida/N4/N4_master/N04.PDF"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "fonte": "SGEC (2020). Raul Lino arquitecto de escolas. Organização Françoise Le Cunff",
+                    "biblio": [
+                        {
+                            "text": "[Link]",
+                            "links": "https://www.sec-geral.mec.pt/sites/default/files/Raul%20Lino%20-%20arquiteto%20de%20escolas.pdf"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 27,
-            "title": "Kindergarten João de Deus 2, Tomar",
+            "title": "Kindergarten João de Deus 2",
             "year": "1945",
-            "year2": "e 1946",
+            "year2": "and 1946",
             "location": "Rua de Leiria",
-            "typology": "(missing text)",
+            "typology": "School building (original project)",
             "coordBool": true,
             "coordinates": [
                 39.608152,
                 -8.417457
             ],
             "info": [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
-                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+                "João de Deus de Nogueira Ramos (1830 - 1896), who became known as João de Deus, was an important Portuguese pedagogue and poet who is recognized for having proposed a method of teaching reading for children.",
+                "The first kindergarten, based on the methodology by João de Deus, was built in Coimbra in 1911. The project was designed by Raul Lino in 1909 and served as model for other buildings in different locations, as in Lisbon which building was inaugurated in 1915. Between 1911 and 1957 Raul Lino designed eleven kindergarten projects based on João de Deus methodology. Lino's work designing school spaces also included the Alcântara primary school (1916), the model 1 primary schools, North, Centre and South, in 1918; and the project types (1933-1935) for the Estado Novo primary schools to be built in the Portugues regions of Algarve, Alentejo, Ribatejo and Extremadura.",
+                "The construction of two kindergartens on João de Deus method in Tomar was part of the will of the benefactor Miguel Maria Ferreira (1871-1945). The donation in the form of money (worth 1,800 escudos) was announced to Tomar Town Council in 1945 by Miguel Ferrreira widow, Júlia Ferreira.",
+                "The first school was inaugurated on 9 January 1955 (building 26), in the urban expansion zone which resulted from the General Urbanization Plan for Tomar in 1942. Near the historic center, in Rua de Leiria, the second kindergarten opened in 1962 (building 27). João de Deus Ramos, the founder's son, who died in 1953, also supervised the project at an early stage.",
+                "The project, whose drawings have been deposited at the Calouste Gulbenkian Foundation, consists of two site plans, two elevations - front and back - construction details and a drawing of the perimeter wall relating to the Rua de Leiria project. Raul Lino's designs for this institution follow a model, with some variations. However, there are some constants, particularly in terms of the organization of the floor plan, with the entrance in a central position, usually with an arched opening that houses a generous covered area, and which communicates directly with the museum, the core of this type of school. To the side are the classrooms, canteen and other services."
             ],
             "images": [
                 "../img/rot271.jpg",
                 "../img/rot272.jpg"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)"
+                "Main façade of the João de Deus kindergarten building in Tomar (2024).",
+                "Main façade of the João de Deus kindergarten building in Tomar (2024)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (195-460). Projecto de Jardim-Escola João de Deus, Tomar, projecto a realizar pelo legado do benemérito Miguel Maria Ferreira. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 473.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192320&img=28578"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192320&img=28579"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192320&img=28580"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192320&img=28581"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192320&img=28582"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 28,
-            "title": "Grave site, Tomar",
+            "title": "Family Burial Plot, Tomar",
             "year": "1945",
             "year2": "",
-            "location": "Santa Maria do Olival, Tomar",
-            "typology": "(missing text)",
+            "location": "Cemetery of Santa Maria do Olival",
+            "typology": "Funerary architecture",
             "coordBool": true,
             "coordinates": [
                 39.60272627829137,
                 -8.40791477291339
             ],
             "info": [
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tristique mi vel mauris suscipit, a finibus velit eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla pretium, arcu quis scelerisque condimentum, nisi lectus condimentum purus, non dignissim massa neque non lacus. Nam eu erat sit amet nisl tristique malesuada. Nulla eget gravida dolor, eu pellentesque massa. Mauris dictum, purus non aliquet lobortis, arcu nisi cursus neque, sit amet efficitur neque elit id justo. Sed pharetra auctor enim, sit amet facilisis lectus rhoncus ac. Duis fermentum sit amet nisl a sagittis. Cras pulvinar, turpis sed pulvinar pharetra, eros mauris tincidunt nibh, sit amet porta nulla magna eget eros. Curabitur turpis ante, egestas eget purus nec, varius varius dolor. Suspendisse potenti. Nunc malesuada, turpis sed luctus commodo, nisl magna elementum ipsum, at faucibus nisl nulla nec velit.",
-                "Quisque tempus pulvinar hendrerit. Sed nulla dolor, porta eget tempor ut, tincidunt et lacus. Praesent non convallis nunc. Suspendisse tempor enim a dignissim semper. Aliquam luctus tellus nulla. Mauris dapibus suscipit nulla non pellentesque. Praesent molestie eros rhoncus massa varius tincidunt. Maecenas egestas ligula sed metus luctus finibus. Vestibulum at congue libero, ut condimentum enim. Nullam consequat nunc quis mollis consequat. Curabitur ipsum leo, commodo vel purus ut, feugiat congue odio. Praesent ut pellentesque lorem. Morbi ac lectus porttitor, porttitor arcu ac, volutpat libero. Curabitur ornare tempor laoreet. Quisque non placerat lectus. Nulla ut neque ante."
+                "Raul Lino, designer of João de Deus’ kindergarten buildings in Tomar (Buildings 26 and 27), which resulted from Miguel Maria Ferreira's legacy, was also responsible for designing the family burial plot of the benefactor. The building stands in the cemetery of Santa Maria dos Olivais. The project, dated from 1945, presented two compositional options, with the choice falling on a design with a classical composition, a tomb-chapel with a central body with two small wings in symmetry in lower height, and differentiated roof."
             ],
             "images": [
                 "../img/rot281.jpg",
@@ -840,33 +1452,65 @@
                 "../img/rot283.jpg"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)",
-                "(missing text)"
+                "Front view of the burial plot building of Miguel Maria Ferreira and Júlia Ferreira (2024).",
+                "Family burial plot of Miguel Maria Ferreira and his wife Júlia Ferreira: stamp of Raul Lino engraved on the façade (2024).",
+                "Side view of the burial plot building of Miguel Maria Ferreira and Júlia Ferreira (2024)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "LINO, R. (1945). Projecto de jazigo da família da Exma. Sra. D. Júlia Ferreira, Tomar. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 476.",
+                    "biblio": [
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192324&img=28594"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192324&img=28595"
+                        },
+                        {
+                            "text": "[Project drawings, FCG]",
+                            "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=192324&img=28596"
+                        }
+                    ]
+                }
             ]
         },
         {
             "id": 29,
-            "title": "Palacete, Abrantes (missing text)",
+            "title": "Mansion, Abrantes",
             "year": "1965",
             "year2": "",
-            "location": "Rua Grande nº 46-52",
-            "typology": "(missing text)",
+            "location": "Rua Grande, no. 45 - 52",
+            "typology": "Single-family house (alteration project)",
             "coordBool": true,
             "coordinates": [
                 39.463349938394856,
                 -8.196668381385852
             ],
             "info": [
-                "(missing text)"
+                "This nineteenth-century two-storey palace, whose main façade on the lower floor is covered with monochrome tiles, is located on one of the main arteries of Abrantes. This street connects the parish churches of S. Vicente and S. João Batista. In 1968, the interior was renovated by Raul Lino, with the garden project by architect Gonçalo Ribeiro Telles (1922-2020). In 1977, it was classified as property of municipal interest."
             ],
             "images": [
                 "../img/rot291.bmp",
                 "../img/rot292.JPG"
             ],
             "imagesSubtitle": [
-                "(missing text)",
-                "(missing text)"
+                "Main façade of the building, Eduardo Campos Municipal Archive (n.d.).",
+                "Main façade of the building (2021)."
+            ],
+            "links": [
+                {
+                    "id": 1,
+                    "fonte": "IPA. 00001979",
+                    "biblio": [
+                        {
+                            "text": "[Link SIPA]",
+                            "links": "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=1979"
+                        }
+                    ]
+                }
             ]
         }
     ]
