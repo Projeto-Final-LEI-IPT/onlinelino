@@ -22,6 +22,7 @@ function ChronologyIndex() {
     };
 
     for (let i = 0; i < 50; i++) {
+        const id = t(`buildings.${i}.id`);
         const title = t(`buildings.${i}.title`);
         const year = t(`buildings.${i}.year`);
         const year2 = t(`buildings.${i}.year2`);
@@ -41,7 +42,12 @@ function ChronologyIndex() {
             image = color === "yellow" ? imageY : imageG;
             lastColor = color;
 
+            if (id === 11) {
+                image = "images-chrono";
+            }
+
             buildings.push({
+                id: id,
                 title: title,
                 year: parseInt(year),
                 year2: year + year2,
