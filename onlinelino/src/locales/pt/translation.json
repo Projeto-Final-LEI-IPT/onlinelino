@@ -219,8 +219,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot1.jpg",
+                    "image": "../img/roteiro_chrono/rot11.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot12.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -265,7 +269,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot2.jpg",
+                    "image": "../img/roteiro_chrono/rot21.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot22.jpg",
                     "color": "green"
                 }
             ]
@@ -356,8 +364,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot3.jpg",
+                    "image": "../img/roteiro_chrono/rot31.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot32.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -448,8 +460,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot5.jpg",
+                    "image": "../img/roteiro_chrono/rot51.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot52.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -523,7 +539,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot6.jpg",
+                    "image": "../img/roteiro_chrono/rot61.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot62.jpg",
                     "color": "green"
                 }
             ]
@@ -557,7 +577,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot7.jpg",
+                    "image": "../img/roteiro_chrono/rot71.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot72.jpg",
                     "color": "green"
                 }
             ]
@@ -627,7 +651,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot9.jpg",
+                    "image": "../img/roteiro_chrono/rot91.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot92.jpg",
                     "color": "green"
                 }
             ]
@@ -682,8 +710,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot10.jpg",
+                    "image": "../img/roteiro_chrono/rot101.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot102.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -739,7 +771,12 @@
                     ]
                 }
             ],
-            "images-chrono": []
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot112.jpg",
+                    "color": "green"
+                }
+            ]
         },
         {
             "id": 12,
@@ -884,7 +921,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot13.jpg",
+                    "image": "../img/roteiro_chrono/rot131.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot132.jpg",
                     "color": "green"
                 }
             ]
@@ -953,7 +994,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot15.jpg",
+                    "image": "../img/roteiro_chrono/rot151.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot152.jpg",
                     "color": "green"
                 }
             ]
@@ -992,8 +1037,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot16.jpg",
+                    "image": "../img/roteiro_chrono/rot161.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot162.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1036,7 +1085,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot17.jpg",
+                    "image": "../img/roteiro_chrono/rot171.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot172.jpg",
                     "color": "green"
                 }
             ]
@@ -1070,7 +1123,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot18.jpg",
+                    "image": "../img/roteiro_chrono/rot181.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot182.jpg",
                     "color": "green"
                 }
             ]
@@ -1112,8 +1169,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot19.jpg",
+                    "image": "../img/roteiro_chrono/rot191.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot192.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1151,7 +1212,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot20.jpg",
+                    "image": "../img/roteiro_chrono/rot201.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot202.jpg",
                     "color": "green"
                 }
             ]
@@ -1209,8 +1274,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot21.jpg",
+                    "image": "../img/roteiro_chrono/rot211.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot212.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1244,7 +1313,7 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot22.jpg",
+                    "image": "../img/roteiro_chrono/rot222.jpg",
                     "color": "green"
                 }
             ]
@@ -1286,8 +1355,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot23.jpg",
+                    "image": "../img/roteiro_chrono/rot231.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot232.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1357,8 +1430,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot24.jpg",
+                    "image": "../img/roteiro_chrono/rot241.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot242.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1407,7 +1484,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot25.jpg",
+                    "image": "../img/roteiro_chrono/rot251.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot252.jpg",
                     "color": "green"
                 }
             ]
@@ -1493,8 +1574,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot26.jpg",
+                    "image": "../img/roteiro_chrono/rot261.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot262.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1555,7 +1640,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot27.jpg",
+                    "image": "../img/roteiro_chrono/rot271.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot272.jpg",
                     "color": "green"
                 }
             ]
@@ -1607,8 +1696,12 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot28.jpg",
+                    "image": "../img/roteiro_chrono/rot281.jpg",
                     "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot282.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1649,7 +1742,11 @@
             ],
             "images-chrono": [
                 {
-                    "image": "../img/roteiro_chrono/rot29.jpg",
+                    "image": "../img/roteiro_chrono/rot291.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot292.jpg",
                     "color": "green"
                 }
             ]
