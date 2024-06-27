@@ -1,6 +1,5 @@
 import React from "react";
 import NavbarHome from "../../components/NavbarHome";
-import NavbarProject from "../../components/NavbarProject";
 import Container from "react-bootstrap/esm/Container";
 import { useTranslation } from 'react-i18next';
 
@@ -26,8 +25,6 @@ function TeamIndex() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <NavbarProject />
             <br />
             <Container>
                 <h4>{t('teamPage.team')}</h4>

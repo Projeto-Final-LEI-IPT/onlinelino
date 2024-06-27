@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import NavbarHome from "../../components/NavbarHome";
-import NavbarBuilding from "../../components/NavbarBuilding";
 import Container from "react-bootstrap/esm/Container";
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { Link } from 'react-router-dom';
@@ -38,7 +37,7 @@ const MapIndex = () => {
 
     // Load the Google Maps API
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyBgydpzpaz7A19z5hPqOFAWkVl67lhTLls',
+        googleMapsApiKey: 'AIzaSyBsIx2lJVWnAwR087TB4Bs-l3xVRTGyqQY',
         libraries,
     });
 
@@ -107,12 +106,9 @@ const MapIndex = () => {
     return (
         <>
             <NavbarHome />
-            <br />
-            <NavbarBuilding />
-            <br />
+            {/* <br /> */}
             {/* Container for the map */}
             <Container ref={mapContainerRef} style={{ width: '100%', height: '50vh' }}>
-                <h4>{t('mapPage.title')}</h4>
                 {/* GoogleMap component */}
                 <GoogleMap
                     mapContainerStyle={{ width: '100%', height: '100%' }}
@@ -127,6 +123,10 @@ const MapIndex = () => {
                             position={{ lat: location.latitudes, lng: location.longitudes }}
                             title={location.title}
                             onClick={() => handleMarkerClick(location)}
+                            icon={{
+                                url: "../img/ponto.png", 
+                                scaledSize: new window.google.maps.Size(50, 50) // Size of the marker
+                              }}
                         />
                     ))}
 

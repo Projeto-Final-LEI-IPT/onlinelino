@@ -1,6 +1,5 @@
 import React from "react";
 import NavbarHome from "../../components/NavbarHome";
-import NavbarProject from "../../components/NavbarProject";
 import Container from "react-bootstrap/esm/Container";
 import { useTranslation } from 'react-i18next';
 
@@ -18,8 +17,6 @@ function DescriptionIndex() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <NavbarProject />
             <br />
             <Container>
                 {developed.map((paragraph, index) => (

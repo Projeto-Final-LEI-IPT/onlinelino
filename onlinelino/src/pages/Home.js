@@ -1,5 +1,6 @@
 import React from "react";
 import NavbarHome from "../components/NavbarHome";
+import Footer from "../components/Footer";
 import Container from "react-bootstrap/esm/Container";
 import { useTranslation } from 'react-i18next';
 
@@ -22,6 +23,7 @@ function Home() {
                     <p key={index}>{paragraph}</p>
                 ))}
             </Container>
+            <Footer />
         </>
     );
 }

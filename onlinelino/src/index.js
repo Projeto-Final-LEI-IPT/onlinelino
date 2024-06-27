@@ -7,6 +7,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import ReactDOM from 'react-dom';
 import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
+import './style/Style.css';
 
 i18next.init({
   interpolation: { escapeValue: false }, // React already does escaping

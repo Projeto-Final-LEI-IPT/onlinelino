@@ -1,11 +1,8 @@
 {
     "navbarHome": {
-        "label": "Raul Lino no Médio Tejo",
         "project": "PROJETO",
         "biography": "BIOGRAFIA",
-        "building": "OBRA",
-        "search": "Pesquisa",
-        "submit": "Pesquisar"
+        "building": "OBRA"
     },
     "navbarProject": {
         "description": "DESCRIÇÃO",
@@ -18,6 +15,7 @@
         "about": "SOBRE O MÉDIO TEJO"
     },
     "navbarBuilding": {
+        "details": "DETALHES",
         "chronology": "CRONOLOGIA",
         "map": "MAPA",
         "list": "LISTA"
@@ -156,12 +154,6 @@
     "cronologyPage": {
         "title": "Cronologia"
     },
-    "mapPage": {
-        "title": "Mapa com a locallização das obras"
-    },
-    "listPage": {
-        "title": "Lista de Obras"
-    },
     "buildingsDetailsPage": {
         "year": "Data do projeto",
         "type": "Tipologia",
@@ -190,9 +182,9 @@
                 "As janelas do primeiro piso são protegidas com gelosias cuja cor contrasta com a da parede da moradia, à semelhança do edifício da Assembleia da Sociedade de Abrantes que viria a ser construído em 1924."
             ],
             "images": [
-                "../img/rot11.bmp",
-                "../img/rot12.JPG",
-                "../img/rot13.JPG"
+                "../img/roteiro/rot11.bmp",
+                "../img/roteiro/rot12.JPG",
+                "../img/roteiro/rot13.JPG"
             ],
             "imagesSubtitle": [
                 "Fachada posterior da moradia (Arquivo Municipal Eduardo Campos, data: entre 1969 e 2018)",
@@ -224,6 +216,16 @@
                         }
                     ]
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot11.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot12.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
@@ -242,8 +244,8 @@
                 "O projeto desenvolvido por Raul Lino refere-se à ampliação de um edifício existente designado por Quinta da Fábrica e encomendado pela família Soares Mendes. A memória descritiva evidencia a preocupação de integrar as soluções arquitetónicas e construtivas com a construção pré-existente."
             ],
             "images": [
-                "../img/rot21.jpg",
-                "../img/rot22.png"
+                "../img/roteiro/rot21.jpg",
+                "../img/roteiro/rot22.png"
             ],
             "imagesSubtitle": [
                 "Local da quinta da fábrica (2022).",
@@ -263,6 +265,16 @@
                             "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=188552&img=27563"
                         }
                     ]
+                }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot21.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot22.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -287,11 +299,11 @@
                 ""
             ],
             "images": [
-                "../img/rot31.jpeg",
-                "../img/rot32.png",
-                "../img/rot33.jpg",
-                "../img/rot34.jpg",
-                "../img/rot35.JPG"
+                "../img/roteiro/rot31.jpeg",
+                "../img/roteiro/rot32.png",
+                "../img/roteiro/rot33.jpg",
+                "../img/roteiro/rot34.jpg",
+                "../img/roteiro/rot35.JPG"
             ],
             "imagesSubtitle": [
                 "Postal ilustrado do edifício da Assembleia de Abrantes (Arquino Municipal Eduardo Campos, s.d.).",
@@ -349,6 +361,16 @@
                     "id": 7,
                     "fonte": "OLIVEIRA, C., Jaramillo, J. (2016). “Arquitectura e pública-acção A Nossa Casa no Mensário das Casas do Povo: três projectos de Raul Lino”. In A conquista social do território. Arquitetura e corporativismo no Estado Novo, Ferreira, F., Mendes, F., Pereira, N. (coord.). Coimbra: Edições Tenacitas. 79-103."
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot31.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot32.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
@@ -378,13 +400,14 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "images-chrono": []
         },
         {
             "id": 5,
             "title": "Edifício de Habitação, Abrantes",
             "year": "1924",
-            "year2": "e 1942",
+            "year2": "-1942",
             "location": "Rua de S. Pedro, nº 8",
             "typology": "Habitação unifamiliar (projeto de alteração)",
             "coordBool": true,
@@ -398,10 +421,10 @@
                 ""
             ],
             "images": [
-                "../img/rot51.JPG",
-                "../img/rot52.JPG",
-                "../img/rot53.JPG",
-                "../img/rot54.bmp"
+                "../img/roteiro/rot51.JPG",
+                "../img/roteiro/rot52.JPG",
+                "../img/roteiro/rot53.JPG",
+                "../img/roteiro/rot54.bmp"
             ],
             "imagesSubtitle": [
                 "Fachada principal do edifício (2021).",
@@ -434,13 +457,23 @@
                     "id": 3,
                     "fonte": "CMA/AMEC: Processo 10.5.3, 1942"
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot51.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot52.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
             "id": 6,
             "title": "Edifício de Habitação, Abrantes",
             "year": "1924",
-            "year2": "e 1948",
+            "year2": "-1948",
             "location": "Rua Dom Afonso Henriques, nº 25",
             "typology": "Habitação unifamiliar (projeto original: 1924; projeto de ampliação: 1948)",
             "coordBool": true,
@@ -455,9 +488,9 @@
                 "Em 1948, foi requerido um projeto de ampliação, implantado no lote adjacente, tendo sido construído um corpo contíguo ao edifício existente, que também sofreu, nessa campanha de obras, algumas alterações na distribuição e na organização dos aposentos."
             ],
             "images": [
-                "../img/rot61.JPG",
-                "../img/rot62.JPG",
-                "../img/rot63.JPG"
+                "../img/roteiro/rot61.JPG",
+                "../img/roteiro/rot62.JPG",
+                "../img/roteiro/rot63.JPG"
             ],
             "imagesSubtitle": [
                 "Fachada e porta principal da moradia (2021).",
@@ -503,6 +536,16 @@
                     "id": 5,
                     "fonte": "ROCHA, Mafalda (2019). Casa- Família(s): Vivências e Memórias as Intervenções de Raul Lino em Abrantes. Dissertação de Mestrado integrado da FAUP."
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot61.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot62.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
@@ -521,7 +564,7 @@
                 "Esta construção localizada no cemitério de S. Miguel do Rio Torto, foi encomendada pela família Martins, e mandada erigir em 1924, segundo a inscrição gravada sobre a porta. O edifício de composição simples, apresenta um pórtico, que alberga um pequeno átrio, e que precede a entrada da capela, volumetricamente destacada e com uma cobertura de duas águas."
             ],
             "images": [
-                "../img/rot71.jpeg"
+                "../img/roteiro/rot71.jpeg"
             ],
             "imagesSubtitle": [
                 "Vista da entrada do mausoléu (2022)."
@@ -530,6 +573,16 @@
                 {
                     "id": 1,
                     "fonte": "LINO, R. (1902-74). Projeto de mausoléu, Carvalhal, Abrantes. Lisboa: Biblioteca de Arte da Fundação Calouste Gulbenkian, Espólio Raúl Lino: Cota RL 614."
+                }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot71.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot72.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -556,7 +609,8 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "images-chrono": []
         },
         {
             "id": 9,
@@ -574,9 +628,9 @@
                 "Em 1928, Raul Lino desenha o pedestal para o busto do general Avelar Machado (1848-1909), da autoria de Ângelo Teixeira. O conjunto, busto e pedestal, foi inaugurado em 1929, e localiza-se no largo fronteiro ao edifício da sede da Sociedade da Assembleia de Abrantes (e da entrada principal deste edifício)."
             ],
             "images": [
-                "../img/rot91.jpg",
-                "../img/rot92.JPG",
-                "../img/rot93.JPG"
+                "../img/roteiro/rot91.JPG",
+                "../img/roteiro/rot92.JPG",
+                "../img/roteiro/rot93.JPG"
             ],
             "imagesSubtitle": [
                 "Inauguração do busto de General Avelar Machado (1929).",
@@ -594,13 +648,23 @@
                         }
                     ]
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot91.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot92.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
             "id": 10,
             "title": "Edifício de Habitação, Abrantes",
             "year": "1929",
-            "year2": "e 1963",
+            "year2": "-1963",
             "location": "Rua Tenente Valadim, nº 3 e 5",
             "typology": "Habitação unifamiliar (projeto original: 1929; projeto de ampliação: 1963)",
             "coordBool": true,
@@ -613,8 +677,8 @@
                 "No piso térreo, a fachada principal é revestida com elementos pétreos de corte regular até ao limite inferior das janelas. A porta de entrada é encimada por elementos de cantaria que definem um triângulo. No projeto inicial, a cobertura incluiu duas trapeiras, formalmente distintas entre si, com vista para a Rua Tenente Valadim."
             ],
             "images": [
-                "../img/rot101.jpg",
-                "../img/rot102.jpg"
+                "../img/roteiro/rot101.jpg",
+                "../img/roteiro/rot102.jpg"
             ],
             "imagesSubtitle": [
                 "Fachada principal (2022).",
@@ -643,6 +707,16 @@
                     "id": 2,
                     "fonte": "CMA/AMEC: Processo nº 19, reg. 3396 de 1961."
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot101.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot102.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
@@ -664,11 +738,11 @@
                 "Em terreno contíguo a esta moradia, a escassos metros de distância, foi edificada outro edifício, que partindo do mesmo projeto foi construído em simetria."
             ],
             "images": [
-                "../img/rot111.jpg",
-                "../img/rot112.jpg",
-                "../img/rot113.jpg",
-                "../img/rot114.jpg",
-                "../img/rot115.jpg"
+                "../img/roteiro/rot111.jpg",
+                "../img/roteiro/rot112.jpg",
+                "../img/roteiro/rot113.jpg",
+                "../img/roteiro/rot114.jpg",
+                "../img/roteiro/rot115.jpg"
             ],
             "imagesSubtitle": [
                 "Vista das fachadas principal e Nascente (2024).",
@@ -695,6 +769,16 @@
                             "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189254&img=27904"
                         }
                     ]
+                }
+            ],
+            "images-chrono": [
+                {
+                    "image": "",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot112.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -733,7 +817,8 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "images-chrono": []
         },
         {
             "id": 13,
@@ -753,15 +838,15 @@
                 "No início da rua 5 de Outubro, Raul Lino projetou o extenso muro perimetral que ladeia o terreno do antigo dispensário da Assistência Nacional aos Tuberculosos, com um desenho simples em alvenaria com elementos vazados de forma triangular, e, no desenho dos dois portões que lhe dão acesso, incluiu a figura do sardão, réptil representado no brasão da vila."
             ],
             "images": [
-                "../img/rot131.jpg",
-                "../img/rot132.jpg",
-                "../img/rot133.jpg",
-                "../img/rot134.jpg",
-                "../img/rot135.jpg",
-                "../img/rot136.jpg",
-                "../img/rot137.jpg",
-                "../img/rot138.jpg",
-                "../img/rot139.jpg"
+                "../img/roteiro/rot131.jpg",
+                "../img/roteiro/rot132.jpg",
+                "../img/roteiro/rot133.jpg",
+                "../img/roteiro/rot134.jpg",
+                "../img/roteiro/rot135.jpg",
+                "../img/roteiro/rot136.jpg",
+                "../img/roteiro/rot137.jpg",
+                "../img/roteiro/rot138.jpg",
+                "../img/roteiro/rot139.jpg"
             ],
             "imagesSubtitle": [
                 "Pelourinho na Praça da República (2024).",
@@ -837,6 +922,16 @@
                         }
                     ]
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot131.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot132.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
@@ -864,13 +959,14 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "images-chrono": []
         },
         {
             "id": 15,
             "title": "Torre para Posto de Transformação, Alcanena",
             "year": "1932",
-            "year2": "e 1934",
+            "year2": "-1934",
             "typology": "Infraestrutura de redes - Posto de Transformação (projeto original)",
             "location": "Alcanena",
             "coordBool": false,
@@ -879,7 +975,7 @@
                 "Esta torre de transformação foi uma encomenda da Câmara Municipal de Alcanena. Na memória descritiva do projeto refere-se que as Comissões de Turismo e Propaganda têm exigido uma maior integração dos edifícios com a paisagem. É com esta premissa que Raul Lino projeta esta torre técnica, inspirada na construção “portuguesa, tradicional,” mas “usando o moderno processo de construir em betão armado”."
             ],
             "images": [
-                "../img/rot151.jpg"
+                "../img/roteiro/rot151.jpg"
             ],
             "imagesSubtitle": [
                 "Representação 3D da Torre para o posto de Transformação, com base nos desenhos do projeto."
@@ -899,6 +995,16 @@
                         }
                     ]
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot151.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot152.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
@@ -914,8 +1020,8 @@
                 "Deste designado “plano económico de embelezamento”, só conhecemos o esboço que Raul Lino terá apresentado em 1934. Trata-se de uma perspetiva onde apresenta o possível arranjo urbanístico de um largo situado no limite da vila, propondo que na plataforma sobranceira da praça, se dispusesse um miradouro, alcandorado por pérgula e, na zona da praça mais recuada, junto ao muro que o limita, se colocassem assentos abrigados por um alpendre, num recanto amenizado pela construção de um fontanário. Neste projeto, pretende-se que a utilização de elementos mínimos, sirva para criar o máximo efeito, criando uma zona de mediação, um átrio a descoberto, que precederia a entrada da vila."
             ],
             "images": [
-                "../img/rot161.jpg",
-                "../img/rot162.jpg"
+                "../img/roteiro/rot161.jpg",
+                "../img/roteiro/rot162.jpg"
             ],
             "imagesSubtitle": [
                 "Provável localização do arranjo urbanístico de Raul Lino que não foi concretizado: confluência entre a Rua da Ladeira e N3 (2024).",
@@ -931,6 +1037,16 @@
                             "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189480&img=26669"
                         }
                     ]
+                }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot161.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "",
+                    "color": "green"
                 }
             ]
         },
@@ -950,9 +1066,9 @@
                 "O projeto de Raul Lino parte de um edifício existente de três pisos localizado no centro histórico de Abrantes, no qual o arquiteto alterou a composição do terceiro piso, e transformou o vão único de janela original em dois (vãos). Foram ainda acrescentados dois óculos laterais no primeiro e no segundo pisos, que no projeto de Raul Lino apresentam forma circular, mas que foram concretizados em losango, tal como evidencia a fachada atual."
             ],
             "images": [
-                "../img/rot171.jpg",
-                "../img/rot172.png",
-                "../img/rot173.jpg"
+                "../img/roteiro/rot171.jpg",
+                "../img/roteiro/rot172.png",
+                "../img/roteiro/rot173.jpg"
             ],
             "imagesSubtitle": [
                 "Postal Delcampe (c. 1957).",
@@ -969,6 +1085,16 @@
                             "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189538&img=28057"
                         }
                     ]
+                }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot171.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot172.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -988,7 +1114,7 @@
                 "Este projeto de Raul Lino propôs a ampliação de um edifício térreo pré-existente e localizado no centro histórico de Abrantes, num lote estreito e profundo. Ao edifício existente foram acrescidos dois pisos ligados por uma escada interior. O projeto deste edifício encontra-se no Arquivo Municipal Eduardo Campos, em Abrantes."
             ],
             "images": [
-                "../img/rot181.JPG"
+                "../img/roteiro/rot181.JPG"
             ],
             "imagesSubtitle": [
                 "Fachada do edifício sobre a Rua General António Mourato (2022)."
@@ -997,6 +1123,16 @@
                 {
                     "id": 1,
                     "fonte": "CMA/AMEC: processo nº 10.5.3-0Q0Q80/1934"
+                }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot181.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot182.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1016,8 +1152,8 @@
                 "O projeto deste edifício corresponde a uma habitação de carácter urbano, que se desenvolve em dois pisos, e que apresenta uma loggia aberta no primeiro piso, em arcada tripla, sobre a Rua do Arcediago. Esta varanda coberta apresenta elementos semelhantes aos do edifício da Sede da Sociedade de Abrantes (edifício 3), designadamente a disposição dos elementos cerâmicos da guarda que são semelhantes aos que se encontram na chaminé (edifício 3), e os arcos e pilares circulares da varanda que remetem para a varanda alpendrada orientada a Norte (edifício 3)."
             ],
             "images": [
-                "../img/rot191.JPG",
-                "../img/rot192.JPG"
+                "../img/roteiro/rot191.JPG",
+                "../img/roteiro/rot192.JPG"
             ],
             "imagesSubtitle": [
                 "Fachada principal do edifício (2021).",
@@ -1033,6 +1169,16 @@
                             "links": "https://baimages.gulbenkian.pt/images/winlibimg.aspx?skey=&doc=189536&img=28053"
                         }
                     ]
+                }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot191.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot192.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1053,9 +1199,9 @@
                 "Segundo a memória descritiva, as paredes exteriores são de tijolo “tipo burro”, assim como as divisórias interiores. Nas paredes exteriores o tijolo é assente a uma vez, enquanto nas interiores é assente a meia vez. A cobertura é descrita de “telhado de valadio” (de telha solta) revestido com “telha à portuguesa”, com “cimalha e beira”."
             ],
             "images": [
-                "../img/rot201.JPG",
-                "../img/rot202.JPG",
-                "../img/rot203.jpg"
+                "../img/roteiro/rot201.JPG",
+                "../img/roteiro/rot202.JPG",
+                "../img/roteiro/rot203.jpg"
             ],
             "imagesSubtitle": [
                 "Fachada principal do edifício (2021).",
@@ -1066,6 +1212,16 @@
                 {
                     "id": 1,
                     "fonte": "CMA/AMEC: processo nº 10.5.3-000062-1936"
+                }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot201.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot202.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1085,8 +1241,8 @@
                 "Neste projeto, Raul Lino é chamado a realizar um projeto de alterações num edifico existente de três pisos, com a fachada revestida a azulejos. O projeto consiste num conjunto de alterações modificações no interior da habitação, com o intuito de adequar os espaços interiores e melhorar as suas condições de conforto. No exterior são foram acrescentadas três mansardas, duas sobre o logradouro, e a outra, no centro da fachada principal, sobre a rua."
             ],
             "images": [
-                "../img/rot211.JPG",
-                "../img/rot212.JPG"
+                "../img/roteiro/rot211.JPG",
+                "../img/roteiro/rot212.JPG"
             ],
             "imagesSubtitle": [
                 "Fachada principal do edifício (2021).",
@@ -1119,6 +1275,16 @@
                     "id": 2,
                     "fonte": "ROCHA, Mafalda (2019). Casa- Família(s): Vivências e Memórias as Intervenções de Raul Lino em Abrantes. Dissertação de Mestrado integrado da FAUP."
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot211.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot212.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
@@ -1134,7 +1300,7 @@
                 "Esta construção refere-se a uma habitação unifamiliar edificada numa zona rural, em Alferrarede. No edifício sobressaem o alpendre da entrada principal com pilares de tijolo cerâmico, os caixilhos com pequenos vidros, o beiral à portuguesa e a chaminé."
             ],
             "images": [
-                "../img/rot221.jpg"
+                "../img/roteiro/rot221.jpg"
             ],
             "imagesSubtitle": [
                 "Vista exterior do edifício do edifício (2021)."
@@ -1147,6 +1313,16 @@
                 {
                     "id": 2,
                     "fonte": "ROCHA, Mafalda (2019). Casa- Família(s): Vivências e Memórias as Intervenções de Raul Lino em Abrantes. Dissertação de Mestrado integrado da FAUP."
+                }
+            ],
+            "images-chrono": [
+                {
+                    "image": "",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot222.jpg",
+                    "color": "green"
                 }
             ]
         },
@@ -1164,7 +1340,7 @@
                 "Ao nível da rua funcionam a garagem, um quarto e instalações sanitárias, com acesso pela fachada lateral. No plano do quintal, destaca-se ainda um volume onde se acomodam duas divisões, uma para arrumos do quintal e outra para uma cozinha."
             ],
             "images": [
-                "../img/rot231.JPG"
+                "../img/roteiro/rot231.JPG"
             ],
             "imagesSubtitle": [
                 "Vista exterior da garagem (2021)."
@@ -1184,13 +1360,23 @@
                     "id": 2,
                     "fonte": "ROCHA, Mafalda (2019). Casa- Família(s): Vivências e Memórias as Intervenções de Raul Lino em Abrantes. Dissertação de Mestrado integrado da FAUP."
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot231.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot232.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
             "id": 24,
             "title": "Edifício de Habitação, Abrantes",
             "year": "1939",
-            "year2": "e 1941",
+            "year2": "-1941",
             "location": "Rua Dom Afonso Henriques nº 13 a 15",
             "typology": "Habitação unifamiliar (projeto original: 1939; projeto de ampliação: 1941)",
             "coordBool": true,
@@ -1203,9 +1389,9 @@
                 "No edifício destacam-se as guardas metálicas das varandas (semelhantes às guardas metálicas da varanda alpendrada do edifício da Assembleia de Abrantes), as cantarias que rematam os vãos das janelas em sacada e as portas, bem como a chaminé do edifício."
             ],
             "images": [
-                "../img/rot241.JPG",
-                "../img/rot242.JPG",
-                "../img/rot243.bmp"
+                "../img/roteiro/rot241.JPG",
+                "../img/roteiro/rot242.JPG",
+                "../img/roteiro/rot243.bmp"
             ],
             "imagesSubtitle": [
                 "Fachada principal do edifício (2021).",
@@ -1249,6 +1435,16 @@
                     "id": 4,
                     "fonte": "CMA/AMEC: Processo 3149, 1942 e processo 3169, 1942"
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot241.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot242.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
@@ -1267,8 +1463,8 @@
                 "O projeto de alterações, propostas por Raul Lino, para este edifício de habitação situado perto da igreja de S. Vicente e do Largo da Ferraria, inclui modificações importantes que reconfiguraram a sua fachada principal, com a supressão da balaustrada, e a execução da cobertura rematada por sanca. Foram também adicionadas trapeiras, e foi proposto o redesenho e a substituição das molduras, das carpintarias e das serralharias dos vãos das portas e das janelas."
             ],
             "images": [
-                "../img/rot251.JPG",
-                "../img/rot252.JPG"
+                "../img/roteiro/rot251.JPG",
+                "../img/roteiro/rot252.JPG"
             ],
             "imagesSubtitle": [
                 "Fachada principal do edifício (2022).",
@@ -1293,13 +1489,23 @@
                         }
                     ]
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot251.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot252.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
             "id": 26,
             "title": "Jardim-Escola João de Deus 1",
             "year": "1945",
-            "year2": "e 1946",
+            "year2": "-1946",
             "location": "Rua Miguel Maria Ferreira",
             "typology": "Edifício escolar (projeto original)",
             "coordBool": true,
@@ -1315,10 +1521,10 @@
                 "O projeto, cujas peças desenhadas se encontram depositadas na Fundação Calouste Gulbenkian, é constituído por duas plantas de implantação, dois alçados -principal e posterior-, detalhes construtivos e desenho do muro perimetral referente ao projeto da Rua de Leiria. Os projetos de Raul Lino para esta instituição, obedecem a um modelo, com algumas variações. Observam-se, porém, algumas constantes nomeadamente ao nível da organização em planta, com a entrada em posição central, geralmente com um vão em arco que abriga uma generosa área coberta, e que comunica diretamente com o museu/salão, peça nuclear desta tipologia de escola. Lateralmente funcionam as salas, cantina e outros serviços."
             ],
             "images": [
-                "../img/rot261.JPG",
-                "../img/rot262.jpg",
-                "../img/rot263.jpg",
-                "../img/rot264.jpg"
+                "../img/roteiro/rot261.JPG",
+                "../img/roteiro/rot262.jpg",
+                "../img/roteiro/rot263.jpg",
+                "../img/roteiro/rot264.jpg"
             ],
             "imagesSubtitle": [
                 "Notícia publicada na imprensa local escrita local em 28 de junho no jornal “O Templário” (1953).",
@@ -1373,13 +1579,23 @@
                         }
                     ]
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot261.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot262.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
             "id": 27,
             "title": "Jardim-Escola João de Deus 2",
             "year": "1945",
-            "year2": "e 1946",
+            "year2": "-1946",
             "location": "Rua de Leiria",
             "typology": "Edifício escolar (projeto original)",
             "coordBool": true,
@@ -1395,8 +1611,8 @@
                 "O projeto, cujas peças desenhadas se encontram depositadas na Fundação Calouste Gulbenkian, é constituído por duas plantas de implantação, dois alçados -principal e posterior-, detalhes construtivos e desenho do muro perimetral referente ao projeto da Rua de Leiria. Os projetos de Raul Lino para esta instituição, obedecem a um modelo, com algumas variações. Observam-se, porém, algumas constantes nomeadamente ao nível da organização em planta, com a entrada em posição central, geralmente com um vão em arco que abriga uma generosa área coberta, e que comunica diretamente com o museu/salão, peça nuclear desta tipologia de escola. Lateralmente funcionam as salas, cantina e outros serviços."
             ],
             "images": [
-                "../img/rot271.jpg",
-                "../img/rot272.jpg"
+                "../img/roteiro/rot271.jpg",
+                "../img/roteiro/rot272.jpg"
             ],
             "imagesSubtitle": [
                 "Fachada principal do edifício do jardim de infância João de Deus, em Tomar (2024).",
@@ -1429,6 +1645,16 @@
                         }
                     ]
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot271.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot272.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
@@ -1447,9 +1673,9 @@
                 "Ao arquiteto Raul Lino, projetista dos dois jardins escola João de Deus em Tomar Edifícios 26 e 27), resultantes do legado de Miguel Maria Ferreira, coube também o projeto de jazigo do benfeitor e da sua esposa Júlia Ferreira que se situa no cemitério de Santa Maria dos Olivais. No projeto, datado de 1945 apresentavam-se duas opções compositivas, tendo recaído a escolha num desenho de composição clássica, jazigo-capela de corpo central com duas pequenas alas em simetria, com menor altura e de cobertura diferenciada."
             ],
             "images": [
-                "../img/rot281.jpg",
-                "../img/rot282.jpg",
-                "../img/rot283.jpg"
+                "../img/roteiro/rot281.jpg",
+                "../img/roteiro/rot282.jpg",
+                "../img/roteiro/rot283.jpg"
             ],
             "imagesSubtitle": [
                 "Vista frontal do jazigo de Miguel Maria Ferreira e Júlia Ferreira (2024).",
@@ -1475,6 +1701,16 @@
                         }
                     ]
                 }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot281.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot282.jpg",
+                    "color": "green"
+                }
             ]
         },
         {
@@ -1493,8 +1729,8 @@
                 "Palacete oitocentista, de dois pisos, cuja fachada principal do piso inferior é revestida com azulejos monocromáticos, está situado numa das artérias principais da cidade de Abrantes, que estabelecia a ligação entre as igrejas paroquiais de S. Vicente e de S João Batista. Em 1968, terá sido intervencionado no seu interior por Raul Lino, com projeto de jardim do arquiteto Gonçalo Ribeiro Telles (1922-2020). Foi classificado em 1977 como imóvel de interesse municipal."
             ],
             "images": [
-                "../img/rot291.bmp",
-                "../img/rot292.JPG"
+                "../img/roteiro/rot291.bmp",
+                "../img/roteiro/rot292.JPG"
             ],
             "imagesSubtitle": [
                 "Fachada principal do edifício, Arquivo Municipal Eduardo Campos (s.d.).",
@@ -1510,6 +1746,16 @@
                             "links": "http://www.monumentos.gov.pt/Site/APP_PagesUser/SIPA.aspx?id=1979"
                         }
                     ]
+                }
+            ],
+            "images-chrono": [
+                {
+                    "image": "../img/roteiro_chrono/rot291.jpg",
+                    "color": "yellow"
+                },
+                {
+                    "image": "../img/roteiro_chrono/rot292.jpg",
+                    "color": "green"
                 }
             ]
         }
