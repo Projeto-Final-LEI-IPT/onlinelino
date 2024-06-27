@@ -773,6 +773,10 @@
             ],
             "images-chrono": [
                 {
+                    "image": "",
+                    "color": "yellow"
+                },
+                {
                     "image": "../img/roteiro_chrono/rot112.jpg",
                     "color": "green"
                 }
@@ -1041,7 +1045,7 @@
                     "color": "yellow"
                 },
                 {
-                    "image": "../img/roteiro_chrono/rot162.jpg",
+                    "image": "",
                     "color": "green"
                 }
             ]
@@ -1312,6 +1316,10 @@
                 }
             ],
             "images-chrono": [
+                {
+                    "image": "",
+                    "color": "yellow"
+                },
                 {
                     "image": "../img/roteiro_chrono/rot222.jpg",
                     "color": "green"
