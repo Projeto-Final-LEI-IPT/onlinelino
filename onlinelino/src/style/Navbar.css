@@ -82,8 +82,8 @@
   text-decoration: none;
   color: black;
   cursor: pointer;
-  margin-bottom: 2px;
   font-weight: bold;
+  margin-top: 20px;
 }
 
 .dropdown-item2::before {
@@ -93,7 +93,7 @@
 }
 
 .dropdown-item2:hover {
-  color: #00693e;
+  color: #078C6B;
 }
 
 .navbar-item.active .navbar-button {
