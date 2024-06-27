@@ -10,8 +10,18 @@ function ChronologyIndex() {
     const buildings = [];
     let lastColor = "green";
 
+    const specialCases = {
+        0: 'yellow',
+        6: 'green',
+        10: 'yellow',
+        11: 'yellow',
+        13: 'green',
+        15: 'yellow',
+        17: 'green',
+        23: 'yellow'
+    };
+
     for (let i = 0; i < 50; i++) {
-        const id = t(`buildings.${i}.id`);
         const title = t(`buildings.${i}.title`);
         const year = t(`buildings.${i}.year`);
         const year2 = t(`buildings.${i}.year2`);
@@ -21,71 +31,17 @@ function ChronologyIndex() {
         if (!title.includes("title") && !year.includes("year")) {
             let color, image, color2;
 
-            switch (id) {
-                case 1:
-                    color = "yellow";
-                    color2 = "#d0b598";
-                    image = imageY;
-                    lastColor = "yellow";
-                    break;
-                case 7:
-                    color = "green";
-                    color2 = "#477263";
-                    image = imageG;
-                    lastColor = "green";
-                    break;
-                case 11:
-                    color = "yellow";
-                    color2 = "#d0b598";
-                    image = "images-chrono";
-                    lastColor = "yellow";
-                    break;
-                case 12:
-                    color = "yellow";
-                    color2 = "#d0b598";
-                    image = imageY;
-                    lastColor = "yellow";
-                    break;
-                case 14:
-                    color = "green";
-                    color2 = "#477263";
-                    image = imageG;
-                    lastColor = "green";
-                    break;
-                case 16:
-                    color = "yellow";
-                    color2 = "#d0b598";
-                    image = imageY;
-                    lastColor = "yellow";
-                    break;
-                case 18:
-                    color = "green";
-                    color2 = "#477263";
-                    image = imageG;
-                    lastColor = "green";
-                    break;
-                case 24:
-                    color = "yellow";
-                    color2 = "#d0b598";
-                    image = imageY;
-                    lastColor = "yellow";
-                    break;
-                default:
-                    if (lastColor === "green") {
-                        color = "yellow";
-                        color2 = "#d0b598";
-                        image = imageY;
-                        lastColor = "yellow";
-                    } else if (lastColor === "yellow") {
-                        color = "green";
-                        color2 = "#477263";
-                        image = imageG;
-                        lastColor = "green";
-                    }
+            if (specialCases[i] !== undefined) {
+                color = specialCases[i];
+            } else {
+                color = lastColor === "green" ? "yellow" : "green";
             }
 
+            color2 = color === "yellow" ? "#d0b598" : "#477263";
+            image = color === "yellow" ? imageY : imageG;
+            lastColor = color;
+
             buildings.push({
-                id: id,
                 title: title,
                 year: parseInt(year),
                 year2: year + year2,
