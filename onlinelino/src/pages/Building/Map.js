@@ -106,7 +106,6 @@ const MapIndex = () => {
     return (
         <>
             <NavbarHome />
-            {/* <br /> */}
             {/* Container for the map */}
             <Container ref={mapContainerRef} style={{ width: '100%', height: '50vh' }}>
                 {/* GoogleMap component */}
