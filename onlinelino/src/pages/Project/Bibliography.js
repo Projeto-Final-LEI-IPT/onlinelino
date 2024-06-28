@@ -21,13 +21,13 @@ function BibliographyIndex() {
             <br />
             <Container>
                 <h4>{t('bibliographyPage.bibliography')}</h4>
-                <br/>
+                <br />
                 <ul>
                     {text.map((paragraph, index) => (
-                        <>
-                            <li key={index}>{paragraph}</li>
+                        <React.Fragment key={`li-${index}`}>
+                            <li key={`biblio-${index}`}>{paragraph}</li>
                             <br />
-                        </>
+                        </React.Fragment>
                     ))}
                 </ul>
             </Container>

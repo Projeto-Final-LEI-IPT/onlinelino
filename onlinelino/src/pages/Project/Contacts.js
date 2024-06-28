@@ -24,10 +24,10 @@ function ContactsIndex() {
                 <br />
                 <ul>
                     {contacts.map((paragraph, index) => (
-                        <>
-                            <li key={index}>{paragraph}</li>
+                        <React.Fragment key={`li-${index}`}>
+                            <li key={`contact-${index}`}>{paragraph}</li>
                             <br />
-                        </>
+                        </React.Fragment>
                     ))}
                 </ul>
             </Container>

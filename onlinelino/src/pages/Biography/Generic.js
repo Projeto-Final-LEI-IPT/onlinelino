@@ -41,8 +41,8 @@ function GenericIndex() {
                 <br />
                 <ul>
                     {videos.map((paragraph, index) => (
-                        <>
-                            <li key={index}>
+                        <React.Fragment key={`frag1-${index}`}>
+                            <li key={`li1-${index}`}>
                                 <a href="{paragraph}" target="_blank">
                                     {paragraph}
                                 </a>
@@ -50,7 +50,7 @@ function GenericIndex() {
                                 <span>{videosSubtitle[index]}</span>
                             </li>
                             <br />
-                        </>
+                        </React.Fragment>
                     ))}
                 </ul>
                 <br />
@@ -58,14 +58,14 @@ function GenericIndex() {
                 <br />
                 <ul>
                     {links.map((paragraph, index) => (
-                        <>
-                            <li key={index}>
+                        <React.Fragment key={`frag1-${index}`}>
+                            <li key={`li2-${index}`}>
                                 <a href="{paragraph}" target="_blank">
                                     {paragraph}
                                 </a>
                             </li>
                             <br />
-                        </>
+                        </React.Fragment>
                     ))}
                 </ul>
             </Container>

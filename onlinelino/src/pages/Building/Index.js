@@ -70,14 +70,14 @@ function BuildingIndex() {
                 <h4>{t('buildingsPage.title')}</h4>
                 <br />
                 {buildingsProjects.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
+                    <p key={`proj-${index}`}>{paragraph}</p>
                 ))}
                 <br />
                 <h6>{t('biographyPage.v')}</h6>
                 <ul>
                     {videos.map((paragraph, index) => (
-                        <>
-                            <li key={index}>
+                        <React.Fragment key={`frag1-${index}`}>
+                            <li key={`li1-${index}`}>
                                 <a href={paragraph} target="_blank" rel="noreferrer">
                                     {paragraph}
                                 </a>
@@ -85,34 +85,34 @@ function BuildingIndex() {
                                 <span>{videosSubtitle[index]}</span>
                             </li>
                             <br />
-                        </>
+                        </React.Fragment>
                     ))}
                 </ul>
                 <h6>{t('biographyPage.l')}</h6>
                 <ul>
                     {links.map((paragraph, index) => (
-                        <>
-                            <li key={index}>
+                        <React.Fragment key={`frag2-${index}`}>
+                            <li key={`li2-${index}`}>
                                 <a href={paragraph} target="_blank" rel="noreferrer">
                                     {paragraph}
                                 </a>
                             </li>
                             <br />
-                        </>
+                        </React.Fragment>
                     ))}
                 </ul>
                 <h4>{t('buildingsPage.title2')}</h4>
                 <br />
                 {medioTejo.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
+                    <p key={`medioTejo-${index}`}>{paragraph}</p>
                 ))}
                 <br />
                 {images.map((paragraph, index) => (
-                    <>
-                    <img key={index} className="rounded mx-auto d-block" src={paragraph} alt="" style={{ maxWidth: '500px', maxHeight: '500px' }}/>
-                    <p key={index} className="text-center">{imagesSubtitle[index]}</p>
-                    <br/>
-                    </>
+                    <React.Fragment key={`frag3-${index}`}>
+                        <img key={`img-${index}`} className="rounded mx-auto d-block" src={paragraph} alt="" style={{ maxWidth: '500px', maxHeight: '500px' }} />
+                        <p key={`p-${index}`} className="text-center">{imagesSubtitle[index]}</p>
+                        <br />
+                    </React.Fragment>
                 ))}
             </Container>
         </>

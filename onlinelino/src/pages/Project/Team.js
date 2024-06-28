@@ -31,15 +31,15 @@ function TeamIndex() {
                 <br />
                 <h5>{t('teamPage.inv')}</h5>
                 {summary.map((paragraph, index) => (
-                    <ul>
-                        <li key={index}>{paragraph}</li>
+                    <ul key={`ul1-${index}`}>
+                        <li key={`sum-${index}`}>{paragraph}</li>
                     </ul>
                 ))}
                 <hr></hr>
                 <h5>{t('teamPage.col')}</h5>
                 {developed.map((paragraph, index) => (
-                    <ul>
-                        <li key={index}>{paragraph}</li>
+                    <ul key={`ul2-${index}`}>
+                        <li key={`dev-${index}`}>{paragraph}</li>
                     </ul>
                 ))}
             </Container>
