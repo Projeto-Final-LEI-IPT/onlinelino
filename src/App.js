@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Routes
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 
@@ -15,6 +15,8 @@ import ChronologyIndex from "./pages/Building/Chronology";
 import MapIndex from "./pages/Building/Map";
 import ListIndex from "./pages/Building/List";
 import BuildingDetails from "./pages/Building/Details";
+import Login from './pages/Backoffice/Login';
+import AboutB from './pages/Backoffice/BiographyB/AboutB';
 
 function App() {
   useEffect(() => {
@@ -29,7 +31,7 @@ function App() {
       <I18nextProvider i18n={i18n}>
         <div className="App">
           <div className="bg-gray-100 min-h-screen flex flex-col justify-between">
-            <Routes> {/* Replace div with Routes */}
+            <Routes> 
               <Route path="/" element={<Home />} />
               <Route path="/projeto/descricao" element={<DescriptionIndex />} />
               <Route path="/projeto/bibliografia" element={<BibliographyIndex />} />
@@ -42,6 +44,8 @@ function App() {
               <Route path="/obra/mapa" element={<MapIndex />} />
               <Route path="/obra/lista" element={<ListIndex />} />
               <Route path="/obra/:id/" element={<BuildingDetails />} />
+              <Route path="backoffice/login" element={<Login />} />
+              <Route path="/backoffice/BiographyB/AboutB" element={<AboutB />} />
             </Routes>
           </div>
         </div>

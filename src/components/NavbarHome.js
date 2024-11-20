@@ -83,6 +83,11 @@ const NavbarHome = () => {
                 </ul>
                 <LanguageSwitcher />
             </nav>
+            <div style={{ position: "absolute", top: "10px", right: "10px" }}>
+                <Link to="/backoffice/login" style={{ textDecoration: "none", padding: "10px", background: "lightgray", borderRadius: "5px" }}>
+                    {t('Login')}
+                </Link>
+            </div>
         </>
     );
 };
