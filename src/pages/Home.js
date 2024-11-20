@@ -16,6 +16,7 @@ function Home() {
 
     return (
         <>
+        
             <NavbarHome />
             <br />
             <Container>
