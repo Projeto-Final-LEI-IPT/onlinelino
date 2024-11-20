@@ -1,0 +1,20 @@
+  .footer2 {
+      background-color: #ffefd2;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+  }
+
+  .footer-content2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .footer-image2 {
+      width: 100px;
+      height: auto;
+      margin: 0 10px;
+  }
