@@ -59,6 +59,9 @@ const NavbarHome = () => {
                             <li>
                                 <Link to="/biografia/sobre" className="dropdown-item2">{t('navbarBiography.about')}</Link>
                             </li>
+                            <li>
+                                <Link to="/biografia/iconic" className="dropdown-item2">{t('navbarBiography.iconic')}</Link>
+                            </li>
                         </ul>
                     </li>
                     <li className={`navbar-item ${isActive('/obra') ? 'active' : ''}`}>
