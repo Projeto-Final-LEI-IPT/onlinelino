@@ -15,6 +15,7 @@ import ChronologyIndex from "./pages/Building/Chronology";
 import MapIndex from "./pages/Building/Map";
 import ListIndex from "./pages/Building/List";
 import BuildingDetails from "./pages/Building/Details";
+import EquipaTest from './Backoffice/Equipa';
 
 function App() {
   useEffect(() => {
@@ -42,6 +43,7 @@ function App() {
               <Route path="/obra/mapa" element={<MapIndex />} />
               <Route path="/obra/lista" element={<ListIndex />} />
               <Route path="/obra/:id/" element={<BuildingDetails />} />
+              <Route path="/equipa" element={<EquipaTest />} />
             </Routes>
           </div>
         </div>
