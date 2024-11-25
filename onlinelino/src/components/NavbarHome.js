@@ -57,6 +57,9 @@ const NavbarHome = () => {
                                 <Link to="/biografia" className="dropdown-item2">{t('navbarBiography.generic')}</Link>
                             </li>
                             <li>
+                                <Link to="/materiais" className="dropdown-item2">{t('navbarBiography.materials')}</Link>
+                            </li>
+                            <li>
                                 <Link to="/biografia/sobre" className="dropdown-item2">{t('navbarBiography.about')}</Link>
                             </li>
                         </ul>

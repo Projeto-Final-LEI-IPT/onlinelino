@@ -1,6 +1,6 @@
 {
     "navbarHome": {
-        "project": "ONLINELINO",
+        "project": "PROJETO ONLINELINO",
         "biography": "BIOGRAFIA",
         "building": "OBRA"
     },
@@ -12,6 +12,7 @@
     },
     "navbarBiography": {
         "generic": "GENÉRICA",
+        "materials": "MATERIAIS",
         "about": "SOBRE O MÉDIO TEJO"
     },
     "navbarBuilding": {

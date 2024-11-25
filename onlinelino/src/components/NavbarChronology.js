@@ -45,6 +45,9 @@ const NavbarChronology = () => {
                                 <Link to="/biografia" className="dropdown-item">{t('navbarBiography.generic')}</Link>
                             </li>
                             <li>
+                                <Link to="/materiais" className="dropdown-item">{t('navbarBiography.materials')}</Link>
+                            </li>
+                            <li>
                                 <Link to="/biografia/sobre" className="dropdown-item">{t('navbarBiography.about')}</Link>
                             </li>
                         </ul>

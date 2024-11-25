@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 function BuildingIndex() {
     const { t } = useTranslation();
+    /*
     // buildingsPage.buildingsProjects
     const { t: b } = useTranslation('translation', { keyPrefix: 'buildingsPage.buildingsProjects' });
     const buildingsProjects = [];
@@ -38,6 +39,8 @@ function BuildingIndex() {
             links.push(l([i]));
         }
     }
+
+    */
     // buildingsPage.buildingsProjectsMedioTejo
     const { t: m } = useTranslation('translation', { keyPrefix: 'buildingsPage.buildingsProjectsMedioTejo' });
     const medioTejo = [];
@@ -62,7 +65,7 @@ function BuildingIndex() {
             imagesSubtitle.push(s2([i]));
         }
     }
-    return (
+    /*return (
         <>
             <NavbarHome />
             <br />
@@ -101,6 +104,27 @@ function BuildingIndex() {
                         </React.Fragment>
                     ))}
                 </ul>
+                <h4>{t('buildingsPage.title2')}</h4>
+                <br />
+                {medioTejo.map((paragraph, index) => (
+                    <p key={`medioTejo-${index}`}>{paragraph}</p>
+                ))}
+                <br />
+                {images.map((paragraph, index) => (
+                    <React.Fragment key={`frag3-${index}`}>
+                        <img key={`img-${index}`} className="rounded mx-auto d-block" src={paragraph} alt="" style={{ maxWidth: '500px', maxHeight: '500px' }} />
+                        <p key={`p-${index}`} className="text-center">{imagesSubtitle[index]}</p>
+                        <br />
+                    </React.Fragment>
+                ))}
+            </Container>
+        </>
+    );*/
+    return (
+        <>
+            <NavbarHome />
+            <br />
+            <Container>
                 <h4>{t('buildingsPage.title2')}</h4>
                 <br />
                 {medioTejo.map((paragraph, index) => (
