@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 const EquipaTest = () => {
   const [equipa, setEquipa] = useState([]); 
   const [error, setError] = useState(null);
+  const SERVER_URL = 'http://193.137.5.232:8080'; 
 
   //GET da Equipa
   useEffect(() => {
     const fetchEquipa = async () => {
       try {
-        const response = await fetch('http://localhost:8080/equipa'); 
+        const response = await fetch(`${SERVER_URL}/equipa`); 
         if (!response.ok) {
           throw new Error('Erro ao buscar a equipa');
         }
