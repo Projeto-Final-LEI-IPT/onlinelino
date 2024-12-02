@@ -1,35 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavbarHome from "../../components/NavbarHome";
 import Container from "react-bootstrap/esm/Container";
-import { useTranslation } from 'react-i18next';
+import { SERVER_URL, BACKOFFICE_URL } from "../../Utils";
 
 function BibliographyIndex() {
-    // bibliographyPage.text
-    const { t: b } = useTranslation('translation', { keyPrefix: 'bibliographyPage.text' });
-    const text = [];
-    for (let i = 0; i < 50; i++) {
-        if (!b([i]).includes("bibliographyPage.text")) {
-            text.push(b([i]));
-        }
+    const [bibliografia, setBibliografia] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+
+    //GET dos links da Bibliografia
+    useEffect(() => {
+        const fetchLinks = async () => {
+            try {
+                const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/bibliografia`);
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar os links');
+                }
+                const data = await response.json();
+                setBibliografia(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchLinks();
+    }, []);
+
+    if (error) {
+        return <p className="text-red-500">Erro: {error}</p>;
     }
-    // bibliographyPage.biography
-    const { t } = useTranslation();
+
+    if (loading) {
+        return <p>A carregar...</p>;
+    }
 
     return (
         <>
             <NavbarHome />
             <br />
             <Container>
-                <h4>{t('bibliographyPage.bibliography')}</h4>
+                <h4>Bibliografia</h4>
                 <br />
-                <ul>
-                    {text.map((paragraph, index) => (
+                {bibliografia && bibliografia.length > 0 ? (<ul>
+                    {bibliografia.map((paragraph, index) => (
                         <React.Fragment key={`li-${index}`}>
                             <li key={`biblio-${index}`}>{paragraph}</li>
                             <br />
                         </React.Fragment>
                     ))}
-                </ul>
+                </ul>) : (
+                    <p>Nenhum link disponível.</p>
+                )}
+
             </Container>
         </>
     );
