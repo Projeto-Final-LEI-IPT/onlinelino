@@ -1,12 +1,12 @@
 import React from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 
-function AboutB() {
+function MapB() {
     return (
         <div>
             <NavbarBackoffice />
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
-                <h2 style={{ marginBottom: '20px' }}>AboutB</h2>
+                <h2 style={{ marginBottom: '20px' }}>MapB</h2>
                 <div style={{ display: 'flex', flexDirection: 'row', gap: '20px' }}>
                     {/* Caixa de texto e botão para PORTUGUÊS */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
@@ -51,4 +51,4 @@ function AboutB() {
     );
 }
 
-export default AboutB;
+export default MapB;
