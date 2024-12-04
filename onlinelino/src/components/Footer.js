@@ -10,6 +10,7 @@ function Footer() {
                 <img src="../img/Techn&Art_logo.png" alt="Techn&Art Logo" className="footer-image2" />
             </div>
         </footer>
+        // teste
     );
 }
 
