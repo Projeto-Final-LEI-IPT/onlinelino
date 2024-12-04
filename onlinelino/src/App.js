@@ -29,6 +29,7 @@ import DetailsB from './pages/Backoffice/BuildingB/DetailsB';
 
 
 import EquipaTest from './Backoffice/Equipa';
+import Login from './pages/Login';
 
 function App() {
   useEffect(() => {
@@ -67,6 +68,7 @@ function App() {
               <Route path="/backoffice/BuildingB/ChronolyB" element={<ChronolyB />} />
               <Route path="/backoffice/BuildingB/DetailsB" element={<DetailsB />} />
               <Route path="/equipa" element={<EquipaTest />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </div>
         </div>
