@@ -1,22 +1,34 @@
-import React, { useState, useEffect } from "react";
-import NavbarHome from "../../components/NavbarHome";
-import Container from "react-bootstrap/esm/Container";
-import { SERVER_URL, BACKOFFICE_URL } from "../../Utils";
+import React, { useEffect, useState } from 'react';
+import { SERVER_URL, BACKOFFICE_URL } from '../../Utils';
+import NavbarHome from '../../components/NavbarHome';
+import { Container } from 'react-bootstrap/esm/Container';
 
-function BibliographyIndex() {
+const BibliographyIndex = () => {
     const [bibliografia, setBibliografia] = useState([]);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
+    const SESSION_TOKEN = sessionStorage.getItem('authorization'); 
 
-
-    //GET dos links da Bibliografia
     useEffect(() => {
         const fetchLinks = async () => {
+            if (!SESSION_TOKEN) {
+                alert('UTILIZADOR NÃO AUTENTICADO');
+                return;
+            }
+
             try {
-                const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/bibliografia`);
+                const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/bibliografia`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${SESSION_TOKEN}`,
+                    },
+                });
+
                 if (!response.ok) {
-                    throw new Error('Erro ao buscar os links');
+                    const error = await response.json();
+                    throw new Error(`${error.error}`);
                 }
+
                 const data = await response.json();
                 setBibliografia(data);
             } catch (err) {
@@ -27,14 +39,16 @@ function BibliographyIndex() {
         };
 
         fetchLinks();
-    }, []);
+    }, [SESSION_TOKEN]); 
 
-    if (error) {
-        return <p className="text-red-500">Erro: {error}</p>;
+    if (loading && !SESSION_TOKEN) {
+        return <h1>NÃO AUTORIZADO</h1>;
+    }else{
+        <h1>Carregando...</h1>;
     }
 
-    if (loading) {
-        return <p>A carregar...</p>;
+    if (error) {
+        return <h1>{error}</h1>;
     }
 
     return (
