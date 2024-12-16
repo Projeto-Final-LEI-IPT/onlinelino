@@ -56,7 +56,7 @@ const { t: d } = useTranslation('translation', { keyPrefix: 'descriptionPage.dev
                     style={{
                         flex: 1,
                         backgroundColor: "rgba(234, 216, 193, 0.8)",  // O conteúdo ocupará o espaço restante
-                        zIndex: 1, 
+                        zIndex: 0, 
                         paddingTop: "10px",
                         paddingLeft:"50px",
                         marginTop: "30px",
