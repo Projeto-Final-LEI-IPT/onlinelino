@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 
 function GenericIndex() {
     const { t } = useTranslation();
-    // biographyPage.videos
     const { t: v } = useTranslation('translation', { keyPrefix: 'biographyPage.videos' });
     const videos = [];
     for (let i = 0; i < 50; i++) {
@@ -13,7 +12,6 @@ function GenericIndex() {
             videos.push(v([i]));
         }
     }
-    // biographyPage.videosSubtitle
     const { t: s } = useTranslation('translation', { keyPrefix: 'biographyPage.videosSubtitle' });
     const videosSubtitle = [];
     for (let i = 0; i < 50; i++) {
@@ -21,7 +19,6 @@ function GenericIndex() {
             videosSubtitle.push(s([i]));
         }
     }
-    // bibliographyPage.otherLinks
     const { t: l } = useTranslation('translation', { keyPrefix: 'biographyPage.otherLinks' });
     const links = [];
     for (let i = 0; i < 50; i++) {
@@ -32,43 +29,61 @@ function GenericIndex() {
 
     return (
         <>
-            <NavbarHome />
-            <br />
-            <Container>
-                <p>{t('biographyPage.generic')}</p>
-                <br />
-                <h4>{t('biographyPage.v')}</h4>
-                <br />
-                <ul>
-                    {videos.map((paragraph, index) => (
-                        <React.Fragment key={`frag1-${index}`}>
-                            <li key={`li1-${index}`}>
-                                <a href="{paragraph}" target="_blank">
-                                    {paragraph}
-                                </a>
-                                <br />
-                                <span>{videosSubtitle[index]}</span>
-                            </li>
-                            <br />
-                        </React.Fragment>
-                    ))}
-                </ul>
-                <br />
-                <h4>{t('biographyPage.l')}</h4>
-                <br />
-                <ul>
-                    {links.map((paragraph, index) => (
-                        <React.Fragment key={`frag1-${index}`}>
-                            <li key={`li2-${index}`}>
-                                <a href="{paragraph}" target="_blank">
-                                    {paragraph}
-                                </a>
-                            </li>
-                            <br />
-                        </React.Fragment>
-                    ))}
-                </ul>
-            </Container>
+            {/* Navbar fixa no topo */}
+            <NavbarHome
+                style={{
+                    position: "fixed", 
+                    top: 0, 
+                    left: 0, 
+                    right: 0, 
+                    zIndex: 10, 
+                    width: "100%",
+                }} 
+            />
+
+            <div
+                style={{
+                    display: "flex",            // Utiliza Flexbox
+                    flexDirection: "column",    // Alinha os itens verticalmente
+                    height: "auto",            // Garantir que a altura do contêiner ocupe 100% da altura da tela
+                }}
+            >
+                {/* Contêiner principal com imagem de fundo */}
+                <div
+                    style={{
+                        position: "absolute", // A imagem de fundo será posicionada de forma absoluta
+                        top: 0,               // Posiciona no topo do contêiner
+                        left: 0,
+                        bottom: 0,
+                        right: 0,
+                        width: "100%",        // Largura 100% da tela
+                        height: "100%",       // Altura 100% da tela
+                        backgroundImage: "url('/img/foto_rl.jpg')",
+                        backgroundSize: "cover", // A imagem cobre toda a área disponível
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center", // A imagem será centrada
+                        zIndex: -1,          // Coloca a imagem de fundo atrás do conteúdo
+                    }}
+                />
+                
+                {/* Contêiner do texto */}
+                <Container
+                    style={{
+                        flex: 1,
+                        backgroundColor: "rgba(234, 216, 193, 0.8)",
+                        zIndex: 0,
+                        padding: "10px",
+                        marginTop: "30px",
+                        textAlign: "justify",
+                        width: "30%",             // Define a largura do texto como 30%
+                        marginRight: "5vw",       // Margem controlada à direita
+                        marginTop: "3vw",
+                        fontSize: "1em",          // Tamanho de texto fixo para consistência
+                    }}
+                >
+                    <p>{t('biographyPage.generic')}</p>
+                </Container>
+            </div>
         </>
     );
 }
