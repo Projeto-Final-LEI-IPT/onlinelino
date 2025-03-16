@@ -93,3 +93,14 @@ h2 {
   color: #333;
   margin-bottom: 20px; /* Espaçamento entre título e formulário */
 }
+
+.error-border {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
