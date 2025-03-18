@@ -4,7 +4,7 @@ import '../style/Navbar.css';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
 
-const NavbarHome = () => {
+const NavbarBackoffice = () => {
     const [activeDropdown, setActiveDropdown] = useState(null);
     const { t } = useTranslation();
     const location = useLocation();
@@ -17,80 +17,67 @@ const NavbarHome = () => {
 
     return (
         <>
-            <div className="navbar-container">
-                <div className="header-image">
-                    <img src="../img/header.jpg" alt="Header" />
-                    <a href="/">
-                        <div className="logo">
-                            <img src="../img/logo.png" alt="Logo" />
-                        </div>
-                    </a>
-                </div>
-            </div>
             <nav className="navbar">
                 <ul className="navbar-list">
-                    <li className={`navbar-item ${isActive('/projeto') ? 'active' : ''}`}>
+                    <li className={`navbar-item ${isActive('/Backoffice/ProjectB') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(0)}>
                             {t('navbarHome.project')}
                         </Link>
                         <ul className={`dropdown-menu2 ${activeDropdown === 0 ? 'show' : ''}`}>
                             <li>
-                                <Link to="/projeto/descricao" className="dropdown-item2">{t('navbarProject.description')}</Link>
+                                <Link to="/Backoffice/ProjectB/DescriptionB" className="dropdown-item2">{t('navbarProject.description')}</Link>
                             </li>
                             <li>
-                                <Link to="/projeto/bibliografia" className="dropdown-item2">{t('navbarProject.bibliography')}</Link>
+                                <Link to="/Backoffice/ProjectB/BibliographyB" className="dropdown-item2">{t('navbarProject.bibliography')}</Link>
                             </li>
                             <li>
-                                <Link to="/projeto/equipa" className="dropdown-item2">{t('navbarProject.team')}</Link>
+                                <Link to="/Backoffice/ProjectB/TeamB" className="dropdown-item2">{t('navbarProject.team')}</Link>
                             </li>
                             <li>
-                                <Link to="/projeto/contactos" className="dropdown-item2">{t('navbarProject.contacts')}</Link>
+                                <Link to="/Backoffice/ProjectB/ContactsB" className="dropdown-item2">{t('navbarProject.contacts')}</Link>
                             </li>
                         </ul>
                     </li>
-                    <li className={`navbar-item ${isActive('/biografia') ? 'active' : ''}`}>
+                    <li className={`navbar-item ${isActive('/Backoffice/BiographyB') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(1)}>
                             {t('navbarHome.biography')}
                         </Link>
                         <ul className={`dropdown-menu2 ${activeDropdown === 1 ? 'show' : ''}`}>
                             <li>
-                                <Link to="/biografia" className="dropdown-item2">{t('navbarBiography.generic')}</Link>
+                                <Link to="/Backoffice/BiographyB/GenericB" className="dropdown-item2">{t('navbarBiography.generic')}</Link>
                             </li>
                             <li>
-                                <Link to="/materiais" className="dropdown-item2">{t('navbarBiography.materials')}</Link>
+                                <Link to="/Backoffice/BiographyB/AboutB" className="dropdown-item2">{t('navbarBiography.about')}</Link>
                             </li>
                             <li>
-                                <Link to="/biografia/sobre" className="dropdown-item2">{t('navbarBiography.about')}</Link>
-                            </li>
-                            <li>
-                                <Link to="/biografia/iconic" className="dropdown-item2">{t('navbarBiography.iconic')}</Link>
+                                <Link to="/Backoffice/BiographyB/IconicB" className="dropdown-item2">{t('navbarBiography.iconic')}</Link>
                             </li>
                         </ul>
                     </li>
-                    <li className={`navbar-item ${isActive('/obra') ? 'active' : ''}`}>
+                    <li className={`navbar-item ${isActive('/Backoffice/BuildingB') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(2)}>
                             {t('navbarHome.building')}
                         </Link>
                         <ul className={`dropdown-menu2 ${activeDropdown === 2 ? 'show' : ''}`}>
                             <li>
-                                <Link to="/obra/detalhes" className="dropdown-item2">{t('navbarBuilding.details')}</Link>
+                                <Link to="/Backoffice/BuildingB/DetailsB" className="dropdown-item2">{t('navbarBuilding.details')}</Link>
                             </li>
                             <li>
-                                <Link to="/obra/cronologia" className="dropdown-item2">{t('navbarBuilding.chronology')}</Link>
+                                <Link to="/Backoffice/BuildingB/ChronologyB" className="dropdown-item2">{t('navbarBuilding.chronology')}</Link>
                             </li>
                             <li>
-                                <Link to="/obra/mapa" className="dropdown-item2">{t('navbarBuilding.map')}</Link>
+                                <Link to="/Backoffice/BuildingB/MapB" className="dropdown-item2">{t('navbarBuilding.map')}</Link>
                             </li>
                             <li>
-                                <Link to="/obra/lista" className="dropdown-item2">{t('navbarBuilding.list')}</Link>
+                                <Link to="/Backoffice/BuildingB/ListB" className="dropdown-item2">{t('navbarBuilding.list')}</Link>
                             </li>
                         </ul>
                     </li>
                 </ul>
                 <LanguageSwitcher />
             </nav>
-            <div style={{ position: "absolute", top: "10px", right: "10px" }}>
-                <Link to="/backoffice/login" style={{ textDecoration: "none", padding: "10px", background: "lightgray", borderRadius: "5px" }}>
+            <div style={{ position: "absolute",marginTop:"50px",  top: "10px", right: "10px" }}>
+                <Link to="/backoffice/login" style={{ textDecoration: "none",padding: "10px", background: "lightgray", borderRadius: "5px" }}>
                     {t('Login')}
                 </Link>
             </div>
@@ -98,4 +85,4 @@ const NavbarHome = () => {
     );
 };
 
-export default NavbarHome;
+export default NavbarBackoffice;
