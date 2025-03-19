@@ -23,11 +23,10 @@ import BibliographyB from './pages/Backoffice/ProjectB/BibliographyB';
 import ContactsB from './pages/Backoffice/ProjectB/ContactsB';
 import DescriptionB from './pages/Backoffice/ProjectB/DescriptionB';
 import TeamB from './pages/Backoffice/ProjectB/TeamB';
-import ChronologyB from './pages/Backoffice/BuildingB/ChronolyB';
+import ChronolyB from './pages/Backoffice/BuildingB/ChronolyB';
 import DetailsB from './pages/Backoffice/BuildingB/DetailsB';
 import ListB from './pages/Backoffice/BuildingB/ListB';
 import MapB from './pages/Backoffice/BuildingB/MapB';
-import ChronologyB from './pages/Backoffice/BuildingB/ChronolyB';
 
 
 
@@ -65,7 +64,7 @@ function App() {
               <Route path="/backoffice/ProjectB/ContactsB" element={<ContactsB />} />
               <Route path="/backoffice/ProjectB/DescriptionB" element={<DescriptionB />} />
               <Route path="/backoffice/ProjectB/TeamB" element={<TeamB />} />
-              <Route path="/backoffice/BuildingB/ChronologyB" element={<ChronologyB />} />
+              <Route path="/backoffice/BuildingB/ChronolyB" element={<ChronolyB />} />
               <Route path="/backoffice/BuildingB/DetailsB" element={<DetailsB />} />
               <Route path="/backoffice/BuildingB/MapB" element={<MapB />} />
               <Route path="/backoffice/BuildingB/ListB" element={<ListB />} />
