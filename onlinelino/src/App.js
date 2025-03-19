@@ -23,10 +23,12 @@ import BibliographyB from './pages/Backoffice/ProjectB/BibliographyB';
 import ContactsB from './pages/Backoffice/ProjectB/ContactsB';
 import DescriptionB from './pages/Backoffice/ProjectB/DescriptionB';
 import TeamB from './pages/Backoffice/ProjectB/TeamB';
-import ChronologyB from './pages/Backoffice/BuildingB/ChronologyB';
 import DetailsB from './pages/Backoffice/BuildingB/DetailsB';
 import ListB from './pages/Backoffice/BuildingB/ListB';
 import MapB from './pages/Backoffice/BuildingB/MapB';
+import ChronologyB from './pages/Backoffice/BuildingB/ChronolyB';
+
+
 
 function App() {
   useEffect(() => {
