@@ -11,34 +11,59 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    
     const validateEmail = (email) => {
         return /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
     };
 
     const handleEmailBlur = () => {
-        !validateEmail(username) ? setEmailError('Campo inválido') : setEmailError('');
+        if (!username) {
+            setEmailError('O campo não pode estar vazio');
+        } else if (!validateEmail(username)) {
+            setEmailError('Email inválido');
+        } else {
+            setEmailError('');
+        }
     };
 
     const handlePasswordBlur = () => {
-        !password ? setPasswordError('Campo inválido') : setPasswordError('');
+        if (!password) {
+            setPasswordError('O campo não pode estar vazio');
+        } else {
+            setPasswordError('');
+        }
     };
 
     const validateInputs = async (e) => {
         e.preventDefault();
-        if (emailError === 'Campo inválido' || passwordError === 'Campo inválido'){
-            setEmailError('Corrija este campo');
-            setPasswordError('Corrija este campo');
-            return
-        } else if(!emailError || !passwordError){
-            setEmailError('Campo não pode estar vazio');
-            setPassword('Campo não pode estar vazio');
-            return
-        }else{
-            login();
+
+        let isValid = true;
+
+        
+        if (!username) {
+            setEmailError('O campo não pode estar vazio');
+            isValid = false;
+        } else if (!validateEmail(username)) {
+            setEmailError('Email inválido');
+            isValid = false;
+        } else {
+            setEmailError('');
+        }
+
+        // Validação da senha
+        if (!password) {
+            setPasswordError('O campo não pode estar vazio');
+            isValid = false;
+        } else {
+            setPasswordError('');
+        }
+
+        if (isValid) {
+            login(); 
         }
     };
 
-    async function login () {
+    async function login() {
         try {
             const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/login`, {
                 method: 'POST',
@@ -48,16 +73,18 @@ const Login = () => {
                 body: JSON.stringify({ username, password }),
             });
             const data = await response.json();
-            const SESSION_TOKEN = data.token;
-            sessionStorage.setItem('authorization', SESSION_TOKEN);
-            if (SESSION_TOKEN) {
+
+            if (response.ok) {
+                const SESSION_TOKEN = data.token;
+                sessionStorage.setItem('authorization', SESSION_TOKEN);
                 alert(`Bem Vindo ${username}!`);
                 navigate('../Backoffice/BiographyB/AboutB');
             } else {
-                alert(data.error);
+                alert(data.error || 'Falha no login');
             }
         } catch (error) {
             console.error('Login failed', error);
+            alert('Erro ao tentar realizar o login');
         }
     }
 
@@ -78,6 +105,7 @@ const Login = () => {
                     />
                     {emailError && <span className="error-message">{emailError}</span>}
                 </div>
+
                 <div className="input-container">
                     <label htmlFor="password" className="input-label">Palavra Passe</label>
                     <input
@@ -91,6 +119,7 @@ const Login = () => {
                     />
                     {passwordError && <span className="error-message">{passwordError}</span>}
                 </div>
+
                 <div className="button-container">
                     <button type="submit" className="login-button">Login</button>
                     <button type="button" onClick={() => navigate('/')} className="back-button">Voltar à Página Inicial</button>
