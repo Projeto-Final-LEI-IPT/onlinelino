@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 
 const PORT = 8080;
-
+const BACKOFFICE_URL = 'backoffice';
 
 app.use(cors({
     //TODO Colocar o dominio do site como origin
@@ -71,11 +71,11 @@ const handleRequest = async (req, res, query, paramsExtractor, transform) => {
 };
 
 app.post(`/${BACKOFFICE_URL}/register`, async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!username || !password) {
-        console.info('Username e password são obrigatórios.');
-        return res.status(400).json({ error: 'Username e password são obrigatórios.' });
+    if (!email || !password) {
+        console.info('Email e password são obrigatórios.');
+        return res.status(400).json({ error: 'Email e password são obrigatórios.' });
     }
 
     if (password.length < 4) {
@@ -86,15 +86,15 @@ app.post(`/${BACKOFFICE_URL}/register`, async (req, res) => {
     let db;
     try {
         db = await connection();
-        const [existingUsers] = await db.execute('SELECT * FROM admins WHERE username = ?', [username]);
+        const [existingUsers] = await db.execute('SELECT * FROM admins WHERE email = ?', [email]);
         if (existingUsers.length > 0) {
-            console.info(`O email: ${username} já esta em uso.`);
+            console.info(`O email: ${email} já esta em uso.`);
             return res.status(409).json({ error: 'O email já está em uso.' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        await db.execute('INSERT INTO admins (username, password_hash) VALUES (?, ?)', [username, hashedPassword]);
-        console.info(`Novo utilizador criado com sucesso: ${username}`);
+        await db.execute('INSERT INTO admins (email, password_hash) VALUES (?, ?)', [email, hashedPassword]);
+        console.info(`Novo utilizador criado com sucesso: ${email}`);
         res.status(201).json({ message: 'Utilizador registado com sucesso!' });
     } catch (error) {
         console.error('Erro ao registar Utilizador:', error.message);
@@ -105,19 +105,19 @@ app.post(`/${BACKOFFICE_URL}/register`, async (req, res) => {
 });
 
 app.post(`/${BACKOFFICE_URL}/login`, async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!username || !password) {
-        return res.status(400).json({ error: 'Username e password são obrigatórios.' });
+    if (!email || !password) {
+        return res.status(400).json({ error: 'Email e password são obrigatórios.' });
     }
 
     let db;
     try {
         db = await connection();
-        const [users] = await db.execute('SELECT * FROM admins WHERE username = ?', [username]);
+        const [users] = await db.execute('SELECT * FROM admins WHERE email = ?', [email]);
 
         if (users.length === 0) {
-            console.info(`${username} inexistente.`);
+            console.info(`${email} inexistente.`);
             return res.status(401).json({ error: 'Credenciais inválidas.' });
         }
 
@@ -135,7 +135,7 @@ app.post(`/${BACKOFFICE_URL}/login`, async (req, res) => {
         }
 
         const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1h' });
-        console.info(`${username} realizou login.`);
+        console.info(`${email} realizou login.`);
         res.status(200).json(createResponseOnSuccess('Login executado com sucesso', token));
     } catch (error) {
         console.error('Erro ao processar login:', error.message);
