@@ -82,15 +82,10 @@ function ContactsB() {
                                 </button>
                             </div>
                         ))}
-                        {/* Botão para adicionar um novo campo de contato */}
-                        <button
+                        
+                        <button 
                             onClick={addContactField}
                             style={{
-                                padding: '8px 16px',
-                                borderRadius: '4px',
-                            }}
-                        />
-                        <button style={{
                             padding: '10px 20px', borderRadius: '4px', background: '#007BFF', color: '#fff',
                             border: 'none',
                             cursor: 'pointer',
@@ -124,24 +119,8 @@ function ContactsB() {
 
                     </div>
 
-                    {/* Caixa de texto e botão para INGLÊS */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
-                        <textarea
-                            placeholder="Digite aqui em INGLÊS..."
-                            style={{
-                                width: '50vh', // Largura ajustada
-                                height: '20vh', // Altura ajustada
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
-                            }}
-                        />
-                        <button style={{ padding: '10px 20px', borderRadius: '4px', background: '#007BFF', color: '#fff', border: 'none', cursor: 'pointer' }}>
-                            Guardar
-                        </button>
-                    </div>
+                  
+                    
                 </div>
             </div>
         </div>
