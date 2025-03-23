@@ -25,8 +25,7 @@ import DescriptionB from './pages/Backoffice/ProjectB/DescriptionB';
 import TeamB from './pages/Backoffice/ProjectB/TeamB';
 import ChronolyB from './pages/Backoffice/BuildingB/ChronolyB';
 import DetailsB from './pages/Backoffice/BuildingB/DetailsB';
-import ListB from './pages/Backoffice/BuildingB/ListB';
-import MapB from './pages/Backoffice/BuildingB/MapB';
+
 
 
 
@@ -66,8 +65,6 @@ function App() {
               <Route path="/backoffice/ProjectB/TeamB" element={<TeamB />} />
               <Route path="/backoffice/BuildingB/ChronolyB" element={<ChronolyB />} />
               <Route path="/backoffice/BuildingB/DetailsB" element={<DetailsB />} />
-              <Route path="/backoffice/BuildingB/MapB" element={<MapB />} />
-              <Route path="/backoffice/BuildingB/ListB" element={<ListB />} />
             </Routes>
           </div>
         </div>

@@ -3,6 +3,9 @@ import NavbarBackoffice from "../../../components/NavbarBackoffice";
 
 function ContactsB() {
     const [contacts, setContacts] = useState([{ name: '', email: '' }]); // Lista de contatos com nome e email
+    const [showConfirmDialog, setShowConfirmDialog] = useState(false); // Controla a exibição do pop-up
+    const [contactToRemove, setContactToRemove] = useState(null); // Guarda o índice do contato a ser removido
+    const [contactNameToRemove, setContactNameToRemove] = useState(''); // Guarda o nome do contato a ser removido
 
     // Função para adicionar um novo campo de contato
     const addContactField = () => {
@@ -16,10 +19,27 @@ function ContactsB() {
         setContacts(updatedContacts);
     };
 
-    // Função para excluir um contato da lista
-    const removeContact = (index) => {
-        const updatedContacts = contacts.filter((_, i) => i !== index);
+    // Função para exibir o pop-up de confirmação para remover um contato
+    const confirmRemoveContact = (index) => {
+        setShowConfirmDialog(true);
+        setContactToRemove(index);
+        setContactNameToRemove(contacts[index].name); // Salva o nome do contato a ser removido
+    };
+
+    // Função para excluir o contato após confirmação
+    const removeContact = () => {
+        const updatedContacts = contacts.filter((_, i) => i !== contactToRemove);
         setContacts(updatedContacts);
+        setShowConfirmDialog(false); // Fecha o pop-up
+        setContactToRemove(null); // Limpa o índice do contato a ser removido
+        setContactNameToRemove(''); // Limpa o nome do contato
+    };
+
+    // Função para fechar o pop-up sem excluir
+    const cancelRemoveContact = () => {
+        setShowConfirmDialog(false);
+        setContactToRemove(null);
+        setContactNameToRemove(''); // Limpa o nome do contato
     };
 
     return (
@@ -63,7 +83,7 @@ function ContactsB() {
                                 </div>
                                 {/* Botão de excluir (X) ao lado dos inputs */}
                                 <button
-                                    onClick={() => removeContact(index)}
+                                    onClick={() => confirmRemoveContact(index)}
                                     style={{
                                         width: '30px',
                                         height: '30px',
@@ -82,20 +102,20 @@ function ContactsB() {
                                 </button>
                             </div>
                         ))}
-                        
+
                         <button 
                             onClick={addContactField}
                             style={{
-                            padding: '10px 20px', borderRadius: '4px', background: '#007BFF', color: '#fff',
-                            border: 'none',
-                            cursor: 'pointer',
-                            marginTop: '10px',
-                            fontSize: '14px',
-                            maxWidth: '200px',
-                            width: '100%',
-                            display: 'block',
-                            margin: '10px auto',
-                        }}>
+                                padding: '10px 20px', borderRadius: '4px', background: '#007BFF', color: '#fff',
+                                border: 'none',
+                                cursor: 'pointer',
+                                marginTop: '10px',
+                                fontSize: '14px',
+                                maxWidth: '200px',
+                                width: '100%',
+                                display: 'block',
+                                margin: '10px auto',
+                            }}>
                             Adicionar Contacto
                         </button>
                         {/* Botão de Guardar */}
@@ -112,17 +132,44 @@ function ContactsB() {
                             width: '100%',
                             display: 'block',
                             margin: '10px auto',
-                        }}
-                        >
+                        }}>
                             Guardar
                         </button>
-
                     </div>
-
-                  
-                    
                 </div>
             </div>
+
+            {/* Pop-up de Confirmação */}
+            {showConfirmDialog && (
+                <div style={{
+                    position: 'fixed', top: '0', left: '0', width: '100vw', height: '100vh',
+                    background: 'rgba(0, 0, 0, 0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center',
+                    zIndex: '1000'
+                }}>
+                    <div style={{
+                        background: '#fff', padding: '20px', borderRadius: '5px', display: 'flex',
+                        flexDirection: 'column', alignItems: 'center', maxWidth: '400px', width: '100%'
+                    }}>
+                        <h3>Tem a certeza que deseja apagar o contacto "{contactNameToRemove}"?</h3>
+                        <div style={{ display: 'flex', gap: '20px' }}>
+                            <button
+                                onClick={removeContact}
+                                style={{
+                                    padding: '10px 20px', background: 'green', color: '#fff', border: 'none', borderRadius: '5px'
+                                }}>
+                                Sim
+                            </button>
+                            <button
+                                onClick={cancelRemoveContact}
+                                style={{
+                                    padding: '10px 20px', background: 'red', color: '#fff', border: 'none', borderRadius: '5px'
+                                }}>
+                                Não
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

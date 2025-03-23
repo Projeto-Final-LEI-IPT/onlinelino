@@ -65,12 +65,7 @@ const NavbarBackoffice = () => {
                             <li>
                                 <Link to="/Backoffice/BuildingB/ChronologyB" className="dropdown-item2">{t('navbarBuilding.chronology')}</Link>
                             </li>
-                            <li>
-                                <Link to="/Backoffice/BuildingB/MapB" className="dropdown-item2">{t('navbarBuilding.map')}</Link>
-                            </li>
-                            <li>
-                                <Link to="/Backoffice/BuildingB/ListB" className="dropdown-item2">{t('navbarBuilding.list')}</Link>
-                            </li>
+                            
                         </ul>
                     </li>
                 </ul>

@@ -4,6 +4,10 @@ import NavbarBackoffice from "../../../components/NavbarBackoffice";
 function TeamB() {
     const [investigators, setInvestigators] = useState(['', '', '']); // Lista de investigadores iniciais (3 campos de texto)
     const [collaborators, setCollaborators] = useState(['', '', '']); // Lista de colaboradores iniciais (3 campos de texto)
+    const [showConfirmDialog, setShowConfirmDialog] = useState(false); // Controla a exibição do pop-up
+    const [contactToRemove, setContactToRemove] = useState(null); // Guarda o índice do investigador ou colaborador a ser removido
+    const [isInvestigator, setIsInvestigator] = useState(null); // Determina se o item a remover é um investigador ou colaborador
+    const [contactName, setContactName] = useState(''); // Guarda o nome do investigador ou colaborador a ser removido
 
     // Função para adicionar mais campos de texto para Investigadores
     const addInvestigatorField = () => {
@@ -29,16 +33,45 @@ function TeamB() {
         setCollaborators(updatedCollaborators);
     };
 
-    // Função para excluir um investigador da lista
-    const removeInvestigator = (index) => {
-        const updatedInvestigators = investigators.filter((_, i) => i !== index);
-        setInvestigators(updatedInvestigators);
+    // Função para exibir o pop-up de confirmação para Investigadores
+    const confirmRemoveInvestigator = (index) => {
+        setShowConfirmDialog(true);
+        setContactToRemove(index);
+        setIsInvestigator(true);
+        setContactName(investigators[index]); // Definir o nome do investigador a ser removido
     };
 
-    // Função para excluir um colaborador da lista
-    const removeCollaborator = (index) => {
-        const updatedCollaborators = collaborators.filter((_, i) => i !== index);
+    // Função para exibir o pop-up de confirmação para Colaboradores
+    const confirmRemoveCollaborator = (index) => {
+        setShowConfirmDialog(true);
+        setContactToRemove(index);
+        setIsInvestigator(false);
+        setContactName(collaborators[index]); // Definir o nome do colaborador a ser removido
+    };
+
+    // Função para excluir um investigador
+    const removeInvestigator = () => {
+        const updatedInvestigators = investigators.filter((_, i) => i !== contactToRemove);
+        setInvestigators(updatedInvestigators);
+        setShowConfirmDialog(false); // Fecha o pop-up
+        setContactToRemove(null); // Limpa o índice do investigador a ser removido
+        setContactName(''); // Limpa o nome do investigador removido
+    };
+
+    // Função para excluir um colaborador
+    const removeCollaborator = () => {
+        const updatedCollaborators = collaborators.filter((_, i) => i !== contactToRemove);
         setCollaborators(updatedCollaborators);
+        setShowConfirmDialog(false); // Fecha o pop-up
+        setContactToRemove(null); // Limpa o índice do colaborador a ser removido
+        setContactName(''); // Limpa o nome do colaborador removido
+    };
+
+    // Função para fechar o pop-up sem excluir
+    const cancelRemoveContact = () => {
+        setShowConfirmDialog(false);
+        setContactToRemove(null);
+        setContactName(''); // Limpa o nome
     };
 
     return (
@@ -66,7 +99,7 @@ function TeamB() {
                                 />
                                 {/* Botão de excluir (X) */}
                                 <button
-                                    onClick={() => removeInvestigator(index)}
+                                    onClick={() => confirmRemoveInvestigator(index)}
                                     style={{
                                         width: '30px',
                                         height: '30px',
@@ -96,8 +129,8 @@ function TeamB() {
                                 cursor: 'pointer',
                                 marginTop: '10px',
                             }}
-                            >
-                                Adicionar Investigador
+                        >
+                            Adicionar Investigador
                         </button>
                     </div>
 
@@ -120,7 +153,7 @@ function TeamB() {
                                 />
                                 {/* Botão de excluir (X) */}
                                 <button
-                                    onClick={() => removeCollaborator(index)}
+                                    onClick={() => confirmRemoveCollaborator(index)}
                                     style={{
                                         width: '30px',
                                         height: '30px',
@@ -149,12 +182,14 @@ function TeamB() {
                                 border: 'none',
                                 cursor: 'pointer',
                                 marginTop: '10px',
-                            }}>
+                            }}
+                        >
                             Adicionar Colaborador
                         </button>
                     </div>
                 </div>
-                {/* Botão de Guardar (Apenas exemplo, pode ser ajustado conforme sua necessidade) */}
+
+                {/* Botão de Guardar */}
                 <button
                     style={{
                         padding: '10px 20px',
@@ -169,6 +204,40 @@ function TeamB() {
                     Guardar
                 </button>
             </div>
+
+            {/* Pop-up de Confirmação */}
+            {showConfirmDialog && (
+                <div style={{
+                    position: 'fixed', top: '0', left: '0', width: '100vw', height: '100vh',
+                    background: 'rgba(0, 0, 0, 0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center',
+                    zIndex: '1000'
+                }}>
+                    <div style={{
+                        background: '#fff', padding: '20px', borderRadius: '5px', display: 'flex',
+                        flexDirection: 'column', alignItems: 'center', maxWidth: '400px', width: '100%'
+                    }}>
+                        <h3>Tem a certeza que deseja apagar "{contactName}"?</h3>
+                        <div style={{ display: 'flex', gap: '20px' }}>
+                            <button
+                                onClick={isInvestigator ? removeInvestigator : removeCollaborator}
+                                style={{
+                                    padding: '10px 20px', background: 'green', color: '#fff', border: 'none', borderRadius: '5px'
+                                }}
+                            >
+                                Sim
+                            </button>
+                            <button
+                                onClick={cancelRemoveContact}
+                                style={{
+                                    padding: '10px 20px', background: 'red', color: '#fff', border: 'none', borderRadius: '5px'
+                                }}
+                            >
+                                Não
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

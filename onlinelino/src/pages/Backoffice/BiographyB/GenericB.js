@@ -4,6 +4,8 @@ import NavbarBackoffice from "../../../components/NavbarBackoffice";
 function GenericB() {
     const [movies, setMovies] = useState([""]); // Lista para filmes
     const [links, setLinks] = useState([""]); // Lista para links
+    const [showConfirmDialog, setShowConfirmDialog] = useState(false); // Controla a exibição do pop-up
+    const [itemToRemove, setItemToRemove] = useState(null); // Armazena o tipo e índice do item a ser removido
 
     // Função para adicionar um novo filme
     const addMovieField = () => {
@@ -29,14 +31,27 @@ function GenericB() {
         setLinks(updatedLinks);
     };
 
-    // Função para remover um filme
-    const removeMovie = (index) => {
-        setMovies(movies.filter((_, i) => i !== index));
+    // Função para exibir o pop-up de confirmação para remover um filme
+    const confirmRemoveItem = (type, index) => {
+        setShowConfirmDialog(true);
+        setItemToRemove({ type, index });
     };
 
-    // Função para remover um link
-    const removeLink = (index) => {
-        setLinks(links.filter((_, i) => i !== index));
+    // Função para remover o filme ou link após confirmação
+    const removeItem = () => {
+        if (itemToRemove.type === 'movie') {
+            setMovies(movies.filter((_, i) => i !== itemToRemove.index));
+        } else if (itemToRemove.type === 'link') {
+            setLinks(links.filter((_, i) => i !== itemToRemove.index));
+        }
+        setShowConfirmDialog(false); // Fecha o pop-up
+        setItemToRemove(null); // Limpa o item a ser removido
+    };
+
+    // Função para fechar o pop-up sem remover
+    const cancelRemoveItem = () => {
+        setShowConfirmDialog(false);
+        setItemToRemove(null);
     };
 
     return (
@@ -106,7 +121,7 @@ function GenericB() {
                                         }}
                                     />
                                     <button
-                                        onClick={() => removeMovie(index)}
+                                        onClick={() => confirmRemoveItem('movie', index)}
                                         style={{
                                             width: '40px',
                                             height: '40px',
@@ -126,7 +141,7 @@ function GenericB() {
                                     </button>
                                 </div>
                             ))}
-                            <button 
+                            <button
                                 onClick={addMovieField}
                                 style={{
                                     padding: '12px 24px',
@@ -170,7 +185,7 @@ function GenericB() {
                                         }}
                                     />
                                     <button
-                                        onClick={() => removeLink(index)}
+                                        onClick={() => confirmRemoveItem('link', index)}
                                         style={{
                                             width: '40px',
                                             height: '40px',
@@ -190,7 +205,7 @@ function GenericB() {
                                     </button>
                                 </div>
                             ))}
-                            <button 
+                            <button
                                 onClick={addLinkField}
                                 style={{
                                     padding: '12px 24px',
@@ -212,6 +227,38 @@ function GenericB() {
                     </div>
                 </div>
             </div>
+
+            {/* Pop-up de Confirmação */}
+            {showConfirmDialog && (
+                <div style={{
+                    position: 'fixed', top: '0', left: '0', width: '100vw', height: '100vh',
+                    background: 'rgba(0, 0, 0, 0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center',
+                    zIndex: '1000'
+                }}>
+                    <div style={{
+                        background: '#fff', padding: '20px', borderRadius: '5px', display: 'flex',
+                        flexDirection: 'column', alignItems: 'center', maxWidth: '400px', width: '100%'
+                    }}>
+                        <h3>Tem a certeza que deseja apagar?</h3>
+                        <div style={{ display: 'flex', gap: '20px' }}>
+                            <button
+                                onClick={removeItem}
+                                style={{
+                                    padding: '10px 20px', background: 'green', color: '#fff', border: 'none', borderRadius: '5px'
+                                }}>
+                                Sim
+                            </button>
+                            <button
+                                onClick={cancelRemoveItem}
+                                style={{
+                                    padding: '10px 20px', background: 'red', color: '#fff', border: 'none', borderRadius: '5px'
+                                }}>
+                                Não
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

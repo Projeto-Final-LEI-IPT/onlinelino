@@ -55,6 +55,117 @@ function DetailsB() {
                     </div>
                 </div>
 
+                {/* Seção para Data de Construção (PT e EN) */}
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
+                        <label htmlFor="data-pt">Data Construção (PT)</label>
+                        <textarea
+                            id="data-pt"
+                            placeholder="Digite a data de construção em Português"
+                            style={{
+                                width: '50vh',
+                                height: '5vh',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ccc',
+                                resize: 'none',
+                                overflow: 'auto',
+                            }}
+                        />
+                    </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
+                        <label htmlFor="data-en">Data Construção (EN)</label>
+                        <textarea
+                            id="data-en"
+                            placeholder="Digite a data de construção em Inglês"
+                            style={{
+                                width: '50vh',
+                                height: '5vh',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ccc',
+                                resize: 'none',
+                                overflow: 'auto',
+                            }}
+                        />
+                    </div>
+                </div>
+
+                {/* Seção para Tipo (PT e EN) */}
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
+                        <label htmlFor="tipo-pt">Tipo (PT)</label>
+                        <textarea
+                            id="tipo-pt"
+                            placeholder="Digite o tipo em Português"
+                            style={{
+                                width: '50vh',
+                                height: '5vh',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ccc',
+                                resize: 'none',
+                                overflow: 'auto',
+                            }}
+                        />
+                    </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
+                        <label htmlFor="tipo-en">Tipo (EN)</label>
+                        <textarea
+                            id="tipo-en"
+                            placeholder="Digite o tipo em Inglês"
+                            style={{
+                                width: '50vh',
+                                height: '5vh',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ccc',
+                                resize: 'none',
+                                overflow: 'auto',
+                            }}
+                        />
+                    </div>
+                </div>
+
+                {/* Seção para Localização (PT e EN) */}
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
+                        <label htmlFor="localizacao-pt">Localização (PT)</label>
+                        <textarea
+                            id="localizacao-pt"
+                            placeholder="Digite a localização em Português"
+                            style={{
+                                width: '50vh',
+                                height: '5vh',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ccc',
+                                resize: 'none',
+                                overflow: 'auto',
+                            }}
+                        />
+                    </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
+                        <label htmlFor="localizacao-en">Localização (EN)</label>
+                        <textarea
+                            id="localizacao-en"
+                            placeholder="Digite a localização em Inglês"
+                            style={{
+                                width: '50vh',
+                                height: '5vh',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                border: '1px solid #ccc',
+                                resize: 'none',
+                                overflow: 'auto',
+                            }}
+                        />
+                    </div>
+                </div>
+
                 {/* Seção para Descrição (PT e EN) */}
                 <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
