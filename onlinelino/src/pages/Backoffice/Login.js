@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../../style/Login.css';
 
 const Login = () => {
-    const [username, setUsername] = useState('');
+    const [email, setemail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
@@ -17,9 +17,9 @@ const Login = () => {
     };
 
     const handleEmailBlur = () => {
-        if (!username) {
+        if (!email) {
             setEmailError('O campo não pode estar vazio');
-        } else if (!validateEmail(username)) {
+        } else if (!validateEmail(email)) {
             setEmailError('Email inválido');
         } else {
             setEmailError('');
@@ -40,10 +40,10 @@ const Login = () => {
         let isValid = true;
 
         
-        if (!username) {
+        if (!email) {
             setEmailError('O campo não pode estar vazio');
             isValid = false;
-        } else if (!validateEmail(username)) {
+        } else if (!validateEmail(email)) {
             setEmailError('Email inválido');
             isValid = false;
         } else {
@@ -70,14 +70,14 @@ const Login = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ email, password }),
             });
             const data = await response.json();
 
             if (response.ok) {
                 const SESSION_TOKEN = data.token;
                 sessionStorage.setItem('authorization', SESSION_TOKEN);
-                alert(`Bem Vindo ${username}!`);
+                alert(`Bem Vindo ${email}!`);
                 navigate('../Backoffice/BiographyB/AboutB');
             } else {
                 alert(data.error || 'Falha no login');
@@ -99,8 +99,8 @@ const Login = () => {
                         id="email"
                         placeholder="Digite seu e-mail"
                         className={`input-field ${emailError ? 'error-border' : ''}`}
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={email}
+                        onChange={(e) => setemail(e.target.value)}
                         onBlur={handleEmailBlur}
                     />
                     {emailError && <span className="error-message">{emailError}</span>}
