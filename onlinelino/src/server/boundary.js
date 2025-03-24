@@ -148,6 +148,7 @@ app.post(`/${BACKOFFICE_URL}/login`, async (req, res) => {
 
 //Páginas do backoffice devem estar todas protegidas
 //createEndpoint('/protected', 'SELECT * FROM ProtectedData', null, true);
+createEndpoint(`/${BACKOFFICE_URL}/bibliografia`, 'SELECT * FROM Bibliografia', [], null, true);
 
 //Aba Projeto Raul Lino
 createEndpoint('/home', 'SELECT descricao_pt FROM Home', []);
