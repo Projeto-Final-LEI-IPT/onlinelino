@@ -60,10 +60,10 @@ const NavbarBackoffice = () => {
                         </Link>
                         <ul className={`dropdown-menu2 ${activeDropdown === 2 ? 'show' : ''}`}>
                             <li>
-                                <Link to="/Backoffice/BuildingB/DetailsB" className="dropdown-item2">{t('navbarBuilding.details')}</Link>
+                                <Link to="/Backoffice/BuildingB/ChronolyB" className="dropdown-item2">{t('navbarBuilding.details')}</Link>
                             </li>
                             <li>
-                                <Link to="/Backoffice/BuildingB/ChronologyB" className="dropdown-item2">{t('navbarBuilding.chronology')}</Link>
+                                <Link to="/Backoffice/BuildingB/DetailsB" className="dropdown-item2">{t('navbarBuilding.addBuild')}</Link>
                             </li>
                             
                         </ul>

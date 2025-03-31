@@ -19,7 +19,8 @@
         "details": "BUILDINGS",
         "chronology": "CHRONOLOGY",
         "map": "MAP",
-        "list": "LIST"
+        "list": "LIST",
+        "addBuild":"ADD Buildings"
     },
     "homePage": {
         "summary": [
