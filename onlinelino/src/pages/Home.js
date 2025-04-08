@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import NavbarHome from "../components/NavbarHome";
 import Footer from "../components/Footer";
 import Container from "react-bootstrap/esm/Container";
-import { SERVER_URL, BACKOFFICE_URL } from "../Utils";
+import { SERVER_URL } from "../Utils";
 
 function Home() {
 
-    const [descricao, setDescricao] = useState([]);
+    const [descricao, setDescricao] = useState(null);  
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -14,15 +14,15 @@ function Home() {
     useEffect(() => {
         const fetchDescricao = async () => {
             try {
-                const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/home`);
+                const response = await fetch(`${SERVER_URL}/descricao`);
                 if (!response.ok) {
                     throw new Error('Erro ao buscar a descrição');
                 }
                 const data = await response.json();
-                setDescricao(data);
+                setDescricao(data); 
             } catch (err) {
                 setError(err.message);
-            }finally {
+            } finally {
                 setLoading(false);
             }
         };
@@ -43,10 +43,8 @@ function Home() {
             <NavbarHome />
             <br />
             <Container>
-            {descricao && descricao.length > 0 ? (
-                    descricao.map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
-                    ))
+                {descricao ? (
+                    <p>{descricao.descricao_pt}</p>
                 ) : (
                     <p>Nenhuma descrição disponível.</p>
                 )}

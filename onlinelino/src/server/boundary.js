@@ -24,80 +24,83 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    if (!token) {
-        console.info('Token de autenticação não fornecido.');
-        return res.status(403).json({ error: 'Token de autenticação não fornecido.' });
-    }
-
+    const token = req.headers['authorization']?.split(' ')[1];
+    if (!token) return res.status(403).json({ error: 'Autenticação necessária.' });
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) {
-            console.info(`Token fornecido por ${user} é inválido`);
-            return res.status(403).json({ error: 'Token inválido.' });
-        }
+        if (err) return res.status(403).json({ error: 'Autenticação necessária.' });
         req.user = user;
         next();
     });
 };
 
-const createEndpoint = (path, query, paramsExtractor = () => [], transform = rows => rows, requiresAuth = false) => {
-    app.get(`/${BACKOFFICE_URL}${path}`, async (req, res) => {
-        if (requiresAuth) {
-            return authenticateToken(req, res, async () => {
-                await handleRequest(req, res, query, paramsExtractor, transform);
-            });
-        }
-        await handleRequest(req, res, query, paramsExtractor, transform);
-    });
-};
-
 const handleRequest = async (req, res, query, paramsExtractor, transform) => {
-    const safeTransform = transform || (rows => rows);
     let db;
     try {
         db = await connection();
-
         const params = paramsExtractor(req);
-
         const [rows] = await db.execute(query, params);
-        res.json(safeTransform(rows));
+        res.json(transform(rows));
     } catch (error) {
-        console.error(`Erro ao buscar dados para ${req.path}:`, error.message);
         res.status(500).send('Erro interno. Tente novamente mais tarde');
+        console.log(error);
     } finally {
         if (db) await db.end();
     }
 };
 
+const createEndpoint = (path, query, paramsExtractor = () => [], transform = rows => rows, requiresAuth = false) => {
+    const endpointPath = requiresAuth ? `/${BACKOFFICE_URL}${path}` : path;
+    app.get(endpointPath, async (req, res) => {
+        if (requiresAuth) return authenticateToken(req, res, async () => await handleRequest(req, res, query, paramsExtractor, transform));
+        await handleRequest(req, res, query, paramsExtractor, transform);
+    });
+};
+
+const createUpdateEndpoint = (path, tableName, fields) => {
+  const endpointPath = `/${BACKOFFICE_URL}${path}/:id`;
+
+  app.put(endpointPath, authenticateToken, async (req, res) => {
+      const { id } = req.params;
+      const values = fields.map(field => req.body[field]);
+
+      if (values.includes(undefined)) {
+          return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
+      }
+
+      let db;
+      try {
+          db = await connection();
+
+          const setClause = fields.map(field => `${field} = ?`).join(', ') + ', modificado_em = NOW()';
+          const query = `UPDATE ${tableName} SET ${setClause} WHERE id = ?`;
+
+          await db.execute(query, [...values, id]);
+
+          res.json({ message: 'Atualização realizada com sucesso.', entidade_atualizada: values, modificada_em: new Date() });
+      } catch (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Erro ao atualizar.' });
+      } finally {
+          if (db) await db.end();
+      }
+  });
+};
+
+
+
+
 app.post(`/${BACKOFFICE_URL}/register`, async (req, res) => {
     const { email, password } = req.body;
-
-    if (!email || !password) {
-        console.info('Email e password são obrigatórios.');
-        return res.status(400).json({ error: 'Email e password são obrigatórios.' });
-    }
-
-    if (password.length < 4) {
-        console.info('A password deve ter pelo menos 4 caracteres.');
-        return res.status(400).json({ error: 'A password deve ter pelo menos 4 caracteres.' });
-    }
-
+    if (!email || !password || password.length < 4) return res.status(400).json({ error: 'Email e password são obrigatórios e devem ter pelo menos 4 caracteres.' });
     let db;
     try {
         db = await connection();
         const [existingUsers] = await db.execute('SELECT * FROM admins WHERE email = ?', [email]);
-        if (existingUsers.length > 0) {
-            console.info(`O email: ${email} já esta em uso.`);
-            return res.status(409).json({ error: 'O email já está em uso.' });
-        }
-
+        if (existingUsers.length > 0) return res.status(409).json({ error: 'O email já está em uso.' });
         const hashedPassword = await bcrypt.hash(password, 10);
         await db.execute('INSERT INTO admins (email, password_hash) VALUES (?, ?)', [email, hashedPassword]);
-        console.info(`Novo utilizador criado com sucesso: ${email}`);
         res.status(201).json({ message: 'Utilizador registado com sucesso!' });
-    } catch (error) {
-        console.error('Erro ao registar Utilizador:', error.message);
+    } catch {
         res.status(500).json({ error: 'Erro ao registar Utilizador.' });
     } finally {
         if (db) await db.end();
@@ -106,69 +109,53 @@ app.post(`/${BACKOFFICE_URL}/register`, async (req, res) => {
 
 app.post(`/${BACKOFFICE_URL}/login`, async (req, res) => {
     const { email, password } = req.body;
-
-    if (!email || !password) {
-        return res.status(400).json({ error: 'Email e password são obrigatórios.' });
-    }
-
+    if (!email || !password) return res.status(400).json({ error: 'Email e password são obrigatórios.' });
     let db;
     try {
         db = await connection();
         const [users] = await db.execute('SELECT * FROM admins WHERE email = ?', [email]);
-
-        if (users.length === 0) {
-            console.info(`${email} inexistente.`);
-            return res.status(401).json({ error: 'Credenciais inválidas.' });
-        }
-
-        const user = users[0];
-        const isMatch = await bcrypt.compare(password, user.password_hash);
-
-        if (!isMatch) {
-            console.info(`O user com email ${user} digitou a password errada`);
-            return res.status(401).json({ error: 'Credenciais inválidas.' });
-        }
-
-        const secret = process.env.JWT_SECRET;
-        if (!secret) {
-            throw new Error('Chave secreta JWT não configurada.');
-        }
-
-        const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1h' });
-        console.info(`${email} realizou login.`);
+        if (users.length === 0 || !(await bcrypt.compare(password, users[0].password_hash))) return res.status(401).json({ error: 'Credenciais inválidas.' });
+        const token = jwt.sign({ userId: users[0].id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.status(200).json(createResponseOnSuccess('Login executado com sucesso', token));
-    } catch (error) {
-        console.error('Erro ao processar login:', error.message);
+    } catch {
         res.status(500).json({ error: 'Erro ao processar login.' });
     } finally {
         if (db) await db.end();
     }
 });
 
-
 //Páginas do backoffice devem estar todas protegidas
-//createEndpoint('/protected', 'SELECT * FROM ProtectedData', null, true);
-createEndpoint(`/${BACKOFFICE_URL}/bibliografia`, 'SELECT * FROM Bibliografia', [], null, true);
+createEndpoint('/home', 'SELECT * FROM Home', () => [], (rows) => rows, true);
+createEndpoint('/descricao', 'SELECT * FROM Descricao', () => [], (rows) => rows, true);
+createEndpoint('/bibliografia', 'SELECT descricao FROM Bibliografia', () => [], (rows) => rows, true);
+createEndpoint('/equipa', 'SELECT nome, cargo FROM Equipa', () => [], (rows) => rows, true);
+createUpdateEndpoint('/equipa', 'equipa', ['nome', 'cargo'], true);
+createEndpoint('/contactos', 'SELECT nome, email FROM Contactos', () => [], (rows) => rows, true);
+
+createEndpoint('/overview', 'SELECT * FROM overview', () => [], (rows) => rows, true);
+createEndpoint('/sobre', 'SELECT * FROM materiais', () => [], (rows) => rows, true);
+
+
+
+
 
 //Aba Projeto Raul Lino
-createEndpoint('/home', 'SELECT descricao_pt FROM Home', []);
-createEndpoint('/bibliografia', 'SELECT descricao FROM Bibliografia', []);
-createEndpoint('/equipa', 'SELECT * FROM Equipa ORDER BY cargo, nome', [], null, true);
-createEndpoint('/equipa/:id', 'SELECT * FROM equipa WHERE id = ?', req => [req.params.id]);
-createEndpoint('/contactos', 'SELECT nome, email FROM contactos', []);
+createEndpoint('/home', 'SELECT descricao_pt FROM Home', () => [], (rows) => rows);
+createEndpoint('/descricao', 'SELECT descricao_pt, descricao_en FROM Descricao', () => [], (rows) => rows);
+createEndpoint('/bibliografia', 'SELECT descricao FROM Bibliografia', () => [], (rows) => rows);
+createEndpoint('/equipa', 'SELECT * FROM Equipa ORDER BY cargo, nome', () => [], (rows) => rows);
+createEndpoint('/equipa/:id', 'SELECT * FROM equipa WHERE id = ?', (req) => [req.params.id], (rows) => rows);
+createEndpoint('/contactos', 'SELECT nome, email FROM contactos', () => [], (rows) => rows);
 
 //Aba Carreira em Arquitetura
-createEndpoint('/overview', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM overview', []);
-createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM materiais', []);
-createEndpoint('/iconic', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM obras_iconicas', []);
+createEndpoint('/overview', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM overview', () => [], (rows) => rows);
+createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM materiais', () => [], (rows) => rows);
+createEndpoint('/iconic', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM obras_iconicas', () => [], (rows) => rows);
 
 //Aba Médio Tejo
-createEndpoint('/obras', 'SELECT * FROM obra', []);
+createEndpoint('/obras', 'SELECT * FROM obra', () => [], (rows) => rows);
 
 
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 
 connection();

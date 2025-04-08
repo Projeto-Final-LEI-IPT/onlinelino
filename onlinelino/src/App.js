@@ -29,7 +29,6 @@ import DetailsB from './pages/Backoffice/BuildingB/DetailsB';
 
 
 import EquipaTest from './Backoffice/Equipa';
-import Login from './pages/Login';
 
 function App() {
   useEffect(() => {

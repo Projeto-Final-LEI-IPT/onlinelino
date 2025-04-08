@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SERVER_URL, BACKOFFICE_URL } from '../../Utils';
 import NavbarHome from '../../components/NavbarHome';
-import { Container } from 'react-bootstrap/esm/Container';
+import Container from 'react-bootstrap/Container'
 
 const BibliographyIndex = () => {
     const [bibliografia, setBibliografia] = useState([]);
