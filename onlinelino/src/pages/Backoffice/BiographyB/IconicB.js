@@ -1,5 +1,7 @@
 import React from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
+import ReactQuill from "react-quill"; // Importando ReactQuill
+import "react-quill/dist/quill.snow.css"; // Importando o estilo do ReactQuill
 
 function IconicB() {
     return (
@@ -10,38 +12,50 @@ function IconicB() {
                 <div style={{ display: 'flex', flexDirection: 'row', gap: '20px' }}>
                     {/* Caixa de texto e botão para PORTUGUÊS */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
-                        <textarea
-                            placeholder="Digite aqui em PORTUGUÊS.."
+                        <ReactQuill
+                            value="<p>Texto em português...</p>"
+                            theme="snow"
                             style={{
-                                width: '50vh', // Largura ajustada
-                                height: '20vh', // Altura ajustada
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none', // Desabilita o redimensionamento
-                                overflow: 'auto', // Adiciona scroll interno, se necessário
+                                width: '500px', // Largura fixa
+                                height: '300px', // Altura fixa
                             }}
                         />
-                        <button style={{ padding: '10px 20px', borderRadius: '4px', background: '#007BFF', color: '#fff', border: 'none', cursor: 'pointer' }}>
+                        <button
+                            style={{
+                                marginTop: '50px',
+                                padding: '10px 20px',
+                                borderRadius: '4px',
+                                background: '#007BFF',
+                                color: '#fff',
+                                border: 'none',
+                                cursor: 'pointer',
+                            }}
+                        >
                             Guardar
                         </button>
                     </div>
 
                     {/* Caixa de texto e botão para INGLÊS */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
-                        <textarea
-                            placeholder="Digite aqui em INGLÊS..."
+                        <ReactQuill
+                            value="<p>Text in English...</p>"
+                            theme="snow"
                             style={{
-                                width: '50vh', // Largura ajustada
-                                height: '20vh', // Altura ajustada
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none', 
-                                overflow: 'auto', 
+                                width: '500px', // Largura fixa
+                                height: '300px', // Altura fixa
                             }}
                         />
-                        <button style={{ padding: '10px 20px', borderRadius: '4px', background: '#007BFF', color: '#fff', border: 'none', cursor: 'pointer' }}>
+                        <button
+                            style={{
+                                marginTop: '50px', // Adicionando margem para separar o botão do Quill
+                                padding: '10px 20px',
+                                borderRadius: '4px',
+                                background: '#007BFF',
+                                color: '#fff',
+                                border: 'none',
+                                cursor: 'pointer',
+                            }}
+                        >
                             Guardar
                         </button>
                     </div>

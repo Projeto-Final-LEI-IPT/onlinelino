@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
+import ReactQuill from "react-quill"; // Importando ReactQuill
+import "react-quill/dist/quill.snow.css"; // Importando o estilo do ReactQuill
 
 function DetailsB() {
-    const [image, setImage] = useState(null); // Estado para armazenar a imagem selecionada
+    const [images, setImages] = useState([]); // Estado para armazenar as imagens selecionadas
 
-    // Função para lidar com o upload da imagem
+    // Função para lidar com o upload das imagens
     const handleImageUpload = (event) => {
-        const file = event.target.files[0]; // Pega o primeiro arquivo selecionado
-        if (file) {
-            setImage(URL.createObjectURL(file)); // Armazena a URL da imagem localmente para pré-visualização
+        const files = event.target.files; // Pega todos os arquivos selecionados
+        if (files) {
+            const imageURLs = Array.from(files).map((file) =>
+                URL.createObjectURL(file) // Cria URL local para cada imagem
+            );
+            setImages(imageURLs); // Armazena as URLs das imagens
         }
     };
 
@@ -19,233 +24,162 @@ function DetailsB() {
                 <h2 style={{ marginBottom: '20px' }}>DetailsB</h2>
 
                 {/* Seção para Título (PT e EN) */}
-                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '50px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="titulo-pt">Título (PT)</label>
-                        <textarea
+                        <ReactQuill
                             id="titulo-pt"
-                            placeholder="Digite o título em Português"
                             style={{
-                                width: '50vh',
+                                width: '60vh', // Largura maior
                                 height: '5vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
                             }}
                         />
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="titulo-en">Título (EN)</label>
-                        <textarea
+                        <ReactQuill
                             id="titulo-en"
-                            placeholder="Digite o título em Inglês"
                             style={{
-                                width: '50vh',
+                                width: '60vh', // Largura maior
                                 height: '5vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
                             }}
                         />
                     </div>
                 </div>
 
                 {/* Seção para Data de Construção (PT e EN) */}
-                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '50px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="data-pt">Data Construção (PT)</label>
-                        <textarea
+                        <ReactQuill
                             id="data-pt"
-                            placeholder="Digite a data de construção em Português"
                             style={{
-                                width: '50vh',
+                                width: '60vh', // Largura maior
                                 height: '5vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
                             }}
                         />
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="data-en">Data Construção (EN)</label>
-                        <textarea
+                        <ReactQuill
                             id="data-en"
-                            placeholder="Digite a data de construção em Inglês"
                             style={{
-                                width: '50vh',
+                                width: '60vh', // Largura maior
                                 height: '5vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
                             }}
                         />
                     </div>
                 </div>
 
                 {/* Seção para Tipo (PT e EN) */}
-                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '50px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="tipo-pt">Tipo (PT)</label>
-                        <textarea
+                        <ReactQuill
                             id="tipo-pt"
-                            placeholder="Digite o tipo em Português"
                             style={{
-                                width: '50vh',
+                                width: '60vh', // Largura maior
                                 height: '5vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
                             }}
                         />
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="tipo-en">Tipo (EN)</label>
-                        <textarea
+                        <ReactQuill
                             id="tipo-en"
-                            placeholder="Digite o tipo em Inglês"
                             style={{
-                                width: '50vh',
+                                width: '60vh', // Largura maior
                                 height: '5vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
                             }}
                         />
                     </div>
                 </div>
 
                 {/* Seção para Localização (PT e EN) */}
-                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '50px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="localizacao-pt">Localização (PT)</label>
-                        <textarea
+                        <ReactQuill
                             id="localizacao-pt"
-                            placeholder="Digite a localização em Português"
                             style={{
-                                width: '50vh',
+                                width: '60vh', // Largura maior
                                 height: '5vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
                             }}
                         />
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="localizacao-en">Localização (EN)</label>
-                        <textarea
+                        <ReactQuill
                             id="localizacao-en"
-                            placeholder="Digite a localização em Inglês"
                             style={{
-                                width: '50vh',
+                                width: '60vh', // Largura maior
                                 height: '5vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
                             }}
                         />
                     </div>
                 </div>
 
                 {/* Seção para Descrição (PT e EN) */}
-                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '50px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="descricao-pt">Descrição (PT)</label>
-                        <textarea
+                        <ReactQuill
                             id="descricao-pt"
-                            placeholder="Digite a descrição em Português"
                             style={{
-                                width: '50vh',
-                                height: '10vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
+                                width: '60vh', // Largura maior
+                                height: '15vh', // Maior altura
                             }}
                         />
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="descricao-en">Descrição (EN)</label>
-                        <textarea
+                        <ReactQuill
                             id="descricao-en"
-                            placeholder="Digite a descrição em Inglês"
                             style={{
-                                width: '50vh',
-                                height: '10vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
+                                width: '60vh', // Largura maior
+                                height: '15vh', // Maior altura
                             }}
                         />
                     </div>
                 </div>
 
                 {/* Seção para Legenda da Imagem (PT e EN) */}
-                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '50px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="legenda-pt">Legenda da Imagem (PT)</label>
-                        <textarea
+                        <ReactQuill
                             id="legenda-pt"
-                            placeholder="Digite a legenda da imagem em Português"
                             style={{
-                                width: '50vh',
+                                width: '60vh', // Largura maior
                                 height: '5vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
                             }}
                         />
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
                         <label htmlFor="legenda-en">Legenda da Imagem (EN)</label>
-                        <textarea
+                        <ReactQuill
                             id="legenda-en"
-                            placeholder="Digite a legenda da imagem em Inglês"
                             style={{
-                                width: '50vh',
+                                width: '60vh', // Largura maior
                                 height: '5vh',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                border: '1px solid #ccc',
-                                resize: 'none',
-                                overflow: 'auto',
                             }}
                         />
                     </div>
                 </div>
 
-                {/* Seção de upload de imagem */}
+                {/* Seção de upload de múltiplas imagens */}
                 <div style={{ marginTop: '20px', textAlign: 'center' }}>
                     <input
                         type="file"
                         accept="image/*"
                         onChange={handleImageUpload} // Função que lida com o upload
+                        multiple // Permite o upload de múltiplas imagens
                         style={{
                             padding: '10px',
                             borderRadius: '4px',
@@ -255,10 +189,19 @@ function DetailsB() {
                             cursor: 'pointer',
                         }}
                     />
-                    {image && (
+                    {images.length > 0 && (
                         <div style={{ marginTop: '20px' }}>
                             <h4>Pré-visualização:</h4>
-                            <img src={image} alt="Pré-visualização" style={{ maxWidth: '200px', maxHeight: '200px' }} />
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                                {images.map((image, index) => (
+                                    <img
+                                        key={index}
+                                        src={image}
+                                        alt={`Pré-visualização ${index + 1}`}
+                                        style={{ maxWidth: '200px', maxHeight: '200px' }}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     )}
                 </div>
