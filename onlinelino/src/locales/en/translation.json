@@ -1,7 +1,7 @@
 {
     "navbarHome": {
         "project": "ONLINELINO PROJECT",
-        "biography": "ARCHITECTURAL CAREER",
+        "biography": "ARCHITECTUAL CAREER",
         "building": "MÉDIO TEJO"
     },
     "navbarProject": {
@@ -12,14 +12,15 @@
     },
     "navbarBiography": {
         "generic": "OVERVIEW",
-        "materials": "MATERIALS",
-        "about": "ICONIC BUILDINGS"
+        "about": "MATERIALS",
+        "iconic":"ICONIC BUILDINGS"
     },
     "navbarBuilding": {
         "details": "BUILDINGS",
         "chronology": "CHRONOLOGY",
         "map": "MAP",
-        "list": "LIST"
+        "list": "LIST",
+        "addBuild":"ADD Buildings"
     },
     "homePage": {
         "summary": [

@@ -1,8 +1,8 @@
 {
     "navbarHome": {
         "project": "PROJETO ONLINELINO",
-        "biography": "BIOGRAFIA",
-        "building": "OBRA"
+        "biography": "CARREIRA EM ARQUITETURA",
+        "building": "MÉDIO TEJO"
     },
     "navbarProject": {
         "description": "DESCRIÇÃO",
@@ -11,15 +11,17 @@
         "contacts": "CONTACTOS"
     },
     "navbarBiography": {
-        "generic": "GENÉRICA",
-        "materials": "MATERIAIS",
-        "about": "SOBRE O MÉDIO TEJO"
+        "generic": "VISÃO GERAL",
+        "about": "MATERIAIS",
+        "iconic": "EDIFÍCOS ICÓNICOS"
     },
     "navbarBuilding": {
-        "details": "DETALHES",
+        "details": "EDIFÍCIOS",
         "chronology": "CRONOLOGIA",
         "map": "MAPA",
-        "list": "LISTA"
+        "list": "LISTA",
+        "addBuild":"ADD Edificios"
+
     },
     "homePage": {
         "summary": [

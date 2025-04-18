@@ -57,10 +57,10 @@ const NavbarHome = () => {
                                 <Link to="/biografia" className="dropdown-item2">{t('navbarBiography.generic')}</Link>
                             </li>
                             <li>
-                                <Link to="/materiais" className="dropdown-item2">{t('navbarBiography.materials')}</Link>
+                                <Link to="/biografia/sobre" className="dropdown-item2">{t('navbarBiography.about')}</Link>
                             </li>
                             <li>
-                                <Link to="/biografia/sobre" className="dropdown-item2">{t('navbarBiography.about')}</Link>
+                                <Link to="/biografia/iconic" className="dropdown-item2">{t('navbarBiography.iconic')}</Link>
                             </li>
                         </ul>
                     </li>
@@ -86,6 +86,11 @@ const NavbarHome = () => {
                 </ul>
                 <LanguageSwitcher />
             </nav>
+            <div style={{ position: "absolute", top: "10px", right: "10px" }}>
+                <Link to="/backoffice/login" style={{ textDecoration: "none", padding: "10px", background: "lightgray", borderRadius: "5px" }}>
+                    {t('Login')}
+                </Link>
+            </div>
         </>
     );
 };
