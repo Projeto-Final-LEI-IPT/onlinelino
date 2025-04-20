@@ -3,10 +3,11 @@ import NavbarHome from "../components/NavbarHome";
 import Footer from "../components/Footer";
 import Container from "react-bootstrap/esm/Container";
 import { SERVER_URL } from "../Utils";
+import { HomePageDO } from "../server/Models/DataObjects";
 
 function Home() {
 
-    const [descricao, setDescricao] = useState(null);  
+    const [descricao, setDescricao] = useState(HomePageDO);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -14,12 +15,13 @@ function Home() {
     useEffect(() => {
         const fetchDescricao = async () => {
             try {
-                const response = await fetch(`${SERVER_URL}/descricao`);
+                const response = await fetch(`${SERVER_URL}/home`);
                 if (!response.ok) {
                     throw new Error('Erro ao buscar a descrição');
                 }
                 const data = await response.json();
-                setDescricao(data); 
+                console.log(data);
+                setDescricao(data[0] || HomePageDO);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -43,11 +45,12 @@ function Home() {
             <NavbarHome />
             <br />
             <Container>
-                {descricao ? (
-                    <p>{descricao.descricao_pt}</p>
-                ) : (
-                    <p>Nenhuma descrição disponível.</p>
-                )}
+                {descricao && descricao.descricao_pt
+                    ? descricao.descricao_pt.split('\n').map((par, idx) => (
+                        <p key={idx}>{par}</p>
+                    ))
+                    : <p>Nenhuma descrição disponível.</p>
+                }
             </Container>
             <Footer />
         </>

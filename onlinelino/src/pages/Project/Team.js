@@ -1,46 +1,61 @@
-import React from "react";
-import NavbarHome from "../../components/NavbarHome";
-import Container from "react-bootstrap/esm/Container";
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState } from 'react';
+import NavbarHome from '../../components/NavbarHome';
+import Container from 'react-bootstrap/esm/Container';
+import { SERVER_URL } from '../../Utils';
+import { TeamDO } from '../../server/Models/DataObjects';
 
 function TeamIndex() {
-    const { t } = useTranslation();
-    // teamPage.investigators
-    const { t: s } = useTranslation('translation', { keyPrefix: 'teamPage.investigators' });
-    const summary = [];
-    for (let i = 0; i < 50; i++) {
-        if (!s([i]).includes("teamPage.investigators")) {
-            summary.push(s([i]));
-        }
+    const [team, setTeam] = useState([TeamDO]);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchTeam = async () => {
+            try {
+                const response = await fetch(`${SERVER_URL}/equipa`);
+                if (!response.ok) {
+                    const err = await response.json();
+                    throw new Error(err.error || 'Erro na requisição');
+                }
+
+                const data = await response.json();
+                setTeam(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTeam();
+    }, []);
+
+    if (loading) {
+        return <h1>Carregando...</h1>;
     }
-    // teamPage.collaborators
-    const { t: d } = useTranslation('translation', { keyPrefix: 'teamPage.collaborators' });
-    const developed = [];
-    for (let i = 0; i < 50; i++) {
-        if (!d([i]).includes("teamPage.collaborators")) {
-            developed.push(d([i]));
-        }
+
+    if (error) {
+        return <h1>Erro: {error}</h1>;
     }
+
+    const investigadores = team.filter(p => p.cargo.toLowerCase() === 'investigador');
+    const colaboradores = team.filter(p => p.cargo.toLowerCase() === 'colaborador' || p.cargo.toLowerCase() === 'estudante');
 
     return (
         <>
             <NavbarHome />
             <br />
-            <Container>
-                <h4>{t('teamPage.team')}</h4>
+            <Container className="container">
+                <h4>Equipa</h4>
                 <br />
-                <h5>{t('teamPage.inv')}</h5>
-                {summary.map((paragraph, index) => (
-                    <ul key={`ul1-${index}`}>
-                        <li key={`sum-${index}`}>{paragraph}</li>
-                    </ul>
+                <h5>Investigadores:</h5>
+                {investigadores.map((membro, i) => (
+                    <ul key={`inv-${i}`}><li>{membro.nome}</li></ul>
                 ))}
-                <hr></hr>
-                <h5>{t('teamPage.col')}</h5>
-                {developed.map((paragraph, index) => (
-                    <ul key={`ul2-${index}`}>
-                        <li key={`dev-${index}`}>{paragraph}</li>
-                    </ul>
+                <hr />
+                <h5>Colaboradores:</h5>
+                {colaboradores.map((membro, i) => (
+                    <ul key={`col-${i}`}><li>{membro.nome}, {membro.cargo}</li></ul>
                 ))}
             </Container>
         </>

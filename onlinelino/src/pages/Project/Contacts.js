@@ -1,35 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavbarHome from "../../components/NavbarHome";
 import Container from "react-bootstrap/esm/Container";
-import { useTranslation } from 'react-i18next';
+import { SERVER_URL } from "../../Utils";
+import { ContactsDO } from "../../server/Models/DataObjects";
 
 function ContactsIndex() {
-    // contactsPage.text
-    const { t: c } = useTranslation('translation', { keyPrefix: 'contactsPage.text' });
-    const contacts = [];
-    for (let i = 0; i < 50; i++) {
-        if (!c([i]).includes("contactsPage.text")) {
-            contacts.push(c([i]));
-        }
+    const [contacts, setContacts] = useState(ContactsDO);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchContacts = async () => {
+            try {
+                const response = await fetch(`${SERVER_URL}/contactos`);
+                if (!response.ok) {
+                    const err = await response.json();
+                    throw new Error(err.error || "Erro ao buscar contactos");
+                }
+                const data = await response.json();
+                setContacts(data || ContactsDO);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchContacts();
+    }, []);
+
+    if (loading) {
+        return <h1>Carregando...</h1>;
     }
-    // bibliographyPage.biography
-    const { t } = useTranslation();
+
+    if (error) {
+        return <h1>Erro: {error}</h1>;
+    }
 
     return (
         <>
             <NavbarHome />
             <br />
             <Container>
-                <h4>{t('contactsPage.contacts')}</h4>
+                <h4>Contactos</h4>
                 <br />
-                <ul>
-                    {contacts.map((paragraph, index) => (
-                        <React.Fragment key={`li-${index}`}>
-                            <li key={`contact-${index}`}>{paragraph}</li>
-                            <br />
-                        </React.Fragment>
-                    ))}
-                </ul>
+                {contacts.map((item, index) => (
+                    <ul key={`contact-${index}`}>
+                        <li>{item.nome} - {item.email}</li>
+                    </ul>
+                ))}
             </Container>
         </>
     );

@@ -1,31 +1,60 @@
-import React from "react";
-import NavbarHome from "../../components/NavbarHome";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/esm/Container";
-import { useTranslation } from 'react-i18next';
+import { HomePageDO } from "../../server/Models/DataObjects";
+import NavbarHome from "../../components/NavbarHome";
+import { SERVER_URL } from "../../Utils";
+import Footer from "../../components/Footer";
 
-function DescriptionIndex() {
+function Home() {
 
-    // descriptionPage.developed
-    const { t: d } = useTranslation('translation', { keyPrefix: 'descriptionPage.developed' });
-    const developed = [];
-    for (let i = 0; i < 50; i++) {
-        if (!d([i]).includes("descriptionPage.developed")) {
-            developed.push(d([i]));
-        }
+    const [descricao, setDescricao] = useState(HomePageDO);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    //GET da Descricao da Home Page
+    useEffect(() => {
+        const fetchDescricao = async () => {
+            try {
+                const response = await fetch(`${SERVER_URL}/home`);
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar a descrição');
+                }
+                const data = await response.json();
+                console.log(data);
+                setDescricao(data[0] || HomePageDO);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchDescricao();
+    }, []);
+
+    if (error) {
+        return <p className="text-red-500">Erro: {error}</p>;
     }
-    
+
+    if (loading) {
+        return <p>A carregar...</p>;
+    }
+
     return (
         <>
             <NavbarHome />
             <br />
             <Container>
-                {developed.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                ))}
+                {descricao && descricao.descricao_pt
+                    ? descricao.descricao_pt.split('\n').map((par, idx) => (
+                        <p key={idx}>{par}</p>
+                    ))
+                    : <p>Nenhuma descrição disponível.</p>
+                }
             </Container>
+            <Footer />
         </>
     );
 }
 
-
-export default DescriptionIndex;
+export default Home;
