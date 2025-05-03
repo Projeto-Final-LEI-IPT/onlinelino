@@ -98,31 +98,21 @@ function DetailsB() {
                     </div>
                 </div>
 
-                {/* Seção para Localização (PT e EN) */}
-                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '50px' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
-                        <label htmlFor="localizacao-pt">Localização (PT)</label>
-                        <ReactQuill
-                            id="localizacao-pt"
-                            style={{
-                                width: '60vh', // Largura maior
-                                height: '5vh',
-                            }}
-                        />
-                    </div>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
-                        <label htmlFor="localizacao-en">Localização (EN)</label>
-                        <ReactQuill
-                            id="localizacao-en"
-                            style={{
-                                width: '60vh', // Largura maior
-                                height: '5vh',
-                            }}
-                        />
-                    </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', marginBottom: '10px' }}>
+                    <label htmlFor="localizacao">Localização</label>
+                    <input
+                        id="localizacao"
+                        type="text"
+                        style={{
+                            width: '60vh',
+                            height: '40px',
+                            padding: '8px',
+                            fontSize: '16px',
+                            borderRadius: '4px',
+                            border: '1px solid #ccc',
+                        }}
+                    />
                 </div>
-
                 {/* Seção para Descrição (PT e EN) */}
                 <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '50px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
