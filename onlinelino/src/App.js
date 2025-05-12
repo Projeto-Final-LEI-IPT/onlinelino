@@ -7,7 +7,6 @@ import DescriptionIndex from "./pages/Project/Description";
 import BibliographyIndex from "./pages/Project/Bibliography";
 import TeamIndex from "./pages/Project/Team";
 import ContactsIndex from "./pages/Project/Contacts";
-import GenericIndex from "./pages/Biography/Generic";
 import AboutIndex from "./pages/Biography/About";
 import ProjectIndex from "./pages/Building/Index";
 import ChronologyIndex from "./pages/Building/Chronology";
@@ -22,6 +21,7 @@ import BibliographyB from './pages/Backoffice/ProjectB/BibliographyB';
 import ContactsB from './pages/Backoffice/ProjectB/ContactsB';
 import DescriptionB from './pages/Backoffice/ProjectB/DescriptionB';
 import TeamB from './pages/Backoffice/ProjectB/TeamB';
+import OverviewIndex from './pages/Biography/Overview';
 
 // 🛠️ Backoffice - Obra
 import ChronolyB from './pages/Backoffice/BuildingB/ChronolyB';
@@ -58,8 +58,8 @@ function App() {
   <Route path="/project/contacts" element={<ContactsIndex />} />
 
   {/* 🌐 Público - Biografia */}
-  <Route path="/biografia" element={<GenericIndex />} />
-  <Route path="/biography" element={<GenericIndex />} />
+  <Route path="/biografia" element={<OverviewIndex />} />
+  <Route path="/biography" element={<OverviewIndex />} />
 
   <Route path="/biografia/sobre" element={<AboutIndex />} />
   <Route path="/biography/about" element={<AboutIndex />} />

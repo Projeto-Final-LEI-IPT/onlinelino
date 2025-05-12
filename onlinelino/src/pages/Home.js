@@ -20,7 +20,6 @@ function Home() {
                     throw new Error('Erro ao buscar a descrição');
                 }
                 const data = await response.json();
-                console.log(data);
                 setDescricao(data[0] || HomePageDO);
             } catch (err) {
                 setError(err.message);
