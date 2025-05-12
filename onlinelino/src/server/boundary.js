@@ -13,13 +13,7 @@ const app = express();
 const PORT = 8080;
 const BACKOFFICE_URL = 'backoffice';
 
-app.use(cors({
-    //TODO Colocar o dominio do site como origin
-    origin: '*',
-    methods: ['GET', 'POST', 'DELETE', 'PUT'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-}));
-
+app.use(cors({ origin: '*', methods: ['GET', 'POST', 'DELETE', 'PUT'], allowedHeaders: ['Content-Type', 'Authorization'] }));
 app.use(express.json());
 app.use(morgan('dev'));
 
@@ -143,17 +137,52 @@ createEndpoint('/sobre', 'SELECT * FROM materiais', () => [], (rows) => rows, tr
 createEndpoint('/home', 'SELECT descricao_pt FROM Home', () => [], (rows) => rows);
 createEndpoint('/descricao', 'SELECT descricao_pt, descricao_en FROM Descricao', () => [], (rows) => rows);
 createEndpoint('/bibliografia', 'SELECT descricao FROM Bibliografia', () => [], (rows) => rows);
-createEndpoint('/equipa', 'SELECT * FROM Equipa ORDER BY cargo, nome', () => [], (rows) => rows);
+createEndpoint('/equipa', 'SELECT nome, cargo FROM Equipa', () => [], (rows) => rows);
 createEndpoint('/equipa/:id', 'SELECT * FROM equipa WHERE id = ?', (req) => [req.params.id], (rows) => rows);
 createEndpoint('/contactos', 'SELECT nome, email FROM contactos', () => [], (rows) => rows);
 
 //Aba Carreira em Arquitetura
-createEndpoint('/overview', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM overview', () => [], (rows) => rows);
-createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM materiais', () => [], (rows) => rows);
+createEndpoint('/overview',
+`
+SELECT 
+  o.id,
+  o.descricao_pt,
+  f.filme_url,
+  l.link_url
+FROM overview o
+LEFT JOIN overview_filmes f ON f.overview_id = o.id
+LEFT JOIN overview_outros_links l ON l.overview_id = o.id
+`,
+() => [],
+(rows) => {
+    const grouped = {};
+
+    for (const row of rows) {
+        if (!grouped[row.id]) {
+            grouped[row.id] = {
+                descricao_pt: row.descricao_pt,
+                filmes: [],
+                outros_links: [],
+            };
+        }
+        if (row.filme_url && !grouped[row.id].filmes.includes(row.filme_url)) {
+            grouped[row.id].filmes.push(row.filme_url);
+        }
+        if (row.link_url && !grouped[row.id].outros_links.includes(row.link_url)) {
+            grouped[row.id].outros_links.push(row.link_url);
+        }
+    }
+
+    return Object.values(grouped);
+});
+
+
+createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_pt FROM materiais', () => [], (rows) => rows);
 createEndpoint('/iconic', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM obras_iconicas', () => [], (rows) => rows);
 
 //Aba Médio Tejo
-createEndpoint('/obras', 'SELECT * FROM obra', () => [], (rows) => rows);
+createEndpoint('/edificios', 'SELECT * FROM edificios', () => [], (rows) => rows);
+createEndpoint('/cronologia', 'SELECT imagem, data_projeto FROM obra', () => [], (rows) => rows);
 
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
