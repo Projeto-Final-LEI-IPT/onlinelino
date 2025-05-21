@@ -183,7 +183,23 @@ createEndpoint('/iconic', 'SELECT outros_links, filmes, descricao_en, descricao_
 
 //Aba Médio Tejo
 createEndpoint('/edificios', 'SELECT * FROM edificios', () => [], (rows) => rows);
-createEndpoint('/cronologia', 'SELECT imagem, data_projeto FROM obra', () => [], (rows) => rows);
+createEndpoint(
+    '/cronologia',
+    `
+    SELECT
+      o.id,
+      o.titulo,
+      o.data_projeto,
+      MIN(CASE WHEN c.cor = 'yellow' THEN c.imagem END) AS imagem_yellow,
+      MIN(CASE WHEN c.cor = 'green' THEN c.imagem END) AS imagem_green
+    FROM obra o
+    LEFT JOIN obra_imagem_cronologia c ON c.obra_id = o.id
+    GROUP BY o.id
+    ORDER BY CAST(SUBSTRING_INDEX(o.data_projeto, '-', 1) AS UNSIGNED)
+    `,
+    () => [],
+    rows => rows 
+  );
 
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
