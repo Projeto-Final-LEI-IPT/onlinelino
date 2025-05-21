@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import '../../style/Chronology.css';
 
-function ChronologyIndex() {
+function Chronology() {
     const { t } = useTranslation();
 
     // array with the list of buildings
@@ -96,4 +96,4 @@ function ChronologyIndex() {
     );
 }
 
-export default ChronologyIndex;
+export default Chronology;

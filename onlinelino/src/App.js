@@ -3,16 +3,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import Home from "./pages/Home";
-import DescriptionIndex from "./pages/Project/Description";
-import BibliographyIndex from "./pages/Project/Bibliography";
-import TeamIndex from "./pages/Project/Team";
-import ContactsIndex from "./pages/Project/Contacts";
-import GenericIndex from "./pages/Biography/Generic";
-import AboutIndex from "./pages/Biography/About";
+import Description from "./pages/Project/Description";
+import Bibliography from "./pages/Project/Bibliography";
+import Team from "./pages/Project/Team";
+import Contacts from "./pages/Project/Contacts";
+import Generic from "./pages/Biography/Generic";
+import About from "./pages/Biography/About";
 import ProjectIndex from "./pages/Building/Index";
-import ChronologyIndex from "./pages/Building/Chronology";
-import MapIndex from "./pages/Building/Map";
-import ListIndex from "./pages/Building/List";
+import Chronology from "./pages/Building/Chronology";
+import Map from "./pages/Building/Map";
+import List from "./pages/Building/List";
 import BuildingDetails from "./pages/Building/Details";
 import Login from './pages/Backoffice/Login';
 import AboutB from './pages/Backoffice/BiographyB/AboutB';
@@ -45,37 +45,37 @@ function App() {
   <Route path="/" element={<Home />} />
   
   {/* 🌐 Público - Projeto */}
-  <Route path="/projeto/descricao" element={<DescriptionIndex />} />
-  <Route path="/project/description" element={<DescriptionIndex />} />
+  <Route path="/projeto/descricao" element={<Description />} />
+  <Route path="/project/description" element={<Description />} />
 
-  <Route path="/projeto/bibliografia" element={<BibliographyIndex />} />
-  <Route path="/project/bibliography" element={<BibliographyIndex />} />
+  <Route path="/projeto/bibliografia" element={<Bibliography />} />
+  <Route path="/project/bibliography" element={<Bibliography />} />
 
-  <Route path="/projeto/equipa" element={<TeamIndex />} />
-  <Route path="/project/team" element={<TeamIndex />} />
+  <Route path="/projeto/equipa" element={<Team />} />
+  <Route path="/project/team" element={<Team />} />
 
-  <Route path="/projeto/contactos" element={<ContactsIndex />} />
-  <Route path="/project/contacts" element={<ContactsIndex />} />
+  <Route path="/projeto/contactos" element={<Contacts />} />
+  <Route path="/project/contacts" element={<Contacts />} />
 
   {/* 🌐 Público - Biografia */}
-  <Route path="/biografia" element={<GenericIndex />} />
-  <Route path="/biography" element={<GenericIndex />} />
+  <Route path="/biografia" element={<Generic/>} />
+  <Route path="/biography" element={<Generic />} />
 
-  <Route path="/biografia/sobre" element={<AboutIndex />} />
-  <Route path="/biography/about" element={<AboutIndex />} />
+  <Route path="/biografia/sobre" element={<About />} />
+  <Route path="/biography/about" element={<About />} />
 
   {/* 🌐 Público - Obra */}
   <Route path="/obra/detalhes" element={<ProjectIndex />} />
   <Route path="/building/details" element={<ProjectIndex />} />
 
-  <Route path="/obra/cronologia" element={<ChronologyIndex />} />
-  <Route path="/building/chronology" element={<ChronologyIndex />} />
+  <Route path="/obra/cronologia" element={<Chronology />} />
+  <Route path="/building/chronology" element={<Chronology />} />
 
-  <Route path="/obra/mapa" element={<MapIndex />} />
-  <Route path="/building/map" element={<MapIndex />} />
+  <Route path="/obra/mapa" element={<Map />} />
+  <Route path="/building/map" element={<Map />} />
 
-  <Route path="/obra/lista" element={<ListIndex />} />
-  <Route path="/building/list" element={<ListIndex />} />
+  <Route path="/obra/lista" element={<List />} />
+  <Route path="/building/list" element={<List />} />
 
   <Route path="/obra/:id" element={<BuildingDetails />} />
   <Route path="/building/:id" element={<BuildingDetails />} />

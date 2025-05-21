@@ -4,7 +4,7 @@ import Container from "react-bootstrap/esm/Container";
 import { SERVER_URL } from "../../Utils";
 import { ContactsDO } from "../../server/Models/DataObjects";
 
-function ContactsIndex() {
+function Contacts() {
     const [contacts, setContacts] = useState(ContactsDO);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
@@ -54,4 +54,4 @@ function ContactsIndex() {
     );
 }
 
-export default ContactsIndex;
+export default Contacts;

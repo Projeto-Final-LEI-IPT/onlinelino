@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import '../../style/List.css';
 
-function ListIndex() {
+function List() {
     const { t } = useTranslation();
 
     // buildings.[i].title + ", " + buildings.[i].year
@@ -47,4 +47,4 @@ function ListIndex() {
     );
 }
 
-export default ListIndex;
+export default List;

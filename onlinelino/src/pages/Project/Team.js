@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/esm/Container';
 import { SERVER_URL } from '../../Utils';
 import { TeamDO } from '../../server/Models/DataObjects';
 
-function TeamIndex() {
+function Team() {
     const [team, setTeam] = useState([TeamDO]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
@@ -62,4 +62,4 @@ function TeamIndex() {
     );
 }
 
-export default TeamIndex;
+export default Team;

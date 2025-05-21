@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 const libraries = ['places']; // Libraries needed for Google Maps
 
-const MapIndex = () => {
+const Map = () => {
     const { t } = useTranslation();
     const data = useMemo(() => {
         const newData = [];
@@ -150,4 +150,4 @@ const MapIndex = () => {
     );
 };
 
-export default MapIndex;
+export default Map;

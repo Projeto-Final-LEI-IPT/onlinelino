@@ -3,7 +3,7 @@ import NavbarHome from "../../components/NavbarHome";
 import Container from "react-bootstrap/esm/Container";
 import { useTranslation } from 'react-i18next';
 
-function GenericIndex() {
+function Generic() {
     const { t } = useTranslation();
     // biographyPage.videos
     const { t: v } = useTranslation('translation', { keyPrefix: 'biographyPage.videos' });
@@ -73,4 +73,4 @@ function GenericIndex() {
     );
 }
 
-export default GenericIndex;
+export default Generic;

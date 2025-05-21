@@ -4,7 +4,7 @@ import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/Container'
 import { BibliopraphyDO } from '../../server/Models/DataObjects';
 
-const BibliographyIndex = () => {
+const Bibliography = () => {
     const [bibliografia, setBibliografia] = useState(BibliopraphyDO);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
@@ -65,4 +65,4 @@ const BibliographyIndex = () => {
     );
 }
 
-export default BibliographyIndex;
+export default Bibliography;
