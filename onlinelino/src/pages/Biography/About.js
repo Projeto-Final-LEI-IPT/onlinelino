@@ -17,7 +17,7 @@ const About = () => {
                     throw new Error(err.error);
                 }
                 const data = await response.json();
-                setOverview(data);
+                setOverview(data[0]); 
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -36,33 +36,26 @@ const About = () => {
             <NavbarHome />
             <br />
             <Container>
-                <h4>{overview?.titulo}</h4>
+                <h4>Sobre Raul Lino</h4>
                 <br />
-                {overview?.paragrafos?.map((text, i) => (
-                    <p key={`p-${i}`}>{text}</p>
-                ))}
+                {overview?.descricao_pt && (
+                    <p>{overview.descricao_pt}</p>
+                )}
                 <br />
                 <h6>Filmes</h6>
                 <ul>
-                    {overview?.filmes?.map((filme, i) => (
-                        <React.Fragment key={`filme-${i}`}>
-                            <li>
-                                <a href={filme.url} target="_blank" rel="noreferrer">{filme.url}</a><br />
-                                {filme.titulo && <span>[{filme.titulo}]</span>}
-                            </li>
-                            <br />
-                        </React.Fragment>
+                    {overview?.filmes?.map((url, i) => (
+                        <li key={`filme-${i}`}>
+                            <a href={url} target="_blank" rel="noreferrer">{url}</a>
+                        </li>
                     ))}
                 </ul>
                 <h6>Outros links</h6>
                 <ul>
                     {overview?.outros_links?.map((link, i) => (
-                        <React.Fragment key={`link-${i}`}>
-                            <li>
-                                <a href={link} target="_blank" rel="noreferrer">{link}</a>
-                            </li>
-                            <br />
-                        </React.Fragment>
+                        <li key={`link-${i}`}>
+                            <a href={link} target="_blank" rel="noreferrer">{link}</a>
+                        </li>
                     ))}
                 </ul>
             </Container>
