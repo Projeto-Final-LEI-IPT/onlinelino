@@ -51,33 +51,33 @@ const createEndpoint = (path, query, paramsExtractor = () => [], transform = row
 };
 
 const createUpdateEndpoint = (path, tableName, fields) => {
-  const endpointPath = `/${BACKOFFICE_URL}${path}/:id`;
+    const endpointPath = `/${BACKOFFICE_URL}${path}/:id`;
 
-  app.put(endpointPath, authenticateToken, async (req, res) => {
-      const { id } = req.params;
-      const values = fields.map(field => req.body[field]);
+    app.put(endpointPath, authenticateToken, async (req, res) => {
+        const { id } = req.params;
+        const values = fields.map(field => req.body[field]);
 
-      if (values.includes(undefined)) {
-          return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
-      }
+        if (values.includes(undefined)) {
+            return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
+        }
 
-      let db;
-      try {
-          db = await connection();
+        let db;
+        try {
+            db = await connection();
 
-          const setClause = fields.map(field => `${field} = ?`).join(', ') + ', modificado_em = NOW()';
-          const query = `UPDATE ${tableName} SET ${setClause} WHERE id = ?`;
+            const setClause = fields.map(field => `${field} = ?`).join(', ') + ', modificado_em = NOW()';
+            const query = `UPDATE ${tableName} SET ${setClause} WHERE id = ?`;
 
-          await db.execute(query, [...values, id]);
+            await db.execute(query, [...values, id]);
 
-          res.json({ message: 'Atualização realizada com sucesso.', entidade_atualizada: values, modificada_em: new Date() });
-      } catch (error) {
-          console.error(error);
-          res.status(500).json({ error: 'Erro ao atualizar.' });
-      } finally {
-          if (db) await db.end();
-      }
-  });
+            res.json({ message: 'Atualização realizada com sucesso.', entidade_atualizada: values, modificada_em: new Date() });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Erro ao atualizar.' });
+        } finally {
+            if (db) await db.end();
+        }
+    });
 };
 
 
@@ -143,7 +143,7 @@ createEndpoint('/contactos', 'SELECT nome, email FROM contactos', () => [], (row
 
 //Aba Carreira em Arquitetura
 createEndpoint('/overview',
-`
+    `
 SELECT 
   o.id,
   o.descricao_pt,
@@ -153,28 +153,29 @@ FROM overview o
 LEFT JOIN overview_filmes f ON f.overview_id = o.id
 LEFT JOIN overview_outros_links l ON l.overview_id = o.id
 `,
-() => [],
-(rows) => {
-    const grouped = {};
+    () => [],
+    (rows) => Object.values(
+        rows.reduce((acc, { id, descricao_pt, filme_url, link_url }) => {
+            if (!acc[id]) {
+                acc[id] = {
+                    descricao_pt,
+                    filmes: [],
+                    outros_links: [],
+                };
+            }
 
-    for (const row of rows) {
-        if (!grouped[row.id]) {
-            grouped[row.id] = {
-                descricao_pt: row.descricao_pt,
-                filmes: [],
-                outros_links: [],
-            };
-        }
-        if (row.filme_url && !grouped[row.id].filmes.includes(row.filme_url)) {
-            grouped[row.id].filmes.push(row.filme_url);
-        }
-        if (row.link_url && !grouped[row.id].outros_links.includes(row.link_url)) {
-            grouped[row.id].outros_links.push(row.link_url);
-        }
-    }
+            if (filme_url && !acc[id].filmes.includes(filme_url)) {
+                acc[id].filmes.push(filme_url);
+            }
 
-    return Object.values(grouped);
-});
+            if (link_url && !acc[id].outros_links.includes(link_url)) {
+                acc[id].outros_links.push(link_url);
+            }
+
+            return acc;
+        }, {})
+    )
+)
 
 
 createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_pt FROM materiais', () => [], (rows) => rows);
