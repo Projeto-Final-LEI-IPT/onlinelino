@@ -1,0 +1,247 @@
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.section-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.field-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.quill-small {
+  width: 60vh;
+  height: 5vh;
+}
+
+.quill-large {
+  width: 60vh;
+  height: 15vh;
+}
+
+.input-style {
+  width: 60vh;
+  height: 40px;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.upload-input {
+  padding: 10px;
+  border-radius: 4px;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.image-preview {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.preview-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+
+/* -------------------- Novos estilos para DescriptionB -------------------- */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 1000px; /* para dar espaço para os dois editors */
+  margin: 0 auto; /* centraliza a container na tela */
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center; /* opcional, para centralizar os editores */
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1; /* faz cada coluna crescer igualmente */
+}
+
+.quillEditor {
+  width: 500px; /* largura fixa */
+  height: 300px; /* altura fixa */
+}
+
+.saveButton {
+  margin-top: 50px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+}
+
+
+
+
+/* -------------------- Novos estilos para Bibliograpy -------------------- */
+
+.bibliography-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Wrapper para centralizar o editor e limitar a largura */
+.bibliography-editor-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Editor de texto com largura fixa maior que o padrão */
+.bibliography-editor {
+  width: 1000px; /* conforme seu design */
+  height: 300px;
+}
+
+
+/* ----------------------------------------ESTILOS PARA  A PÁGINA DE CONTACTOS TALVEZ AINDA POR ALTERAR */
+.contactsb-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.contacts-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-inputs {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Reuso de input-style que já tens */
+.contact-input {
+  width: 100%;
+  height: 40px;
+  max-width: 400px;
+  font-size: 16px;
+}
+
+/* Botão vermelho remove - estilo próprio pois é diferente */
+.remove-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  background: red;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+/* Reuso do estilo upload-input e saveButton para botões azul */
+.action-button {
+  background: #007BFF;
+  width: 100%;
+  max-width: 200px;
+  margin: 10px auto 0;
+  font-size: 14px;
+}
+
+/* Pop-up reutiliza nada do anterior, então minimal */
+.confirm-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirm-dialog {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.confirm-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.confirm-yes {
+  background: green;
+}
+
+.confirm-no {
+  background: red;
+}

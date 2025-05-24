@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import Home from "./pages/Home";
-import DescriptionIndex from "./pages/Project/Description";
-import BibliographyIndex from "./pages/Project/Bibliography";
-import TeamIndex from "./pages/Project/Team";
-import ContactsIndex from "./pages/Project/Contacts";
-import GenericIndex from "./pages/Carreer/Generic";
-import AboutIndex from "./pages/Carreer/About";
-import ProjectIndex from "./pages/MedioTejo/Index";
-import ChronologyIndex from "./pages/MedioTejo/Chronology";
-import MapIndex from "./pages/MedioTejo/Map";
+import Description from "./pages/Project/Description";
+import Bibliography from "./pages/Project/Bibliography";
+import Team from "./pages/Project/Team";
+import Contacts from "./pages/Project/Contacts";
+import Generic from "./pages/Carreer/Generic";
+import About from "./pages/Carreer/About";
+import Project from "./pages/MedioTejo/Index";
+import Chronology from "./pages/MedioTejo/Chronology";
+import Map from "./pages/MedioTejo/Map";
 import ListIndex from "./pages/MedioTejo/List";
 import BuildingDetails from "./pages/MedioTejo/Details";
 import Login from './pages/Backoffice/Login';
@@ -22,6 +22,7 @@ import BibliographyB from './pages/Backoffice/ProjectB/BibliographyB';
 import ContactsB from './pages/Backoffice/ProjectB/ContactsB';
 import DescriptionB from './pages/Backoffice/ProjectB/DescriptionB';
 import TeamB from './pages/Backoffice/ProjectB/TeamB';
+import Iconic from './pages/Carreer/Iconic';
 
 // 🛠️ Backoffice - Obra
 import ChronolyB from './pages/Backoffice/BuildingB/ChronolyB';
@@ -45,8 +46,8 @@ function App() {
   <Route path="/" element={<Home />} />
   
   {/* Público - Projeto */}
-  <Route path="/projeto/descricao" element={<DescriptionIndex />} />
-  <Route path="/project/description" element={<DescriptionIndex />} />
+  <Route path="/projeto/descricao" element={<Description />} />
+  <Route path="/project/description" element={<Description />} />
 
   <Route path="/projeto/bibliografia" element={<Bibliography />} />
   <Route path="/project/bibliography" element={<Bibliography />} />
@@ -58,21 +59,25 @@ function App() {
   <Route path="/project/contacts" element={<Contacts />} />
 
   {/* Público - Biografia */}
-  <Route path="/Carreira" element={<GenericIndex />} />
-  <Route path="/Career" element={<GenericIndex />} />
+  <Route path="/Carreira" element={<Generic />} />
+  <Route path="/Career" element={<Generic />} />
 
-  <Route path="/Carreira/sobre" element={<AboutIndex />} />
-  <Route path="/Career/about" element={<AboutIndex />} />
+  <Route path="/Carreira/sobre" element={<About />} />
+  <Route path="/Career/about" element={<About />} />
+
+  <Route path="/Carreira/iconico" element={<Iconic/>}/>
+  <Route path="/Career/iconic" element={<Iconic/>}/>
+
 
   {/* Público - Obra */}
-  <Route path="/MedioTejo/detalhes" element={<ProjectIndex />} />
-  <Route path="/MedioTejo/details" element={<ProjectIndex />} />
+  <Route path="/MedioTejo/detalhes" element={<Project />} />
+  <Route path="/MedioTejo/details" element={<Project />} />
 
-  <Route path="/MedioTejo/cronologia" element={<ChronologyIndex />} />
-  <Route path="/MedioTejo/chronology" element={<ChronologyIndex />} />
+  <Route path="/MedioTejo/cronologia" element={<Chronology />} />
+  <Route path="/MedioTejo/chronology" element={<Chronology />} />
 
-  <Route path="/MedioTejo/mapa" element={<MapIndex />} />
-  <Route path="/MedioTejo/map" element={<MapIndex />} />
+  <Route path="/MedioTejo/mapa" element={<Map />} />
+  <Route path="/MedioTejo/map" element={<Map />} />
 
   <Route path="/MedioTejo/lista" element={<ListIndex />} />
   <Route path="/MedioTejo/list" element={<ListIndex />} />
