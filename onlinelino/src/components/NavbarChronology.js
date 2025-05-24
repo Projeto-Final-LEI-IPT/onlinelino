@@ -95,49 +95,49 @@ const NavbarChronology = () => {
                     </li>
                     <li className={`navbar-item ${isActive('/biografia') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(1)}>
-                            {t('navbarHome.biography')}
+                            {t('navbarHome.career')}
                         </Link>
                         <ul className={`dropdown-menu2 ${activeDropdown === 1 ? 'show' : ''}`}>
                             <li>
-                                <Link to={getLocalizedPath('/biografia')} className="dropdown-item2">
-                                    {t('navbarBiography.generic')}
+                                <Link to={getLocalizedPath('/carreira')} className="dropdown-item2">
+                                    {t('navbarCareer.generic')}
                                 </Link>
                             </li>
                             <li>
-                                <Link to={getLocalizedPath('/biografia/sobre')} className="dropdown-item2">
-                                    {t('navbarBiography.about')}
+                                <Link to={getLocalizedPath('/carreira/sobre')} className="dropdown-item2">
+                                    {t('navbarCareer.about')}
                                 </Link>
                             </li>
                             <li>
-                                <Link to={getLocalizedPath('/biografia/iconic')} className="dropdown-item2">
-                                    {t('navbarBiography.iconic')}
+                                <Link to={getLocalizedPath('/carreira/iconic')} className="dropdown-item2">
+                                    {t('navbarCareer.iconic')}
                                 </Link>
                             </li>
                         </ul>
                     </li>
-                    <li className={`navbar-item ${isActive('/obra') ? 'active' : ''}`}>
+                    <li className={`navbar-item ${isActive('/MedioTejo') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(2)}>
-                            {t('navbarHome.building')}
+                            {t('navbarHome.mediotejo')}
                         </Link>
                         <ul className={`dropdown-menu2 ${activeDropdown === 2 ? 'show' : ''}`}>
                             <li>
-                                <Link to={getLocalizedPath('/obra/detalhes')} className="dropdown-item2">
-                                    {t('navbarBuilding.details')}
+                                <Link to={getLocalizedPath('/MedioTejo/detalhes')} className="dropdown-item2">
+                                    {t('navbarMedioTejo.details')}
                                 </Link>
                             </li>
                             <li>
-                                <Link to={getLocalizedPath('/obra/cronologia')} className="dropdown-item2">
-                                    {t('navbarBuilding.chronology')}
+                                <Link to={getLocalizedPath('/MedioTejo/cronologia')} className="dropdown-item2">
+                                    {t('navbarMedioTejo.chronology')}
                                 </Link>
                             </li>
                             <li>
-                                <Link to={getLocalizedPath('/obra/mapa')} className="dropdown-item2">
-                                    {t('navbarBuilding.map')}
+                                <Link to={getLocalizedPath('/MedioTejo/mapa')} className="dropdown-item2">
+                                    {t('navbarMedioTejo.map')}
                                 </Link>
                             </li>
                             <li>
-                                <Link to={getLocalizedPath('/obra/lista')} className="dropdown-item2">
-                                    {t('navbarBuilding.list')}
+                                <Link to={getLocalizedPath('/MedioTejo/lista')} className="dropdown-item2">
+                                    {t('navbarMedioTejo.list')}
                                 </Link>
                             </li>
                         </ul>
