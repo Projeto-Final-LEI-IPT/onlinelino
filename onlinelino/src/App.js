@@ -3,17 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import Home from "./pages/Home";
-import Description from "./pages/Project/Description";
-import Bibliography from "./pages/Project/Bibliography";
-import Team from "./pages/Project/Team";
-import Contacts from "./pages/Project/Contacts";
-import Generic from "./pages/Biography/Generic";
-import About from "./pages/Biography/About";
-import ProjectIndex from "./pages/Building/Index";
-import Chronology from "./pages/Building/Chronology";
-import Map from "./pages/Building/Map";
-import List from "./pages/Building/List";
-import BuildingDetails from "./pages/Building/Details";
+import DescriptionIndex from "./pages/Project/Description";
+import BibliographyIndex from "./pages/Project/Bibliography";
+import TeamIndex from "./pages/Project/Team";
+import ContactsIndex from "./pages/Project/Contacts";
+import GenericIndex from "./pages/Carreer/Generic";
+import AboutIndex from "./pages/Carreer/About";
+import ProjectIndex from "./pages/MedioTejo/Index";
+import ChronologyIndex from "./pages/MedioTejo/Chronology";
+import MapIndex from "./pages/MedioTejo/Map";
+import ListIndex from "./pages/MedioTejo/List";
+import BuildingDetails from "./pages/MedioTejo/Details";
 import Login from './pages/Backoffice/Login';
 import AboutB from './pages/Backoffice/BiographyB/AboutB';
 import IconicB from './pages/Backoffice/BiographyB/IconicB';
@@ -41,12 +41,12 @@ function App() {
         <div className="App">
           <div className="bg-gray-100 min-h-screen flex flex-col justify-between">
           <Routes>
-  {/* 🌐 Público - Principal */}
+  {/* Público - Principal */}
   <Route path="/" element={<Home />} />
   
-  {/* 🌐 Público - Projeto */}
-  <Route path="/projeto/descricao" element={<Description />} />
-  <Route path="/project/description" element={<Description />} />
+  {/* Público - Projeto */}
+  <Route path="/projeto/descricao" element={<DescriptionIndex />} />
+  <Route path="/project/description" element={<DescriptionIndex />} />
 
   <Route path="/projeto/bibliografia" element={<Bibliography />} />
   <Route path="/project/bibliography" element={<Bibliography />} />
@@ -57,45 +57,44 @@ function App() {
   <Route path="/projeto/contactos" element={<Contacts />} />
   <Route path="/project/contacts" element={<Contacts />} />
 
-  {/* 🌐 Público - Biografia */}
-  <Route path="/biografia" element={<Generic/>} />
-  <Route path="/biography" element={<Generic />} />
+  {/* Público - Biografia */}
+  <Route path="/Carreira" element={<GenericIndex />} />
+  <Route path="/Career" element={<GenericIndex />} />
 
-  <Route path="/biografia/sobre" element={<About />} />
-  <Route path="/biography/about" element={<About />} />
+  <Route path="/Carreira/sobre" element={<AboutIndex />} />
+  <Route path="/Career/about" element={<AboutIndex />} />
 
-  {/* 🌐 Público - Obra */}
-  <Route path="/obra/detalhes" element={<ProjectIndex />} />
-  <Route path="/building/details" element={<ProjectIndex />} />
+  {/* Público - Obra */}
+  <Route path="/MedioTejo/detalhes" element={<ProjectIndex />} />
+  <Route path="/MedioTejo/details" element={<ProjectIndex />} />
 
-  <Route path="/obra/cronologia" element={<Chronology />} />
-  <Route path="/building/chronology" element={<Chronology />} />
+  <Route path="/MedioTejo/cronologia" element={<ChronologyIndex />} />
+  <Route path="/MedioTejo/chronology" element={<ChronologyIndex />} />
 
-  <Route path="/obra/mapa" element={<Map />} />
-  <Route path="/building/map" element={<Map />} />
+  <Route path="/MedioTejo/mapa" element={<MapIndex />} />
+  <Route path="/MedioTejo/map" element={<MapIndex />} />
 
-  <Route path="/obra/lista" element={<List />} />
-  <Route path="/building/list" element={<List />} />
+  <Route path="/MedioTejo/lista" element={<ListIndex />} />
+  <Route path="/MedioTejo/list" element={<ListIndex />} />
 
-  <Route path="/obra/:id" element={<BuildingDetails />} />
-  <Route path="/building/:id" element={<BuildingDetails />} />
+  <Route path="/MedioTejo/:id" element={<BuildingDetails />} />
+  <Route path="/MedioTejo/:id" element={<BuildingDetails />} />
 
-  {/* 🔐 Login */}
-  <Route path="/login" element={<Login />} />
+  {/* Login */}
   <Route path="/backoffice/login" element={<Login />} />
 
-  {/* 🛠️ Backoffice - Biografia */}
+  {/* Backoffice - Biografia */}
   <Route path="/backoffice/BiographyB/AboutB" element={<AboutB />} />
   <Route path="/backoffice/BiographyB/GenericB" element={<GenericB />} />
   <Route path="/backoffice/BiographyB/IconicB" element={<IconicB />} />
 
-  {/* 🛠️ Backoffice - Projeto */}
+  {/* Backoffice - Projeto */}
   <Route path="/backoffice/ProjectB/BibliographyB" element={<BibliographyB />} />
   <Route path="/backoffice/ProjectB/ContactsB" element={<ContactsB />} />
   <Route path="/backoffice/ProjectB/DescriptionB" element={<DescriptionB />} />
   <Route path="/backoffice/ProjectB/TeamB" element={<TeamB />} />
 
-  {/* 🛠️ Backoffice - Obra */}
+  {/* Backoffice - Obra */}
   <Route path="/backoffice/BuildingB/ChronolyB" element={<ChronolyB />} />
   <Route path="/backoffice/BuildingB/DetailsB" element={<DetailsB />} />
 </Routes>

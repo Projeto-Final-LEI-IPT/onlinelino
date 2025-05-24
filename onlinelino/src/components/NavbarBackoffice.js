@@ -40,30 +40,30 @@ const NavbarBackoffice = () => {
                     </li>
                     <li className={`navbar-item ${isActive('/Backoffice/BiographyB') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(1)}>
-                            {t('navbarHome.biography')}
+                            {t('navbarHome.career')}
                         </Link>
                         <ul className={`dropdown-menu2 ${activeDropdown === 1 ? 'show' : ''}`}>
                             <li>
-                                <Link to="/Backoffice/BiographyB/GenericB" className="dropdown-item2">{t('navbarBiography.generic')}</Link>
+                                <Link to="/Backoffice/BiographyB/GenericB" className="dropdown-item2">{t('navbarCareer.generic')}</Link>
                             </li>
                             <li>
-                                <Link to="/Backoffice/BiographyB/AboutB" className="dropdown-item2">{t('navbarBiography.about')}</Link>
+                                <Link to="/Backoffice/BiographyB/AboutB" className="dropdown-item2">{t('navbarCareer.about')}</Link>
                             </li>
                             <li>
-                                <Link to="/Backoffice/BiographyB/IconicB" className="dropdown-item2">{t('navbarBiography.iconic')}</Link>
+                                <Link to="/Backoffice/BiographyB/IconicB" className="dropdown-item2">{t('navbarCareer.iconic')}</Link>
                             </li>
                         </ul>
                     </li>
                     <li className={`navbar-item ${isActive('/Backoffice/BuildingB') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(2)}>
-                            {t('navbarHome.building')}
+                            {t('navbarHome.mediotejo')}
                         </Link>
                         <ul className={`dropdown-menu2 ${activeDropdown === 2 ? 'show' : ''}`}>
                             <li>
-                                <Link to="/Backoffice/BuildingB/ChronolyB" className="dropdown-item2">{t('navbarBuilding.details')}</Link>
+                                <Link to="/Backoffice/BuildingB/ChronolyB" className="dropdown-item2">{t('navbarMedioTejo.details')}</Link>
                             </li>
                             <li>
-                                <Link to="/Backoffice/BuildingB/DetailsB" className="dropdown-item2">{t('navbarBuilding.addBuild')}</Link>
+                                <Link to="/Backoffice/BuildingB/DetailsB" className="dropdown-item2">{t('navbarMedioTejo.addBuild')}</Link>
                             </li>
                             
                         </ul>
