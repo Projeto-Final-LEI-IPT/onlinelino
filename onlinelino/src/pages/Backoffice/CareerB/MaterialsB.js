@@ -4,7 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../../../style/Backoffice.css";
 
-function AboutB() {
+function MaterialsB() {
     return (
         <div>
             <NavbarBackoffice />
@@ -36,4 +36,4 @@ function AboutB() {
     );
 }
 
-export default AboutB;
+export default MaterialsB;

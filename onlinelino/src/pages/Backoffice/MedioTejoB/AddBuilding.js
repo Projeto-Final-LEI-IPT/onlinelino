@@ -4,7 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../../../style/Backoffice.css"; 
 
-function DetailsB() {
+function AddBuilding() {
   const [images, setImages] = useState([]);
 
   const handleImageUpload = (event) => {
@@ -122,4 +122,4 @@ function DetailsB() {
   );
 }
 
-export default DetailsB;
+export default AddBuilding;

@@ -13,7 +13,7 @@ const routeTranslations = {
         contactos: { en: 'contacts', pt: 'contactos' }
     },
     biografia: {
-        sobre: { en: 'about', pt: 'sobre' },
+        sobre: { en: 'materials', pt: 'materiais' },
         iconic: { en: 'iconic', pt: 'iconic' },
     },
     obra: {
@@ -104,12 +104,12 @@ const NavbarChronology = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to={getLocalizedPath('/carreira/sobre')} className="dropdown-item2">
-                                    {t('navbarCareer.about')}
+                                <Link to={getLocalizedPath('/carreira/materiais')} className="dropdown-item2">
+                                    {t('navbarCareer.materials')}
                                 </Link>
                             </li>
                             <li>
-                                <Link to={getLocalizedPath('/carreira/iconic')} className="dropdown-item2">
+                                <Link to={getLocalizedPath('/carreira/iconico')} className="dropdown-item2">
                                     {t('navbarCareer.iconic')}
                                 </Link>
                             </li>

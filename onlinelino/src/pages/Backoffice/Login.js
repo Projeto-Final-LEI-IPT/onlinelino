@@ -78,7 +78,7 @@ const Login = () => {
                 const SESSION_TOKEN = data.token;
                 sessionStorage.setItem('authorization', SESSION_TOKEN);
                 alert(`Bem Vindo ${email}!`);
-                navigate('../Backoffice/BiographyB/AboutB');
+                navigate('../Backoffice/CareerB/MaterialsB');
             } else {
                 alert(data.error || 'Falha no login');
             }

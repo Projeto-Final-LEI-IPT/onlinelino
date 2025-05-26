@@ -3,7 +3,7 @@ import NavbarHome from "../../components/NavbarHome";
 import Container from "react-bootstrap/esm/Container";
 import { useTranslation } from 'react-i18next';
 
-function About() {
+function Materials() {
     const { t } = useTranslation();
 
 
@@ -96,4 +96,4 @@ function About() {
 }
 
 
-export default About;
+export default Materials;

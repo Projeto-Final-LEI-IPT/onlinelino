@@ -1,7 +1,7 @@
 import React from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 
-function ChronolyB() {
+function Buildings() {
     return (
         <div>
             <NavbarBackoffice />
@@ -13,4 +13,4 @@ function ChronolyB() {
     );
 }
 
-export default ChronolyB;
+export default Buildings;

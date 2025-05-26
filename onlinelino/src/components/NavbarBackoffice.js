@@ -38,32 +38,32 @@ const NavbarBackoffice = () => {
                             </li>
                         </ul>
                     </li>
-                    <li className={`navbar-item ${isActive('/Backoffice/BiographyB') ? 'active' : ''}`}>
+                    <li className={`navbar-item ${isActive('/Backoffice/CareerB') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(1)}>
                             {t('navbarHome.career')}
                         </Link>
                         <ul className={`dropdown-menu2 ${activeDropdown === 1 ? 'show' : ''}`}>
                             <li>
-                                <Link to="/Backoffice/BiographyB/GenericB" className="dropdown-item2">{t('navbarCareer.generic')}</Link>
+                                <Link to="/Backoffice/CareerB/GenericB" className="dropdown-item2">{t('navbarCareer.generic')}</Link>
                             </li>
                             <li>
-                                <Link to="/Backoffice/BiographyB/AboutB" className="dropdown-item2">{t('navbarCareer.about')}</Link>
+                                <Link to="/Backoffice/CareerB/MaterialsB" className="dropdown-item2">{t('navbarCareer.materials')}</Link>
                             </li>
                             <li>
-                                <Link to="/Backoffice/BiographyB/IconicB" className="dropdown-item2">{t('navbarCareer.iconic')}</Link>
+                                <Link to="/Backoffice/CareerB/IconicB" className="dropdown-item2">{t('navbarCareer.iconic')}</Link>
                             </li>
                         </ul>
                     </li>
-                    <li className={`navbar-item ${isActive('/Backoffice/BuildingB') ? 'active' : ''}`}>
+                    <li className={`navbar-item ${isActive('/Backoffice/MedioTejoB') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(2)}>
                             {t('navbarHome.mediotejo')}
                         </Link>
                         <ul className={`dropdown-menu2 ${activeDropdown === 2 ? 'show' : ''}`}>
                             <li>
-                                <Link to="/Backoffice/BuildingB/ChronolyB" className="dropdown-item2">{t('navbarMedioTejo.details')}</Link>
+                                <Link to="/Backoffice/MedioTejoB/Buildings" className="dropdown-item2">{t('navbarMedioTejo.details')}</Link>
                             </li>
                             <li>
-                                <Link to="/Backoffice/BuildingB/DetailsB" className="dropdown-item2">{t('navbarMedioTejo.addBuild')}</Link>
+                                <Link to="/Backoffice/MedioTejoB/AddBuilding" className="dropdown-item2">{t('navbarMedioTejo.addBuild')}</Link>
                             </li>
                             
                         </ul>

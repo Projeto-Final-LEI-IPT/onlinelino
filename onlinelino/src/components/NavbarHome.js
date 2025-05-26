@@ -13,8 +13,8 @@ const routeTranslations = {
         contactos: { en: 'contacts', pt: 'contactos' }
     },
     carreira: {
-        sobre: { en: 'about', pt: 'sobre' },
-        iconic: { en: 'iconic', pt: 'iconic' },
+        sobre: { en: 'materials', pt: 'materiais' },
+        iconic: { en: 'iconic', pt: 'iconico' },
     },
     obra: {
         detalhes: { en: 'details', pt: 'detalhes' },
@@ -115,7 +115,7 @@ const NavbarHome = () => {
                             </li>
                             <li>
                                 <Link to={getLocalizedPath('/carreira/sobre')} className="dropdown-item2">
-                                    {t('navbarCareer.about')}
+                                    {t('navbarCareer.materials')}
                                 </Link>
                             </li>
                             <li>
