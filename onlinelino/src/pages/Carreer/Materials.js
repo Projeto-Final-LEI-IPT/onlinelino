@@ -3,7 +3,7 @@ import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/Container';
 import { SERVER_URL } from '../../Utils';
 
-const About = () => {
+const Materials = () => {
     const [overview, setOverview] = useState(null);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);

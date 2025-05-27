@@ -200,6 +200,8 @@ createEndpoint(
     () => [],
     rows => rows 
   );
+  createEndpoint('/listaObras', `SELECT titulo, data_projeto FROM obra`, () => [],
+  rows => rows)
 
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

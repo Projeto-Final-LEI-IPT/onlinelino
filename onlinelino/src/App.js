@@ -22,7 +22,7 @@ import BibliographyB from './pages/Backoffice/ProjectB/BibliographyB';
 import ContactsB from './pages/Backoffice/ProjectB/ContactsB';
 import DescriptionB from './pages/Backoffice/ProjectB/DescriptionB';
 import TeamB from './pages/Backoffice/ProjectB/TeamB';
-import OverviewIndex from './pages/Biography/Overview';
+import Iconic from './pages/Carreer/Iconic'
 
 // 🛠️ Backoffice - Obra
 import Buildings from './pages/Backoffice/MedioTejoB/Buildings';

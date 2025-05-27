@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { SERVER_URL } from '../../Utils';
 import '../../style/Chronology.css';
 
-function ChronologyIndex() {
+function Chronology() {
   const [buildings, setBuildings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
