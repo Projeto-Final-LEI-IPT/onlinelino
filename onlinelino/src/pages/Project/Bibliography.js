@@ -16,7 +16,7 @@ const Bibliography = () => {
                 const response = await fetch(`${SERVER_URL}/bibliografia`)
                 if (!response.ok) {
                     const error = await response.json();
-                    throw new Error(`${error.error}`);
+                    throw new Error(`${error.message}`);
                 }
 
                 const data = await response.json();
@@ -33,7 +33,7 @@ const Bibliography = () => {
 
     if (loading) {
         <h1>Carregando...</h1>;
-    } 
+    }
 
     if (error) {
         return <h1>{error}</h1>;
@@ -46,19 +46,19 @@ const Bibliography = () => {
             <Container>
                 <h4>Bibliografia</h4>
                 <br />
-                {bibliografia && bibliografia.length > 0 ? 
-                (<ul>
-                    {bibliografia.map((item, index) => (
-                        <React.Fragment key={`biblio-${item.id}`}>
-                            <li>{item.descricao}</li>
-                            <br />
-                        </React.Fragment>
-                    ))}
+                {bibliografia && bibliografia.length > 0 ?
+                    (<ul>
+                        {bibliografia.map((item, index) => (
+                            <React.Fragment key={`biblio-${item.id ?? index}`}>
+                                <li>{item.descricao}</li>
+                                <br />
+                            </React.Fragment>
+                        ))}
 
 
-                </ul>) : (
-                    <p>Nenhum link disponível.</p>
-                )}
+                    </ul>) : (
+                        <p>Nenhum link disponível.</p>
+                    )}
 
             </Container>
         </>

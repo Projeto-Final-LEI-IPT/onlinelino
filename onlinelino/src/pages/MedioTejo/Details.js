@@ -1,113 +1,68 @@
-import React from 'react';
-import NavbarHome from "../../components/NavbarHome";
-import Container from "react-bootstrap/esm/Container";
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import NavbarHome from '../../components/NavbarHome';
+import Container from 'react-bootstrap/Container';
+import { SERVER_URL } from '../../Utils';
 
-function BuildingDetails() {
+const BuildingDetails = () => {
     const { id } = useParams();
-    const { t } = useTranslation();
-    let string = "";
+    const [obra, setObra] = useState(null);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
 
-    // buildings.N.info
-    string = "buildings." + (id - 1).toString() + ".info"
-    const info = [];
-    for (let i = 0; i < 50; i++) {
-        if (!t(`buildings.${id - 1}.info.${i}`).includes(string)) {
-            info.push(t(`buildings.${id - 1}.info.${i}`));
-        }
-    }
-    // buildings.N.images
-    string = "buildings." + (id - 1).toString() + ".images"
-    const images = [];
-    for (let i = 0; i < 50; i++) {
-        if (!t(`buildings.${id - 1}.images.${i}`).includes(string)) {
-            images.push(t(`buildings.${id - 1}.images.${i}`));
-        }
-    }
-    // buildings.N.imagesSubtitle
-    string = "buildings." + (id - 1).toString() + ".imagesSubtitle"
-    const imagesSubtitle = [];
-    for (let i = 0; i < 50; i++) {
-        if (!t(`buildings.${id - 1}.imagesSubtitle.${i}`).includes(string)) {
-            imagesSubtitle.push(t(`buildings.${id - 1}.imagesSubtitle.${i}`));
-        }
-    }
-    // buildings.N.links.I.fonte
-    const links = [];
-    for (let i = 0; i < 50; i++) {
-        const fonte = t(`buildings.${id - 1}.links.${i}.fonte`);
-        if (!fonte.includes("fonte")) {
-            const biblio = [];
-            for (let j = 0; j < 50; j++) {
-                const text = t(`buildings.${id - 1}.links.${i}.biblio.${j}.text`);
-                const link = t(`buildings.${id - 1}.links.${i}.biblio.${j}.links`);
-
-                if (!text.includes("text") && !link.includes("links")) {
-                    biblio.push({
-                        text: text,
-                        link: link
-                    });
+    useEffect(() => {
+        const fetchObra = async () => {
+            try {
+                const response = await fetch(`${SERVER_URL}/obra/${id}`);
+                if (!response.ok) {
+                    const err = await response.json();
+                    throw new Error(err.error);
                 }
+                const data = await response.json();
+                setObra(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
             }
-            links.push({
-                fonte: fonte,
-                biblio: biblio
-            });
-        }
-    }
+        };
 
-    if (!id) {
-        return <div>Building not found</div>;
-    }
+        fetchObra();
+    }, [id]);
+
+    if (loading) return <h1>Carregando...</h1>;
+    if (error) return <h1>{error}</h1>;
 
     return (
         <>
             <NavbarHome />
             <br />
             <Container>
-                <h2>{t(`buildings.${id - 1}.title`)}</h2>
-                <p>{t('buildingsDetailsPage.year')}: {t(`buildings.${id - 1}.year`)} {t(`buildings.${id - 1}.year2`)}</p>
-                <p>{t('buildingsDetailsPage.type')}: {t(`buildings.${id - 1}.typology`)}</p>
-                <p>{t('buildingsDetailsPage.location')}: {t(`buildings.${id - 1}.location`)}</p>
-                <br />
-                {info.map((paragraph, index) => (
-                    <p key={`info-${index}`}>{paragraph}</p>
-                ))}
-                <br />
-                {images.length > 0 && (
-                    <p>{t(`buildingsDetailsPage.images`)}:</p>
-                )}
-                {images.map((image, index) => (
-                    <div key={`img-${index}`}>
-                        <img className="rounded mx-auto d-block" src={image} alt="" style={{ maxWidth: '500px', maxHeight: '500px' }} />
-                        <p className="text-center">{imagesSubtitle[index]}</p>
-                        <br />
-                    </div>
-                ))}
-                <br />
-                <p>{t(`buildingsDetailsPage.bibliography`)}:</p>
+                <h4>{obra?.titulo}</h4>
+                <p><strong>Data do Projeto:</strong> {obra?.data_projeto}</p>
+                <p><strong>Tipologia:</strong> {obra?.tipologia}</p>
+                <p><strong>Localização:</strong> {obra?.localizacao}</p>
+                <p>{obra?.descricao_pt}</p>
+
+                <h6>Outros Links</h6>
                 <ul>
-                    {links.map((linkItem, linkIndex) => (
-                        <li key={`link-${linkIndex}`}>
-                            {linkItem.fonte}
-                            <ul>
-                                {linkItem.biblio.map((biblioItem, biblioIndex) => (
-                                    <>
-                                        <li key={`biblio-${linkIndex}-${biblioIndex}`}>
-                                            <a href={biblioItem.link} target="_blank" rel="noopener noreferrer">
-                                                {biblioItem.text}
-                                            </a>
-                                        </li>
-                                    </>
-                                ))}
-                            </ul>
+                    {obra?.outros_links?.map((link, i) => (
+                        <li key={`link-${i}`}>
+                            <a href={link} target="_blank" rel="noreferrer">{link}</a>
                         </li>
                     ))}
                 </ul>
+
+                <h6>Imagens</h6>
+                {obra?.imagens?.map((img, index) => (
+                    <div key={`img-${index}`} style={{ textAlign: 'center', marginBottom: '20px' }}>
+                        <img src={img.caminho} alt="" style={{ maxWidth: '500px', maxHeight: '500px' }} />
+                        <p>{img.descricao_pt}</p>
+                    </div>
+                ))}
             </Container>
         </>
     );
-}
+};
 
 export default BuildingDetails;

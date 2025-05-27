@@ -13,13 +13,7 @@ const app = express();
 const PORT = 8080;
 const BACKOFFICE_URL = 'backoffice';
 
-app.use(cors({
-    //TODO Colocar o dominio do site como origin
-    origin: '*',
-    methods: ['GET', 'POST', 'DELETE', 'PUT'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-}));
-
+app.use(cors({ origin: '*', methods: ['GET', 'POST', 'DELETE', 'PUT'], allowedHeaders: ['Content-Type', 'Authorization'] }));
 app.use(express.json());
 app.use(morgan('dev'));
 
@@ -57,33 +51,33 @@ const createEndpoint = (path, query, paramsExtractor = () => [], transform = row
 };
 
 const createUpdateEndpoint = (path, tableName, fields) => {
-  const endpointPath = `/${BACKOFFICE_URL}${path}/:id`;
+    const endpointPath = `/${BACKOFFICE_URL}${path}/:id`;
 
-  app.put(endpointPath, authenticateToken, async (req, res) => {
-      const { id } = req.params;
-      const values = fields.map(field => req.body[field]);
+    app.put(endpointPath, authenticateToken, async (req, res) => {
+        const { id } = req.params;
+        const values = fields.map(field => req.body[field]);
 
-      if (values.includes(undefined)) {
-          return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
-      }
+        if (values.includes(undefined)) {
+            return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
+        }
 
-      let db;
-      try {
-          db = await connection();
+        let db;
+        try {
+            db = await connection();
 
-          const setClause = fields.map(field => `${field} = ?`).join(', ') + ', modificado_em = NOW()';
-          const query = `UPDATE ${tableName} SET ${setClause} WHERE id = ?`;
+            const setClause = fields.map(field => `${field} = ?`).join(', ') + ', modificado_em = NOW()';
+            const query = `UPDATE ${tableName} SET ${setClause} WHERE id = ?`;
 
-          await db.execute(query, [...values, id]);
+            await db.execute(query, [...values, id]);
 
-          res.json({ message: 'Atualização realizada com sucesso.', entidade_atualizada: values, modificada_em: new Date() });
-      } catch (error) {
-          console.error(error);
-          res.status(500).json({ error: 'Erro ao atualizar.' });
-      } finally {
-          if (db) await db.end();
-      }
-  });
+            res.json({ message: 'Atualização realizada com sucesso.', entidade_atualizada: values, modificada_em: new Date() });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Erro ao atualizar.' });
+        } finally {
+            if (db) await db.end();
+        }
+    });
 };
 
 
@@ -143,17 +137,71 @@ createEndpoint('/sobre', 'SELECT * FROM materiais', () => [], (rows) => rows, tr
 createEndpoint('/home', 'SELECT descricao_pt FROM Home', () => [], (rows) => rows);
 createEndpoint('/descricao', 'SELECT descricao_pt, descricao_en FROM Descricao', () => [], (rows) => rows);
 createEndpoint('/bibliografia', 'SELECT descricao FROM Bibliografia', () => [], (rows) => rows);
-createEndpoint('/equipa', 'SELECT * FROM Equipa ORDER BY cargo, nome', () => [], (rows) => rows);
+createEndpoint('/equipa', 'SELECT nome, cargo FROM Equipa', () => [], (rows) => rows);
 createEndpoint('/equipa/:id', 'SELECT * FROM equipa WHERE id = ?', (req) => [req.params.id], (rows) => rows);
 createEndpoint('/contactos', 'SELECT nome, email FROM contactos', () => [], (rows) => rows);
 
 //Aba Carreira em Arquitetura
-createEndpoint('/overview', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM overview', () => [], (rows) => rows);
-createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM materiais', () => [], (rows) => rows);
+createEndpoint('/overview',
+    `
+SELECT 
+  o.id,
+  o.descricao_pt,
+  f.filme_url,
+  l.link_url
+FROM overview o
+LEFT JOIN overview_filmes f ON f.overview_id = o.id
+LEFT JOIN overview_outros_links l ON l.overview_id = o.id
+`,
+    () => [],
+    (rows) => Object.values(
+        rows.reduce((acc, { id, descricao_pt, filme_url, link_url }) => {
+            if (!acc[id]) {
+                acc[id] = {
+                    descricao_pt,
+                    filmes: [],
+                    outros_links: [],
+                };
+            }
+
+            if (filme_url && !acc[id].filmes.includes(filme_url)) {
+                acc[id].filmes.push(filme_url);
+            }
+
+            if (link_url && !acc[id].outros_links.includes(link_url)) {
+                acc[id].outros_links.push(link_url);
+            }
+
+            return acc;
+        }, {})
+    )
+)
+
+
+createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_pt FROM materiais', () => [], (rows) => rows);
 createEndpoint('/iconic', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM obras_iconicas', () => [], (rows) => rows);
 
 //Aba Médio Tejo
-createEndpoint('/obras', 'SELECT * FROM obra', () => [], (rows) => rows);
+createEndpoint('/edificios', 'SELECT * FROM edificios', () => [], (rows) => rows);
+createEndpoint(
+    '/cronologia',
+    `
+    SELECT
+      o.id,
+      o.titulo,
+      o.data_projeto,
+      MIN(CASE WHEN c.cor = 'yellow' THEN c.imagem END) AS imagem_yellow,
+      MIN(CASE WHEN c.cor = 'green' THEN c.imagem END) AS imagem_green
+    FROM obra o
+    LEFT JOIN obra_imagem_cronologia c ON c.obra_id = o.id
+    GROUP BY o.id
+    ORDER BY CAST(SUBSTRING_INDEX(o.data_projeto, '-', 1) AS UNSIGNED)
+    `,
+    () => [],
+    rows => rows 
+  );
+  createEndpoint('/listaObras', `SELECT titulo, data_projeto FROM obra`, () => [],
+  rows => rows)
 
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

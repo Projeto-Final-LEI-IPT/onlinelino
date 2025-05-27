@@ -1,147 +1,77 @@
-import React from 'react';
-import NavbarHome from "../../components/NavbarHome";
-import Container from "react-bootstrap/esm/Container";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import NavbarHome from '../../components/NavbarHome';
+import Container from 'react-bootstrap/Container';
+import { SERVER_URL } from '../../Utils';
 
-import { useTranslation } from 'react-i18next';
+const Index = () => {
+    const { id } = useParams();
+    const [obra, setObra] = useState(null);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
 
-function BuildingIndex() {
-    const { t } = useTranslation();
-    /*
-    // buildingsPage.buildingsProjects
-    const { t: b } = useTranslation('translation', { keyPrefix: 'buildingsPage.buildingsProjects' });
-    const buildingsProjects = [];
-    for (let i = 0; i < 50; i++) {
-        if (!b([i]).includes("buildingsPage.buildingsProjects")) {
-            buildingsProjects.push(b([i]));
-        }
-    }
-    // buildingsPage.videos
-    const { t: v } = useTranslation('translation', { keyPrefix: 'buildingsPage.videos' });
-    const videos = [];
-    for (let i = 0; i < 50; i++) {
-        if (!v([i]).includes("buildingsPage.videos")) {
-            videos.push(v([i]));
-        }
-    }
-    // buildingsPage.videosSubtitle
-    const { t: s } = useTranslation('translation', { keyPrefix: 'buildingsPage.videosSubtitle' });
-    const videosSubtitle = [];
-    for (let i = 0; i < 50; i++) {
-        if (!s([i]).includes("buildingsPage.videosSubtitle")) {
-            videosSubtitle.push(s([i]));
-        }
-    }
-    // buildingsPage.otherLinks
-    const { t: l } = useTranslation('translation', { keyPrefix: 'buildingsPage.otherLinks' });
-    const links = [];
-    for (let i = 0; i < 50; i++) {
-        if (!l([i]).includes("buildingsPage.otherLinks")) {
-            links.push(l([i]));
-        }
-    }
+    useEffect(() => {
+        const fetchObra = async () => {
+            try {
+                const response = await fetch(`${SERVER_URL}/obra/${id}`);
+                if (!response.ok) {
+                    const err = await response.json();
+                    throw new Error(err.error);
+                }
+                const data = await response.json();
+                setObra(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    */
-    // buildingsPage.buildingsProjectsMedioTejo
-    const { t: m } = useTranslation('translation', { keyPrefix: 'buildingsPage.buildingsProjectsMedioTejo' });
-    const medioTejo = [];
-    for (let i = 0; i < 50; i++) {
-        if (!m([i]).includes("buildingsPage.buildingsProjectsMedioTejo")) {
-            medioTejo.push(m([i]));
-        }
-    }
-    // buildingsPage.images
-    const { t: f } = useTranslation('translation', { keyPrefix: 'buildingsPage.images' });
-    const images = [];
-    for (let i = 0; i < 50; i++) {
-        if (!f([i]).includes("buildingsPage.images")) {
-            images.push(f([i]));
-        }
-    }
-    // buildingsPage.imagesSubtitle
-    const { t: s2 } = useTranslation('translation', { keyPrefix: 'buildingsPage.imagesSubtitle' });
-    const imagesSubtitle = [];
-    for (let i = 0; i < 50; i++) {
-        if (!s2([i]).includes("buildingsPage.imagesSubtitle")) {
-            imagesSubtitle.push(s2([i]));
-        }
-    }
-    /*return (
-        <>
-            <NavbarHome />
-            <br />
-            <Container>
-                <h4>{t('buildingsPage.title')}</h4>
-                <br />
-                {buildingsProjects.map((paragraph, index) => (
-                    <p key={`proj-${index}`}>{paragraph}</p>
-                ))}
-                <br />
-                <h6>{t('biographyPage.v')}</h6>
-                <ul>
-                    {videos.map((paragraph, index) => (
-                        <React.Fragment key={`frag1-${index}`}>
-                            <li key={`li1-${index}`}>
-                                <a href={paragraph} target="_blank" rel="noreferrer">
-                                    {paragraph}
-                                </a>
-                                <br />
-                                <span>{videosSubtitle[index]}</span>
-                            </li>
-                            <br />
-                        </React.Fragment>
-                    ))}
-                </ul>
-                <h6>{t('biographyPage.l')}</h6>
-                <ul>
-                    {links.map((paragraph, index) => (
-                        <React.Fragment key={`frag2-${index}`}>
-                            <li key={`li2-${index}`}>
-                                <a href={paragraph} target="_blank" rel="noreferrer">
-                                    {paragraph}
-                                </a>
-                            </li>
-                            <br />
-                        </React.Fragment>
-                    ))}
-                </ul>
-                <h4>{t('buildingsPage.title2')}</h4>
-                <br />
-                {medioTejo.map((paragraph, index) => (
-                    <p key={`medioTejo-${index}`}>{paragraph}</p>
-                ))}
-                <br />
-                {images.map((paragraph, index) => (
-                    <React.Fragment key={`frag3-${index}`}>
-                        <img key={`img-${index}`} className="rounded mx-auto d-block" src={paragraph} alt="" style={{ maxWidth: '500px', maxHeight: '500px' }} />
-                        <p key={`p-${index}`} className="text-center">{imagesSubtitle[index]}</p>
-                        <br />
-                    </React.Fragment>
-                ))}
-            </Container>
-        </>
-    );*/
+        fetchObra();
+    }, [id]);
+
+    if (loading) return <h1>Carregando...</h1>;
+    if (error) return <h1>{error}</h1>;
+
     return (
         <>
             <NavbarHome />
             <br />
             <Container>
-                <h4>{t('buildingsPage.title2')}</h4>
-                <br />
-                {medioTejo.map((paragraph, index) => (
-                    <p key={`medioTejo-${index}`}>{paragraph}</p>
-                ))}
-                <br />
-                {images.map((paragraph, index) => (
-                    <React.Fragment key={`frag3-${index}`}>
-                        <img key={`img-${index}`} className="rounded mx-auto d-block" src={paragraph} alt="" style={{ maxWidth: '500px', maxHeight: '500px' }} />
-                        <p key={`p-${index}`} className="text-center">{imagesSubtitle[index]}</p>
-                        <br />
-                    </React.Fragment>
+                <h4>{obra?.titulo}</h4>
+                <p><strong>Data do Projeto:</strong> {obra?.data_projeto}</p>
+                <p><strong>Tipologia:</strong> {obra?.tipologia}</p>
+                <p><strong>Localização:</strong> {obra?.localizacao}</p>
+                <p>{obra?.descricao_pt}</p>
+
+                <h6>Filmes</h6>
+                <ul>
+                    {obra?.filmes?.map((url, i) => (
+                        <li key={`filme-${i}`}>
+                            <a href={url} target="_blank" rel="noreferrer">{url}</a>
+                        </li>
+                    ))}
+                </ul>
+
+                <h6>Outros Links</h6>
+                <ul>
+                    {obra?.outros_links?.map((link, i) => (
+                        <li key={`link-${i}`}>
+                            <a href={link} target="_blank" rel="noreferrer">{link}</a>
+                        </li>
+                    ))}
+                </ul>
+
+                <h6>Imagens</h6>
+                {obra?.imagens?.map((img, index) => (
+                    <div key={`img-${index}`} style={{ textAlign: 'center', marginBottom: '20px' }}>
+                        <img src={img.caminho} alt="" style={{ maxWidth: '500px', maxHeight: '500px' }} />
+                        <p>{img.descricao_pt}</p>
+                    </div>
                 ))}
             </Container>
         </>
     );
-}
+};
 
-
-export default BuildingIndex;
+export default Index;
