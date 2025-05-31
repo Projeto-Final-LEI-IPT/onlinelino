@@ -57,7 +57,6 @@ function Home() {
                 style={{
                     backgroundColor: "rgba(230, 215, 196, 0.85)",
                     padding: "2rem",
-                    borderRadius: "12px" ,
                     marginLeft: "auto",
                     marginRight: "0",
                 }}>
