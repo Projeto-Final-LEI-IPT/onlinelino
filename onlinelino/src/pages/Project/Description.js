@@ -41,20 +41,38 @@ function Home() {
     }
 
     return (
-        <>
+          <>
             <NavbarHome />
-            <br />
-            <Container>
-                {descricao && descricao.descricao_pt
-                    ? descricao.descricao_pt.split('\n').map((par, idx) => (
-                        <p key={idx}>{par}</p>
-                    ))
-                    : <p>Nenhuma descrição disponível.</p>
-                }
-            </Container>
+            <div
+                style={{
+                    backgroundImage: "url('/img/fundo_descricao.jpg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    minHeight: "100vh",
+                    paddingTop: "2rem",
+                    paddingBottom: "2rem",
+                }}
+            >
+                <Container 
+                style={{
+                    backgroundColor: "rgba(230, 215, 196, 0.85)",
+                    padding: "2rem",
+                    borderRadius: "12px" ,
+                    marginLeft: "auto",
+                    marginRight: "0",
+                }}>
+                    {descricao && descricao.descricao_pt
+                        ? descricao.descricao_pt.split('\n').map((par, idx) => (
+                            <p key={idx}>{par}</p>
+                        ))
+                        : <p>Nenhuma descrição disponível.</p>
+                    }
+                </Container>
+            </div>
             <Footer />
         </>
     );
 }
+
 
 export default Home;
