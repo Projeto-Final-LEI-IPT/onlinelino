@@ -53,13 +53,13 @@ function Home() {
                     paddingBottom: "2rem",
                 }}
             >
-                <Container 
-                style={{
-                    backgroundColor: "rgba(230, 215, 196, 0.85)",
-                    padding: "2rem",
-                    marginLeft: "auto",
-                    marginRight: "0",
-                }}>
+                <Container
+                    style={{
+                        backgroundColor: "rgba(234, 216, 193, 0.85)",
+                        padding: "2rem",
+                        marginLeft: "auto",
+                        marginRight: "0",
+                    }}>
                     {descricao && descricao.descricao_pt
                         ? descricao.descricao_pt.split('\n').map((par, idx) => (
                             <p key={idx}>{par}</p>

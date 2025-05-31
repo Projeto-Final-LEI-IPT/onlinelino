@@ -55,7 +55,7 @@ function Home() {
             >
                 <Container 
                 style={{
-                    backgroundColor: "rgba(230, 215, 196, 0.85)",
+                    backgroundColor: "rgba(234, 216, 193, 0.85)",
                     padding: "2rem",
                     marginLeft: "auto",
                     marginRight: "0",
