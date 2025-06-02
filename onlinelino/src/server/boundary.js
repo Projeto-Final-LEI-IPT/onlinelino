@@ -57,6 +57,8 @@ const createUpdateEndpoint = (path, tableName, fields) => {
         const { id } = req.params;
         const values = fields.map(field => req.body[field]);
 
+        if (isNaN(id)) return res.status(400).json({ error: 'ID inválido.' });
+
         if (values.includes(undefined)) {
             return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
         }
@@ -74,6 +76,32 @@ const createUpdateEndpoint = (path, tableName, fields) => {
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Erro ao atualizar.' });
+        } finally {
+            if (db) await db.end();
+        }
+    });
+};
+
+const createDeleteEndpoint = (path, tableName) => {
+    const endpointPath = `/${BACKOFFICE_URL}${path}/:id`;
+
+    app.delete(endpointPath, authenticateToken, async (req, res) => {
+        const { id } = req.params;
+        if (isNaN(id)) return res.status(400).json({ error: 'ID inválido.' });
+
+        let db;
+        try {
+            db = await connection();
+            const [result] = await db.execute(`DELETE FROM ${tableName} WHERE id = ?`, [id]);
+
+            if (result.affectedRows === 0) {
+                return res.status(404).json({ error: 'Registo não encontrado.' });
+            }
+
+            res.status(200).json({ message: 'Registo apagado com sucesso.', id });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Erro ao apagar registo.' });
         } finally {
             if (db) await db.end();
         }
@@ -118,20 +146,28 @@ app.post(`/${BACKOFFICE_URL}/login`, async (req, res) => {
     }
 });
 
-//Páginas do backoffice devem estar todas protegidas
+//Backoffice
+//GET
 createEndpoint('/home', 'SELECT * FROM Home', () => [], (rows) => rows, true);
 createEndpoint('/descricao', 'SELECT * FROM Descricao', () => [], (rows) => rows, true);
 createEndpoint('/bibliografia', 'SELECT descricao FROM Bibliografia', () => [], (rows) => rows, true);
 createEndpoint('/equipa', 'SELECT nome, cargo FROM Equipa', () => [], (rows) => rows, true);
-createUpdateEndpoint('/equipa', 'equipa', ['nome', 'cargo'], true);
-createEndpoint('/contactos', 'SELECT nome, email FROM Contactos', () => [], (rows) => rows, true);
+createEndpoint('/contactos', 'SELECT * FROM Contactos', () => [], (rows) => rows, true);
 
 createEndpoint('/overview', 'SELECT * FROM overview', () => [], (rows) => rows, true);
 createEndpoint('/sobre', 'SELECT * FROM materiais', () => [], (rows) => rows, true);
 
+//PUT
+createUpdateEndpoint('/equipa', 'equipa', ['nome', 'cargo'], true);
+createUpdateEndpoint('/descricao', 'Descricao', ['descricao_pt', 'descricao_en']);
+createUpdateEndpoint('/contactos', 'Contactos', ['nome', 'email']);
 
+//DELETE
+createDeleteEndpoint('/contactos', 'Contactos');
 
+/*---------------------------------------------------------------------------------------------------*/
 
+//Frontoffice
 
 //Aba Projeto Raul Lino
 createEndpoint('/home', 'SELECT descricao_pt FROM Home', () => [], (rows) => rows);
@@ -200,8 +236,152 @@ createEndpoint(
     () => [],
     rows => rows 
   );
-  createEndpoint('/listaObras', `SELECT titulo, data_projeto FROM obra`, () => [],
+  createEndpoint('/listaObras', `SELECT id, titulo, data_projeto FROM obra`, () => [],
   rows => rows)
+  createEndpoint(
+    '/obra/:id',
+    `
+    SELECT 
+      o.id AS obra_id,
+      o.titulo,
+      o.data_projeto,
+      o.tipologia,
+      o.localizacao,
+      o.descricao_pt,
+      o.descricao_en,
+      o.latitude,
+      o.longitude,
+  
+      i.id AS imagem_id,
+      i.caminho AS imagem_caminho,
+      i.descricao_pt AS imagem_descricao_pt,
+      i.descricao_en AS imagem_descricao_en,
+  
+      c.id AS cronologia_id,
+      c.imagem AS cronologia_imagem,
+      c.cor AS cronologia_cor,
+  
+      info.id AS info_id,
+      info.texto AS info_texto,
+  
+      f.id AS fonte_id,
+      f.descricao AS fonte_descricao,
+      f.link AS fonte_link,
+  
+      b.id AS biblio_id,
+      b.texto AS biblio_texto,
+      b.url AS biblio_url
+  
+    FROM obra o
+    LEFT JOIN obra_imagem i ON i.obra_id = o.id
+    LEFT JOIN obra_imagem_cronologia c ON c.obra_id = o.id
+    LEFT JOIN obra_info info ON info.obra_id = o.id
+    LEFT JOIN fonte f ON f.obra_id = o.id
+    LEFT JOIN fonte_biblio b ON b.fonte_id = f.id
+    WHERE o.id = ?
+    `,
+    (req) => [req.params.id],
+    (rows) => {
+      if (rows.length === 0) return {};
+  
+      const obra = {
+        id: rows[0].obra_id,
+        titulo: rows[0].titulo,
+        data_projeto: rows[0].data_projeto,
+        tipologia: rows[0].tipologia,
+        localizacao: rows[0].localizacao,
+        descricao_pt: rows[0].descricao_pt,
+        descricao_en: rows[0].descricao_en,
+        latitude: rows[0].latitude,
+        longitude: rows[0].longitude,
+        imagens: [],
+        cronologia: [],
+        info: [],
+        fontes: [],
+        outros_links: [],
+      };
+  
+      const imagensSet = new Set();
+      const cronologiaSet = new Set();
+      const infoSet = new Set();
+      const fonteMap = new Map();
+      const outrosLinksSet = new Set();
+  
+      for (const row of rows) {
+        // Imagens
+        if (row.imagem_id && !imagensSet.has(row.imagem_id)) {
+          imagensSet.add(row.imagem_id);
+          obra.imagens.push({
+            id: row.imagem_id,
+            caminho: row.imagem_caminho,
+            descricao_pt: row.imagem_descricao_pt,
+            descricao_en: row.imagem_descricao_en,
+          });
+        }
+  
+        // Cronologia
+        if (row.cronologia_id && !cronologiaSet.has(row.cronologia_id)) {
+          cronologiaSet.add(row.cronologia_id);
+          obra.cronologia.push({
+            id: row.cronologia_id,
+            imagem: row.cronologia_imagem,
+            cor: row.cronologia_cor,
+          });
+        }
+  
+        // Info
+        if (row.info_id && !infoSet.has(row.info_id)) {
+          infoSet.add(row.info_id);
+          obra.info.push({
+            id: row.info_id,
+            texto: row.info_texto,
+          });
+        }
+  
+        // Fontes e bibliografia
+        if (row.fonte_id) {
+          if (!fonteMap.has(row.fonte_id)) {
+            fonteMap.set(row.fonte_id, {
+              id: row.fonte_id,
+              descricao: row.fonte_descricao,
+              link: row.fonte_link,
+              bibliografia: [],
+              _biblioSet: new Set(), 
+            });
+          }
+  
+          const fonte = fonteMap.get(row.fonte_id);
+  
+          if (row.biblio_id && row.biblio_url) {
+            const biblioKey = `${row.biblio_id}-${row.biblio_url}`;
+  
+            if (!fonte._biblioSet.has(biblioKey)) {
+              fonte._biblioSet.add(biblioKey);
+              fonte.bibliografia.push({
+                id: row.biblio_id,
+                texto: row.biblio_texto,
+                url: row.biblio_url,
+              });
+  
+              if (!outrosLinksSet.has(row.biblio_url)) {
+                outrosLinksSet.add(row.biblio_url);
+                obra.outros_links.push(row.biblio_url);
+              }
+            }
+          }
+        }
+      }
+  
+      obra.fontes = Array.from(fonteMap.values()).map(fonte => {
+        delete fonte._biblioSet;
+        return fonte;
+      });
+  
+      return obra;
+    }
+  );
+  
+  
 
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

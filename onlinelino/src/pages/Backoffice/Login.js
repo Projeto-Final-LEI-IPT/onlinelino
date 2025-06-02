@@ -76,7 +76,7 @@ const Login = () => {
 
             if (response.ok) {
                 const SESSION_TOKEN = data.token;
-                sessionStorage.setItem('authorization', SESSION_TOKEN);
+                localStorage.setItem('authorization', SESSION_TOKEN);
                 alert(`Bem Vindo ${email}!`);
                 navigate('../Backoffice/CareerB/MaterialsB');
             } else {
