@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../style/Navbar.css';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -8,6 +8,7 @@ const NavbarBackoffice = () => {
     const [activeDropdown, setActiveDropdown] = useState(null);
     const { t } = useTranslation();
     const location = useLocation();
+    const navigate = useNavigate();
 
     const handleDropdownToggle = (index) => {
         setActiveDropdown(index);
@@ -69,6 +70,22 @@ const NavbarBackoffice = () => {
                         </ul>
                     </li>
                 </ul>
+                        <button
+                            onClick={() => {
+                                sessionStorage.removeItem('authorization'); 
+                                navigate('/'); 
+                            }}
+                            style={{
+                                textDecoration: "none",
+                                color: "#ffffff",
+                                padding: "5px",
+                                backgroundColor: "#1e6e55",
+                                border: "none",
+                                cursor: "pointer"
+                            }}
+                        >
+                            {t('Logout')}
+                        </button>
                 <LanguageSwitcher />
             </nav>
         
