@@ -12,7 +12,7 @@ function ContactsB() {
     const [contactNameToRemove, setContactNameToRemove] = useState("");
     const [showSuccessDialog, setShowSuccessDialog] = useState(false);
     const [removedContactInfo, setRemovedContactInfo] = useState(null);
-    const SESSION_TOKEN = sessionStorage.getItem('authorization');
+    const SESSION_TOKEN = localStorage.getItem('authorization');
 
     const fetchContacts = async () => {
         try {
@@ -23,7 +23,6 @@ function ContactsB() {
                     "Authorization": `Bearer ${SESSION_TOKEN}`,
                 }
             });
-
             if (!response.ok) throw new Error("Erro ao buscar contactos");
             const data = await response.json();
 
@@ -63,10 +62,18 @@ function ContactsB() {
     };
 
     const confirmRemoveContact = (index) => {
+    const contact = contacts[index];
+
+    if (String(contact.id).startsWith("new-")) {
+        setRemovedContactInfo({ nome: contact.nome, email: contact.email });
+        setContacts(contacts.filter((_, i) => i !== index));
+    } else {
         setShowConfirmDialog(true);
         setContactToRemove(index);
-        setContactNameToRemove(contacts[index].nome);
-    };
+        setContactNameToRemove(contact.nome);
+    }
+};
+
 
     const removeContact = async () => {
         const contact = contacts[contactToRemove];
@@ -109,7 +116,7 @@ function ContactsB() {
         setTimeout(async () => {
             setShowSuccessDialog(false);
             await fetchContacts();
-        }, 4000);
+        }, 3000);
     };
 
     const validateEmail = (email) => {
@@ -118,31 +125,40 @@ function ContactsB() {
     };
 
     const handleSave = async () => {
-        const contactsToSave = contacts.filter(c => c.nome && c.email);
+    for (let c of contacts) {
+        const nomeValido = c.nome && c.nome.trim() !== "";
+        const emailValido = c.email && c.email.trim() !== "";
 
-        for (let c of contactsToSave) {
-            if (!validateEmail(c.email)) {
-                alert(`Email inválido para o contacto "${c.nome}": ${c.email}`);
-                return;
-            }
+        if (!nomeValido || !emailValido) {
+            alert("Todos os contactos devem ter nome e email preenchidos.");
+            return;
         }
 
-        try {
-            const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/contactos`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${SESSION_TOKEN}`,
-                },
-                body: JSON.stringify(contactsToSave),
-            });
-
-            if (!response.ok) throw new Error("Erro ao guardar os contactos");
-            alert("Contactos guardados com sucesso!");
-        } catch (err) {
-            alert(`Erro: ${err.message}`);
+        if (!validateEmail(c.email)) {
+            alert(`Email inválido para o contacto "${c.nome}": ${c.email}`);
+            return;
         }
-    };
+    }
+
+    try {
+        const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/contactos`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${SESSION_TOKEN}`,
+            },
+            body: JSON.stringify(contacts),
+        });
+
+        if (!response.ok) throw new Error("Erro ao guardar os contactos");
+        alert("Contactos guardados com sucesso!");
+        window.location.reload();
+    } catch (err) {
+        alert(`Erro: ${err.message}`);
+    }
+};
+
+
 
     if (loading) return <p>A carregar contactos...</p>;
     if (error) return <p className="text-red-500">Erro: {error}</p>;

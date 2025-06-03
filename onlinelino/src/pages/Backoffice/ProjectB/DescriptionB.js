@@ -58,6 +58,8 @@ function DescriptionB() {
 
             if (!response.ok) throw new Error("Erro ao atualizar a descrição");
             alert("Descrição atualizada com sucesso!");
+            window.location.reload();
+
         } catch (err) {
             alert(`Erro: ${err.message}`);
         }
