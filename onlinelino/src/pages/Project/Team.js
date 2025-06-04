@@ -44,20 +44,38 @@ function Team() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <Container className="container">
-                <h4>Equipa</h4>
-                <br />
-                <h5>Investigadores:</h5>
-                {investigadores.map((membro, i) => (
-                    <ul key={`inv-${i}`}><li>{membro.nome}</li></ul>
-                ))}
-                <hr />
-                <h5>Colaboradores:</h5>
-                {colaboradores.map((membro, i) => (
-                    <ul key={`col-${i}`}><li>{membro.nome}, {membro.cargo}</li></ul>
-                ))}
-            </Container>
+            <div
+                style={{
+                    backgroundImage: "url('/img/fundo_descricao.jpg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    minHeight: "100vh",
+                    paddingTop: "2rem",
+                    paddingBottom: "2rem",
+                }}
+            >
+                <Container
+                    className="container"
+                    style={{
+                        backgroundColor: "rgba(234, 216, 193, 0.85)",
+                        padding: "2rem",
+                        marginLeft: "auto",
+                        marginRight: "0",
+                    }}
+                >
+                    <h4>Equipa</h4>
+                    <br />
+                    <h5>Investigadores:</h5>
+                    {investigadores.map((membro, i) => (
+                        <ul key={`inv-${i}`}><li>{membro.nome}</li></ul>
+                    ))}
+                    <hr />
+                    <h5>Colaboradores:</h5>
+                    {colaboradores.map((membro, i) => (
+                        <ul key={`col-${i}`}><li>{membro.nome}, {membro.cargo}</li></ul>
+                    ))}
+                </Container>
+            </div>
         </>
     );
 }
