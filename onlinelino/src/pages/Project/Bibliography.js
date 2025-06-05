@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { SERVER_URL } from '../../Utils';
 import NavbarHome from '../../components/NavbarHome';
-import Container from 'react-bootstrap/Container'
-import { BibliopraphyDO } from '../../server/Models/DataObjects';
+import Container from 'react-bootstrap/Container';
 
 const Bibliography = () => {
-    const [bibliografia, setBibliografia] = useState(BibliopraphyDO);
+    const [htmlContent, setHtmlContent] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchLinks = async () => {
-
+        const fetchBibliografia = async () => {
             try {
-                const response = await fetch(`${SERVER_URL}/bibliografia`)
+                const response = await fetch(`${SERVER_URL}/bibliografia`);
                 if (!response.ok) {
                     const error = await response.json();
-                    throw new Error(`${error.error}`);
+                    throw new Error(`${error.message}`);
                 }
 
                 const data = await response.json();
-                setBibliografia(data || BibliopraphyDO);
+
+                // Pega o primeiro item e renderiza o HTML completo
+                if (data.length > 0 && data[0].texto_html) {
+                    setHtmlContent(data[0].texto_html);
+                } else {
+                    setHtmlContent('');
+                }
+
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -28,16 +33,11 @@ const Bibliography = () => {
             }
         };
 
-        fetchLinks();
+        fetchBibliografia();
     }, []);
 
-    if (loading) {
-        <h1>Carregando...</h1>;
-    } 
-
-    if (error) {
-        return <h1>{error}</h1>;
-    }
+    if (loading) return <h1>Carregando...</h1>;
+    if (error) return <h1>{error}</h1>;
 
     return (
         <>
@@ -46,23 +46,14 @@ const Bibliography = () => {
             <Container>
                 <h4>Bibliografia</h4>
                 <br />
-                {bibliografia && bibliografia.length > 0 ? 
-                (<ul>
-                    {bibliografia.map((item, index) => (
-                        <React.Fragment key={`biblio-${item.id}`}>
-                            <li>{item.descricao}</li>
-                            <br />
-                        </React.Fragment>
-                    ))}
-
-
-                </ul>) : (
-                    <p>Nenhum link disponível.</p>
+                {htmlContent ? (
+                    <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                ) : (
+                    <p>Nenhum item disponível.</p>
                 )}
-
             </Container>
         </>
     );
-}
+};
 
 export default Bibliography;

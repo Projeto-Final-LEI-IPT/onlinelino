@@ -2,12 +2,10 @@
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    /* Space between items */
 }
 
 .text-year-list {
     min-width: 100px;
-    /* Adjust width as needed */
     margin-right: 10px;
     text-align: right;
 }

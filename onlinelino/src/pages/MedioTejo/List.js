@@ -1,50 +1,67 @@
-import React from "react";
-import NavbarHome from "../../components/NavbarHome";
-import Container from "react-bootstrap/esm/Container";
-import { Link } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { SERVER_URL } from '../../Utils';
+import NavbarHome from '../../components/NavbarHome';
 import '../../style/List.css';
 
-function List() {
-    const { t } = useTranslation();
 
-    // buildings.[i].title + ", " + buildings.[i].year
-    const buildings = [];
-    for (let i = 0; i < 50; i++) {
-        const title = t(`buildings.${i}.title`);
-        const year = t(`buildings.${i}.year`);
-        const year2 = t(`buildings.${i}.year2`);
+function ListIndex() {
+    const [works, setWorks] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
-        if (!title.includes("title") && !year.includes("year")) {
-            buildings.push({
-                title: title,
-                year: parseInt(year),
-                year2: year + year2
-            });
-        }
-    }
-    buildings.sort((a, b) => a.year - b.year);
+    useEffect(() => {
+        const fetchWorks = async () => {
+            try {
+                const res = await fetch(`${SERVER_URL}/listaObras`);
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.error);
+                }
+                const data = await res.json();
+
+                // Ordenar por data 
+                data.sort((a, b) =>
+                    a.data_projeto.localeCompare(b.data_projeto, undefined, { numeric: true })
+                );
+
+                setWorks(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchWorks();
+    }, []);
+
+    if (loading) return <h1>Carregando…</h1>;
+    if (error) return <h1>{error}</h1>;
 
     return (
         <>
             <NavbarHome />
-            <br />
-            <Container>
+            <div className="container">
                 <ul>
-                    {buildings.map((paragraph, index) => (
-                        <Link key={index} to={`/obra/${index + 1}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                            <li className="list-item" key={index}>
+                    {works.map((obra) => (
+                        <Link
+                            to={`/MedioTejo/${obra.id}`}
+                            key={obra.id}
+                            style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
+                            <li className="list-item">
                                 <div className="text-year-list">
-                                    <span className="year-highlight">{paragraph.year2}</span>
+                                    <span className="year-highlight">{obra.data_projeto}</span>
                                 </div>
-                                <div className="text-title-list">{paragraph.title}</div>
+                                <div className="text-title-list">{obra.titulo}</div>
                             </li>
                         </Link>
                     ))}
                 </ul>
-            </Container>
+            </div>
         </>
     );
 }
 
-export default List;
+export default ListIndex;

@@ -4,7 +4,6 @@ import Container from "react-bootstrap/esm/Container";
 import { useTranslation } from 'react-i18next';
 
 function Iconic() {
-    const { t } = useTranslation();
     // biographyPage.videos
     const { t: v } = useTranslation('translation', { keyPrefix: 'biographyPage.videos' });
     const videos = [];
