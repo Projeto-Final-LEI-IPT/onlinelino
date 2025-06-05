@@ -42,8 +42,25 @@ const Bibliography = () => {
     return (
         <>
             <NavbarHome />
+            <div
+                style={{
+                    backgroundImage: "url('/img/fundo_descricao.jpg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    minHeight: "100vh",
+                    paddingTop: "2rem",
+                    paddingBottom: "2rem",
+                }}
+            >
             <br />
-            <Container>
+            <Container
+            style={{
+                        backgroundColor: "rgba(234, 216, 193, 0.85)",
+                        padding: "2rem",
+                        marginLeft: "auto",
+                        marginRight: "0",
+                    }}
+                >
                 <h4>Bibliografia</h4>
                 <br />
                 {htmlContent ? (
@@ -52,6 +69,7 @@ const Bibliography = () => {
                     <p>Nenhum item disponível.</p>
                 )}
             </Container>
+            </div>
         </>
     );
 };
