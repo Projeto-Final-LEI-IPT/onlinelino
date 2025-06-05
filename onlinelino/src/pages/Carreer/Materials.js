@@ -17,7 +17,7 @@ const Materials = () => {
                     throw new Error(err.error);
                 }
                 const data = await response.json();
-                setOverview(data[0]); 
+                setOverview(data[0]);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -34,31 +34,66 @@ const Materials = () => {
     return (
         <>
             <NavbarHome />
-            <br />
-            <Container>
-                <h4>Sobre Raul Lino</h4>
-                <br />
-                {overview?.descricao_pt && (
-                    <p>{overview.descricao_pt}</p>
-                )}
-                <br />
-                <h6>Filmes</h6>
-                <ul>
-                    {overview?.filmes?.map((url, i) => (
-                        <li key={`filme-${i}`}>
-                            <a href={url} target="_blank" rel="noreferrer">{url}</a>
-                        </li>
-                    ))}
-                </ul>
-                <h6>Outros links</h6>
-                <ul>
-                    {overview?.outros_links?.map((link, i) => (
-                        <li key={`link-${i}`}>
-                            <a href={link} target="_blank" rel="noreferrer">{link}</a>
-                        </li>
-                    ))}
-                </ul>
-            </Container>
+            <div style={{ overflow: "hidden" }}>
+                <div
+                    style={{
+                        backgroundImage: "url('/img/RL_FOTO1.jpg')",
+                        backgroundSize: "cover",
+                        backgroundPosition: "-1000px center",
+                        minHeight: "100vh",
+                        paddingTop: "2rem",
+                        paddingBottom: "2rem",
+                    }}
+                >
+                    <Container
+                        style={{
+                            backgroundColor: "rgba(234, 216, 193, 0.85)",
+                            padding: "2rem",
+                            marginLeft: "auto",
+                            marginRight: "3%",
+                            maxWidth: "600px",
+                            width: "100%",
+                        }}
+                    >
+                        <h4>Sobre Raul Lino</h4>
+                        <br />
+                        {overview?.descricao_pt && (
+                            <p>{overview.descricao_pt}</p>
+                        )}
+                        <br />
+                        <h6>Filmes</h6>
+                        <ul>
+                            {overview?.filmes?.map((url, i) => (
+                                <li key={`filme-${i}`}>
+                                    <a
+                                        style={{
+                                            wordBreak: "break-word",
+                                            overflowWrap: "break-word",
+                                            display: "inline-block",
+                                            maxWidth: "100%",
+                                        }}
+                                        href={url} target="_blank" rel="noreferrer">{url}</a>
+                                </li>
+                            ))}
+                        </ul>
+                        <h6>Outros links</h6>
+                        <ul>
+                            {overview?.outros_links?.map((link, i) => (
+                                <li key={`link-${i}`}>
+                                    <a
+                                        style={{
+                                            wordBreak: "break-word",
+                                            overflowWrap: "break-word",
+                                            display: "inline-block",
+                                            maxWidth: "100%",
+                                        }}
+                                        href={link} target="_blank" rel="noreferrer">{link}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </Container>
+                </div>
+            </div>
         </>
     );
 };

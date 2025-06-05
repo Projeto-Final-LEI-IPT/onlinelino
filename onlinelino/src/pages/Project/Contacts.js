@@ -37,7 +37,7 @@ function Contacts() {
         return <h1>Erro: {error}</h1>;
     }
 
-     return (
+    return (
         <>
             <NavbarHome />
             <div
