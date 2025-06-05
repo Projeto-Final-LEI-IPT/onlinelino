@@ -193,7 +193,7 @@ function ContactsB() {
                         </div>
                     ))}
                     <div className="column">
-                        <button onClick={addContactField} className="saveButton">Adicionar Contacto</button>
+                        <button onClick={addContactField} className="addButton">Adicionar Contacto</button>
                         <button onClick={handleSave} className="saveButton">Guardar</button>
                     </div>
                 </div>
