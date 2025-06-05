@@ -33,42 +33,75 @@ function Generic() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <Container>
-                <p>{t('biographyPage.generic')}</p>
-                <br />
-                <h4>{t('biographyPage.v')}</h4>
-                <br />
-                <ul>
-                    {videos.map((paragraph, index) => (
-                        <React.Fragment key={`frag1-${index}`}>
-                            <li key={`li1-${index}`}>
-                                <a href="{paragraph}" target="_blank">
-                                    {paragraph}
-                                </a>
-                                <br />
-                                <span>{videosSubtitle[index]}</span>
-                            </li>
-                            <br />
-                        </React.Fragment>
-                    ))}
-                </ul>
-                <br />
-                <h4>{t('biographyPage.l')}</h4>
-                <br />
-                <ul>
-                    {links.map((paragraph, index) => (
-                        <React.Fragment key={`frag1-${index}`}>
-                            <li key={`li2-${index}`}>
-                                <a href="{paragraph}" target="_blank">
-                                    {paragraph}
-                                </a>
-                            </li>
-                            <br />
-                        </React.Fragment>
-                    ))}
-                </ul>
-            </Container>
+            <div style={{ overflow: "hidden", }}>
+                <div
+                    style={{
+                        backgroundImage: "url('/img/RL_FOTO1.jpg')",  // caminho da tua imagem no public
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        minHeight: "100vh",
+                        paddingTop: "2rem",
+                        paddingBottom: "2rem",
+                        backgroundPosition: "-1000px center",  // desloca 100px para a esquerda
+                    }}
+                >
+                    <Container
+                        style={{
+                            backgroundColor: "rgba(234, 216, 193, 0.85)",
+                            padding: "2rem",
+                            marginLeft: "auto",
+                            marginRight: "3%",
+                            maxWidth: "600px",  // limita a largura máxima
+                            width: "100%",
+                        }}>
+                        <p>{t('biographyPage.generic')}</p>
+                        <br />
+                        <h4>{t('biographyPage.v')}</h4>
+                        <br />
+                        <ul>
+                            {videos.map((paragraph, index) => (
+                                <React.Fragment key={`frag1-${index}`}>
+                                    <li key={`li1-${index}`}>
+                                        <a href="{paragraph}" target="_blank"
+                                            style={{
+                                                wordBreak: "break-word",
+                                                overflowWrap: "break-word",
+                                                display: "inline-block",
+                                                maxWidth: "100%"
+                                            }}>
+                                            {paragraph}
+                                        </a>
+                                        <br />
+                                        <span>{videosSubtitle[index]}</span>
+                                    </li>
+                                    <br />
+                                </React.Fragment>
+                            ))}
+                        </ul>
+                        <br />
+                        <h4>{t('biographyPage.l')}</h4>
+                        <br />
+                        <ul>
+                            {links.map((paragraph, index) => (
+                                <React.Fragment key={`frag1-${index}`}>
+                                    <li key={`li2-${index}`}>
+                                        <a href="{paragraph}" target="_blank"
+                                            style={{
+                                                wordBreak: "break-word",
+                                                overflowWrap: "break-word",
+                                                display: "inline-block",
+                                                maxWidth: "100%"
+                                            }}>
+                                            {paragraph}
+                                        </a>
+                                    </li>
+                                    <br />
+                                </React.Fragment>
+                            ))}
+                        </ul>
+                    </Container>
+                </div>
+            </div>
         </>
     );
 }

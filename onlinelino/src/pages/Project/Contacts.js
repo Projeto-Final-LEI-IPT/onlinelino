@@ -40,16 +40,33 @@ function Contacts() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <Container>
-                <h4>Contactos</h4>
-                <br />
-                {contacts.map((item, index) => (
-                    <ul key={`contact-${index}`}>
-                        <li>{item.nome} - {item.email}</li>
-                    </ul>
-                ))}
-            </Container>
+            <div
+                style={{
+                    backgroundImage: "url('/img/fundo_descricao.jpg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    minHeight: "100vh",
+                    paddingTop: "2rem",
+                    paddingBottom: "2rem",
+                }}
+            >
+                <Container
+                    style={{
+                        backgroundColor: "rgba(234, 216, 193, 0.85)",
+                        padding: "2rem",
+                        marginLeft: "auto",
+                        marginRight: "0",
+                    }}
+                >
+                    <h4>Contactos</h4>
+                    <br />
+                    {contacts.map((item, index) => (
+                        <ul key={`contact-${index}`}>
+                            <li>{item.nome} - {item.email}</li>
+                        </ul>
+                    ))}
+                </Container>
+            </div>
         </>
     );
 }
