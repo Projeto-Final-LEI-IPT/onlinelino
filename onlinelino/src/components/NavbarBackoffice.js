@@ -72,7 +72,7 @@ const NavbarBackoffice = () => {
                 </ul>
                         <button
                             onClick={() => {
-                                sessionStorage.removeItem('authorization'); 
+                                localStorage.removeItem('authorization'); 
                                 navigate('/'); 
                             }}
                             style={{

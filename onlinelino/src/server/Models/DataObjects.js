@@ -2,7 +2,6 @@ export const HomePageDO = {
     id: "",
     descricao_pt: "",
     descricao_en: "",
-    imagem: "",
     modificado_em: ""
 }
 

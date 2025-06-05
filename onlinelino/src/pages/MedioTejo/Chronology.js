@@ -63,7 +63,7 @@ function Chronology() {
                 <img src="../img/logo.png" alt="Logo" />
               </div>
             )}
-            <Link to={`/obra/${p.id}`} className="image-item" style={{ backgroundColor: p.bg }}>
+            <Link to={`/MedioTejo/${p.id}`} className="image-item" style={{ backgroundColor: p.bg }}>
               <div className="image-container">
                 {p.img && <img src={p.img} alt="" />}
                 <p className="text-year-chrono">{p.yearText}</p>
