@@ -82,6 +82,52 @@ const createUpdateEndpoint = (path, tableName, fields) => {
     });
 };
 
+const createBulkUpdateEndpoint = (path, tableName, fields) => {
+    const endpointPath = `/${BACKOFFICE_URL}${path}`;
+
+    app.put(endpointPath, authenticateToken, async (req, res) => {
+        const records = req.body;
+
+        if (!Array.isArray(records)) {
+            return res.status(400).json({ error: 'Array esperado no corpo da requisição.' });
+        }
+
+        let db;
+        try {
+            db = await connection();
+
+            for (const record of records) {
+                const { id } = record;
+                const values = fields.map(field => record[field]);
+                if (values.includes(undefined)) continue;
+
+                if (id && !isNaN(id)) {
+                    // UPDATE para ids ja existentes 
+                    const setClause = fields.map(field => `${field} = ?`).join(', ');
+                    const query = `UPDATE ${tableName} SET ${setClause} WHERE id = ?`;
+                    await db.execute(query, [...values, id]);
+                } else {
+                    console.log('sendo inserted', record)
+                    // INSERT para novos contactos 
+                    const columns = fields.join(', ');
+                    const placeholders = fields.map(() => '?').join(', ');
+                    const query = `INSERT INTO ${tableName} (${columns}) VALUES (${placeholders})`;
+                    await db.execute(query, values);
+                }
+            }
+
+            res.json({ message: 'Registos processados com sucesso.' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Erro ao processar registos.' });
+        } finally {
+            if (db) await db.end();
+        }
+    });
+};
+
+
+
 const createDeleteEndpoint = (path, tableName) => {
     const endpointPath = `/${BACKOFFICE_URL}${path}/:id`;
 
@@ -138,7 +184,7 @@ app.post(`/${BACKOFFICE_URL}/login`, async (req, res) => {
         const [users] = await db.execute('SELECT * FROM admins WHERE email = ?', [email]);
         if (users.length === 0 || !(await bcrypt.compare(password, users[0].password_hash))) return res.status(401).json({ error: 'Credenciais inválidas.' });
         const token = jwt.sign({ userId: users[0].id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.status(200).json(createResponseOnSuccess('Login executado com sucesso', token));
+        res.status(200).json(createResponseOnSuccess('Login executado com sucesso', token, '1h'));
     } catch {
         res.status(500).json({ error: 'Erro ao processar login.' });
     } finally {
@@ -150,8 +196,8 @@ app.post(`/${BACKOFFICE_URL}/login`, async (req, res) => {
 //GET
 createEndpoint('/home', 'SELECT * FROM Home', () => [], (rows) => rows, true);
 createEndpoint('/descricao', 'SELECT * FROM Descricao', () => [], (rows) => rows, true);
-createEndpoint('/bibliografia', 'SELECT descricao FROM Bibliografia', () => [], (rows) => rows, true);
-createEndpoint('/equipa', 'SELECT nome, cargo FROM Equipa', () => [], (rows) => rows, true);
+createEndpoint('/bibliografia', 'SELECT * FROM Bibliografia', () => [], (rows) => rows, true);
+createEndpoint('/equipa', 'SELECT * FROM Equipa', () => [], (rows) => rows, true);
 createEndpoint('/contactos', 'SELECT * FROM Contactos', () => [], (rows) => rows, true);
 
 createEndpoint('/overview', 'SELECT * FROM overview', () => [], (rows) => rows, true);
@@ -160,10 +206,14 @@ createEndpoint('/sobre', 'SELECT * FROM materiais', () => [], (rows) => rows, tr
 //PUT
 createUpdateEndpoint('/equipa', 'equipa', ['nome', 'cargo'], true);
 createUpdateEndpoint('/descricao', 'Descricao', ['descricao_pt', 'descricao_en']);
-createUpdateEndpoint('/contactos', 'Contactos', ['nome', 'email']);
+createBulkUpdateEndpoint('/contactos', 'Contactos', ['nome', 'email']);
+createBulkUpdateEndpoint('/equipa', 'Equipa', ['nome', 'cargo']);
+createUpdateEndpoint('/bibliografia', 'Bibliografia', ['texto_html']);
+
 
 //DELETE
 createDeleteEndpoint('/contactos', 'Contactos');
+createDeleteEndpoint('/equipa', 'Equipa');
 
 /*---------------------------------------------------------------------------------------------------*/
 
@@ -172,7 +222,7 @@ createDeleteEndpoint('/contactos', 'Contactos');
 //Aba Projeto Raul Lino
 createEndpoint('/home', 'SELECT descricao_pt FROM Home', () => [], (rows) => rows);
 createEndpoint('/descricao', 'SELECT descricao_pt, descricao_en FROM Descricao', () => [], (rows) => rows);
-createEndpoint('/bibliografia', 'SELECT descricao FROM Bibliografia', () => [], (rows) => rows);
+createEndpoint('/bibliografia', 'SELECT texto_html FROM Bibliografia', () => [], (rows) => rows);
 createEndpoint('/equipa', 'SELECT nome, cargo FROM Equipa', () => [], (rows) => rows);
 createEndpoint('/equipa/:id', 'SELECT * FROM equipa WHERE id = ?', (req) => [req.params.id], (rows) => rows);
 createEndpoint('/contactos', 'SELECT nome, email FROM contactos', () => [], (rows) => rows);
@@ -234,11 +284,11 @@ createEndpoint(
     ORDER BY CAST(SUBSTRING_INDEX(o.data_projeto, '-', 1) AS UNSIGNED)
     `,
     () => [],
-    rows => rows 
-  );
-  createEndpoint('/listaObras', `SELECT id, titulo, data_projeto FROM obra`, () => [],
-  rows => rows)
-  createEndpoint(
+    rows => rows
+);
+createEndpoint('/listaObras', `SELECT id, titulo, data_projeto FROM obra`, () => [],
+    rows => rows)
+createEndpoint(
     '/obra/:id',
     `
     SELECT 
@@ -282,106 +332,106 @@ createEndpoint(
     `,
     (req) => [req.params.id],
     (rows) => {
-      if (rows.length === 0) return {};
-  
-      const obra = {
-        id: rows[0].obra_id,
-        titulo: rows[0].titulo,
-        data_projeto: rows[0].data_projeto,
-        tipologia: rows[0].tipologia,
-        localizacao: rows[0].localizacao,
-        descricao_pt: rows[0].descricao_pt,
-        descricao_en: rows[0].descricao_en,
-        latitude: rows[0].latitude,
-        longitude: rows[0].longitude,
-        imagens: [],
-        cronologia: [],
-        info: [],
-        fontes: [],
-        outros_links: [],
-      };
-  
-      const imagensSet = new Set();
-      const cronologiaSet = new Set();
-      const infoSet = new Set();
-      const fonteMap = new Map();
-      const outrosLinksSet = new Set();
-  
-      for (const row of rows) {
-        // Imagens
-        if (row.imagem_id && !imagensSet.has(row.imagem_id)) {
-          imagensSet.add(row.imagem_id);
-          obra.imagens.push({
-            id: row.imagem_id,
-            caminho: row.imagem_caminho,
-            descricao_pt: row.imagem_descricao_pt,
-            descricao_en: row.imagem_descricao_en,
-          });
-        }
-  
-        // Cronologia
-        if (row.cronologia_id && !cronologiaSet.has(row.cronologia_id)) {
-          cronologiaSet.add(row.cronologia_id);
-          obra.cronologia.push({
-            id: row.cronologia_id,
-            imagem: row.cronologia_imagem,
-            cor: row.cronologia_cor,
-          });
-        }
-  
-        // Info
-        if (row.info_id && !infoSet.has(row.info_id)) {
-          infoSet.add(row.info_id);
-          obra.info.push({
-            id: row.info_id,
-            texto: row.info_texto,
-          });
-        }
-  
-        // Fontes e bibliografia
-        if (row.fonte_id) {
-          if (!fonteMap.has(row.fonte_id)) {
-            fonteMap.set(row.fonte_id, {
-              id: row.fonte_id,
-              descricao: row.fonte_descricao,
-              link: row.fonte_link,
-              bibliografia: [],
-              _biblioSet: new Set(), 
-            });
-          }
-  
-          const fonte = fonteMap.get(row.fonte_id);
-  
-          if (row.biblio_id && row.biblio_url) {
-            const biblioKey = `${row.biblio_id}-${row.biblio_url}`;
-  
-            if (!fonte._biblioSet.has(biblioKey)) {
-              fonte._biblioSet.add(biblioKey);
-              fonte.bibliografia.push({
-                id: row.biblio_id,
-                texto: row.biblio_texto,
-                url: row.biblio_url,
-              });
-  
-              if (!outrosLinksSet.has(row.biblio_url)) {
-                outrosLinksSet.add(row.biblio_url);
-                obra.outros_links.push(row.biblio_url);
-              }
+        if (rows.length === 0) return {};
+
+        const obra = {
+            id: rows[0].obra_id,
+            titulo: rows[0].titulo,
+            data_projeto: rows[0].data_projeto,
+            tipologia: rows[0].tipologia,
+            localizacao: rows[0].localizacao,
+            descricao_pt: rows[0].descricao_pt,
+            descricao_en: rows[0].descricao_en,
+            latitude: rows[0].latitude,
+            longitude: rows[0].longitude,
+            imagens: [],
+            cronologia: [],
+            info: [],
+            fontes: [],
+            outros_links: [],
+        };
+
+        const imagensSet = new Set();
+        const cronologiaSet = new Set();
+        const infoSet = new Set();
+        const fonteMap = new Map();
+        const outrosLinksSet = new Set();
+
+        for (const row of rows) {
+            // Imagens
+            if (row.imagem_id && !imagensSet.has(row.imagem_id)) {
+                imagensSet.add(row.imagem_id);
+                obra.imagens.push({
+                    id: row.imagem_id,
+                    caminho: row.imagem_caminho,
+                    descricao_pt: row.imagem_descricao_pt,
+                    descricao_en: row.imagem_descricao_en,
+                });
             }
-          }
+
+            // Cronologia
+            if (row.cronologia_id && !cronologiaSet.has(row.cronologia_id)) {
+                cronologiaSet.add(row.cronologia_id);
+                obra.cronologia.push({
+                    id: row.cronologia_id,
+                    imagem: row.cronologia_imagem,
+                    cor: row.cronologia_cor,
+                });
+            }
+
+            // Info
+            if (row.info_id && !infoSet.has(row.info_id)) {
+                infoSet.add(row.info_id);
+                obra.info.push({
+                    id: row.info_id,
+                    texto: row.info_texto,
+                });
+            }
+
+            // Fontes e bibliografia
+            if (row.fonte_id) {
+                if (!fonteMap.has(row.fonte_id)) {
+                    fonteMap.set(row.fonte_id, {
+                        id: row.fonte_id,
+                        descricao: row.fonte_descricao,
+                        link: row.fonte_link,
+                        bibliografia: [],
+                        _biblioSet: new Set(), 
+                    });
+                }
+
+                const fonte = fonteMap.get(row.fonte_id);
+
+                if (row.biblio_id && row.biblio_url) {
+                    const biblioKey = `${row.biblio_id}-${row.biblio_url}`;
+
+                    if (!fonte._biblioSet.has(biblioKey)) {
+                        fonte._biblioSet.add(biblioKey);
+                        fonte.bibliografia.push({
+                            id: row.biblio_id,
+                            texto: row.biblio_texto,
+                            url: row.biblio_url,
+                        });
+
+                        if (!outrosLinksSet.has(row.biblio_url)) {
+                            outrosLinksSet.add(row.biblio_url);
+                            obra.outros_links.push(row.biblio_url);
+                        }
+                    }
+                }
+            }
         }
-      }
-  
-      obra.fontes = Array.from(fonteMap.values()).map(fonte => {
-        delete fonte._biblioSet;
-        return fonte;
-      });
-  
-      return obra;
+
+        obra.fontes = Array.from(fonteMap.values()).map(fonte => {
+            delete fonte._biblioSet;
+            return fonte;
+        });
+
+        return obra;
     }
-  );
-  
-  
+);
+
+
 
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

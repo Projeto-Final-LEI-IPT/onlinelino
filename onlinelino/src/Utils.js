@@ -1,11 +1,11 @@
 export const SERVER_URL = 'http://onlinelino.ipt.pt:8080';
 export const BACKOFFICE_URL = 'backoffice';
 
-export const createResponseOnSuccess = (message,token = null, error = null) => {
+ const createResponseOnSuccess = (message,token = null, expiresIn) => {
     return {
         message,
         token,
-        error
+        expiresIn
     };
 };
 export default createResponseOnSuccess;
