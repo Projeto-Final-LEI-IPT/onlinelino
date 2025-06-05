@@ -42,8 +42,22 @@ function ListIndex() {
     return (
         <>
             <NavbarHome />
-            <div className="container">
-                <ul>
+            <div style={{
+                    backgroundImage: "url('/img/fundo_descricao.jpg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    minHeight: "100vh",
+                    paddingTop: "2rem",
+                    paddingBottom: "2rem",
+                }}>
+            <div className="container"
+            style={{
+                        backgroundColor: "rgba(234, 216, 193, 0.85)",
+                        padding: "2rem",
+                        marginLeft: "auto",
+                        marginRight: "0",
+                    }}>
+                <ul className="two-column-list">
                     {works.map((obra) => (
                         <Link
                             to={`/MedioTejo/${obra.id}`}
@@ -59,6 +73,7 @@ function ListIndex() {
                         </Link>
                     ))}
                 </ul>
+            </div>
             </div>
         </>
     );

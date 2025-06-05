@@ -4,6 +4,15 @@
     margin-bottom: 15px;
 }
 
+.two-column-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    max-width: 1000px;
+    margin: 0 ;
+    padding-left: 0;
+    list-style: none;
+}
+
 .text-year-list {
     min-width: 100px;
     margin-right: 10px;
