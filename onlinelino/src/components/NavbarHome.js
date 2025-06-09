@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../style/Navbar.css';
 import { useTranslation } from 'react-i18next';
@@ -28,6 +28,22 @@ const NavbarHome = () => {
     const [activeDropdown, setActiveDropdown] = useState(null);
     const { t } = useTranslation();
     const location = useLocation();
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const navbarRef = useRef(null);
+
+    useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+      setActiveDropdown(null);
+      setMobileMenuOpen(false);
+    }
+  };
+
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
+}, []);
 
     const handleDropdownToggle = (index) => {
         setActiveDropdown(index);
@@ -64,7 +80,7 @@ const NavbarHome = () => {
 
     return (
         <>
-            <div className="navbar-container">
+            <div className="navbar-container"  ref={navbarRef}>
                 <div className="header-image">
                     <img src="../img/header.jpg" alt="Header" />
                     <a href="/">
@@ -75,7 +91,10 @@ const NavbarHome = () => {
                 </div>
             </div>
             <nav className="navbar">
-                <ul className="navbar-list">
+                <button className="hamburger" onClick={() => setMobileMenuOpen(prev => !prev)}>
+                    ☰
+                </button>
+                <ul className={`navbar-list ${mobileMenuOpen ? 'show' : ''}`}>
                     <li className={`navbar-item ${isActive('/projeto') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(0)}>
                             {t('navbarHome.project')}

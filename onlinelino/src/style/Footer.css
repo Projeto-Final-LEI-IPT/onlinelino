@@ -20,3 +20,18 @@
     width: 120px;
     height: auto;
 }
+
+
+/* Responsivo para ecrãs pequenos */
+@media screen and (max-width: 600px) {
+  .footer-content2 {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-image2 {
+    width: 80px;
+  }
+}
