@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../style/Navbar.css';
 import { useTranslation } from 'react-i18next';
@@ -29,21 +29,6 @@ const NavbarHome = () => {
     const { t } = useTranslation();
     const location = useLocation();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const navbarRef = useRef(null);
-
-    useEffect(() => {
-  const handleClickOutside = (event) => {
-    if (navbarRef.current && !navbarRef.current.contains(event.target)) {
-      setActiveDropdown(null);
-      setMobileMenuOpen(false);
-    }
-  };
-
-  document.addEventListener('mousedown', handleClickOutside);
-  return () => {
-    document.removeEventListener('mousedown', handleClickOutside);
-  };
-}, []);
 
     const handleDropdownToggle = (index) => {
         setActiveDropdown(index);
@@ -80,7 +65,7 @@ const NavbarHome = () => {
 
     return (
         <>
-            <div className="navbar-container"  ref={navbarRef}>
+            <div className="navbar-container">
                 <div className="header-image">
                     <img src="../img/header.jpg" alt="Header" />
                     <a href="/">

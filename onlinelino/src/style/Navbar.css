@@ -123,15 +123,16 @@
 
 @media screen and (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row; /* forçar linha, não coluna */
+    align-items: center; /* alinhar verticalmente */
+    justify-content: space-between; /* hamburger à esquerda, langSwitcher à direita */
   }
 
   .hamburger {
     display: block;
     align-self: flex-start;
     margin-bottom: 10px;
-    order: -1; /* coloca o botão no topo e à esquerda */
+    order: 0; /* coloca o botão no topo e à esquerda */
     margin-left: 0; /* remove qualquer margem indesejada */
   }
 
