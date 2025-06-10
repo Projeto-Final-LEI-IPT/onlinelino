@@ -15,7 +15,7 @@ function Home() {
     useEffect(() => {
         const fetchDescricao = async () => {
             try {
-                const response = await fetch(`${SERVER_URL}/home`);
+                const response = await fetch(`${SERVER_URL}/descricao`);
                 if (!response.ok) {
                     throw new Error('Erro ao buscar a descrição');
                 }

@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import { SERVER_URL, BACKOFFICE_URL } from "../../Utils";
 import { useNavigate } from 'react-router-dom';
 import '../../style/Login.css';
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
     const [email, setemail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
-    
+
     const validateEmail = (email) => {
         return /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
     };
@@ -39,7 +42,7 @@ const Login = () => {
 
         let isValid = true;
 
-        
+
         if (!email) {
             setEmailError('O campo não pode estar vazio');
             isValid = false;
@@ -59,7 +62,7 @@ const Login = () => {
         }
 
         if (isValid) {
-            login(); 
+            login();
         }
     };
 
@@ -77,19 +80,33 @@ const Login = () => {
             if (response.ok) {
                 const SESSION_TOKEN = data.token;
                 localStorage.setItem('authorization', SESSION_TOKEN);
-                alert(`Bem Vindo ${email}!`);
-                navigate('../Backoffice/CareerB/MaterialsB');
+
+                navigate('../Backoffice/ProjectB/DescriptionB');
             } else {
-                alert(data.error || 'Falha no login');
+                setPasswordError(data.error || 'Credenciais inválidas');
             }
         } catch (error) {
             console.error('Login failed', error);
-            alert('Erro ao tentar realizar o login');
+            setPasswordError('Erro ao tentar realizar o login');
         }
     }
 
     return (
-        <div className="login-container">
+        <div
+            className="login-container"
+            style={{
+                backgroundImage: "url('/img/fundo_descricao.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                minHeight: "100vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "20px",
+                flexDirection: "column",
+            }}
+        >
             <h2>Login</h2>
             <form className="login-form" onSubmit={validateInputs}>
                 <div className="input-container">
@@ -97,7 +114,7 @@ const Login = () => {
                     <input
                         type="text"
                         id="email"
-                        placeholder="Digite seu e-mail"
+                        placeholder="Digite o seu e-mail"
                         className={`input-field ${emailError ? 'error-border' : ''}`}
                         value={email}
                         onChange={(e) => setemail(e.target.value)}
@@ -106,17 +123,34 @@ const Login = () => {
                     {emailError && <span className="error-message">{emailError}</span>}
                 </div>
 
-                <div className="input-container">
+                <div className="input-container" style={{ position: 'relative' }}>
                     <label htmlFor="password" className="input-label">Palavra Passe</label>
                     <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         id="password"
                         className={`input-field ${passwordError ? 'error-border' : ''}`}
                         placeholder="Digite sua palavra passe"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         onBlur={handlePasswordBlur}
+                        style={{ paddingRight: '40px' }} // espaço para o ícone
                     />
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        style={{
+                            position: 'absolute',
+                            right: '10px',
+                            top: '50%',
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            padding: 0
+                        }}
+                        tabIndex={-1} 
+                    >
+                        {showPassword ? <FaRegEye size={20} /> : <FaRegEyeSlash size={20} />} 
+                    </button>
                     {passwordError && <span className="error-message">{passwordError}</span>}
                 </div>
 
