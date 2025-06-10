@@ -21,7 +21,7 @@ function AddBuilding() {
     <div>
       <NavbarBackoffice />
       <div className="details-container">
-        <h2 className="section-heading">DetailsB</h2>
+        <h2 className="title">DetailsB</h2>
 
         {/* Título PT/EN */}
         <div className="section-row">

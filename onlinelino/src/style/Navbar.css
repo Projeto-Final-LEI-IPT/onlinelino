@@ -1,7 +1,9 @@
+/* Container principal da navbar */
 .navbar-container {
   width: 100%;
 }
 
+/* Header com imagem */
 .header-image {
   position: relative;
   width: 100%;
@@ -12,10 +14,10 @@
   height: auto;
 }
 
+/* Logo */
 .logo {
   position: absolute;
   background-color: #155945;
-  top: auto;
   bottom: 0;
   left: 61%;
   padding: 10px;
@@ -25,6 +27,7 @@
   height: 90px;
 }
 
+/* Navbar horizontal */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -32,21 +35,35 @@
   background-color: #155945;
   font-family: Arial, sans-serif;
   flex-wrap: nowrap;
+  padding: 10px 20px;
 }
 
+/* Botão hamburguer para mobile */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Lista de itens da navbar */
 .navbar-list {
   list-style-type: none;
   margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: nowrap;
 }
 
 .navbar-item {
   position: relative;
-  margin: 0 3em;
+  margin: 0 2em;
   white-space: nowrap;
 }
 
+/* Botão principal da navbar */
 .navbar-button {
   background: none;
   border: none;
@@ -61,6 +78,7 @@
   color: #FBAB1F;
 }
 
+/* Dropdown oculto por padrão */
 .dropdown-menu2 {
   display: none;
   position: absolute;
@@ -74,16 +92,18 @@
   border: 1px solid #155945;
 }
 
+/* Mostrar dropdown */
 .dropdown-menu2.show {
   display: block;
 }
 
+/* Itens do dropdown */
 .dropdown-item2 {
   text-decoration: none;
   color: black;
   cursor: pointer;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .dropdown-item2::before {
@@ -96,31 +116,51 @@
   color: #078C6B;
 }
 
+/* Item ativo */
 .navbar-item.active .navbar-button {
   color: #FBAB1F;
 }
 
-.dropdown-menu2.show {
-  display: block;
-}
-
-@media screen and (max-width: 400px) {
-  .logo img {
-    width: 50% !important;
-    height: 50% !important;
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: row; /* forçar linha, não coluna */
+    align-items: center; /* alinhar verticalmente */
+    justify-content: space-between; /* hamburger à esquerda, langSwitcher à direita */
   }
 
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+  .hamburger {
+    display: block;
+    align-self: flex-start;
+    margin-bottom: 10px;
+    order: 0; /* coloca o botão no topo e à esquerda */
+    margin-left: 0; /* remove qualquer margem indesejada */
   }
 
   .navbar-list {
+    display: none;
     flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar-list.show {
+    display: flex;
   }
 
   .navbar-item {
-    margin: 0 0;
-    /* Adjust margin for vertical alignment */
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+}
+
+
+/* Logo ainda menor em ecrãs muito pequenos */
+@media screen and (max-width: 400px) {
+  .logo img {
+    width: 50% !important;
+    height: auto !important;
   }
 }

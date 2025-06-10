@@ -5,35 +5,39 @@ import "react-quill/dist/quill.snow.css";
 import "../../../style/Backoffice.css";
 
 function MaterialsB() {
-    return (
+   return (
         <div>
             <NavbarBackoffice />
             <div className="container">
-                <h2 className="title">AboutB</h2>
+                <h2 className="title">Materiais</h2>
                 <div className="row">
-                    {/* Caixa de texto e botão para PORTUGUÊS */}
+                    {/* PORTUGUÊS */}
                     <div className="column">
+                        <h3>Português</h3>
                         <ReactQuill
-                            value="<p>Texto em português...</p>"
                             theme="snow"
                             className="quillEditor"
                         />
-                        <button className="saveButton">Guardar</button>
                     </div>
 
-                    {/* Caixa de texto e botão para INGLÊS */}
+                    {/* INGLÊS */}
                     <div className="column">
+                        <h3>Inglês</h3>
                         <ReactQuill
-                            value="<p>Text in English...</p>"
                             theme="snow"
                             className="quillEditor"
                         />
-                        <button className="saveButton">Guardar</button>
                     </div>
+                </div>
+                <div className="column">
+                    <button className="saveButton">
+                        Guardar
+                    </button>
                 </div>
             </div>
         </div>
     );
 }
+
 
 export default MaterialsB;

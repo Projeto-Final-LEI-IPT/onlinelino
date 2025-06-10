@@ -22,7 +22,8 @@ import BibliographyB from './pages/Backoffice/ProjectB/BibliographyB';
 import ContactsB from './pages/Backoffice/ProjectB/ContactsB';
 import DescriptionB from './pages/Backoffice/ProjectB/DescriptionB';
 import TeamB from './pages/Backoffice/ProjectB/TeamB';
-import Iconic from './pages/Carreer/Iconic'
+import Iconic from './pages/Carreer/Iconic';
+import BuildingDetailsB from './pages/Backoffice/MedioTejoB/BuildingDetailsB';
 
 // 🛠️ Backoffice - Obra
 import Buildings from './pages/Backoffice/MedioTejoB/Buildings';
@@ -84,6 +85,9 @@ function App() {
 
   <Route path="/MedioTejo/:id" element={<BuildingDetails />} />
   <Route path="/MedioTejo/:id" element={<BuildingDetails />} />
+
+  <Route path="/Backoffice/MedioTejoB/:id" element={<BuildingDetailsB />} />
+
 
   {/* Login */}
   <Route path="/backoffice/login" element={<Login />} />

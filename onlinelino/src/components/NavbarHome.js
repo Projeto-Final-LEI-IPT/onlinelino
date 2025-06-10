@@ -28,6 +28,7 @@ const NavbarHome = () => {
     const [activeDropdown, setActiveDropdown] = useState(null);
     const { t } = useTranslation();
     const location = useLocation();
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const handleDropdownToggle = (index) => {
         setActiveDropdown(index);
@@ -75,7 +76,10 @@ const NavbarHome = () => {
                 </div>
             </div>
             <nav className="navbar">
-                <ul className="navbar-list">
+                <button className="hamburger" onClick={() => setMobileMenuOpen(prev => !prev)}>
+                    ☰
+                </button>
+                <ul className={`navbar-list ${mobileMenuOpen ? 'show' : ''}`}>
                     <li className={`navbar-item ${isActive('/projeto') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(0)}>
                             {t('navbarHome.project')}

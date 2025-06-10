@@ -9,27 +9,30 @@ function IconicB() {
         <div>
             <NavbarBackoffice />
             <div className="container">
-                <h2 className="title">IconicB</h2>
+                <h2 className="title">Edificios Iconicos</h2>
                 <div className="row">
-                    {/* Caixa de texto e botão para PORTUGUÊS */}
+                    {/* PORTUGUÊS */}
                     <div className="column">
+                        <h3>Português</h3>
                         <ReactQuill
-                            value="<p>Texto em português...</p>"
                             theme="snow"
                             className="quillEditor"
                         />
-                        <button className="saveButton">Guardar</button>
                     </div>
 
-                    {/* Caixa de texto e botão para INGLÊS */}
+                    {/* INGLÊS */}
                     <div className="column">
+                        <h3>Inglês</h3>
                         <ReactQuill
-                            value="<p>Text in English...</p>"
                             theme="snow"
                             className="quillEditor"
                         />
-                        <button className="saveButton">Guardar</button>
                     </div>
+                </div>
+                <div className="column">
+                    <button className="saveButton">
+                        Guardar
+                    </button>
                 </div>
             </div>
         </div>
