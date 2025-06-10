@@ -41,9 +41,10 @@ function Buildings() {
   return (
     <div>
         <NavbarBackoffice />
-         <ul>
+        <h2 className="title">Lista de Edificios</h2>
+         <ul >
       {works.map((obra) => (
-        <li key={obra.id}>
+        <li key={obra.id}  style={{ marginBottom: '10px' }}>
           <Link to={`/Backoffice/MedioTejoB/${obra.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             {obra.titulo}
           </Link>

@@ -104,9 +104,11 @@ function DescriptionB() {
                         />
                     </div>
                 </div>
-                <button className="saveButton" onClick={handleSave}>
-                    Guardar
-                </button>
+                <div className="column">
+                    <button className="saveButton" onClick={handleSave}>
+                        Guardar
+                    </button>
+                </div>
             </div>
         </div>
     );

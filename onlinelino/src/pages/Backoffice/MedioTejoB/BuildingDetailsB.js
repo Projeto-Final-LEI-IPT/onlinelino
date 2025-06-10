@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import Container from 'react-bootstrap/Container';
 import { SERVER_URL } from '../../../Utils';
+import ReactQuill from "react-quill"; 
 
 const BuildingDetailsB = () => {
   const { id } = useParams();
@@ -38,10 +39,10 @@ const BuildingDetailsB = () => {
       <NavbarBackoffice />
       <Container style={{ paddingTop: '2rem' }}>
         <h2>{obra?.titulo}</h2>
-        <p><strong>Data do Projeto:</strong> {obra?.data_projeto}</p>
-        <p><strong>Tipologia:</strong> {obra?.tipologia}</p>
-        <p><strong>Localização:</strong> {obra?.localizacao}</p>
-        <p>{obra?.descricao_pt}</p>
+        <p><strong>Data do Projeto:</strong> <ReactQuill    value={obra?.data_projeto}/></p>
+        <p><strong>Tipologia:</strong> <ReactQuill    value={obra?.tipologia}/></p>
+        <p><strong>Localização:</strong> <ReactQuill  value={obra?.localizacao}/></p>
+        <p><strong>Descrição:</strong>  <ReactQuill value={obra?.descricao_pt}/></p>
 
         {obra?.outros_links && obra.outros_links.length > 0 && (
           <>
@@ -68,6 +69,11 @@ const BuildingDetailsB = () => {
           </>
         )}
       </Container>
+      <div className="column">
+        <button className="saveButton" >
+          Guardar
+        </button>
+      </div>
     </>
   );
 };

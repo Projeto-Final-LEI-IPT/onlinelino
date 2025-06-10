@@ -14,13 +14,15 @@
 }
 
 .text-year-list {
+    text-align: left;
     min-width: 100px;
     margin-right: 10px;
-    text-align: right;
 }
 
 .text-title-list {
-    flex-grow: 1;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
 }
 
 .year-highlight {
@@ -28,4 +30,17 @@
     padding: 2px 5px;
     color: white;
     font-weight: bold;
+    border-radius: 3px;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 600px) {
+    .two-column-list {
+        grid-template-columns: 1fr; /* Lista de uma única coluna em telas pequenas */
+    }
+
+    .list-item {
+        flex-direction: row; /* Organiza melhor se houver espaço */
+        align-items: center;
+    }
 }
