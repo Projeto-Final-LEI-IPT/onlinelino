@@ -44,7 +44,7 @@ function Home() {
             <NavbarHome />
             <div
                 style={{
-                    backgroundImage: "url('/img/fundo_descricao.jpg')",
+                    backgroundImage: "url('/img/fundo_descricao.webp')",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     minHeight: "100vh",
