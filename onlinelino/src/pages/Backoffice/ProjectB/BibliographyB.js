@@ -3,10 +3,11 @@ import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../../../style/Backoffice.css";
-import { BACKOFFICE_URL, SERVER_URL } from "../../../Utils";
+import { BACKOFFICE_URL, SERVER_URL, hasContentChanged } from "../../../Utils";
 
 function BibliographyB() {
     const [bibliografia, setBibliografia] = useState({ texto_html: "", id: null });
+    const [originalBibliografia, setOriginalBibliografia] = useState({ texto_html: "", id: null });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const SESSION_TOKEN = localStorage.getItem("authorization");
@@ -26,8 +27,10 @@ function BibliographyB() {
 
                 if (data.length > 0) {
                     setBibliografia(data[0]);
+                    setOriginalBibliografia(data[0]); 
                 } else {
                     setBibliografia({ texto_html: "", id: null });
+                    setOriginalBibliografia({ texto_html: "", id: null });
                 }
             } catch (err) {
                 setError(err.message);
@@ -57,7 +60,6 @@ function BibliographyB() {
         }
     };
 
-
     const handleSave = async () => {
         if (!bibliografia.id) {
             alert("ID da bibliografia não encontrado, impossível salvar.");
@@ -66,6 +68,11 @@ function BibliographyB() {
 
         if (!isValidListHTML(bibliografia.texto_html)) {
             alert("O conteúdo deve ser uma lista HTML válida.");
+            return;
+        }
+
+        if (!hasContentChanged(originalBibliografia, bibliografia)) {
+            alert("Nenhuma alteração detetada. Nada foi salvo.");
             return;
         }
 

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../../../style/Backoffice.css";
-import { BACKOFFICE_URL, SERVER_URL } from "../../../Utils";
+import { BACKOFFICE_URL, SERVER_URL, hasContentChanged } from "../../../Utils";  
 import { HomePageDO } from "../../../server/Models/DataObjects"; 
 
 function DescriptionB() {
@@ -12,6 +12,7 @@ function DescriptionB() {
     const [error, setError] = useState(null);
     const SESSION_TOKEN = localStorage.getItem('authorization');
 
+    const originalDescricao = useRef(HomePageDO);
 
     useEffect(() => {
         const fetchDescricao = async () => {
@@ -28,7 +29,9 @@ function DescriptionB() {
                 const data = await response.json();
 
                 if (data.length > 0) {
-                    setDescricao({ ...HomePageDO, ...data[0] });
+                    const loaded = { ...HomePageDO, ...data[0] };
+                    setDescricao(loaded);
+                    originalDescricao.current = loaded; 
                 }
             } catch (err) {
                 setError(err.message);
@@ -38,9 +41,14 @@ function DescriptionB() {
         };
 
         fetchDescricao();
-    }, []);
+    }, [SESSION_TOKEN]);
 
     const handleSave = async () => {
+        if (!hasContentChanged(originalDescricao.current, descricao)) {
+            alert("Nenhuma alteração detetada. Nada foi salvo.");
+            return;
+        }
+
         const updatedDescricao = {
             ...descricao,
             modificado_em: new Date().toISOString(),

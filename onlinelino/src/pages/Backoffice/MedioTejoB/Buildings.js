@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { BACKOFFICE_URL, SERVER_URL } from "../../../Utils";
+import { useEffect, useState } from 'react';
+import { SERVER_URL } from "../../../Utils";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import { Link } from 'react-router-dom'
 
