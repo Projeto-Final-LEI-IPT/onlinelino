@@ -15,7 +15,7 @@ function Home() {
     useEffect(() => {
         const fetchDescricao = async () => {
             try {
-                const response = await fetch(`${SERVER_URL}/home`);
+                const response = await fetch(`${SERVER_URL}/descricao`);
                 if (!response.ok) {
                     throw new Error('Erro ao buscar a descrição');
                 }
@@ -40,7 +40,7 @@ function Home() {
     }
 
     return (
-          <>
+        <>
             <NavbarHome />
             <div
                 style={{
@@ -52,13 +52,13 @@ function Home() {
                     paddingBottom: "2rem",
                 }}
             >
-                <Container 
-                style={{
-                    backgroundColor: "rgba(234, 216, 193, 0.85)",
-                    padding: "2rem",
-                    marginLeft: "auto",
-                    marginRight: "0",
-                }}>
+                <Container
+                    style={{
+                        backgroundColor: "rgba(234, 216, 193, 0.85)",
+                        padding: "2rem",
+                        marginLeft: "auto",
+                        marginRight: "0",
+                    }}>
                     {descricao && descricao.descricao_pt
                         ? descricao.descricao_pt.split('\n').map((par, idx) => (
                             <p key={idx}>{par}</p>

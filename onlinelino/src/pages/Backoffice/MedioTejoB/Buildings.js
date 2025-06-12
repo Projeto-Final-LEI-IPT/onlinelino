@@ -38,21 +38,53 @@ function Buildings() {
   if (loading) return <p>Carregando…</p>;
   if (error) return <p>Erro: {error}</p>;
 
-  return (
-    <div>
-        <NavbarBackoffice />
-        <h2 className="title">Lista de Edificios</h2>
-         <ul >
-      {works.map((obra) => (
-        <li key={obra.id}  style={{ marginBottom: '10px' }}>
-          <Link to={`/Backoffice/MedioTejoB/${obra.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-            {obra.titulo}
-          </Link>
-        </li>
-      ))}
-    </ul>
+return (
+  <div>
+    <NavbarBackoffice />
+    
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+      minHeight: '100vh',
+      padding: '2rem',
+      backgroundColor: '#f5f5f5'
+    }}>
+      <h2 className="title" style={{ marginBottom: '1.5rem' }}>Lista de Edifícios</h2>
+
+      <ul style={{
+        listStyle: 'none',
+        padding: 0,
+        width: '100%',
+        maxWidth: '600px'
+      }}>
+        {works.map((obra) => (
+          <li key={obra.id} style={{ marginBottom: '15px' }}>
+            <Link
+              to={`/Backoffice/MedioTejoB/${obra.id}`}
+              style={{
+                textDecoration: 'none',
+                color: 'inherit',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                backgroundColor: '#fff',
+                padding: '12px 16px',
+                borderRadius: '8px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              }}
+            >
+              <span style={{ fontWeight: 'bold', color: '#777' }}>{obra.data_projeto}</span>
+              <span>{obra.titulo}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default Buildings;

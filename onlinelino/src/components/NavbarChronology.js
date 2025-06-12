@@ -26,6 +26,7 @@ const routeTranslations = {
 
 const NavbarChronology = () => {
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const [menuOpen, setMenuOpen] = useState(false);
     const { t } = useTranslation();
     const location = useLocation();
 
@@ -65,7 +66,14 @@ const NavbarChronology = () => {
     return (
         <>
             <nav className="navbar">
-                <ul className="navbar-list">
+                <button
+                    className="hamburger"
+                    onClick={() => setMenuOpen((prev) => !prev)}
+                >
+                    &#9776;
+                </button>
+
+                <ul className={`navbar-list ${menuOpen ? 'show' : ''}`}>
                     <li className={`navbar-item ${isActive('/projeto') ? 'active' : ''}`}>
                         <Link className="navbar-button" onClick={() => handleDropdownToggle(0)}>
                             {t('navbarHome.project')}

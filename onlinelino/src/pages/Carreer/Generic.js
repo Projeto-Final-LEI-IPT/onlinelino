@@ -36,13 +36,17 @@ function Generic() {
             <div style={{ overflow: "hidden", }}>
                 <div
                     style={{
-                        backgroundImage: "url('/img/RL_FOTO1.jpg')",  // caminho da tua imagem no public
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        minHeight: "100vh",
+                        backgroundImage: "url('/img/RL_FOTO1.jpg')",
+                        backgroundSize: "cover",                  // cobre toda a área
+                        backgroundPosition: "right center",      // sempre centralizado
+                        backgroundRepeat: "no-repeat",            // não repete
+                        backgroundAttachment: "scroll",           // comportamento padrão
+                        minHeight: "100vh",                       // altura mínima de 100% da janela
+                        display: "flex",                          // centra verticalmente (opcional)
+                        justifyContent: "flex-end",               // alinha container à direita
+                        alignItems: "center",                     // alinha verticalmente
                         paddingTop: "2rem",
                         paddingBottom: "2rem",
-                        backgroundPosition: "-1000px center",  // desloca 100px para a esquerda
                     }}
                 >
                     <Container

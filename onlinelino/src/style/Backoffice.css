@@ -97,7 +97,7 @@
 }
 
 .addButton {
-  background-color: #007BFF; /* verde */
+  background-color: #155945; /* verde */
   color: white;
   padding: 8px 16px;
   border: none;
@@ -106,6 +106,10 @@
   font-size: 14px;
   margin-top: 10px;
   transition: background-color 0.3s ease;
+}
+
+.addButton:hover{
+  background-color: #126f53;
 }
 
 .quillEditor {
@@ -117,11 +121,14 @@
   margin-top: 50px;
   padding: 10px 20px;
   border-radius: 4px;
-  background: #007BFF;
+  background: #155945;
   color: #fff;
   border: none;
   cursor: pointer;
   width: 100px;
+}
+.saveButton:hover {
+  background-color: #126f53;
 }
 
 
