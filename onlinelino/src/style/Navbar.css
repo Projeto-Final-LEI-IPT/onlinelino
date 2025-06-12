@@ -42,6 +42,7 @@
 .hamburger {
   display: none;
   background: none;
+  align-self: flex-start;
   border: none;
   color: white;
   font-size: 24px;
@@ -121,19 +122,22 @@
   color: #FBAB1F;
 }
 
+/* Responsivo para tablets e telemóveis */
 @media screen and (max-width: 768px) {
   .navbar {
-    flex-direction: row; /* forçar linha, não coluna */
-    align-items: center; /* alinhar verticalmente */
-    justify-content: space-between; /* hamburger à esquerda, langSwitcher à direita */
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
   }
 
   .hamburger {
     display: block;
-    align-self: flex-start;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
     margin-bottom: 10px;
-    order: 0; /* coloca o botão no topo e à esquerda */
-    margin-left: 0; /* remove qualquer margem indesejada */
   }
 
   .navbar-list {
@@ -151,11 +155,34 @@
     width: 100%;
   }
 
+  .navbar-button {
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+  }
+
+  .dropdown-menu2 {
+    position: relative;
+    display: none;
+    background-color: white;
+    border: none;
+    box-shadow: none;
+    padding-left: 20px;
+    width: 100%;
+  }
+
+  .dropdown-menu2.show {
+    display: block;
+  }
+
+  .dropdown-item2 {
+    margin: 5px 0;
+  }
+
   .logo img {
     height: 60px;
   }
 }
-
 
 /* Logo ainda menor em ecrãs muito pequenos */
 @media screen and (max-width: 400px) {

@@ -95,7 +95,7 @@ const Login = () => {
         <div
             className="login-container"
             style={{
-                backgroundImage: "url('/img/fundo_descricao.jpg')",
+                backgroundImage: "url('/img/fundo_descricao.webp')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",

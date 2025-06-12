@@ -32,10 +32,35 @@ function Iconic() {
     return (
         <>
             <NavbarHome />
-            <br />
-            <Container>
-               <h2>Iconic</h2>
-            </Container>
+            <div style={{ overflow: "hidden", }}>
+                <div
+                    style={{
+                        backgroundImage: "url('/img/RL_FOTO1.jpg')",
+                        backgroundSize: "cover",                  // cobre toda a área
+                        backgroundPosition: "right center",      // sempre centralizado
+                        backgroundRepeat: "no-repeat",            // não repete
+                        backgroundAttachment: "scroll",           // comportamento padrão
+                        minHeight: "100vh",                       // altura mínima de 100% da janela
+                        display: "flex",                          // centra verticalmente (opcional)
+                        justifyContent: "flex-end",               // alinha container à direita
+                        alignItems: "center",                     // alinha verticalmente
+                        paddingTop: "0rem",
+                        paddingBottom: "2rem",
+                    }}
+                >
+                    <Container
+                        style={{
+                            backgroundColor: "rgba(234, 216, 193, 0.85)",
+                            padding: "2rem",
+                            marginLeft: "auto",
+                            marginRight: "3%",
+                            maxWidth: "600px",  // limita a largura máxima
+                            width: "100%",
+                        }}>
+
+                    </Container>
+                </div>
+            </div>
         </>
     );
 }
