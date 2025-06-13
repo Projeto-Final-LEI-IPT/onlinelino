@@ -76,11 +76,6 @@ function BibliographyB() {
             return;
         }
 
-        const updatedBibliografia = {
-            ...bibliografia,
-            modificado_em: new Date().toISOString(),
-        };
-
         try {
             const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/bibliografia/${bibliografia.id}`, {
                 method: "PUT",

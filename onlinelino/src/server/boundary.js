@@ -59,14 +59,15 @@ const createUpdateEndpoint = (path, tableName, fields) => {
 
         if (isNaN(id)) return res.status(400).json({ error: 'ID inválido.' });
 
-        if (values.includes(undefined)) {
-            return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
+        for (const [i, val] of values.entries()) {
+            if (val === undefined) {
+                return res.status(400).json({ error: `Campo obrigatório '${fields[i]}' está ausente.` });
+            }
         }
 
         let db;
         try {
             db = await connection();
-
             const setClause = fields.map(field => `${field} = ?`).join(', ') + ', modificado_em = NOW()';
             const query = `UPDATE ${tableName} SET ${setClause} WHERE id = ?`;
 
@@ -87,7 +88,6 @@ const createBulkUpdateEndpoint = (path, tableName, fields) => {
 
     app.put(endpointPath, authenticateToken, async (req, res) => {
         const records = req.body;
-
         if (!Array.isArray(records)) {
             return res.status(400).json({ error: 'Array esperado no corpo da requisição.' });
         }
@@ -95,20 +95,16 @@ const createBulkUpdateEndpoint = (path, tableName, fields) => {
         let db;
         try {
             db = await connection();
-
             for (const record of records) {
                 const { id } = record;
                 const values = fields.map(field => record[field]);
                 if (values.includes(undefined)) continue;
 
                 if (id && !isNaN(id)) {
-                    // UPDATE para ids ja existentes 
                     const setClause = fields.map(field => `${field} = ?`).join(', ');
                     const query = `UPDATE ${tableName} SET ${setClause} WHERE id = ?`;
                     await db.execute(query, [...values, id]);
                 } else {
-                    console.log('sendo inserted', record)
-                    // INSERT para novos contactos 
                     const columns = fields.join(', ');
                     const placeholders = fields.map(() => '?').join(', ');
                     const query = `INSERT INTO ${tableName} (${columns}) VALUES (${placeholders})`;
@@ -125,8 +121,6 @@ const createBulkUpdateEndpoint = (path, tableName, fields) => {
         }
     });
 };
-
-
 
 const createDeleteEndpoint = (path, tableName) => {
     const endpointPath = `/${BACKOFFICE_URL}${path}/:id`;
@@ -153,9 +147,6 @@ const createDeleteEndpoint = (path, tableName) => {
         }
     });
 };
-
-
-
 
 app.post(`/${BACKOFFICE_URL}/register`, async (req, res) => {
     const { email, password } = req.body;
@@ -209,11 +200,80 @@ createUpdateEndpoint('/descricao', 'Descricao', ['descricao_pt', 'descricao_en']
 createBulkUpdateEndpoint('/contactos', 'Contactos', ['nome', 'email']);
 createBulkUpdateEndpoint('/equipa', 'Equipa', ['nome', 'cargo']);
 createUpdateEndpoint('/bibliografia', 'Bibliografia', ['texto_html']);
+createUpdateEndpoint('/overview', 'Overview', ['descricao_pt', 'descricao_en']);
 
 
 //DELETE
 createDeleteEndpoint('/contactos', 'Contactos');
 createDeleteEndpoint('/equipa', 'Equipa');
+
+// GET todos materiais com imagens
+createEndpoint(
+    '/materiais',
+    `
+SELECT 
+  m.id,
+  m.descricao_pt,
+  m.descricao_en,
+  m.modificado_em,
+  mi.id as imagem_id,
+  mi.path as imagem_url,
+  mi.descricao as imagem_descricao
+FROM materiais m
+LEFT JOIN materiais_imagem mi ON mi.material_id = m.id
+ORDER BY m.id DESC
+    `,
+    () => [],
+    rows => {
+        const map = {};
+        for (const row of rows) {
+            if (!map[row.id]) {
+                map[row.id] = {
+                    id: row.id,
+                    descricao_pt: row.descricao_pt,
+                    descricao_en: row.descricao_en,
+                    modificado_em: row.modificado_em,
+                    imagens: [],
+                };
+            }
+            if (row.imagem_id) {
+                map[row.id].imagens.push({
+                    id: row.imagem_id,
+                    path: row.imagem_url,
+                    descricao: row.imagem_descricao,
+                });
+            }
+        }
+        return Object.values(map);
+    },
+    true
+);
+
+// PUT página material
+createUpdateEndpoint('/materiais', 'materiais', ['descricao_pt', 'descricao_en']);
+
+// POST imagem para material
+app.post(`/${BACKOFFICE_URL}/materiais/:id/imagem`, authenticateToken, async (req, res) => {
+    const { id } = req.params;
+    const { url, descricao } = req.body;
+
+    if (!url || !id) return res.status(400).json({ error: 'URL e material_id são obrigatórios.' });
+
+    let db;
+    try {
+        db = await connection();
+        await db.execute(`INSERT INTO materiais_imagem (material_id, url, descricao) VALUES (?, ?, ?)`, [id, url, descricao]);
+        res.status(201).json({ message: 'Imagem adicionada com sucesso.' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao adicionar imagem.' });
+    } finally {
+        if (db) await db.end();
+    }
+});
+
+// DELETE imagem da página material
+createDeleteEndpoint('/materiais_imagem', 'materiais_imagem');
 
 /*---------------------------------------------------------------------------------------------------*/
 
