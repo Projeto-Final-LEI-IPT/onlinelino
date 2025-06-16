@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import "../../../style/Backoffice.css";
-import { BACKOFFICE_URL, SERVER_URL } from "../../../Utils";
+import { BACKOFFICE_URL, SERVER_URL, hasContentChanged } from "../../../Utils";
 
 function ContactsB() {
     const [contacts, setContacts] = useState([]);
@@ -13,6 +13,7 @@ function ContactsB() {
     const [showSuccessDialog, setShowSuccessDialog] = useState(false);
     const [removedContactInfo, setRemovedContactInfo] = useState(null);
     const SESSION_TOKEN = localStorage.getItem('authorization');
+    const originalContacts = useRef([]);
 
     const fetchContacts = async () => {
         try {
@@ -34,6 +35,7 @@ function ContactsB() {
             }));
 
             setContacts(normalized);
+            originalContacts.current = normalized;
         } catch (err) {
             setError(err.message);
         } finally {
@@ -44,6 +46,7 @@ function ContactsB() {
     useEffect(() => {
         fetchContacts();
     }, []);
+
 
     const addContactField = () => {
         setContacts([...contacts, {
@@ -62,18 +65,17 @@ function ContactsB() {
     };
 
     const confirmRemoveContact = (index) => {
-    const contact = contacts[index];
+        const contact = contacts[index];
 
-    if (String(contact.id).startsWith("new-")) {
-        setRemovedContactInfo({ nome: contact.nome, email: contact.email });
-        setContacts(contacts.filter((_, i) => i !== index));
-    } else {
-        setShowConfirmDialog(true);
-        setContactToRemove(index);
-        setContactNameToRemove(contact.nome);
-    }
-};
-
+        if (String(contact.id).startsWith("new-")) {
+            setRemovedContactInfo({ nome: contact.nome, email: contact.email });
+            setContacts(contacts.filter((_, i) => i !== index));
+        } else {
+            setShowConfirmDialog(true);
+            setContactToRemove(index);
+            setContactNameToRemove(contact.nome);
+        }
+    };
 
     const removeContact = async () => {
         const contact = contacts[contactToRemove];
@@ -125,40 +127,43 @@ function ContactsB() {
     };
 
     const handleSave = async () => {
-    for (let c of contacts) {
-        const nomeValido = c.nome && c.nome.trim() !== "";
-        const emailValido = c.email && c.email.trim() !== "";
-
-        if (!nomeValido || !emailValido) {
-            alert("Todos os contactos devem ter nome e email preenchidos.");
+        if (!hasContentChanged(originalContacts.current, contacts)) {
+            alert("Nenhuma alteração detetada. Nada foi salvo.");
             return;
         }
 
-        if (!validateEmail(c.email)) {
-            alert(`Email inválido para o contacto "${c.nome}": ${c.email}`);
-            return;
+        for (let c of contacts) {
+            const nomeValido = c.nome && c.nome.trim() !== "";
+            const emailValido = c.email && c.email.trim() !== "";
+
+            if (!nomeValido || !emailValido) {
+                alert("Todos os contactos devem ter nome e email preenchidos.");
+                return;
+            }
+
+            if (!validateEmail(c.email)) {
+                alert(`Email inválido para o contacto "${c.nome}": ${c.email}`);
+                return;
+            }
         }
-    }
 
-    try {
-        const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/contactos`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${SESSION_TOKEN}`,
-            },
-            body: JSON.stringify(contacts),
-        });
+        try {
+            const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/contactos`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${SESSION_TOKEN}`,
+                },
+                body: JSON.stringify(contacts),
+            });
 
-        if (!response.ok) throw new Error("Erro ao guardar os contactos");
-        alert("Contactos guardados com sucesso!");
-        window.location.reload();
-    } catch (err) {
-        alert(`Erro: ${err.message}`);
-    }
-};
-
-
+            if (!response.ok) throw new Error("Erro ao guardar os contactos");
+            alert("Contactos guardados com sucesso!");
+            window.location.reload();
+        } catch (err) {
+            alert(`Erro: ${err.message}`);
+        }
+    };
 
     if (loading) return <p>A carregar contactos...</p>;
     if (error) return <p className="text-red-500">Erro: {error}</p>;

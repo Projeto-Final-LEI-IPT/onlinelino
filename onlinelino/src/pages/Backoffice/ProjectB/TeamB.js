@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import "../../../style/Backoffice.css";
-import { SERVER_URL, BACKOFFICE_URL } from "../../../Utils";
+import { SERVER_URL, BACKOFFICE_URL, hasContentChanged } from "../../../Utils";
 
 function TeamB() {
   const [collaborators, setCollaborators] = useState([]);
   const [investigators, setInvestigators] = useState([]);
+  const [originalCollaborators, setOriginalCollaborators] = useState([]); 
+  const [originalInvestigators, setOriginalInvestigators] = useState([]);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [itemToRemove, setItemToRemove] = useState({ listType: null, index: null });
   const [itemNameToRemove, setItemNameToRemove] = useState("");
@@ -48,6 +50,9 @@ function TeamB() {
 
       setCollaborators(colaboradores);
       setInvestigators(investigadores);
+
+      setOriginalCollaborators(colaboradores);
+      setOriginalInvestigators(investigadores);
     } catch (error) {
       alert(error.message);
     }
@@ -157,6 +162,15 @@ function TeamB() {
         alert("Todos os membros da equipa devem ter o campo 'nome' preenchido.");
         return;
       }
+    }
+
+    const hasChanges =
+      hasContentChanged(originalCollaborators, collaborators) ||
+      hasContentChanged(originalInvestigators, investigators);
+
+    if (!hasChanges) {
+      alert("Nenhuma alteração detetada. Nada foi salvo.");
+      return;
     }
 
     const allMembers = [...collaborators, ...investigators];

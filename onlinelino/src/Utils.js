@@ -9,3 +9,8 @@ export const BACKOFFICE_URL = 'backoffice';
     };
 };
 export default createResponseOnSuccess;
+
+export function hasContentChanged(original, current) {
+  return JSON.stringify(original) !== JSON.stringify(current);
+}
+
