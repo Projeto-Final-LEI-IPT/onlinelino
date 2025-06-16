@@ -16,13 +16,11 @@ import ListIndex from "./pages/MedioTejo/List";
 import BuildingDetails from "./pages/MedioTejo/Details";
 import Login from './pages/Backoffice/Login';
 import MaterialsB from './pages/Backoffice/CareerB/MaterialsB';
-import IconicB from './pages/Backoffice/CareerB/IconicB';
 import GenericB from './pages/Backoffice/CareerB/GenericB';
 import BibliographyB from './pages/Backoffice/ProjectB/BibliographyB';
 import ContactsB from './pages/Backoffice/ProjectB/ContactsB';
 import DescriptionB from './pages/Backoffice/ProjectB/DescriptionB';
 import TeamB from './pages/Backoffice/ProjectB/TeamB';
-import Iconic from './pages/Carreer/Iconic';
 import BuildingDetailsB from './pages/Backoffice/MedioTejoB/BuildingDetailsB';
 
 // 🛠️ Backoffice - Obra
@@ -66,10 +64,6 @@ function App() {
   <Route path="/Carreira/materiais" element={<Materials />} />
   <Route path="/Career/materials" element={<Materials />} />
 
-  <Route path="/Carreira/iconico" element={<Iconic/>}/>
-  <Route path="/Career/iconic" element={<Iconic/>}/>
-
-
   {/* Público - Obra */}
   <Route path="/MedioTejo/detalhes" element={<Project />} />
   <Route path="/MedioTejo/details" element={<Project />} />
@@ -95,7 +89,6 @@ function App() {
   {/* Backoffice - Biografia */}
   <Route path="/backoffice/CareerB/MaterialsB" element={<MaterialsB />} />
   <Route path="/backoffice/CareerB/GenericB" element={<GenericB />} />
-  <Route path="/backoffice/CareerB/IconicB" element={<IconicB />} />
 
   {/* Backoffice - Projeto */}
   <Route path="/backoffice/ProjectB/BibliographyB" element={<BibliographyB />} />
