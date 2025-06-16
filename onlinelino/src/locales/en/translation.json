@@ -1760,5 +1760,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "searchPlaceholder": "Search..."
 }

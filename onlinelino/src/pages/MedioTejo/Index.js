@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/Container';
 import { SERVER_URL } from '../../Utils';
+import { FaSearch } from "react-icons/fa";
+import { useTranslation } from 'react-i18next';
 
 const Index = () => {
-    const { id } = useParams();
-    const [obra, setObra] = useState(null);
-    const [error, setError] = useState('');
+    const [works, setWorks] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    const { t } = useTranslation();
 
     useEffect(() => {
-        const fetchObra = async () => {
+        const fetchWorks = async () => {
             try {
-                const response = await fetch(`${SERVER_URL}/obra/${id}`);
-                if (!response.ok) {
-                    const err = await response.json();
+                const res = await fetch(`${SERVER_URL}/listaObras`);
+                if (!res.ok) {
+                    const err = await res.json();
                     throw new Error(err.error);
                 }
-                const data = await response.json();
-                setObra(data);
+                const data = await res.json();
+
+                // Ordena por data
+                data.sort((a, b) =>
+                    a.data_projeto.localeCompare(b.data_projeto, undefined, { numeric: true })
+                );
+
+                setWorks(data);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -27,49 +35,94 @@ const Index = () => {
             }
         };
 
-        fetchObra();
-    }, [id]);
+        fetchWorks();
+    }, []);
 
-    if (loading) return <h1>Carregando...</h1>;
-    if (error) return <h1>{error}</h1>;
+    const filteredWorks = works.filter((obra) =>
+        searchTerm.length >= 3 &&
+        (
+            obra.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            obra.data_projeto.includes(searchTerm)
+        )
+    );
 
     return (
         <>
             <NavbarHome />
-            <br />
-            <Container>
-                <h4>{obra?.titulo}</h4>
-                <p><strong>Data do Projeto:</strong> {obra?.data_projeto}</p>
-                <p><strong>Tipologia:</strong> {obra?.tipologia}</p>
-                <p><strong>Localização:</strong> {obra?.localizacao}</p>
-                <p>{obra?.descricao_pt}</p>
-
-                <h6>Filmes</h6>
-                <ul>
-                    {obra?.filmes?.map((url, i) => (
-                        <li key={`filme-${i}`}>
-                            <a href={url} target="_blank" rel="noreferrer">{url}</a>
-                        </li>
-                    ))}
-                </ul>
-
-                <h6>Outros Links</h6>
-                <ul>
-                    {obra?.outros_links?.map((link, i) => (
-                        <li key={`link-${i}`}>
-                            <a href={link} target="_blank" rel="noreferrer">{link}</a>
-                        </li>
-                    ))}
-                </ul>
-
-                <h6>Imagens</h6>
-                {obra?.imagens?.map((img, index) => (
-                    <div key={`img-${index}`} style={{ textAlign: 'center', marginBottom: '20px' }}>
-                        <img src={img.caminho} alt="" style={{ maxWidth: '500px', maxHeight: '500px' }} />
-                        <p>{img.descricao_pt}</p>
+            <div
+                style={{
+                    backgroundImage: "url('/img/fundo_descricao.webp')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    minHeight: "100vh",
+                    paddingTop: "2rem",
+                    paddingBottom: "2rem",
+                }}
+            >
+                <Container
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+                        minHeight: '60vh',
+                    }}
+                >
+                    <div style={{ position: 'relative', marginBottom: '1.5rem', width: '70%' }}>
+                        <input
+                            type="text"
+                            placeholder={t('searchPlaceholder')}
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            style={{
+                                width: '100%',
+                                padding: '0.5rem 2.5rem 0.5rem 0.75rem',
+                                fontSize: '1rem',
+                                borderRadius: '5px',
+                                border: '1px solid #ccc',
+                            }}
+                        />
+                        <FaSearch
+                            style={{
+                                position: 'absolute',
+                                right: '0.75rem',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                color: '#aaa',
+                                pointerEvents: 'none',
+                            }}
+                        />
                     </div>
-                ))}
-            </Container>
+
+                    {searchTerm.length >= 3 && (
+                        <ul style={{ width: '70%', listStyle: 'none', padding: 0 }}>
+                            {filteredWorks.map((obra) => (
+                                <li
+                                    key={obra.id}
+                                    style={{
+                                        backgroundColor: 'rgba(255,255,255,0.85)',
+                                        padding: '1rem',
+                                        marginBottom: '0.5rem',
+                                        borderRadius: '5px',
+                                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                                    }}
+                                >
+                                    <strong>{obra.data_projeto}</strong> — {obra.titulo}
+                                </li>
+                            ))}
+                            {filteredWorks.length === 0 && (
+                                <li style={{
+                                        backgroundColor: 'rgba(255,255,255,0.85)',
+                                        padding: '1rem',
+                                        marginBottom: '0.5rem',
+                                        borderRadius: '5px',
+                                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                                    }}>{t('No Results')}</li>
+                            )}
+                        </ul>
+                    )}
+                </Container>
+            </div>
         </>
     );
 };
