@@ -12,8 +12,7 @@
     },
     "navbarCareer": {
         "generic": "OVERVIEW",
-        "materials": "MATERIALS",
-        "iconic":"ICONIC BUILDINGS"
+        "materials": "MATERIALS"
     },
     "navbarMedioTejo": {
         "details": "BUILDINGS",
@@ -1761,5 +1760,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "searchPlaceholder": "Search..."
 }

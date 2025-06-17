@@ -14,7 +14,6 @@ const routeTranslations = {
     },
     biografia: {
         sobre: { en: 'materials', pt: 'materiais' },
-        iconic: { en: 'iconic', pt: 'iconic' },
     },
     obra: {
         detalhes: { en: 'details', pt: 'detalhes' },
@@ -114,11 +113,6 @@ const NavbarChronology = () => {
                             <li>
                                 <Link to={getLocalizedPath('/carreira/materiais')} className="dropdown-item2">
                                     {t('navbarCareer.materials')}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={getLocalizedPath('/carreira/iconico')} className="dropdown-item2">
-                                    {t('navbarCareer.iconic')}
                                 </Link>
                             </li>
                         </ul>

@@ -52,7 +52,6 @@ const NavbarBackoffice = () => {
           <ul className={`dropdown-menu2 ${activeDropdown === 1 ? 'show' : ''}`}>
             <li><Link to="/Backoffice/CareerB/GenericB" className="dropdown-item2">{t('navbarCareer.generic')}</Link></li>
             <li><Link to="/Backoffice/CareerB/MaterialsB" className="dropdown-item2">{t('navbarCareer.materials')}</Link></li>
-            <li><Link to="/Backoffice/CareerB/IconicB" className="dropdown-item2">{t('navbarCareer.iconic')}</Link></li>
           </ul>
         </li>
 

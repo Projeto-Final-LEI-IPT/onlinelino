@@ -14,7 +14,6 @@ const routeTranslations = {
     },
     carreira: {
         sobre: { en: 'materials', pt: 'materiais' },
-        iconic: { en: 'iconic', pt: 'iconico' },
     },
     obra: {
         detalhes: { en: 'details', pt: 'detalhes' },
@@ -120,11 +119,6 @@ const NavbarHome = () => {
                             <li>
                                 <Link to={getLocalizedPath('/carreira/sobre')} className="dropdown-item2">
                                     {t('navbarCareer.materials')}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={getLocalizedPath('/carreira/iconic')} className="dropdown-item2">
-                                    {t('navbarCareer.iconic')}
                                 </Link>
                             </li>
                         </ul>
