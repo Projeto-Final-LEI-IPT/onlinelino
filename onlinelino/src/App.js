@@ -7,7 +7,6 @@ import Description from "./pages/Project/Description";
 import Bibliography from "./pages/Project/Bibliography";
 import Team from "./pages/Project/Team";
 import Contacts from "./pages/Project/Contacts";
-import Generic from "./pages/Carreer/Generic";
 import Materials from "./pages/Carreer/Materials";
 import Project from "./pages/MedioTejo/Index";
 import Chronology from "./pages/MedioTejo/Chronology";
@@ -26,6 +25,7 @@ import BuildingDetailsB from './pages/Backoffice/MedioTejoB/BuildingDetailsB';
 // 🛠️ Backoffice - Obra
 import Buildings from './pages/Backoffice/MedioTejoB/Buildings';
 import AddBuilding from './pages/Backoffice/MedioTejoB/AddBuilding';
+import Overview from './pages/Carreer/Overview';
 
 function App() {
   useEffect(() => {
@@ -58,8 +58,8 @@ function App() {
   <Route path="/project/contacts" element={<Contacts />} />
 
   {/* Público - Biografia */}
-  <Route path="/Carreira" element={<Generic />} />
-  <Route path="/Career" element={<Generic />} />
+  <Route path="/Carreira" element={<Overview />} />
+  <Route path="/Career" element={<Overview />} />
 
   <Route path="/Carreira/materiais" element={<Materials />} />
   <Route path="/Career/materials" element={<Materials />} />

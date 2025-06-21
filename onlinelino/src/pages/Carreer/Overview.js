@@ -3,7 +3,7 @@ import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/Container';
 import { SERVER_URL } from '../../Utils';
 
-function OverviewIndex() {
+function Overview() {
     const [overviews, setOverviews] = useState([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
@@ -74,4 +74,4 @@ function OverviewIndex() {
     );
 }
 
-export default OverviewIndex;
+export default Overview;

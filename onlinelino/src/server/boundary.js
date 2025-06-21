@@ -23,17 +23,22 @@ app.use(morgan('dev'));
 app.use('/img', express.static(path.join(__dirname, 'public/img/backoffice')));
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, path.join(__dirname, 'public/img/backoffice')),
+    destination: (req, file, cb) => {
+        const dir = path.join(__dirname, 'public/img/backoffice/roteiro');
+        fs.mkdirSync(dir, { recursive: true });
+        cb(null, dir);
+    },
     filename: (req, file, cb) => {
         const ext = path.extname(file.originalname);
         const name = Date.now() + '-' + Math.round(Math.random() * 1e9);
         cb(null, name + ext);
     }
 });
+
 const upload = multer({
     storage,
     fileFilter: (req, file, cb) => {
-        const allowed = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        const allowed = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
         if (!allowed.includes(file.mimetype)) return cb(new Error('Tipo de ficheiro inválido'), false);
         cb(null, true);
     },
@@ -153,7 +158,7 @@ const createDeleteEndpoint = (routePath, tableName) => {
                     fs.unlink(filePath, (err) => {
                         if (err) console.warn(`Erro ao apagar o ficheiro ${filePath}:`, err.message);
                     });
-                    
+
                 }
             }
             const [result] = await db.execute(`DELETE FROM ${tableName} WHERE id = ?`, [id]);
@@ -207,7 +212,9 @@ app.post(`/${BACKOFFICE_URL}/login`, async (req, res) => {
     }
 });
 
-// Backoffice GETs
+//Backoffice
+
+//GETs
 createEndpoint('/home', 'SELECT * FROM Home', () => [], rows => rows, true);
 createEndpoint('/descricao', 'SELECT * FROM Descricao', () => [], rows => rows, true);
 createEndpoint('/bibliografia', 'SELECT * FROM Bibliografia', () => [], rows => rows, true);
@@ -215,21 +222,69 @@ createEndpoint('/equipa', 'SELECT * FROM Equipa', () => [], rows => rows, true);
 createEndpoint('/contactos', 'SELECT * FROM Contactos', () => [], rows => rows, true);
 createEndpoint('/overview', 'SELECT * FROM overview', () => [], rows => rows, true);
 createEndpoint('/sobre', 'SELECT * FROM materiais', () => [], rows => rows, true);
+createEndpoint(
+    '/edificio/:id',
+    `
+    SELECT 
+      e.id AS edificio_id,
+      e.titulo,
+      e.data_projeto,
+      e.tipologia,
+      e.localizacao,
+      e.descricao_pt,
+      e.descricao_en,
+      e.fontes_bibliografia,
+      e.latitude,
+      e.longitude,
+      f.id AS foto_id,
+      f.legenda_pt,
+      f.legenda_en,
+      f.caminho,
+      f.caminho_cronologia,
+      f.cor
+    FROM Edificio e
+    LEFT JOIN Edificio_foto f ON f.edificio_id = e.id
+    WHERE e.id = ?
+    `,
+    req => [req.params.id],
+    rows => {
+        if (!rows.length) return {};
 
-// Backoffice PUTs
-createUpdateEndpoint('/equipa', 'equipa', ['nome', 'cargo']);
-createUpdateEndpoint('/descricao', 'Descricao', ['descricao_pt', 'descricao_en']);
-createBulkUpdateEndpoint('/contactos', 'Contactos', ['nome', 'email']);
-createBulkUpdateEndpoint('/equipa', 'Equipa', ['nome', 'cargo']);
-createUpdateEndpoint('/bibliografia', 'Bibliografia', ['texto_html']);
-createUpdateEndpoint('/overview', 'Overview', ['descricao_pt', 'descricao_en']);
+        const edificio = {
+            id: rows[0].edificio_id,
+            titulo: rows[0].titulo,
+            data_projeto: rows[0].data_projeto,
+            tipologia: rows[0].tipologia,
+            localizacao: rows[0].localizacao,
+            descricao_pt: rows[0].descricao_pt,
+            descricao_en: rows[0].descricao_en,
+            fontes_bibliografia: rows[0].fontes_bibliografia,
+            latitude: rows[0].latitude,
+            longitude: rows[0].longitude,
+            imagens: []
+        };
 
-// Backoffice DELETEs
-createDeleteEndpoint('/contactos', 'Contactos');
-createDeleteEndpoint('/equipa', 'Equipa');
-createDeleteEndpoint('/materiais/imagem', 'materiais_imagem');
+        const imagemSet = new Set();
+        for (const row of rows) {
+            if (row.foto_id && !imagemSet.has(row.foto_id)) {
+                imagemSet.add(row.foto_id);
+                edificio.imagens.push({
+                    id: row.foto_id,
+                    legenda_pt: row.legenda_pt,
+                    legenda_en: row.legenda_en,
+                    caminho: `${baseUrl}${row.caminho}`,
+                    caminho_cronologia: `${baseUrl}${row.caminho_cronologia}`,
+                    cor: row.cor
+                });
+            }
+        }
 
-// Backoffice GET todos materiais com imagens
+        return edificio;
+    },
+    true
+);
+createEndpoint('/listaEdificios', 'SELECT id, titulo, data_projeto FROM edificio', () => [], rows => rows, true);
+//Todos materiais com imagens
 createEndpoint(
     '/materiais',
     `
@@ -271,10 +326,102 @@ ORDER BY m.id DESC
     true
 );
 
-// Backoffice PUT página material (textos)
-createUpdateEndpoint('/materiais', 'materiais', ['descricao_pt', 'descricao_en']);
+//POSTs
+//Criar novo edificio
+app.post(`/${BACKOFFICE_URL}/edificio`, authenticateToken, upload.array('fotos', 10), async (req, res) => {
+    const {
+        titulo,
+        data_projeto,
+        tipologia,
+        localizacao,
+        descricao_pt,
+        descricao_en,
+        fontes_bibliografia,
+        latitude,
+        longitude,
+        fotos_meta
+    } = req.body;
 
-// Backoffice POST imagem nova 
+    let db;
+    try {
+        db = await connection();
+        await db.beginTransaction();
+
+        const [result] = await db.execute(`
+        INSERT INTO Edificio (
+          titulo, data_projeto, tipologia, localizacao, descricao_pt,
+          descricao_en, fontes_bibliografia, latitude, longitude
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `, [
+            titulo, data_projeto, tipologia, localizacao, descricao_pt,
+            descricao_en, fontes_bibliografia,
+            latitude || null, longitude || null
+        ]);
+
+        const edificioId = result.insertId;
+
+        const fotosMetaParsed = JSON.parse(fotos_meta || '[]');
+
+        const [ultimaCorResult] = await db.execute(`
+        SELECT cor FROM Edificio_foto
+        WHERE caminho_cronologia IS NOT NULL AND cor IS NOT NULL
+        ORDER BY id DESC LIMIT 1
+      `);
+
+        let ultimaCor = ultimaCorResult.length ? ultimaCorResult[0].cor : "yellow";
+        let proximaCor = ultimaCor === "yellow" ? "green" : "yellow";
+
+        for (let i = 0; i < fotosMetaParsed.length; i++) {
+            const meta = fotosMetaParsed[i];
+            const file = req.files[i];
+            if (!file) continue;
+
+            const caminho = `/img/backoffice/roteiro/${file.filename}`;
+
+            const sourcePath = path.join(__dirname, 'public/img/backoffice/roteiro', file.filename);
+            const destDir = path.join(__dirname, 'public/img/backoffice/roteiro_chrono');
+            fs.mkdirSync(destDir, { recursive: true });
+            const destPath = path.join(destDir, file.filename);
+            fs.copyFileSync(sourcePath, destPath);
+
+            const incluirNaCronologia = meta.hasOwnProperty('caminho_cronologia');
+            const caminho_cronologia = incluirNaCronologia ? `/img/backoffice/roteiro_chrono/${file.filename}` : null;
+
+            const legenda_pt = meta.legenda_pt || "";
+            const legenda_en = meta.legenda_en || "";
+
+            let cor = null;
+            if (incluirNaCronologia) {
+                cor = proximaCor;
+                proximaCor = cor === "yellow" ? "green" : "yellow";
+            }
+
+            await db.execute(`
+          INSERT INTO Edificio_foto (
+            edificio_id, legenda_pt, legenda_en, caminho, caminho_cronologia, cor
+          ) VALUES (?, ?, ?, ?, ?, ?)
+        `, [
+                edificioId,
+                legenda_pt,
+                legenda_en,
+                caminho,
+                caminho_cronologia,
+                cor
+            ]);
+        }
+
+        await db.commit();
+
+        res.status(201).json({ message: "Edifício criado com sucesso!", id: edificioId });
+    } catch (err) {
+        console.error(err);
+        if (db) await db.rollback();
+        res.status(500).json({ error: "Erro ao criar edifício." });
+    } finally {
+        if (db) await db.end();
+    }
+});
+//POST imagem nova na pagina material
 app.post(`/${BACKOFFICE_URL}/materiais/imagem`, authenticateToken, upload.single('file'), async (req, res) => {
     if (!req.file) return res.status(400).json({ error: 'Imagem é obrigatória.' });
     const newPath = `/img/${req.file.filename}`;
@@ -298,8 +445,158 @@ app.post(`/${BACKOFFICE_URL}/materiais/imagem`, authenticateToken, upload.single
     }
 });
 
+//PUTs
+createUpdateEndpoint('/equipa', 'equipa', ['nome', 'cargo']);
+createUpdateEndpoint('/descricao', 'Descricao', ['descricao_pt', 'descricao_en']);
+createBulkUpdateEndpoint('/contactos', 'Contactos', ['nome', 'email']);
+createBulkUpdateEndpoint('/equipa', 'Equipa', ['nome', 'cargo']);
+createUpdateEndpoint('/bibliografia', 'Bibliografia', ['texto_html']);
+createUpdateEndpoint('/overview', 'Overview', ['descricao_pt', 'descricao_en']);
+//Atualizar edificio por ID
+app.put(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, upload.array('fotos', 10), async (req, res) => {
+    const { id } = req.params;
+    const {
+        titulo,
+        data_projeto,
+        tipologia,
+        localizacao,
+        descricao_pt,
+        descricao_en,
+        fontes_bibliografia,
+        latitude,
+        longitude,
+        fotos_meta
+    } = req.body;
 
-// Backoffice PUT imagem existente (file e/ou descrição)
+    if (isNaN(id)) return res.status(400).json({ error: 'ID inválido.' });
+
+    let db;
+    try {
+        db = await connection();
+        await db.beginTransaction();
+
+        const [rows] = await db.execute('SELECT id FROM Edificio WHERE id = ?', [id]);
+        if (!rows.length) {
+            await db.rollback();
+            return res.status(404).json({ error: 'Edifício não encontrado.' });
+        }
+
+        await db.execute(`
+        UPDATE Edificio SET 
+          titulo = ?, data_projeto = ?, tipologia = ?, localizacao = ?, 
+          descricao_pt = ?, descricao_en = ?, fontes_bibliografia = ?, 
+          latitude = ?, longitude = ?
+        WHERE id = ?
+      `, [
+            titulo, data_projeto, tipologia, localizacao,
+            descricao_pt, descricao_en, fontes_bibliografia,
+            latitude !== undefined ? latitude : null,
+            longitude !== undefined ? longitude : null,
+            id
+        ]);
+
+        let fotosMetaParsed = [];
+        try {
+            fotosMetaParsed = JSON.parse(fotos_meta || '[]');
+        } catch (e) {
+            await db.rollback();
+            return res.status(400).json({ error: 'fotos_meta inválido.' });
+        }
+
+        const idsEnviados = fotosMetaParsed.filter(f => f.id).map(f => f.id);
+
+        const [imagensAtuais] = await db.execute('SELECT id, caminho, caminho_cronologia FROM Edificio_foto WHERE edificio_id = ?', [id]);
+
+        const imagensParaDeletar = imagensAtuais.filter(img => !idsEnviados.includes(img.id));
+
+        for (const imgDel of imagensParaDeletar) {
+            await db.execute('DELETE FROM Edificio_foto WHERE id = ?', [imgDel.id]);
+
+            try {
+                const caminhoFisico = path.join(__dirname, 'public', imgDel.caminho);
+                const caminhoCronoFisico = imgDel.caminho_cronologia
+                    ? path.join(__dirname, 'public', imgDel.caminho_cronologia)
+                    : null;
+
+                await fs.unlink(caminhoFisico).catch(err => {
+                    if (err.code !== 'ENOENT') console.warn('Erro ao apagar arquivo principal:', err);
+                });
+
+                if (caminhoCronoFisico) {
+                    await fs.unlink(caminhoCronoFisico).catch(err => {
+                        if (err.code !== 'ENOENT') console.warn('Erro ao apagar arquivo cronologia:', err);
+                    });
+                }
+
+            } catch (err) {
+                console.warn('Erro ao tentar apagar arquivos da imagem:', err);
+            }
+        }
+
+        for (const meta of fotosMetaParsed) {
+            if (meta.id) {
+                const [result] = await db.execute(`
+            UPDATE Edificio_foto SET legenda_pt = ?, legenda_en = ? WHERE id = ?
+          `, [
+                    meta.legenda_pt ?? null,
+                    meta.legenda_en ?? null,
+                    meta.id
+                ]);
+                if (result.affectedRows === 0) {
+                    await db.rollback();
+                    return res.status(400).json({ error: `Imagem com id ${meta.id} não encontrada.` });
+                }
+            }
+        }
+
+        const fotosMetaComArquivo = fotosMetaParsed.filter(meta => meta.hasNewFile === true);
+
+        if (req.files.length !== fotosMetaComArquivo.length) {
+            await db.rollback();
+            return res.status(400).json({ error: 'Número de imagens e metadados não conferem.' });
+        }
+
+        for (let i = 0; i < req.files.length; i++) {
+            const file = req.files[i];
+            const meta = fotosMetaComArquivo[i];
+
+            const caminho = `/img/roteiro/${file.filename}`;
+            const caminho_cronologia = `/img/roteiro_chrono/${file.filename}`;
+            const cor = meta.cor || null;
+            const legenda_pt = meta.legenda_pt || '';
+            const legenda_en = meta.legenda_en || '';
+
+            if (meta.id) {
+                const [result] = await db.execute(`
+            UPDATE Edificio_foto 
+            SET caminho = ?, caminho_cronologia = ?, cor = ?, legenda_pt = ?, legenda_en = ?
+            WHERE id = ?
+          `, [caminho, caminho_cronologia, cor, legenda_pt, legenda_en, meta.id]);
+                if (result.affectedRows === 0) {
+                    await db.rollback();
+                    return res.status(400).json({ error: `Imagem com id ${meta.id} não encontrada para atualização.` });
+                }
+            } else {
+                // Insere nova imagem
+                await db.execute(`
+            INSERT INTO Edificio_foto (id_edificio, caminho, caminho_cronologia, cor, legenda_pt, legenda_en) 
+            VALUES (?, ?, ?, ?, ?, ?)
+          `, [id, caminho, caminho_cronologia, cor, legenda_pt, legenda_en]);
+            }
+        }
+
+        await db.commit();
+
+        res.json({ message: 'Edifício atualizado com sucesso!' });
+    } catch (err) {
+        if (db) await db.rollback();
+        console.error(err);
+        res.status(500).json({ error: 'Erro ao atualizar o edifício.' });
+    } finally {
+        if (db) await db.end();
+    }
+});
+//PUT imagem existente (file e/ou descrição)
 app.put(`/${BACKOFFICE_URL}/materiais/imagem/:id`, authenticateToken, upload.single('file'), async (req, res) => {
     const { id } = req.params;
     const { descricao } = req.body;
@@ -316,7 +613,10 @@ app.put(`/${BACKOFFICE_URL}/materiais/imagem/:id`, authenticateToken, upload.sin
             const [oldRow] = await db.execute('SELECT path FROM materiais_imagem WHERE id = ?', [id]);
             if (oldRow.length && oldRow[0].path) {
                 const oldPath = path.join(__dirname, 'public', oldRow[0].path);
-                fs.unlink(oldPath, () => { });
+                fs.unlink(oldPath, (err) => {
+                    if (err) console.warn(`Erro ao apagar imagem antiga: ${err.message}`);
+                });
+
             }
         }
 
@@ -343,6 +643,59 @@ app.put(`/${BACKOFFICE_URL}/materiais/imagem/:id`, authenticateToken, upload.sin
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Erro ao atualizar imagem.' });
+    } finally {
+        if (db) await db.end();
+    }
+});
+//PUT página material (textos)
+createUpdateEndpoint('/materiais', 'materiais', ['descricao_pt', 'descricao_en']);
+
+
+//DELETEs
+createDeleteEndpoint('/contactos', 'Contactos');
+createDeleteEndpoint('/equipa', 'Equipa');
+createDeleteEndpoint('/materiais/imagem', 'materiais_imagem');
+//DELETE excluir um edificio e suas imagens
+app.delete(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, async (req, res) => {
+    const { id } = req.params;
+    if (isNaN(id)) return res.status(400).json({ error: 'ID inválido.' });
+
+    let db;
+    try {
+        db = await connection();
+        await db.beginTransaction();
+
+        // Buscar imagens do edifício
+        const [fotos] = await db.execute(
+            'SELECT caminho FROM Edificio_foto WHERE edificio_id = ?',
+            [id]
+        );
+
+        // Deletar edifício 
+        const [result] = await db.execute('DELETE FROM Edificio WHERE id = ?', [id]);
+        if (result.affectedRows === 0) {
+            await db.rollback();
+            return res.status(404).json({ error: 'Edifício não encontrado.' });
+        }
+
+        // Confirmar transação
+        await db.commit();
+
+        // Agora apagar os ficheiros físicos 
+        fotos.forEach((foto) => {
+            if (foto.caminho) {
+                const filePath = path.join(__dirname, 'public', foto.caminho);
+                fs.unlink(filePath, (err) => {
+                    if (err) console.warn(`Erro ao apagar o ficheiro ${filePath}:`, err.message);
+                });
+            }
+        });
+
+        res.status(200).json({ message: 'Edifício excluído com sucesso.', id });
+    } catch (error) {
+        if (db) await db.rollback();
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao excluir o edifício.' });
     } finally {
         if (db) await db.end();
     }
@@ -381,7 +734,6 @@ LEFT JOIN overview_outros_links l ON l.overview_id = o.id
 );
 createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_pt FROM materiais', () => [], rows => rows);
 createEndpoint('/iconic', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM obras_iconicas', () => [], rows => rows);
-createEndpoint('/edificios', 'SELECT * FROM edificios', () => [], rows => rows);
 createEndpoint(
     '/cronologia',
     `
@@ -399,118 +751,7 @@ ORDER BY CAST(SUBSTRING_INDEX(o.data_projeto, '-', 1) AS UNSIGNED)
     () => [],
     rows => rows
 );
-createEndpoint('/listaObras', 'SELECT id, titulo, data_projeto FROM obra', () => [], rows => rows);
-createEndpoint(
-    '/obra/:id',
-    `
-SELECT 
-  o.id AS obra_id,
-  o.titulo,
-  o.data_projeto,
-  o.tipologia,
-  o.localizacao,
-  o.descricao_pt,
-  o.descricao_en,
-  o.latitude,
-  o.longitude,
-  i.id AS imagem_id,
-  i.caminho AS imagem_caminho,
-  i.descricao_pt AS imagem_descricao_pt,
-  i.descricao_en AS imagem_descricao_en,
-  c.id AS cronologia_id,
-  c.imagem AS cronologia_imagem,
-  c.cor AS cronologia_cor,
-  info.id AS info_id,
-  info.texto AS info_texto,
-  f.id AS fonte_id,
-  f.descricao AS fonte_descricao,
-  f.link AS fonte_link,
-  b.id AS biblio_id,
-  b.texto AS biblio_texto,
-  b.url AS biblio_url
-FROM obra o
-LEFT JOIN obra_imagem i ON i.obra_id = o.id
-LEFT JOIN obra_imagem_cronologia c ON c.obra_id = o.id
-LEFT JOIN obra_info info ON info.obra_id = o.id
-LEFT JOIN fonte f ON f.obra_id = o.id
-LEFT JOIN fonte_biblio b ON b.fonte_id = f.id
-WHERE o.id = ?
-  `,
-    req => [req.params.id],
-    rows => {
-        if (rows.length === 0) return {};
-        const obra = {
-            id: rows[0].obra_id,
-            titulo: rows[0].titulo,
-            data_projeto: rows[0].data_projeto,
-            tipologia: rows[0].tipologia,
-            localizacao: rows[0].localizacao,
-            descricao_pt: rows[0].descricao_pt,
-            descricao_en: rows[0].descricao_en,
-            latitude: rows[0].latitude,
-            longitude: rows[0].longitude,
-            imagens: [],
-            cronologia: [],
-            info: [],
-            fontes: [],
-            outros_links: []
-        };
-        const imagensSet = new Set();
-        const cronologiaSet = new Set();
-        const infoSet = new Set();
-        const fonteMap = new Map();
-        const outrosLinksSet = new Set();
-
-        for (const row of rows) {
-            if (row.imagem_id && !imagensSet.has(row.imagem_id)) {
-                imagensSet.add(row.imagem_id);
-                obra.imagens.push({
-                    id: row.imagem_id,
-                    caminho: row.imagem_caminho,
-                    descricao_pt: row.imagem_descricao_pt,
-                    descricao_en: row.imagem_descricao_en
-                });
-            }
-            if (row.cronologia_id && !cronologiaSet.has(row.cronologia_id)) {
-                cronologiaSet.add(row.cronologia_id);
-                obra.cronologia.push({
-                    id: row.cronologia_id,
-                    imagem: row.cronologia_imagem,
-                    cor: row.cronologia_cor
-                });
-            }
-            if (row.info_id && !infoSet.has(row.info_id)) {
-                infoSet.add(row.info_id);
-                obra.info.push({ id: row.info_id, texto: row.info_texto });
-            }
-            if (row.fonte_id) {
-                if (!fonteMap.has(row.fonte_id)) {
-                    fonteMap.set(row.fonte_id, {
-                        id: row.fonte_id,
-                        descricao: row.fonte_descricao,
-                        link: row.fonte_link,
-                        bibliografia: [],
-                        _biblioSet: new Set(),
-                    });
-                }
-                const fonte = fonteMap.get(row.fonte_id);
-                if (row.biblio_id && row.biblio_url) {
-                    const key = `${row.biblio_id}-${row.biblio_url}`;
-                    if (!fonte._biblioSet.has(key)) {
-                        fonte._biblioSet.add(key);
-                        fonte.bibliografia.push({ id: row.biblio_id, texto: row.biblio_texto, url: row.biblio_url });
-                        if (!outrosLinksSet.has(row.biblio_url)) {
-                            outrosLinksSet.add(row.biblio_url);
-                            obra.outros_links.push(row.biblio_url);
-                        }
-                    }
-                }
-            }
-        }
-        obra.fontes = Array.from(fonteMap.values()).map(f => { delete f._biblioSet; return f; });
-        return obra;
-    }
-);
+createEndpoint('/listaEdificios', 'SELECT id, titulo, data_projeto FROM edificio', () => [], rows => rows);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 connection();
