@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import "../../../style/Backoffice.css"; 
+import "../../../style/Backoffice.css";
 
 function AddBuilding() {
   const [images, setImages] = useState([]);
@@ -21,7 +21,7 @@ function AddBuilding() {
     <div>
       <NavbarBackoffice />
       <div className="details-container">
-        <h2 className="title">DetailsB</h2>
+        <h2 className="title">Adicionar Edificio</h2>
 
         {/* Título PT/EN */}
         <div className="section-row">
@@ -117,6 +117,27 @@ function AddBuilding() {
             </div>
           )}
         </div>
+      </div>
+      <div style={{
+        position: "fixed",
+        bottom: "30px",
+        right: "30px",
+        zIndex: 10,
+      }}>
+        <button
+          style={{
+            backgroundColor: "#114c44",
+            color: "#fff",
+            padding: "14px 24px",
+            borderRadius: "50px",
+            border: "none",
+            fontSize: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            cursor: "pointer",
+          }}
+        >
+          Guardar
+        </button>
       </div>
     </div>
   );
