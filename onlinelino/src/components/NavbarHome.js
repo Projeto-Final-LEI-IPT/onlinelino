@@ -15,7 +15,7 @@ const routeTranslations = {
     carreira: {
         sobre: { en: 'materials', pt: 'materiais' },
     },
-    obra: {
+    MedioTejo: {
         detalhes: { en: 'details', pt: 'detalhes' },
         cronologia: { en: 'chronology', pt: 'cronologia' },
         mapa: { en: 'map', pt: 'mapa' },
@@ -50,6 +50,8 @@ const NavbarHome = () => {
             localizedSection = lang === 'en' ? 'career' : 'carreira';
         } else if (section === 'obra' || section === 'building') {
             localizedSection = lang === 'en' ? 'building' : 'obra';
+        } else if (section === 'MedioTejo') {
+            localizedSection = 'MedioTejo'; 
         }
 
         const subroutes = routeTranslations[section] || routeTranslations[localizedSection];
