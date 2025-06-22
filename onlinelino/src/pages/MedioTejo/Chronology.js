@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { SERVER_URL, removeHtmlTags } from '../../Utils';
 import '../../style/Chronology.css';
 
-// Hook para pegar largura da janela e atualizar no resize
 function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -18,22 +17,20 @@ function useWindowWidth() {
 }
 
 function Chronology() {
-  const [buildings, setBuildings] = useState([]);
+  const [edificios, setEdificios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   const windowWidth = useWindowWidth();
 
-  // Define colunas conforme largura da tela
   const getColumnsCount = (width) => {
-    if (width <= 480) return 1; 
-    if (width <= 768) return 3; 
-    if (width <= 1024) return 5; 
-    return 7; 
+    if (width <= 480) return 1;
+    if (width <= 768) return 3;
+    if (width <= 1024) return 5;
+    return 7;
   };
 
   const columns = getColumnsCount(windowWidth);
-
   const specialIndex = 12;
 
   useEffect(() => {
@@ -44,8 +41,8 @@ function Chronology() {
           const err = await res.json();
           throw new Error(err.error);
         }
-        const data = await res.json()
-        setBuildings(data);
+        const data = await res.json();
+        setEdificios(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -55,18 +52,15 @@ function Chronology() {
     fetchData();
   }, []);
 
-  const sortedBuildings = [...buildings].sort((a, b) => {
-  const aClean = removeHtmlTags(a.data_projeto || '');
-  const bClean = removeHtmlTags(b.data_projeto || '');
-  return aClean.localeCompare(bClean, undefined, { numeric: true });
-});
-
+  const sortedEdificios = [...edificios].sort((a, b) => {
+    const aClean = removeHtmlTags(a.data_projeto || '');
+    const bClean = removeHtmlTags(b.data_projeto || '');
+    return aClean.localeCompare(bClean, undefined, { numeric: true });
+  });
 
   const isGreenAtSpecial = specialIndex % 2 === 0;
   const specialBg = isGreenAtSpecial ? '#477263' : '#d0b598';
-
-  // +1 para o quadrado contendo o nome do projeto
-  const totalItems = sortedBuildings.length + 1; 
+  const totalItems = sortedEdificios.length + 1;
   const prepared = [];
 
   let buildingIndex = 0;
@@ -81,7 +75,7 @@ function Chronology() {
         isSpecialLogo: true,
       });
     } else {
-      const building = sortedBuildings[buildingIndex];
+      const building = sortedEdificios[buildingIndex];
       if (building) {
         const isGreen = i % 2 === 0;
         const bg = isGreen ? '#477263' : '#d0b598';
@@ -101,7 +95,6 @@ function Chronology() {
     }
   }
 
-  // Ajustar preenchimento para completar a última linha com base nas colunas atuais
   const remainder = prepared.length % columns;
   if (remainder !== 0) {
     const needed = columns - remainder;
@@ -121,7 +114,7 @@ function Chronology() {
     }
   }
 
-  if (loading) return <h1>Carregando…</h1>;
+  if (loading) return <h1>A carregar...</h1>;
   if (error) return <h1>{error}</h1>;
 
   return (
@@ -135,7 +128,9 @@ function Chronology() {
               className="image-item-logo"
               style={{ backgroundColor: p.bg }}
             >
-              <img src={p.img} alt="Logo" />
+              {p.img ? (
+                <img src={p.img} alt="Logo" loading="lazy" />
+              ) : null}
             </div>
           ) : p.isPlaceholder ? (
             <div
@@ -151,7 +146,9 @@ function Chronology() {
               style={{ backgroundColor: p.bg }}
             >
               <div className="image-container">
-                {p.img && <img src={p.img} alt="" />}
+                {p.img ? (
+                  <img src={p.img} alt="" loading="lazy" />
+                ) : null}
                 <p className="text-year-chrono">{p.yearText}</p>
               </div>
             </Link>
