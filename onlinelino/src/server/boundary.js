@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const baseUrl = process.env.BASE_URL || 'http://onlinelino.ipt.pt:8080';
 const cors = require('cors');
 const morgan = require('morgan');
+const sharp = require('sharp');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
@@ -22,19 +23,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use('/img', express.static(path.join(__dirname, 'public/img/backoffice')));
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const dir = path.join(__dirname, 'public/img/backoffice/roteiro');
-        fs.mkdirSync(dir, { recursive: true });
-        cb(null, dir);
-    },
-    filename: (req, file, cb) => {
-        const ext = path.extname(file.originalname);
-        const name = Date.now() + '-' + Math.round(Math.random() * 1e9);
-        cb(null, name + ext);
-    }
-});
-
+const storage = multer.memoryStorage();
 const upload = multer({
     storage,
     fileFilter: (req, file, cb) => {
@@ -42,7 +31,7 @@ const upload = multer({
         if (!allowed.includes(file.mimetype)) return cb(new Error('Tipo de ficheiro inválido'), false);
         cb(null, true);
     },
-    limits: { fileSize: 5 * 1024 * 1024 }
+    limits: { fileSize: 3 * 1024 * 1024 }
 });
 
 const authenticateToken = (req, res, next) => {
@@ -342,8 +331,6 @@ app.post(`/${BACKOFFICE_URL}/edificio`, authenticateToken, upload.array('fotos',
         fotos_meta
     } = req.body;
 
-    console.log('Ficheiros recebidos:', req.files.map(f => f.path));
-
     let db;
     try {
         db = await connection();
@@ -384,25 +371,27 @@ app.post(`/${BACKOFFICE_URL}/edificio`, authenticateToken, upload.array('fotos',
             const file = req.files[i];
             if (!file) continue;
 
-            // Caminhos públicos que serão salvos na base de dados
-            const caminho = `/img/roteiro/${file.filename}`;
+            const timestamp = Date.now() + '-' + Math.round(Math.random() * 1e9);
+            const filename = `${timestamp}.webp`;
+
+            const destinoRoteiro = path.join(__dirname, 'public/img/backoffice/roteiro', filename);
+            const destinoRoteiroChrono = path.join(__dirname, 'public/img/backoffice/roteiro_chrono', filename);
+
+            await sharp(file.buffer)
+                .resize({ width: 1600, withoutEnlargement: true }) 
+                .webp({ quality: 75 })
+                .toFile(destinoRoteiro);
+
             const caminho_cronologia = meta.hasOwnProperty('caminho_cronologia')
-                ? `/img/roteiro_chrono/${file.filename}`
+                ? `/img/roteiro_chrono/${filename}`
                 : null;
 
-            // Caminho real (onde o Multer já guardou a imagem)
-            const sourcePath = path.join(__dirname, 'public/img/backoffice/roteiro', file.filename);
-
-            // Criar pasta cronológica real (se necessário)
-            const destDir = path.join(__dirname, 'public/img/backoffice/roteiro_chrono');
-            fs.mkdirSync(destDir, { recursive: true });
-
-            // Copiar o ficheiro se for para cronologia
             if (caminho_cronologia) {
-                const destPath = path.join(destDir, file.filename);
-                fs.copyFileSync(sourcePath, destPath);
+                fs.mkdirSync(path.dirname(destinoRoteiroChrono), { recursive: true });
+                fs.copyFileSync(destinoRoteiro, destinoRoteiroChrono);
             }
 
+            const caminho = `/img/roteiro/${filename}`;
             const legenda_pt = meta.legenda_pt || "";
             const legenda_en = meta.legenda_en || "";
 
@@ -425,7 +414,6 @@ app.post(`/${BACKOFFICE_URL}/edificio`, authenticateToken, upload.array('fotos',
                 cor
             ]);
         }
-
 
         await db.commit();
 
@@ -499,12 +487,12 @@ app.put(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, upload.array('foto
         }
 
         await db.execute(`
-        UPDATE Edificio SET 
-          titulo = ?, data_projeto = ?, tipologia = ?, localizacao = ?, 
-          descricao_pt = ?, descricao_en = ?, fontes_bibliografia = ?, 
-          latitude = ?, longitude = ?
-        WHERE id = ?
-      `, [
+            UPDATE Edificio SET 
+              titulo = ?, data_projeto = ?, tipologia = ?, localizacao = ?, 
+              descricao_pt = ?, descricao_en = ?, fontes_bibliografia = ?, 
+              latitude = ?, longitude = ?
+            WHERE id = ?
+        `, [
             titulo, data_projeto, tipologia, localizacao,
             descricao_pt, descricao_en, fontes_bibliografia,
             latitude !== undefined ? latitude : null,
@@ -553,8 +541,8 @@ app.put(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, upload.array('foto
         for (const meta of fotosMetaParsed) {
             if (meta.id) {
                 const [result] = await db.execute(`
-            UPDATE Edificio_foto SET legenda_pt = ?, legenda_en = ? WHERE id = ?
-          `, [
+                    UPDATE Edificio_foto SET legenda_pt = ?, legenda_en = ? WHERE id = ?
+                `, [
                     meta.legenda_pt ?? null,
                     meta.legenda_en ?? null,
                     meta.id
@@ -567,44 +555,71 @@ app.put(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, upload.array('foto
         }
 
         const fotosMetaComArquivo = fotosMetaParsed.filter(meta => meta.hasNewFile === true);
-
         if (req.files.length !== fotosMetaComArquivo.length) {
             await db.rollback();
             return res.status(400).json({ error: 'Número de imagens e metadados não conferem.' });
         }
 
-        for (let i = 0; i < req.files.length; i++) {
-            const file = req.files[i];
-            const meta = fotosMetaComArquivo[i];
+        // Alternância de cores
+        let proximaCor = "yellow";
 
-            const caminho = `/img/roteiro/${file.filename}`;
-            const caminho_cronologia = `/img/roteiro_chrono/${file.filename}`;
-            const cor = meta.cor || null;
-            const legenda_pt = meta.legenda_pt || '';
-            const legenda_en = meta.legenda_en || '';
+        for (let i = 0; i < fotosMetaComArquivo.length; i++) {
+            const meta = fotosMetaComArquivo[i];
+            const file = req.files[i];
+            if (!file) continue;
+
+            const timestamp = Date.now() + '-' + Math.round(Math.random() * 1e9);
+            const filename = `${timestamp}.webp`;
+
+            const destinoRoteiro = path.join(__dirname, 'public/img/backoffice/roteiro', filename);
+            const destinoRoteiroChrono = path.join(__dirname, 'public/img/backoffice/roteiro_chrono', filename);
+
+            // Cria diretórios se não existirem
+            fs.mkdirSync(path.dirname(destinoRoteiro), { recursive: true });
+            fs.mkdirSync(path.dirname(destinoRoteiroChrono), { recursive: true });
+
+            // Converte e salva imagem principal
+            await sharp(file.buffer)
+                .resize({ width: 1600, withoutEnlargement: true })
+                .webp({ quality: 75 })
+                .toFile(destinoRoteiro);
+
+            let caminho_cronologia = null;
+            let cor = null;
+
+            // Se for imagem cronológica, copia
+            if (meta.hasOwnProperty('caminho_cronologia')) {
+                fs.copyFileSync(destinoRoteiro, destinoRoteiroChrono);
+                caminho_cronologia = `/img/roteiro_chrono/${filename}`;
+                cor = proximaCor;
+                proximaCor = cor === "yellow" ? "green" : "yellow";
+            }
+
+            const caminho = `/img/roteiro/${filename}`;
+            const legenda_pt = meta.legenda_pt || "";
+            const legenda_en = meta.legenda_en || "";
 
             if (meta.id) {
                 const [result] = await db.execute(`
-            UPDATE Edificio_foto 
-            SET caminho = ?, caminho_cronologia = ?, cor = ?, legenda_pt = ?, legenda_en = ?
-            WHERE id = ?
-          `, [caminho, caminho_cronologia, cor, legenda_pt, legenda_en, meta.id]);
+                    UPDATE Edificio_foto 
+                    SET caminho = ?, caminho_cronologia = ?, cor = ?, legenda_pt = ?, legenda_en = ?
+                    WHERE id = ?
+                `, [caminho, caminho_cronologia, cor, legenda_pt, legenda_en, meta.id]);
                 if (result.affectedRows === 0) {
                     await db.rollback();
                     return res.status(400).json({ error: `Imagem com id ${meta.id} não encontrada para atualização.` });
                 }
             } else {
-                // Insere nova imagem
                 await db.execute(`
-            INSERT INTO Edificio_foto (edificio_id, caminho, caminho_cronologia, cor, legenda_pt, legenda_en) 
-            VALUES (?, ?, ?, ?, ?, ?)
-          `, [id, caminho, caminho_cronologia, cor, legenda_pt, legenda_en]);
+                    INSERT INTO Edificio_foto (edificio_id, caminho, caminho_cronologia, cor, legenda_pt, legenda_en)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                `, [id, caminho, caminho_cronologia, cor, legenda_pt, legenda_en]);
             }
         }
 
         await db.commit();
-
         res.json({ message: 'Edifício atualizado com sucesso!' });
+
     } catch (err) {
         if (db) await db.rollback();
         console.error(err);
@@ -613,6 +628,7 @@ app.put(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, upload.array('foto
         if (db) await db.end();
     }
 });
+
 //PUT imagem existente (file e/ou descrição)
 app.put(`/${BACKOFFICE_URL}/materiais/imagem/:id`, authenticateToken, upload.single('file'), async (req, res) => {
     const { id } = req.params;
@@ -753,22 +769,87 @@ createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_pt FROM mat
 createEndpoint(
     '/cronologia',
     `
-    SELECT
-      e.id,
-      e.titulo,
-      e.data_projeto,
-      MIN(f.caminho_cronologia) AS imagem_yellow,
-      MIN(f.caminho_cronologia) AS imagem_green
-    FROM edificio e
-    LEFT JOIN edificio_foto f ON f.edificio_id = e.id AND f.caminho_cronologia IS NOT NULL
-    GROUP BY e.id
-    ORDER BY CAST(SUBSTRING_INDEX(e.data_projeto, '-', 1) AS UNSIGNED)
-    `,
+  SELECT
+    e.id,
+    e.titulo,
+    e.data_projeto,
+    MIN(f.caminho) AS imagem_yellow,
+    MIN(f.caminho) AS imagem_green
+  FROM edificio e
+  LEFT JOIN edificio_foto f ON f.edificio_id = e.id AND f.caminho IS NOT NULL
+  GROUP BY e.id
+  ORDER BY CAST(SUBSTRING_INDEX(e.data_projeto, '-', 1) AS UNSIGNED)
+  `,
     () => [],
-    rows => rows
+    rows => rows.map(row => ({
+        ...row,
+        imagem_yellow: row.imagem_yellow ? baseUrl + row.imagem_yellow : row.imagem_yellow,
+        imagem_green: row.imagem_green ? baseUrl + row.imagem_green : row.imagem_green,
+    }))
 );
 
+
 createEndpoint('/listaEdificios', 'SELECT id, titulo, data_projeto FROM edificio', () => [], rows => rows);
+createEndpoint(
+    '/edificio/:id',
+    `
+    SELECT 
+      e.id AS edificio_id,
+      e.titulo,
+      e.data_projeto,
+      e.tipologia,
+      e.localizacao,
+      e.descricao_pt,
+      e.descricao_en,
+      e.fontes_bibliografia,
+      e.latitude,
+      e.longitude,
+      f.id AS foto_id,
+      f.legenda_pt,
+      f.legenda_en,
+      f.caminho,
+      f.caminho_cronologia,
+      f.cor
+    FROM Edificio e
+    LEFT JOIN Edificio_foto f ON f.edificio_id = e.id
+    WHERE e.id = ?
+    `,
+    req => [req.params.id],
+    rows => {
+        if (!rows.length) return {};
+
+        const edificio = {
+            id: rows[0].edificio_id,
+            titulo: rows[0].titulo,
+            data_projeto: rows[0].data_projeto,
+            tipologia: rows[0].tipologia,
+            localizacao: rows[0].localizacao,
+            descricao_pt: rows[0].descricao_pt,
+            descricao_en: rows[0].descricao_en,
+            fontes_bibliografia: rows[0].fontes_bibliografia,
+            latitude: rows[0].latitude,
+            longitude: rows[0].longitude,
+            imagens: []
+        };
+
+        const imagemSet = new Set();
+        for (const row of rows) {
+            if (row.foto_id && !imagemSet.has(row.foto_id)) {
+                imagemSet.add(row.foto_id);
+                edificio.imagens.push({
+                    id: row.foto_id,
+                    legenda_pt: row.legenda_pt,
+                    legenda_en: row.legenda_en,
+                    caminho: `${baseUrl}${row.caminho}`,
+                    caminho_cronologia: `${baseUrl}${row.caminho_cronologia}`,
+                    cor: row.cor
+                });
+            }
+        }
+
+        return edificio;
+    },
+);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 connection();
