@@ -100,7 +100,7 @@ const BuildingDetailsB = () => {
     setImagens(novasImagens);
   };
 
-  // Função para comparar objetos simples (edificio)
+  // Função para comparar edificios
   const isEdificioEqual = (obj1, obj2) => {
     if (!obj1 || !obj2) return false;
     const keysToCompare = [
@@ -111,7 +111,7 @@ const BuildingDetailsB = () => {
     return keysToCompare.every(key => (obj1[key] || '') === (obj2[key] || ''));
   };
 
-  // Função para comparar imagens (descrição e presença de arquivos novos)
+  // Função para comparar imagens 
   const areImagesEqual = (imgs1, imgs2) => {
     if (imgs1.length !== imgs2.length) return false;
 
@@ -126,58 +126,77 @@ const BuildingDetailsB = () => {
       if ((a.descricao || '') !== (b.legenda_pt || '')) return false;
 
       // comparar se tem arquivo novo
-      if (!!a.file) return false; // se há arquivo novo, mudou
+      if (!!a.file) return false; 
     }
 
     return true;
   };
 
   const handleSave = async () => {
-    if (!isEdificioEqual(edificio, originalEdificio.current) || !areImagesEqual(imagens, originalImagens.current)) {
-      try {
-        const formData = new FormData();
-        formData.append("titulo", edificio.titulo);
-        formData.append("data_projeto", edificio.data_projeto);
-        formData.append("tipologia", edificio.tipologia);
-        formData.append("localizacao", edificio.localizacao);
-        formData.append("descricao_pt", edificio.descricao_pt);
-        formData.append("descricao_en", edificio.descricao_en || "");
-        formData.append("fontes_bibliografia", edificio.fontes_bibliografia || "");
-        formData.append("latitude", edificio.latitude || "");
-        formData.append("longitude", edificio.longitude || "");
+  const lat = parseFloat(edificio.latitude);
+  const lng = parseFloat(edificio.longitude);
 
-        const fotosMeta = imagens.map((img) => ({
-          id: img.id,
-          legenda_pt: img.descricao,
-          caminho_cronologia: img.caminho_cronologia || null,
-          hasNewFile: !!img.file,
-        }));
+  if (isNaN(lat) || isNaN(lng)) {
+    alert("Latitude e longitude devem ser números válidos.");
+    return;
+  }
 
-        formData.append("fotos_meta", JSON.stringify(fotosMeta));
+  if (lat < -90 || lat > 90) {
+    alert("Latitude deve estar entre -90 e 90.");
+    return;
+  }
 
-        imagens.forEach((img) => {
-          if (img.file) formData.append("fotos", img.file);
-        });
+  if (lng < -180 || lng > 180) {
+    alert("Longitude deve estar entre -180 e 180.");
+    return;
+  }
 
-        const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/edificio/${id}`, {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${SESSION_TOKEN}`,
-          },
-          body: formData,
-        });
+  if (!isEdificioEqual(edificio, originalEdificio.current) || !areImagesEqual(imagens, originalImagens.current)) {
+    try {
+      const formData = new FormData();
+      formData.append("titulo", edificio.titulo);
+      formData.append("data_projeto", edificio.data_projeto);
+      formData.append("tipologia", edificio.tipologia);
+      formData.append("localizacao", edificio.localizacao);
+      formData.append("descricao_pt", edificio.descricao_pt);
+      formData.append("descricao_en", edificio.descricao_en || "");
+      formData.append("fontes_bibliografia", edificio.fontes_bibliografia || "");
+      formData.append("latitude", lat.toString());
+      formData.append("longitude", lng.toString());
 
-        if (!response.ok) throw new Error("Erro ao atualizar edifício");
+      const fotosMeta = imagens.map((img) => ({
+        id: img.id,
+        legenda_pt: img.descricao,
+        caminho_cronologia: img.caminho_cronologia || null,
+        hasNewFile: !!img.file,
+      }));
 
-        alert("Edifício atualizado com sucesso!");
-        window.location.reload();
-      } catch (err) {
-        alert("Erro: " + err.message);
-      }
-    } else {
-      alert("Nenhuma alteração foi detetada.");
+      formData.append("fotos_meta", JSON.stringify(fotosMeta));
+
+      imagens.forEach((img) => {
+        if (img.file) formData.append("fotos", img.file);
+      });
+
+      const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/edificio/${id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${SESSION_TOKEN}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error("Erro ao atualizar edifício");
+
+      alert("Edifício atualizado com sucesso!");
+      window.location.reload();
+    } catch (err) {
+      alert("Erro: " + err.message);
     }
-  };
+  } else {
+    alert("Nenhuma alteração foi detetada.");
+  }
+};
+
 
   const handleExcluirEdificio = async () => {
   const confirmacao = window.confirm(`Tem certeza que deseja excluir o edifício "${removeHtmlTags(edificio.titulo)}"?`);

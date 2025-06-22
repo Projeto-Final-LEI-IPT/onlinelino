@@ -342,10 +342,18 @@ app.post(`/${BACKOFFICE_URL}/edificio`, authenticateToken, upload.array('fotos',
         fotos_meta
     } = req.body;
 
+    console.log('Ficheiros recebidos:', req.files.map(f => f.path));
+
     let db;
     try {
         db = await connection();
         await db.beginTransaction();
+        const lat = parseFloat(latitude);
+        const lng = parseFloat(longitude);
+
+        if (isNaN(lat) || isNaN(lng)) {
+            return res.status(400).json({ error: "Latitude ou longitude inválida." });
+        }
 
         const [result] = await db.execute(`
         INSERT INTO Edificio (
@@ -376,31 +384,39 @@ app.post(`/${BACKOFFICE_URL}/edificio`, authenticateToken, upload.array('fotos',
             const file = req.files[i];
             if (!file) continue;
 
-            const caminho = `/img/backoffice/roteiro/${file.filename}`;
+            // Caminhos públicos que serão salvos na base de dados
+            const caminho = `/img/roteiro/${file.filename}`;
+            const caminho_cronologia = meta.hasOwnProperty('caminho_cronologia')
+                ? `/img/roteiro_chrono/${file.filename}`
+                : null;
 
+            // Caminho real (onde o Multer já guardou a imagem)
             const sourcePath = path.join(__dirname, 'public/img/backoffice/roteiro', file.filename);
+
+            // Criar pasta cronológica real (se necessário)
             const destDir = path.join(__dirname, 'public/img/backoffice/roteiro_chrono');
             fs.mkdirSync(destDir, { recursive: true });
-            const destPath = path.join(destDir, file.filename);
-            fs.copyFileSync(sourcePath, destPath);
 
-            const incluirNaCronologia = meta.hasOwnProperty('caminho_cronologia');
-            const caminho_cronologia = incluirNaCronologia ? `/img/backoffice/roteiro_chrono/${file.filename}` : null;
+            // Copiar o ficheiro se for para cronologia
+            if (caminho_cronologia) {
+                const destPath = path.join(destDir, file.filename);
+                fs.copyFileSync(sourcePath, destPath);
+            }
 
             const legenda_pt = meta.legenda_pt || "";
             const legenda_en = meta.legenda_en || "";
 
             let cor = null;
-            if (incluirNaCronologia) {
+            if (caminho_cronologia) {
                 cor = proximaCor;
                 proximaCor = cor === "yellow" ? "green" : "yellow";
             }
 
             await db.execute(`
-          INSERT INTO Edificio_foto (
-            edificio_id, legenda_pt, legenda_en, caminho, caminho_cronologia, cor
-          ) VALUES (?, ?, ?, ?, ?, ?)
-        `, [
+                INSERT INTO Edificio_foto (
+                    edificio_id, legenda_pt, legenda_en, caminho, caminho_cronologia, cor
+                ) VALUES (?, ?, ?, ?, ?, ?)
+            `, [
                 edificioId,
                 legenda_pt,
                 legenda_en,
@@ -409,6 +425,7 @@ app.post(`/${BACKOFFICE_URL}/edificio`, authenticateToken, upload.array('fotos',
                 cor
             ]);
         }
+
 
         await db.commit();
 
@@ -579,7 +596,7 @@ app.put(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, upload.array('foto
             } else {
                 // Insere nova imagem
                 await db.execute(`
-            INSERT INTO Edificio_foto (id_edificio, caminho, caminho_cronologia, cor, legenda_pt, legenda_en) 
+            INSERT INTO Edificio_foto (edificio_id, caminho, caminho_cronologia, cor, legenda_pt, legenda_en) 
             VALUES (?, ?, ?, ?, ?, ?)
           `, [id, caminho, caminho_cronologia, cor, legenda_pt, legenda_en]);
             }
@@ -733,24 +750,24 @@ LEFT JOIN overview_outros_links l ON l.overview_id = o.id
     )
 );
 createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_pt FROM materiais', () => [], rows => rows);
-createEndpoint('/iconic', 'SELECT outros_links, filmes, descricao_en, descricao_pt FROM obras_iconicas', () => [], rows => rows);
 createEndpoint(
     '/cronologia',
     `
-SELECT
-  o.id,
-  o.titulo,
-  o.data_projeto,
-  MIN(CASE WHEN c.cor = 'yellow' THEN c.imagem END) AS imagem_yellow,
-  MIN(CASE WHEN c.cor = 'green' THEN c.imagem END) AS imagem_green
-FROM obra o
-LEFT JOIN obra_imagem_cronologia c ON c.obra_id = o.id
-GROUP BY o.id
-ORDER BY CAST(SUBSTRING_INDEX(o.data_projeto, '-', 1) AS UNSIGNED)
-  `,
+    SELECT
+      e.id,
+      e.titulo,
+      e.data_projeto,
+      MIN(f.caminho_cronologia) AS imagem_yellow,
+      MIN(f.caminho_cronologia) AS imagem_green
+    FROM edificio e
+    LEFT JOIN edificio_foto f ON f.edificio_id = e.id AND f.caminho_cronologia IS NOT NULL
+    GROUP BY e.id
+    ORDER BY CAST(SUBSTRING_INDEX(e.data_projeto, '-', 1) AS UNSIGNED)
+    `,
     () => [],
     rows => rows
 );
+
 createEndpoint('/listaEdificios', 'SELECT id, titulo, data_projeto FROM edificio', () => [], rows => rows);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

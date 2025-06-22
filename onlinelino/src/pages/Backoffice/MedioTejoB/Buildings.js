@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom'
 
 
 function Buildings() {
-  const [works, setWorks] = useState([]);
+  const [edificios, setEdificios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const SESSION_TOKEN = localStorage.getItem("authorization");
+  
 
   useEffect(() => {
-    const fetchWorks = async () => {
+    const fetchEdificios = async () => {
       try {
+        const SESSION_TOKEN = localStorage.getItem("authorization");
         const res = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/listaEdificios`, {
           method: "GET",
           headers: {
@@ -32,7 +33,7 @@ function Buildings() {
           a.data_projeto.localeCompare(b.data_projeto, undefined, { numeric: true })
         );
 
-        setWorks(data);
+        setEdificios(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -40,7 +41,7 @@ function Buildings() {
       }
     };
 
-    fetchWorks();
+    fetchEdificios();
   }, []);
 
   if (loading) return <p>A carregar...</p>;
@@ -67,7 +68,7 @@ function Buildings() {
           width: '100%',
           maxWidth: '600px'
         }}>
-          {works.map((obra) => (
+          {edificios.map((obra) => (
             <li key={obra.id} style={{ marginBottom: '15px' }}>
               <Link
                 to={`/Backoffice/MedioTejoB/${obra.id}`}

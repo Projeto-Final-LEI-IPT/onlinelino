@@ -3,6 +3,7 @@ import NavbarHome from "../../components/NavbarHome";
 import Container from "react-bootstrap/esm/Container";
 import { useTranslation } from 'react-i18next';
 
+//FAZER REQUEST DO OVERVIEW
 function Generic() {
     const { t } = useTranslation();
     // biographyPage.videos
