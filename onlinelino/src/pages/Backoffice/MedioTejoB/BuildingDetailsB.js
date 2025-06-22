@@ -248,7 +248,7 @@ const BuildingDetailsB = () => {
       if (!response.ok) throw new Error("Erro ao excluir edifício");
 
       alert("Edifício excluído com sucesso!");
-      navigate("/backoffice/edificios");
+      navigate("/backoffice/MedioTejoB/Buildings");
     } catch (err) {
       alert("Erro ao excluir: " + err.message);
     }
