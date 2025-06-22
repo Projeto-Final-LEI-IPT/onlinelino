@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SERVER_URL } from '../../Utils';
+import { SERVER_URL, cleanObjectStrings } from '../../Utils';
 import NavbarHome from '../../components/NavbarHome';
 import '../../style/List.css';
-
 
 function ListIndex() {
     const [works, setWorks] = useState([]);
@@ -13,12 +12,15 @@ function ListIndex() {
     useEffect(() => {
         const fetchWorks = async () => {
             try {
-                const res = await fetch(`${SERVER_URL}/listaObras`);
+                const res = await fetch(`${SERVER_URL}/listaEdificios`);
                 if (!res.ok) {
                     const err = await res.json();
                     throw new Error(err.error);
                 }
-                const data = await res.json();
+                let data = await res.json();
+
+                // Limpar tags HTML de todos os campos string de cada objeto
+                data = data.map(item => cleanObjectStrings(item));
 
                 // Ordenar por data 
                 data.sort((a, b) =>
@@ -43,37 +45,37 @@ function ListIndex() {
         <>
             <NavbarHome />
             <div style={{
-                    backgroundImage: "url('/img/fundo_descricao.webp')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    minHeight: "100vh",
-                    paddingTop: "2rem",
-                    paddingBottom: "2rem",
-                }}>
-            <div className="container"
-            style={{
+                backgroundImage: "url('/img/fundo_descricao.webp')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                minHeight: "100vh",
+                paddingTop: "2rem",
+                paddingBottom: "2rem",
+            }}>
+                <div className="container"
+                    style={{
                         backgroundColor: "rgba(234, 216, 193, 0.85)",
                         padding: "2rem",
                         marginLeft: "auto",
                         marginRight: "0",
                     }}>
-                <ul className="two-column-list">
-                    {works.map((obra) => (
-                        <Link
-                            to={`/MedioTejo/${obra.id}`}
-                            key={obra.id}
-                            style={{ textDecoration: 'none', color: 'inherit' }}
-                        >
-                            <li className="list-item">
-                                <div className="text-year-list">
-                                    <span className="year-highlight">{obra.data_projeto}</span>
-                                </div>
-                                <div className="text-title-list">{obra.titulo}</div>
-                            </li>
-                        </Link>
-                    ))}
-                </ul>
-            </div>
+                    <ul className="two-column-list">
+                        {works.map((obra) => (
+                            <Link
+                                to={`/MedioTejo/${obra.id}`}
+                                key={obra.id}
+                                style={{ textDecoration: 'none', color: 'inherit' }}
+                            >
+                                <li className="list-item">
+                                    <div className="text-year-list">
+                                        <span className="year-highlight">{obra.data_projeto}</span>
+                                    </div>
+                                    <div className="text-title-list">{obra.titulo}</div>
+                                </li>
+                            </Link>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </>
     );
