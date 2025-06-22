@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/Container';
-import { SERVER_URL } from '../../Utils';
+import { SERVER_URL, removeHtmlTags } from '../../Utils';
 import { FaSearch } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom'
 
 const Index = () => {
     const [works, setWorks] = useState([]);
@@ -15,19 +16,25 @@ const Index = () => {
     useEffect(() => {
         const fetchWorks = async () => {
             try {
-                const res = await fetch(`${SERVER_URL}/listaObras`);
+                const res = await fetch(`${SERVER_URL}/listaEdificios`);
                 if (!res.ok) {
                     const err = await res.json();
                     throw new Error(err.error);
                 }
+
                 const data = await res.json();
 
-                // Ordena por data
-                data.sort((a, b) =>
+                const cleanedData = data.map((item) => ({
+                    ...item,
+                    data_projeto: removeHtmlTags(item.data_projeto || ''),
+                    titulo: removeHtmlTags(item.titulo || '')
+                }));
+
+                cleanedData.sort((a, b) =>
                     a.data_projeto.localeCompare(b.data_projeto, undefined, { numeric: true })
                 );
 
-                setWorks(data);
+                setWorks(cleanedData);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -47,84 +54,102 @@ const Index = () => {
     );
 
     return (
-        <>
-            <NavbarHome />
-            <div
-                style={{
-                    backgroundImage: "url('/img/fundo_descricao.webp')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    minHeight: "100vh",
-                    paddingTop: "2rem",
-                    paddingBottom: "2rem",
-                }}
-            >
-                <Container
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'flex-start',
-                        minHeight: '60vh',
-                    }}
-                >
-                    <div style={{ position: 'relative', marginBottom: '1.5rem', width: '70%' }}>
-                        <input
-                            type="text"
-                            placeholder={t('searchPlaceholder')}
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            style={{
-                                width: '100%',
-                                padding: '0.5rem 2.5rem 0.5rem 0.75rem',
-                                fontSize: '1rem',
-                                borderRadius: '5px',
-                                border: '1px solid #ccc',
-                            }}
-                        />
-                        <FaSearch
-                            style={{
-                                position: 'absolute',
-                                right: '0.75rem',
-                                top: '50%',
-                                transform: 'translateY(-50%)',
-                                color: '#aaa',
-                                pointerEvents: 'none',
-                            }}
-                        />
-                    </div>
+  <>
+    <NavbarHome />
+    <div
+      style={{
+        backgroundImage: "url('/img/fundo_descricao.webp')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+        paddingTop: "2rem",
+        paddingBottom: "2rem",
+      }}
+    >
+      <Container
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          minHeight: "60vh",
+        }}
+      >
+        <div style={{ position: "relative", marginBottom: "1.5rem", width: "70%" }}>
+          <input
+            type="text"
+            placeholder={t("searchPlaceholder")}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "0.5rem 2.5rem 0.5rem 0.75rem",
+              fontSize: "1rem",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+            }}
+          />
+          <FaSearch
+            style={{
+              position: "absolute",
+              right: "0.75rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              color: "#aaa",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
 
-                    {searchTerm.length >= 3 && (
-                        <ul style={{ width: '70%', listStyle: 'none', padding: 0 }}>
-                            {filteredWorks.map((obra) => (
-                                <li
-                                    key={obra.id}
-                                    style={{
-                                        backgroundColor: 'rgba(255,255,255,0.85)',
-                                        padding: '1rem',
-                                        marginBottom: '0.5rem',
-                                        borderRadius: '5px',
-                                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                                    }}
-                                >
-                                    <strong>{obra.data_projeto}</strong> — {obra.titulo}
-                                </li>
-                            ))}
-                            {filteredWorks.length === 0 && (
-                                <li style={{
-                                        backgroundColor: 'rgba(255,255,255,0.85)',
-                                        padding: '1rem',
-                                        marginBottom: '0.5rem',
-                                        borderRadius: '5px',
-                                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                                    }}>{t('No Results')}</li>
-                            )}
-                        </ul>
-                    )}
-                </Container>
-            </div>
-        </>
-    );
+        {searchTerm.length >= 3 && (
+          <ul style={{ width: "70%", listStyle: "none", padding: 0 }}>
+            {filteredWorks.map((obra) => (
+              <li key={obra.id} style={{ marginBottom: "0.5rem" }}>
+                <Link
+                  to={`/MedioTejo/${obra.id}`}
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.85)",
+                      padding: "1rem",
+                      borderRadius: "5px",
+                      boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <strong style={{ color: "#777", minWidth: "50px", textAlign: "left" }}>
+                      {obra.data_projeto}
+                    </strong>
+                    <span>{obra.titulo}</span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+            {filteredWorks.length === 0 && (
+              <li
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.85)",
+                  padding: "1rem",
+                  marginBottom: "0.5rem",
+                  borderRadius: "5px",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                }}
+              >
+                {t("No Results")}
+              </li>
+            )}
+          </ul>
+        )}
+      </Container>
+    </div>
+  </>
+);
 };
 
 export default Index;

@@ -5,12 +5,12 @@ import NavbarHome from '../../components/NavbarHome';
 import '../../style/List.css';
 
 function ListIndex() {
-    const [works, setWorks] = useState([]);
+    const [edificios, setEdificios] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        const fetchWorks = async () => {
+        const fetchEdificios = async () => {
             try {
                 const res = await fetch(`${SERVER_URL}/listaEdificios`);
                 if (!res.ok) {
@@ -27,7 +27,7 @@ function ListIndex() {
                     a.data_projeto.localeCompare(b.data_projeto, undefined, { numeric: true })
                 );
 
-                setWorks(data);
+                setEdificios(data);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -35,7 +35,7 @@ function ListIndex() {
             }
         };
 
-        fetchWorks();
+        fetchEdificios();
     }, []);
 
     if (loading) return <h1>Carregando…</h1>;
@@ -60,17 +60,17 @@ function ListIndex() {
                         marginRight: "0",
                     }}>
                     <ul className="two-column-list">
-                        {works.map((obra) => (
+                        {edificios.map((edificio) => (
                             <Link
-                                to={`/MedioTejo/${obra.id}`}
-                                key={obra.id}
+                                to={`/MedioTejo/${edificio.id}`}
+                                key={edificio.id}
                                 style={{ textDecoration: 'none', color: 'inherit' }}
                             >
                                 <li className="list-item">
                                     <div className="text-year-list">
-                                        <span className="year-highlight">{obra.data_projeto}</span>
+                                        <span className="year-highlight">{edificio.data_projeto}</span>
                                     </div>
-                                    <div className="text-title-list">{obra.titulo}</div>
+                                    <div className="text-title-list">{edificio.titulo}</div>
                                 </li>
                             </Link>
                         ))}

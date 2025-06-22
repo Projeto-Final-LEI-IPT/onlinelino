@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavbarChronology from '../../components/NavbarChronology';
 import { Link } from 'react-router-dom';
-import { SERVER_URL } from '../../Utils';
+import { SERVER_URL, removeHtmlTags } from '../../Utils';
 import '../../style/Chronology.css';
 
 // Hook para pegar largura da janela e atualizar no resize
@@ -26,10 +26,10 @@ function Chronology() {
 
   // Define colunas conforme largura da tela
   const getColumnsCount = (width) => {
-    if (width <= 480) return 1; // Mobile pequeno
-    if (width <= 768) return 3; // Mobile grande
-    if (width <= 1024) return 5; // Tablet médio
-    return 7; // Desktop padrão
+    if (width <= 480) return 1; 
+    if (width <= 768) return 3; 
+    if (width <= 1024) return 5; 
+    return 7; 
   };
 
   const columns = getColumnsCount(windowWidth);
@@ -44,7 +44,8 @@ function Chronology() {
           const err = await res.json();
           throw new Error(err.error);
         }
-        setBuildings(await res.json());
+        const data = await res.json()
+        setBuildings(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -54,14 +55,18 @@ function Chronology() {
     fetchData();
   }, []);
 
-  const sortedBuildings = [...buildings].sort((a, b) =>
-    a.data_projeto.localeCompare(b.data_projeto, undefined, { numeric: true })
-  );
+  const sortedBuildings = [...buildings].sort((a, b) => {
+  const aClean = removeHtmlTags(a.data_projeto || '');
+  const bClean = removeHtmlTags(b.data_projeto || '');
+  return aClean.localeCompare(bClean, undefined, { numeric: true });
+});
+
 
   const isGreenAtSpecial = specialIndex % 2 === 0;
   const specialBg = isGreenAtSpecial ? '#477263' : '#d0b598';
 
-  const totalItems = sortedBuildings.length + 1; // +1 para o especial
+  // +1 para o quadrado contendo o nome do projeto
+  const totalItems = sortedBuildings.length + 1; 
   const prepared = [];
 
   let buildingIndex = 0;
@@ -84,7 +89,7 @@ function Chronology() {
 
         prepared.push({
           id: building.id,
-          yearText: building.data_projeto,
+          yearText: removeHtmlTags(building.data_projeto),
           img: imgPath || '',
           bg,
           isSpecialLogo: false,

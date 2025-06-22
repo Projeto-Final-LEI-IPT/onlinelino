@@ -16,9 +16,6 @@ const BuildingDetailsB = () => {
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
 
-
-
-
   // Guarda o estado original para comparação
   const originalEdificio = useRef(null);
   const originalImagens = useRef(null);
