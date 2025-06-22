@@ -48,7 +48,7 @@ const BuildingDetails = () => {
         fetchObra();
     }, [id]);
 
-    if (loading) return <h1>Carregando...</h1>;
+    if (loading) return <h1>A carregar...</h1>;
     if (error) return <h1>{error}</h1>;
 
     return (
