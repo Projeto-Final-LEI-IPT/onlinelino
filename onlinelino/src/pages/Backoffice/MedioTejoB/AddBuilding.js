@@ -21,41 +21,48 @@ const BuildingCreateB = () => {
   const [imagens, setImagens] = useState([]);
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
+
 
 
   const validarFormulario = () => {
-  const newErrors = {};
+    const newErrors = {};
 
-  if (!edificio.titulo || edificio.titulo.trim().length < 3) {
-    newErrors.titulo = "O título é obrigatório e deve ter pelo menos 3 caracteres.";
-  }
+    if (!edificio.titulo || edificio.titulo.trim().length < 3) {
+      newErrors.titulo = "O título é obrigatório e deve ter pelo menos 3 caracteres.";
+    }
 
-  if (!edificio.data_projeto || !/^\d{4}(-\d{4})?$/.test(edificio.data_projeto.trim())) {
-    newErrors.data_projeto = "Formato inválido. Use 'YYYY' ou 'YYYY-YYYY'.";
-  }
+    if (!edificio.data_projeto || !/^\d{4}(-\d{4})?$/.test(edificio.data_projeto.trim())) {
+      newErrors.data_projeto = "Formato inválido. Use 'YYYY' ou 'YYYY-YYYY'.";
+    }
 
-  if (!edificio.tipologia || edificio.tipologia.trim().length < 3) {
-    newErrors.tipologia = "Tipologia é obrigatória e deve ter pelo menos 3 caracteres.";
-  }
+    if (!edificio.tipologia || edificio.tipologia.trim().length < 3) {
+      newErrors.tipologia = "Tipologia é obrigatória e deve ter pelo menos 3 caracteres.";
+    }
 
-  if (!edificio.localizacao || edificio.localizacao.trim().length < 3) {
-    newErrors.localizacao = "Localização é obrigatória.";
-  }
+    if (!edificio.localizacao || edificio.localizacao.trim().length < 3) {
+      newErrors.localizacao = "Localização é obrigatória.";
+    }
 
-  const lat = parseFloat(edificio.latitude);
-  const lng = parseFloat(edificio.longitude);
+    const lat = parseFloat(edificio.latitude);
+    const lng = parseFloat(edificio.longitude);
 
-  if (isNaN(lat) || lat < -90 || lat > 90) {
-    newErrors.latitude = "Latitude inválida. Deve estar entre -90 e 90.";
-  }
+    if (isNaN(lat) || lat < -90 || lat > 90) {
+      newErrors.latitude = "Latitude inválida. Deve estar entre -90 e 90.";
+    }
 
-  if (isNaN(lng) || lng < -180 || lng > 180) {
-    newErrors.longitude = "Longitude inválida. Deve estar entre -180 e 180.";
-  }
+    if (isNaN(lng) || lng < -180 || lng > 180) {
+      newErrors.longitude = "Longitude inválida. Deve estar entre -180 e 180.";
+    }
+    imagens.forEach((img, idx) => {
+      if (!img.descricao || img.descricao.trim().length === 0) {
+        newErrors[`imagem_${idx}`] = "A descrição da imagem é obrigatória.";
+      }
+    });
 
-  setErrors(newErrors);
-  return Object.keys(newErrors).length === 0;
-};
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
 
   const handleUploadImagem = (e) => {
@@ -81,7 +88,11 @@ const BuildingCreateB = () => {
   };
 
   const handleSave = async () => {
-    if (!validarFormulario()) return;
+    if (!validarFormulario()) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    };
+    setSubmitting(true);
     const SESSION_TOKEN = localStorage.getItem("authorization");
     const lat = parseFloat(edificio.latitude);
     const lng = parseFloat(edificio.longitude);
@@ -120,11 +131,14 @@ const BuildingCreateB = () => {
 
       if (!response.ok) throw new Error("Erro ao criar edifício");
 
-      const data = await response.json();
       alert("Edifício criado com sucesso!");
       navigate(`/backoffice/MedioTejoB/Buildings`);
+
     } catch (err) {
       alert("Erro: " + err.message);
+    }
+    finally {
+      setSubmitting(false);
     }
   };
 
@@ -239,6 +253,7 @@ const BuildingCreateB = () => {
               placeholder="Descrição"
               style={{ flex: 1, padding: "10px", border: "1px solid #ccc", borderRadius: "6px" }}
             />
+            {errors[`imagem_${idx}`] && <div style={{ color: "red", fontSize: "0.875rem" }}>{errors[`imagem_${idx}`]}</div>}
 
             <button
               onClick={() => handleExcluirImagem(idx)}
@@ -259,6 +274,7 @@ const BuildingCreateB = () => {
         <div style={{ display: "flex", justifyContent: "flex-start", gap: "10px", marginTop: "2rem" }}>
           <button
             onClick={handleSave}
+            disabled={submitting}
             style={{
               backgroundColor: "#114c44",
               color: "#fff",
@@ -269,7 +285,7 @@ const BuildingCreateB = () => {
               width: "150px"
             }}
           >
-            Adicionar
+            {submitting ? "A guardar..." : "Adicionar"}
           </button>
           <button
             onClick={() => navigate('/backoffice/MedioTejoB/Buildings')}

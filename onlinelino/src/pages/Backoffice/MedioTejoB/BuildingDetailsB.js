@@ -7,12 +7,16 @@ import ReactQuill from "react-quill";
 
 const BuildingDetailsB = () => {
   const { id } = useParams();
-  const [edificio, setedificio] = useState(null);
+  const [edificio, setEdificio] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [imagens, setImagens] = useState([]);
   const SESSION_TOKEN = localStorage.getItem("authorization");
   const navigate = useNavigate();
+  const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+
+
 
 
   // Guarda o estado original para comparação
@@ -33,13 +37,13 @@ const BuildingDetailsB = () => {
           throw new Error(err.error);
         }
         const data = await response.json();
-        setedificio(data);
+        setEdificio(data);
         setImagens((data.imagens || []).map((img) => ({
           ...img,
           isLocal: false,
           descricao: img.legenda_pt || "",
           descricaoOriginal: img.legenda_pt || "",
-          caminho: img.caminho || "", 
+          caminho: img.caminho || "",
         })));
 
         // Guardar estado original (deep copy)
@@ -126,98 +130,129 @@ const BuildingDetailsB = () => {
       if ((a.descricao || '') !== (b.legenda_pt || '')) return false;
 
       // comparar se tem arquivo novo
-      if (!!a.file) return false; 
+      if (!!a.file) return false;
     }
 
     return true;
   };
+  const validarFormulario = () => {
+    const newErrors = {};
+
+    if (!edificio.titulo || edificio.titulo.trim().length < 3) {
+      newErrors.titulo = "O título é obrigatório e deve ter pelo menos 3 caracteres.";
+    }
+
+    if (!edificio.data_projeto || !/^\d{4}(-\d{4})?$/.test(edificio.data_projeto.trim())) {
+      newErrors.data_projeto = "Formato inválido. Use 'YYYY' ou 'YYYY-YYYY'.";
+    }
+
+    if (!edificio.tipologia || edificio.tipologia.trim().length < 3) {
+      newErrors.tipologia = "Tipologia é obrigatória e deve ter pelo menos 3 caracteres.";
+    }
+
+    if (!edificio.localizacao || edificio.localizacao.trim().length < 3) {
+      newErrors.localizacao = "Localização é obrigatória.";
+    }
+
+    const lat = parseFloat(edificio.latitude);
+    const lng = parseFloat(edificio.longitude);
+
+    if (isNaN(lat) || lat < -90 || lat > 90) {
+      newErrors.latitude = "Latitude inválida. Deve estar entre -90 e 90.";
+    }
+
+    if (isNaN(lng) || lng < -180 || lng > 180) {
+      newErrors.longitude = "Longitude inválida. Deve estar entre -180 e 180.";
+    }
+    imagens.forEach((img, idx) => {
+      if (!img.descricao || img.descricao.trim().length === 0) {
+        newErrors[`imagem_${idx}`] = "A descrição da imagem é obrigatória.";
+      }
+    });
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSave = async () => {
-  const lat = parseFloat(edificio.latitude);
-  const lng = parseFloat(edificio.longitude);
+    if (!validarFormulario()) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    };
+    setSubmitting(true);
+    const lat = parseFloat(edificio.latitude);
+    const lng = parseFloat(edificio.longitude);
 
-  if (isNaN(lat) || isNaN(lng)) {
-    alert("Latitude e longitude devem ser números válidos.");
-    return;
-  }
+    if (!isEdificioEqual(edificio, originalEdificio.current) || !areImagesEqual(imagens, originalImagens.current)) {
+      try {
+        const formData = new FormData();
+        formData.append("titulo", edificio.titulo);
+        formData.append("data_projeto", edificio.data_projeto);
+        formData.append("tipologia", edificio.tipologia);
+        formData.append("localizacao", edificio.localizacao);
+        formData.append("descricao_pt", edificio.descricao_pt);
+        formData.append("descricao_en", edificio.descricao_en || "");
+        formData.append("fontes_bibliografia", edificio.fontes_bibliografia || "");
+        formData.append("latitude", lat.toString());
+        formData.append("longitude", lng.toString());
 
-  if (lat < -90 || lat > 90) {
-    alert("Latitude deve estar entre -90 e 90.");
-    return;
-  }
+        const fotosMeta = imagens.map((img) => ({
+          id: img.id,
+          legenda_pt: img.descricao,
+          caminho_cronologia: img.caminho_cronologia || null,
+          hasNewFile: !!img.file,
+        }));
 
-  if (lng < -180 || lng > 180) {
-    alert("Longitude deve estar entre -180 e 180.");
-    return;
-  }
+        formData.append("fotos_meta", JSON.stringify(fotosMeta));
 
-  if (!isEdificioEqual(edificio, originalEdificio.current) || !areImagesEqual(imagens, originalImagens.current)) {
-    try {
-      const formData = new FormData();
-      formData.append("titulo", edificio.titulo);
-      formData.append("data_projeto", edificio.data_projeto);
-      formData.append("tipologia", edificio.tipologia);
-      formData.append("localizacao", edificio.localizacao);
-      formData.append("descricao_pt", edificio.descricao_pt);
-      formData.append("descricao_en", edificio.descricao_en || "");
-      formData.append("fontes_bibliografia", edificio.fontes_bibliografia || "");
-      formData.append("latitude", lat.toString());
-      formData.append("longitude", lng.toString());
+        imagens.forEach((img) => {
+          if (img.file) formData.append("fotos", img.file);
+        });
 
-      const fotosMeta = imagens.map((img) => ({
-        id: img.id,
-        legenda_pt: img.descricao,
-        caminho_cronologia: img.caminho_cronologia || null,
-        hasNewFile: !!img.file,
-      }));
+        const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/edificio/${id}`, {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${SESSION_TOKEN}`,
+          },
+          body: formData,
+        });
 
-      formData.append("fotos_meta", JSON.stringify(fotosMeta));
+        if (!response.ok) throw new Error("Erro ao atualizar edifício");
 
-      imagens.forEach((img) => {
-        if (img.file) formData.append("fotos", img.file);
-      });
-
-      const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/edificio/${id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${SESSION_TOKEN}`,
-        },
-        body: formData,
-      });
-
-      if (!response.ok) throw new Error("Erro ao atualizar edifício");
-
-      alert("Edifício atualizado com sucesso!");
-      window.location.reload();
-    } catch (err) {
-      alert("Erro: " + err.message);
+        alert("Edifício atualizado com sucesso!");
+        window.location.reload();
+      } catch (err) {
+        alert("Erro: " + err.message);
+      }
+      finally {
+        setSubmitting(false);
+      }
+    } else {
+      alert("Nenhuma alteração foi detetada.");
     }
-  } else {
-    alert("Nenhuma alteração foi detetada.");
-  }
-};
+  };
 
 
   const handleExcluirEdificio = async () => {
-  const confirmacao = window.confirm(`Tem certeza que deseja excluir o edifício "${removeHtmlTags(edificio.titulo)}"?`);
-  if (!confirmacao) return;
+    const confirmacao = window.confirm(`Tem certeza que deseja excluir o edifício "${removeHtmlTags(edificio.titulo)}"?`);
+    if (!confirmacao) return;
 
-  try {
-    const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/edificio/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Authorization": `Bearer ${SESSION_TOKEN}`,
-      },
-    });
+    try {
+      const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/edificio/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${SESSION_TOKEN}`,
+        },
+      });
 
-    if (!response.ok) throw new Error("Erro ao excluir edifício");
+      if (!response.ok) throw new Error("Erro ao excluir edifício");
 
-    alert("Edifício excluído com sucesso!");
-    navigate("/backoffice/edificios");
-  } catch (err) {
-    alert("Erro ao excluir: " + err.message);
-  }
-};
+      alert("Edifício excluído com sucesso!");
+      navigate("/backoffice/edificios");
+    } catch (err) {
+      alert("Erro ao excluir: " + err.message);
+    }
+  };
 
 
   if (loading) return <p>A carregar...</p>;
@@ -226,48 +261,122 @@ const BuildingDetailsB = () => {
   return (
     <>
       <NavbarBackoffice />
-      <Container style={{ paddingTop: '2rem' }}>
-        <p><strong>Título:</strong> <ReactQuill value={edificio?.titulo} onChange={val => setedificio(prev => ({ ...prev, titulo: val }))} /></p>
-        <p><strong>Data do Projeto:</strong> <ReactQuill value={edificio?.data_projeto} onChange={val => setedificio(prev => ({ ...prev, data_projeto: val }))} /></p>
-        <p><strong>Tipologia:</strong> <ReactQuill value={edificio?.tipologia} onChange={val => setedificio(prev => ({ ...prev, tipologia: val }))} /></p>
-        <p><strong>Localização:</strong> <ReactQuill value={edificio?.localizacao} onChange={val => setedificio(prev => ({ ...prev, localizacao: val }))} /></p>
-        <p><strong>Descrição (PT):</strong> <ReactQuill value={edificio?.descricao_pt} onChange={val => setedificio(prev => ({ ...prev, descricao_pt: val }))} /></p>
-        <p><strong>Descrição (EN):</strong> <ReactQuill value={edificio?.descricao_en} onChange={val => setedificio(prev => ({ ...prev, descricao_en: val }))} /></p>
-        <p><strong>Fontes / Bibliografia:</strong> <ReactQuill value={edificio?.fontes_bibliografia} onChange={val => setedificio(prev => ({ ...prev, fontes_bibliografia: val }))} /></p>
+      <Container style={{ paddingTop: '2rem', maxWidth: '800px' }}>
+        <h4 style={{ marginBottom: '1.5rem' }}>Editar Edifício</h4>
 
-        <label><strong>Latitude:</strong>
+        <div style={{ marginBottom: '1rem' }}>
+          <label><strong>Título:</strong></label>
           <input
-            type="number"
-            step="0.0000001"
-            value={edificio?.latitude || ''}
-            onChange={(e) => setedificio(prev => ({ ...prev, latitude: e.target.value }))}
+            type="text"
+            value={edificio.titulo || ''}
+            onChange={e => setEdificio(prev => ({ ...prev, titulo: e.target.value }))}
+            style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid #ccc" }}
           />
-        </label>
-        <br />
-        <label><strong>Longitude:</strong>
+          {errors.titulo && <div style={{ color: "red", fontSize: "0.875rem" }}>{errors.titulo}</div>}
+        </div>
+
+        <div style={{ marginBottom: '1rem' }}>
+          <label><strong>Data do Projeto:</strong></label>
           <input
-            type="number"
-            step="0.0000001"
-            value={edificio?.longitude || ''}
-            onChange={(e) => setedificio(prev => ({ ...prev, longitude: e.target.value }))}
+            type="text"
+            value={edificio.data_projeto || ''}
+            onChange={e => setEdificio(prev => ({ ...prev, data_projeto: e.target.value }))}
+            style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid #ccc" }}
           />
-        </label>
+          {errors.data_projeto && <div style={{ color: "red", fontSize: "0.875rem" }}>{errors.data_projeto}</div>}
+        </div>
+
+        <div style={{ marginBottom: '1rem' }}>
+          <label><strong>Tipologia:</strong></label>
+          <input
+            type="text"
+            value={edificio.tipologia || ''}
+            onChange={e => setEdificio(prev => ({ ...prev, tipologia: e.target.value }))}
+            style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid #ccc" }}
+          />
+          {errors.tipologia && <div style={{ color: "red", fontSize: "0.875rem" }}>{errors.tipologia}</div>}
+        </div>
+
+        <div style={{ marginBottom: '1rem' }}>
+          <label><strong>Localização:</strong></label>
+          <input
+            type="text"
+            value={edificio.localizacao || ''}
+            onChange={e => setEdificio(prev => ({ ...prev, localizacao: e.target.value }))}
+            style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid #ccc" }}
+          />
+          {errors.localizacao && <div style={{ color: "red", fontSize: "0.875rem" }}>{errors.localizacao}</div>}
+        </div>
+
+        <div style={{ marginBottom: '1rem' }}>
+          <label><strong>Descrição (PT):</strong></label>
+          <ReactQuill
+            value={edificio.descricao_pt}
+            onChange={val => setEdificio(prev => ({ ...prev, descricao_pt: val }))}
+          />
+        </div>
+
+        <div style={{ marginBottom: '1rem' }}>
+          <label><strong>Descrição (EN):</strong></label>
+          <ReactQuill
+            value={edificio.descricao_en}
+            onChange={val => setEdificio(prev => ({ ...prev, descricao_en: val }))}
+          />
+        </div>
+
+        <div style={{ marginBottom: '1rem' }}>
+          <label><strong>Fontes / Bibliografia:</strong></label>
+          <ReactQuill
+            value={edificio.fontes_bibliografia}
+            onChange={val => setEdificio(prev => ({ ...prev, fontes_bibliografia: val }))}
+          />
+        </div>
+
+        <div style={{ marginBottom: '1rem', display: "flex", gap: "1rem" }}>
+          <label style={{ flex: 1 }}>
+            <strong>Latitude:</strong>
+            <input
+              type="number"
+              step="0.0000001"
+              value={edificio.latitude || ''}
+              onChange={(e) => setEdificio(prev => ({ ...prev, latitude: e.target.value }))}
+              style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid #ccc" }}
+            />
+            {errors.latitude && <div style={{ color: "red", fontSize: "0.875rem" }}>{errors.latitude}</div>}
+          </label>
+
+          <label style={{ flex: 1 }}>
+            <strong>Longitude:</strong>
+            <input
+              type="number"
+              step="0.0000001"
+              value={edificio.longitude || ''}
+              onChange={(e) => setEdificio(prev => ({ ...prev, longitude: e.target.value }))}
+              style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid #ccc" }}
+            />
+            {errors.longitude && <div style={{ color: "red", fontSize: "0.875rem" }}>{errors.longitude}</div>}
+          </label>
+        </div>
 
         <hr />
 
-        <h5>Imagens</h5>
+        <h5 style={{ marginTop: '2rem' }}>Imagens</h5>
         {imagens.map((imagem, index) => (
-          <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "10px", gap: "10px" }}>
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "15px",
+              gap: "15px",
+            }}
+          >
             <div
               style={{
                 width: "100px",
                 height: "100px",
                 borderRadius: "8px",
                 overflow: "hidden",
-                flexShrink: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
                 backgroundColor: "#f0f0f0",
               }}
             >
@@ -283,22 +392,21 @@ const BuildingDetailsB = () => {
               value={imagem.descricao}
               onChange={(e) => handleDescricaoImagem(index, e.target.value)}
               placeholder="Descrição"
-              style={{
-                flex: 1,
-                padding: "8px",
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
+              style={{ flex: 1, padding: "10px", border: "1px solid #ccc", borderRadius: "6px" }}
             />
+            {errors[`imagem_${index}`] && (
+              <div style={{ color: "red", fontSize: "0.875rem" }}>
+                {errors[`imagem_${index}`]}
+              </div>
+            )}
 
             <div style={{ position: "relative", flexShrink: 0 }}>
               <label
                 htmlFor={`file-input-${index}`}
                 style={{
-                  display: "inline-block",
                   backgroundColor: "#ddd",
                   padding: "8px 12px",
-                  borderRadius: "4px",
+                  borderRadius: "6px",
                   cursor: "pointer",
                   fontSize: "14px",
                 }}
@@ -319,27 +427,25 @@ const BuildingDetailsB = () => {
               style={{
                 backgroundColor: "#b22222",
                 color: "#fff",
+                padding: "10px 14px",
                 border: "none",
-                padding: "8px 12px",
-                borderRadius: "4px",
-                cursor: "pointer",
+                borderRadius: "6px",
               }}
             >
               Excluir
             </button>
           </div>
         ))}
-        <div style={{ marginTop: "20px" }}>
+
+        <div style={{ marginTop: "20px", marginBottom: "2rem" }}>
           <label
             htmlFor="nova-imagem-upload"
             style={{
-              display: "inline-block",
               backgroundColor: "#007bff",
               color: "#fff",
-              padding: "10px 16px",
-              borderRadius: "4px",
+              padding: "10px 20px",
+              borderRadius: "6px",
               cursor: "pointer",
-              fontSize: "14px",
             }}
           >
             Adicionar nova imagem
@@ -353,49 +459,46 @@ const BuildingDetailsB = () => {
           />
         </div>
 
-
-        <div style={{
-          display: 'flex',
-          gap: '10px',
-          marginTop: '2rem',
-          justifyContent: 'flex-start',
-          flexWrap: 'wrap'
-        }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            gap: "10px",
+            marginTop: "2rem",
+            flexWrap: "wrap",
+          }}
+        >
           <button
-            className="bottomButton"
             onClick={handleSave}
+            disabled={submitting}
             style={{
               backgroundColor: "#114c44",
               color: "#fff",
-              padding: "10px 20px",
-              borderRadius: "5px",
+              padding: "12px 20px",
+              borderRadius: "6px",
               border: "none",
               fontSize: "16px",
-              cursor: "pointer",
-              width: "150px"
+              width: "150px",
             }}
           >
-            Guardar
+            {submitting ? "A guardar..." : "Guardar"}
           </button>
 
           <button
-          className="bottomButton"
             onClick={handleExcluirEdificio}
             style={{
               backgroundColor: "#b22222",
               color: "#fff",
-              padding: "10px 20px",
-              borderRadius: "5px",
+              padding: "12px 20px",
+              borderRadius: "6px",
               border: "none",
               fontSize: "16px",
-              cursor: "pointer",
-              width: "150px"
+              width: "150px",
             }}
           >
             Excluir Edifício
           </button>
         </div>
-
       </Container>
     </>
   );
