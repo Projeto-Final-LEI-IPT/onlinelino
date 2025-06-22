@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/esm/Container";
 import { HomePageDO } from "../../server/Models/DataObjects";
 import NavbarHome from "../../components/NavbarHome";
-import { SERVER_URL } from "../../Utils";
+import { SERVER_URL, cleanObjectStrings } from "../../Utils";
 import Footer from "../../components/Footer";
 
 function Home() {
@@ -20,7 +20,7 @@ function Home() {
                     throw new Error('Erro ao buscar a descrição');
                 }
                 const data = await response.json();
-                setDescricao(data[0] || HomePageDO);
+                setDescricao(cleanObjectStrings(data[0]) || HomePageDO);
             } catch (err) {
                 setError(err.message);
             } finally {

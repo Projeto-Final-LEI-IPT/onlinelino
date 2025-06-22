@@ -1,51 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavbarHome from "../../components/NavbarHome";
 import Container from "react-bootstrap/esm/Container";
-import { useTranslation } from 'react-i18next';
+import { SERVER_URL, cleanObjectStrings } from '../../Utils';
 
 //FAZER REQUEST DO OVERVIEW
 function Generic() {
-    const { t } = useTranslation();
-    // biographyPage.videos
-    const { t: v } = useTranslation('translation', { keyPrefix: 'biographyPage.videos' });
-    const videos = [];
-    for (let i = 0; i < 50; i++) {
-        if (!v([i]).includes("biographyPage.videos")) {
-            videos.push(v([i]));
-        }
-    }
-    // biographyPage.videosSubtitle
-    const { t: s } = useTranslation('translation', { keyPrefix: 'biographyPage.videosSubtitle' });
-    const videosSubtitle = [];
-    for (let i = 0; i < 50; i++) {
-        if (!s([i]).includes("biographyPage.videosSubtitle")) {
-            videosSubtitle.push(s([i]));
-        }
-    }
-    // bibliographyPage.otherLinks
-    const { t: l } = useTranslation('translation', { keyPrefix: 'biographyPage.otherLinks' });
-    const links = [];
-    for (let i = 0; i < 50; i++) {
-        if (!l([i]).includes("biographyPage.otherLinks")) {
-            links.push(l([i]));
-        }
-    }
+    const [overview, setOverview] = useState(null);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
+
+    //INSERIR TEXTO DO TEAMS
+    useEffect(() => {
+        const fetchOverview = async () => {
+            try {
+                const response = await fetch(`${SERVER_URL}/overview`);
+                if (!response.ok) {
+                    const err = await response.json();
+                    throw new Error(err.error);
+                }
+                const data = await response.json();
+                setOverview(data[0]);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchOverview();
+    }, []);
+
+    if (loading) return <h1>Carregando...</h1>;
+    if (error) return <h1>{error}</h1>;
 
     return (
         <>
             <NavbarHome />
-            <div style={{ overflow: "hidden", }}>
+            <div style={{ overflow: "hidden" }}>
                 <div
                     style={{
                         backgroundImage: "url('/img/RL_FOTO1.jpg')",
-                        backgroundSize: "cover",                  // cobre toda a área
-                        backgroundPosition: "right center",      // sempre centralizado
-                        backgroundRepeat: "no-repeat",            // não repete
-                        backgroundAttachment: "scroll",           // comportamento padrão
-                        minHeight: "100vh",                       // altura mínima de 100% da janela
-                        display: "flex",                          // centra verticalmente (opcional)
-                        justifyContent: "flex-end",               // alinha container à direita
-                        alignItems: "center",                     // alinha verticalmente
+                        backgroundSize: "cover",
+                        backgroundPosition: "right center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundAttachment: "scroll",
+                        minHeight: "100vh",
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        alignItems: "center",
                         paddingTop: "2rem",
                         paddingBottom: "2rem",
                     }}
@@ -56,59 +58,28 @@ function Generic() {
                             padding: "2rem",
                             marginLeft: "auto",
                             marginRight: "3%",
-                            maxWidth: "600px",  // limita a largura máxima
+                            maxWidth: "600px",
                             width: "100%",
-                        }}>
-                        <p>{t('biographyPage.generic')}</p>
+                        }}
+                    >
+                        <h4>Sobre Raul Lino</h4>
                         <br />
-                        <h4>{t('biographyPage.v')}</h4>
                         <br />
-                        <ul>
-                            {videos.map((paragraph, index) => (
-                                <React.Fragment key={`frag1-${index}`}>
-                                    <li key={`li1-${index}`}>
-                                        <a href="{paragraph}" target="_blank"
-                                            style={{
-                                                wordBreak: "break-word",
-                                                overflowWrap: "break-word",
-                                                display: "inline-block",
-                                                maxWidth: "100%"
-                                            }}>
-                                            {paragraph}
-                                        </a>
-                                        <br />
-                                        <span>{videosSubtitle[index]}</span>
-                                    </li>
-                                    <br />
-                                </React.Fragment>
-                            ))}
-                        </ul>
-                        <br />
-                        <h4>{t('biographyPage.l')}</h4>
-                        <br />
-                        <ul>
-                            {links.map((paragraph, index) => (
-                                <React.Fragment key={`frag1-${index}`}>
-                                    <li key={`li2-${index}`}>
-                                        <a href="{paragraph}" target="_blank"
-                                            style={{
-                                                wordBreak: "break-word",
-                                                overflowWrap: "break-word",
-                                                display: "inline-block",
-                                                maxWidth: "100%"
-                                            }}>
-                                            {paragraph}
-                                        </a>
-                                    </li>
-                                    <br />
-                                </React.Fragment>
-                            ))}
-                        </ul>
+                        <div
+                            style={{
+                                lineHeight: 1.6,
+                                color: '#222',
+                                wordBreak: 'break-word',
+                                overflowWrap: 'anywhere',
+                            }}
+                            dangerouslySetInnerHTML={{ __html: overview.descricao_pt }}
+                        />
+
                     </Container>
                 </div>
             </div>
         </>
     );
-}
+};
 
 export default Generic;

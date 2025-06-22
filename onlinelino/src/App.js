@@ -7,8 +7,9 @@ import Description from "./pages/Project/Description";
 import Bibliography from "./pages/Project/Bibliography";
 import Team from "./pages/Project/Team";
 import Contacts from "./pages/Project/Contacts";
+import Generic from "./pages/Carreer/Generic";
 import Materials from "./pages/Carreer/Materials";
-import Project from "./pages/MedioTejo/Index";
+import Index from "./pages/MedioTejo/Index";
 import Chronology from "./pages/MedioTejo/Chronology";
 import Map from "./pages/MedioTejo/Map";
 import ListIndex from "./pages/MedioTejo/List";
@@ -25,7 +26,6 @@ import BuildingDetailsB from './pages/Backoffice/MedioTejoB/BuildingDetailsB';
 // 🛠️ Backoffice - Obra
 import Buildings from './pages/Backoffice/MedioTejoB/Buildings';
 import AddBuilding from './pages/Backoffice/MedioTejoB/AddBuilding';
-import Generic from './pages/Carreer/Generic';
 
 function App() {
   useEffect(() => {
@@ -65,8 +65,8 @@ function App() {
   <Route path="/Career/materials" element={<Materials />} />
 
   {/* Público - Obra */}
-  <Route path="/MedioTejo/detalhes" element={<Project />} />
-  <Route path="/MedioTejo/details" element={<Project />} />
+  <Route path="/MedioTejo/detalhes" element={<Index />} />
+  <Route path="/MedioTejo/details" element={<Index />} />
 
   <Route path="/MedioTejo/cronologia" element={<Chronology />} />
   <Route path="/MedioTejo/chronology" element={<Chronology />} />
