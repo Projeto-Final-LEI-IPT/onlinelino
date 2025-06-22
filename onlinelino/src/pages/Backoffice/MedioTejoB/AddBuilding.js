@@ -66,12 +66,20 @@ const BuildingCreateB = () => {
 
 
   const handleUploadImagem = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const preview = URL.createObjectURL(file);
-      setImagens(prev => [...prev, { file, caminho: preview, descricao: "", isLocal: true }]);
+  const file = e.target.files[0];
+  if (file) {
+    const maxSizeMB = 1; 
+    const maxSizeBytes = maxSizeMB * 1024 * 1024;
+
+    if (file.size > maxSizeBytes) {
+      alert(`A imagem é muito grande. Por favor, escolha uma imagem com menos de ${maxSizeMB}MB.`);
+      return;
     }
-  };
+
+    const preview = URL.createObjectURL(file);
+    setImagens(prev => [...prev, { file, caminho: preview, descricao: "", isLocal: true }]);
+  }
+};
 
   const handleDescricaoImagem = (index, novaDescricao) => {
     const novas = [...imagens];
