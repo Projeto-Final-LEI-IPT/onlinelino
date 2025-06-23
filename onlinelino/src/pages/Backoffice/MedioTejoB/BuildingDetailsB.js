@@ -4,6 +4,7 @@ import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import Container from 'react-bootstrap/Container';
 import { SERVER_URL, BACKOFFICE_URL, removeHtmlTags } from '../../../Utils';
 import ReactQuill from "react-quill";
+import '../../../style/Loading.css';
 
 const BuildingDetailsB = () => {
   const { id } = useParams();
@@ -251,12 +252,15 @@ const BuildingDetailsB = () => {
     }
   };
 
-
-  if (loading) return <p>A carregar...</p>;
   if (error) return <p>Erro: {error}</p>;
 
   return (
     <>
+    {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
       <NavbarBackoffice />
       <Container style={{ paddingTop: '2rem', maxWidth: '800px' }}>
         <h4 style={{ marginBottom: '1.5rem' }}>Editar Edifício</h4>

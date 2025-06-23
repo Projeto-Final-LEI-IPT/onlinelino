@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import "../../../style/Backoffice.css";
+import '../../../style/Loading.css'
 import { BACKOFFICE_URL, SERVER_URL, hasContentChanged } from "../../../Utils";
 
 function ContactsB() {
@@ -165,11 +166,15 @@ function ContactsB() {
         }
     };
 
-    if (loading) return <p>A carregar contactos...</p>;
     if (error) return <p className="text-red-500">Erro: {error}</p>;
 
     return (
         <div>
+            {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <NavbarBackoffice />
             <div className="container">
                 <h2 className="title">Contactos</h2>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SERVER_URL } from '../../Utils';
 import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/Container';
+import '../../style/Loading.css'
 
 const Bibliography = () => {
     const [htmlContent, setHtmlContent] = useState('');
@@ -36,11 +37,15 @@ const Bibliography = () => {
         fetchBibliografia();
     }, []);
 
-    if (loading) return <h1>Carregando...</h1>;
     if (error) return <h1>{error}</h1>;
 
     return (
         <>
+        {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <NavbarHome />
             <div
                 style={{

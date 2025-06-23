@@ -3,6 +3,7 @@ import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../../../style/Backoffice.css";
+import '../../../style/Loading.css'
 import { BACKOFFICE_URL, SERVER_URL, hasContentChanged } from "../../../Utils";
 
 function BibliographyB() {
@@ -101,11 +102,15 @@ function BibliographyB() {
         setBibliografia((prev) => ({ ...prev, texto_html: value }));
     };
 
-    if (loading) return <p>A carregar...</p>;
     if (error) return <p className="text-red-500">Erro: {error}</p>;
 
     return (
         <div>
+            {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <NavbarBackoffice />
             <div className="container">
                 <h2 className="title">Bibliografia</h2>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { SERVER_URL, BACKOFFICE_URL, cleanObjectStrings } from "../../../Utils";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import '../../../style/Loading.css';
 
 
 function Buildings() {
@@ -44,11 +45,15 @@ function Buildings() {
     fetchEdificios();
   }, []);
 
-  if (loading) return <p>A carregar...</p>;
   if (error) return <p>Erro: {error}</p>;
 
   return (
     <div>
+      {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
       <NavbarBackoffice />
 
       <div style={{

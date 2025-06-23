@@ -5,6 +5,7 @@ import { SERVER_URL, removeHtmlTags } from '../../Utils';
 import { FaSearch } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom'
+import '../../style/Loading.css'
 
 const Index = () => {
     const [works, setWorks] = useState([]);
@@ -55,6 +56,11 @@ const Index = () => {
 
     return (
   <>
+  {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
     <NavbarHome />
     <div
       style={{
