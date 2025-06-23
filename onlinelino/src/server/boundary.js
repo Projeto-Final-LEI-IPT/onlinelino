@@ -787,8 +787,6 @@ createEndpoint(
         imagem_green: row.imagem_green ? baseUrl + row.imagem_green : row.imagem_green,
     }))
 );
-
-
 createEndpoint('/listaEdificios', 'SELECT id, titulo, data_projeto FROM edificio', () => [], rows => rows);
 createEndpoint(
     '/edificio/:id',
@@ -850,6 +848,25 @@ createEndpoint(
         return edificio;
     },
 );
-
+createEndpoint(
+    '/mapaEdificios',
+    `SELECT 
+        e.id,
+        e.titulo,
+        e.latitude,
+        e.longitude,
+        e.data_projeto,
+        CONCAT(?, (
+          SELECT ef.caminho
+          FROM edificio_foto ef
+          WHERE ef.edificio_id = e.id
+          ORDER BY ef.criado_em ASC
+          LIMIT 1
+        )) AS caminho_imagem
+     FROM edificio e
+     WHERE e.latitude IS NOT NULL AND e.longitude IS NOT NULL`,
+    () => [baseUrl],
+    rows => rows
+  );
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 connection();
