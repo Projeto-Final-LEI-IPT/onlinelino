@@ -1,30 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import "../../../style/Backoffice.css";
+import "../../../style/Loading.css";
 import { SERVER_URL, BACKOFFICE_URL, hasContentChanged } from "../../../Utils";
+import ModalMessage from "../../../components/ModalMessage";
+import { useAuthModalGuard } from "../../Backoffice/useAuthModalGuard";
 
 function TeamB() {
   const [collaborators, setCollaborators] = useState([]);
   const [investigators, setInvestigators] = useState([]);
-  const [originalCollaborators, setOriginalCollaborators] = useState([]); 
-  const [originalInvestigators, setOriginalInvestigators] = useState([]);
+  const originalCollaborators = useRef([]);
+  const originalInvestigators = useRef([]);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [itemToRemove, setItemToRemove] = useState({ listType: null, index: null });
   const [itemNameToRemove, setItemNameToRemove] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [modal, setModal] = useState({ open: false, title: "", message: "", type: "info", action: null });
+
   const SESSION_TOKEN = localStorage.getItem("authorization");
+  const authChecked = useAuthModalGuard(showModal);
+
+  function showModal(title, message, type = "info", actionCallback = null) {
+    setModal({
+      open: true,
+      title,
+      message,
+      type,
+      action: actionCallback ? { label: "Login", onClick: actionCallback } : null,
+    });
+  }
 
   useEffect(() => {
-    fetchTeamMembers();
-  }, []);
+    if (authChecked) fetchTeamMembers();
+  }, [authChecked]);
 
   const fetchTeamMembers = async () => {
+    if (!SESSION_TOKEN) return;
+    setLoading(true);
     try {
       const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/equipa`, {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${SESSION_TOKEN}`,
-        },
+        headers: { Authorization: `Bearer ${SESSION_TOKEN}` },
       });
+
+      if (response.status === 401) {
+        showModal(
+          "Sessão expirada",
+          "Por favor, faça login novamente.",
+          "warning",
+          () => (window.location.href = "/backoffice/login")
+        );
+        return;
+      }
 
       if (!response.ok) throw new Error("Erro ao buscar dados da equipa");
 
@@ -50,11 +77,12 @@ function TeamB() {
 
       setCollaborators(colaboradores);
       setInvestigators(investigadores);
-
-      setOriginalCollaborators(colaboradores);
-      setOriginalInvestigators(investigadores);
+      originalCollaborators.current = colaboradores;
+      originalInvestigators.current = investigadores;
     } catch (error) {
-      alert(error.message);
+      showModal("Erro", error.message, "error");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -82,13 +110,8 @@ function TeamB() {
       cargo: listType === "collaborators" ? "Colaborador" : "Investigador",
       modificado_em: new Date().toISOString(),
     };
-    const updatedList = listType === "collaborators" ? [...collaborators, newItem] : [...investigators, newItem];
-
-    if (listType === "collaborators") {
-      setCollaborators(updatedList);
-    } else {
-      setInvestigators(updatedList);
-    }
+    if (listType === "collaborators") setCollaborators((prev) => [...prev, newItem]);
+    else setInvestigators((prev) => [...prev, newItem]);
   };
 
   const confirmRemoveItem = (listType, index) => {
@@ -97,11 +120,8 @@ function TeamB() {
 
     if (name === "") {
       const updatedList = list.filter((_, i) => i !== index);
-      if (listType === "collaborators") {
-        setCollaborators(updatedList);
-      } else {
-        setInvestigators(updatedList);
-      }
+      if (listType === "collaborators") setCollaborators(updatedList);
+      else setInvestigators(updatedList);
       return;
     }
     setItemToRemove({ listType, index });
@@ -114,24 +134,43 @@ function TeamB() {
     const list = listType === "collaborators" ? collaborators : investigators;
     const item = list[index];
 
+    if (!SESSION_TOKEN) {
+      showModal(
+        "Autenticação necessária",
+        "Por favor, faça login para continuar.",
+        "warning",
+        () => (window.location.href = "/backoffice/login")
+      );
+      resetRemoveDialog();
+      return;
+    }
+
     if (String(item.id).startsWith("new-")) {
       const updated = list.filter((_, i) => i !== index);
       if (listType === "collaborators") setCollaborators(updated);
       else setInvestigators(updated);
 
-      setShowConfirmDialog(false);
-      setItemToRemove({ listType: null, index: null });
-      setItemNameToRemove("");
+      resetRemoveDialog();
+      showModal("Sucesso", `Membro da equipa "${item.nome}" removido com sucesso!`, "success");
       return;
     }
 
+    setLoading(true);
     try {
       const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/equipa/${item.id}`, {
         method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${SESSION_TOKEN}`,
-        },
+        headers: { Authorization: `Bearer ${SESSION_TOKEN}` },
       });
+
+      if (response.status === 401) {
+        showModal(
+          "Sessão expirada",
+          "Por favor, faça login novamente.",
+          "warning",
+          () => (window.location.href = "/backoffice/login")
+        );
+        return;
+      }
 
       if (!response.ok) throw new Error("Erro ao apagar membro da equipa");
 
@@ -139,41 +178,50 @@ function TeamB() {
       if (listType === "collaborators") setCollaborators(updated);
       else setInvestigators(updated);
 
-      alert("Membro da equipa removido com sucesso!");
-      window.location.reload();
+      showModal("Sucesso", `Membro da equipa "${item.nome}" removido com sucesso!`, "success");
     } catch (error) {
-      alert(`Erro ao remover membro da equipa: ${error.message}`);
+      showModal("Erro", `Erro ao remover membro da equipa: ${error.message}`, "error");
+    } finally {
+      resetRemoveDialog();
+      setLoading(false);
     }
-
-    setShowConfirmDialog(false);
-    setItemToRemove({ listType: null, index: null });
-    setItemNameToRemove("");
   };
 
-  const cancelRemove = () => {
+  const resetRemoveDialog = () => {
     setShowConfirmDialog(false);
     setItemToRemove({ listType: null, index: null });
     setItemNameToRemove("");
   };
 
   const handleSave = async () => {
+    if (!SESSION_TOKEN) {
+      showModal(
+        "Autenticação necessária",
+        "Por favor, faça login para continuar.",
+        "warning",
+        () => (window.location.href = "/backoffice/login")
+      );
+      return;
+    }
+
     for (const c of [...collaborators, ...investigators]) {
       if (!c.nome || c.nome.trim() === "") {
-        alert("Todos os membros da equipa devem ter o campo 'nome' preenchido.");
+        showModal("Erro", "Todos os membros da equipa devem ter o campo 'nome' preenchido.", "error");
         return;
       }
     }
 
     const hasChanges =
-      hasContentChanged(originalCollaborators, collaborators) ||
-      hasContentChanged(originalInvestigators, investigators);
+      hasContentChanged(originalCollaborators.current, collaborators) ||
+      hasContentChanged(originalInvestigators.current, investigators);
 
     if (!hasChanges) {
-      alert("Nenhuma alteração detetada. Nada foi salvo.");
+      showModal("Sem alterações", "Nenhuma alteração detetada. Nada foi salvo.", "info");
       return;
     }
 
     const allMembers = [...collaborators, ...investigators];
+    setLoading(true);
     try {
       const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/equipa`, {
         method: "PUT",
@@ -183,17 +231,58 @@ function TeamB() {
         },
         body: JSON.stringify(allMembers),
       });
+      if (response.status === 401) {
+        showModal(
+          "Sessão expirada",
+          "Por favor, faça login novamente.",
+          "warning",
+          () => (window.location.href = "/backoffice/login")
+        );
+        return;
+      }
       if (!response.ok) throw new Error("Erro ao guardar a equipa");
 
-      alert("Equipa guardada com sucesso!");
-      window.location.reload();
+      showModal("Sucesso", "Equipa guardada com sucesso!", "success", () => window.location.reload());
     } catch (error) {
-      alert(`Erro ao guardar: ${error.message}`);
+      showModal("Erro", `Erro ao guardar: ${error.message}`, "error");
+    } finally {
+      setLoading(false);
     }
   };
 
+  if (!authChecked) {
+    return (
+      <ModalMessage
+        isOpen={modal.open}
+        onClose={() => setModal((m) => ({ ...m, open: false }))}
+        title={modal.title}
+        message={modal.message}
+        type={modal.type}
+        action={modal.action}
+      />
+    );
+  }
+
   return (
     <div>
+      <ModalMessage
+        isOpen={modal.open}
+        onClose={() => {
+          setModal((m) => ({ ...m, open: false }));
+          if (modal.type === "success") window.location.reload();
+        }}
+        title={modal.title}
+        message={modal.message}
+        type={modal.type}
+        action={modal.action}
+      />
+
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
+
       <NavbarBackoffice />
       <div className="container">
         <h2 className="title">Equipa</h2>
@@ -260,10 +349,10 @@ function TeamB() {
               {itemNameToRemove}"?
             </h3>
             <div className="confirm-buttons">
-              <button onClick={removeItem} className="confirm-yes">
+              <button onClick={removeItem} className="confirm-yes" disabled={loading}>
                 Sim
               </button>
-              <button onClick={cancelRemove} className="confirm-no">
+              <button onClick={resetRemoveDialog} className="confirm-no" disabled={loading}>
                 Não
               </button>
             </div>
