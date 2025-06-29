@@ -2,75 +2,103 @@ import React, { useEffect, useState } from "react";
 import NavbarHome from "../../components/NavbarHome";
 import Container from "react-bootstrap/esm/Container";
 import { SERVER_URL } from "../../Utils";
-import { ContactsDO } from "../../server/Models/DataObjects";
-import '../../style/Loading.css'
+import ModalMessage from "../../components/ModalMessage";
+import '../../style/Loading.css';
 
 function Contacts() {
-    const [contacts, setContacts] = useState(ContactsDO);
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(true);
+  const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchContacts = async () => {
-            try {
-                const response = await fetch(`${SERVER_URL}/contactos`);
-                if (!response.ok) {
-                    const err = await response.json();
-                    throw new Error(err.error || "Erro ao buscar contactos");
-                }
-                const data = await response.json();
-                setContacts(data || ContactsDO);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+  const [modal, setModal] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "info",
+    action: null,
+  });
 
-        fetchContacts();
-    }, []);
+  const showModal = (title, message, type = "info", action = null) => {
+    setModal({ isOpen: true, title, message, type, action });
+  };
 
-    if (error) {
-        return <h1>Erro: {error}</h1>;
-    }
+  const closeModal = () => {
+    setModal({ ...modal, isOpen: false });
+  };
 
-    return (
-        <>
-        {loading && (
-                <div className="loading-overlay">
-                    <div className="spinner"></div>
-                </div>
-            )}
-            <NavbarHome />
-            <div
-                style={{
-                    backgroundImage: "url('/img/fundo_descricao.webp')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    minHeight: "100vh",
-                    paddingTop: "2rem",
-                    paddingBottom: "2rem",
-                }}
-            >
-                <Container
-                    style={{
-                        backgroundColor: "rgba(234, 216, 193, 0.85)",
-                        padding: "2rem",
-                        marginLeft: "auto",
-                        marginRight: "0",
-                    }}
-                >
-                    <h4>Contactos</h4>
-                    <br />
-                    {contacts.map((item, index) => (
-                        <ul key={`contact-${index}`}>
-                            <li>{item.nome} - {item.email}</li>
-                        </ul>
-                    ))}
-                </Container>
-            </div>
-        </>
-    );
+  useEffect(() => {
+    const fetchContacts = async () => {
+      try {
+        const response = await fetch(`${SERVER_URL}/contactos`);
+        if (!response.ok) {
+          const err = await response.json();
+          throw new Error(err.error || "Erro ao buscar contactos");
+        }
+        const data = await response.json();
+        setContacts(Array.isArray(data) ? data : []);
+      } catch (err) {
+        showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchContacts();
+  }, []);
+
+  return (
+    <>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
+
+      <NavbarHome />
+
+      <div
+        style={{
+          backgroundImage: "url('/img/fundo_descricao.webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+          paddingTop: "2rem",
+          paddingBottom: "2rem",
+        }}
+      >
+        <Container
+          style={{
+            backgroundColor: "rgba(234, 216, 193, 0.85)",
+            padding: "2rem",
+            marginLeft: "auto",
+            marginRight: "0",
+          }}
+        >
+          <h4>Contactos</h4>
+          <br />
+          {contacts.length > 0 ? (
+            contacts.map((item, index) => (
+              <ul key={`contact-${index}`}>
+                <li>
+                  {item.nome} - {item.email}
+                </li>
+              </ul>
+            ))
+          ) : (
+            <p>Nenhum contacto disponível.</p>
+          )}
+        </Container>
+      </div>
+
+      <ModalMessage
+        isOpen={modal.isOpen}
+        onClose={closeModal}
+        title={modal.title}
+        message={modal.message}
+        type={modal.type}
+        action={modal.action}
+      />
+    </>
+  );
 }
 
 export default Contacts;

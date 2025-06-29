@@ -3,7 +3,8 @@ import NavbarChronology from '../../components/NavbarChronology';
 import { Link } from 'react-router-dom';
 import { SERVER_URL, removeHtmlTags } from '../../Utils';
 import '../../style/Chronology.css';
-import '../../style/Loading.css'
+import '../../style/Loading.css';
+import ModalMessage from '../../components/ModalMessage'; 
 
 function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -21,6 +22,7 @@ function Chronology() {
   const [edificios, setEdificios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [modalOpen, setModalOpen] = useState(false); 
 
   const windowWidth = useWindowWidth();
 
@@ -40,12 +42,13 @@ function Chronology() {
         const res = await fetch(`${SERVER_URL}/cronologia`);
         if (!res.ok) {
           const err = await res.json();
-          throw new Error(err.error);
+          throw new Error(err.error || 'Erro ao buscar cronologia');
         }
         const data = await res.json();
         setEdificios(data);
       } catch (err) {
         setError(err.message);
+        setModalOpen(true); 
       } finally {
         setLoading(false);
       }
@@ -115,15 +118,26 @@ function Chronology() {
     }
   }
 
-  if (error) return <h1>{error}</h1>;
-
   return (
     <>
-    {loading && (
-                <div className="loading-overlay">
-                    <div className="spinner"></div>
-                </div>
-            )}
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
+
+      <ModalMessage
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Erro interno."
+        message={'Por favor, tente novamente mais tarde.'}
+        type="error"
+        action={{
+          label: 'Fechar',
+          onClick: () => setModalOpen(false),
+        }}
+      />
+
       <NavbarChronology />
       <div className="image-grid">
         {prepared.map((p) =>

@@ -210,7 +210,6 @@ createEndpoint('/bibliografia', 'SELECT * FROM Bibliografia', () => [], rows => 
 createEndpoint('/equipa', 'SELECT * FROM Equipa', () => [], rows => rows, true);
 createEndpoint('/contactos', 'SELECT * FROM Contactos', () => [], rows => rows, true);
 createEndpoint('/overview', 'SELECT * FROM overview', () => [], rows => rows, true);
-createEndpoint('/sobre', 'SELECT * FROM materiais', () => [], rows => rows, true);
 createEndpoint(
     '/edificio/:id',
     `
@@ -272,48 +271,8 @@ createEndpoint(
     },
     true
 );
+createEndpoint('/materiais/:id', 'SELECT * FROM materiais WHERE id = ?', req => [req.params.id], rows => rows, true);
 createEndpoint('/listaEdificios', 'SELECT id, titulo, data_projeto FROM edificio', () => [], rows => rows, true);
-//Todos materiais com imagens
-createEndpoint(
-    '/materiais',
-    `
-SELECT 
-  m.id,
-  m.descricao_pt,
-  m.descricao_en,
-  m.modificado_em,
-  mi.id as imagem_id,
-  mi.path as imagem_url,
-  mi.descricao as imagem_descricao
-FROM materiais m
-LEFT JOIN materiais_imagem mi ON mi.material_id = m.id
-ORDER BY m.id DESC
-  `,
-    () => [],
-    rows => {
-        const map = {};
-        for (const row of rows) {
-            if (!map[row.id]) {
-                map[row.id] = {
-                    id: row.id,
-                    descricao_pt: row.descricao_pt,
-                    descricao_en: row.descricao_en,
-                    modificado_em: row.modificado_em,
-                    imagens: [],
-                };
-            }
-            if (row.imagem_id) {
-                map[row.id].imagens.push({
-                    id: row.imagem_id,
-                    path: `${baseUrl}${row.imagem_url}`,
-                    descricao: row.imagem_descricao,
-                });
-            }
-        }
-        return Object.values(map);
-    },
-    true
-);
 
 //POSTs
 //Criar novo edificio
@@ -422,29 +381,6 @@ app.post(`/${BACKOFFICE_URL}/edificio`, authenticateToken, upload.array('fotos',
         console.error(err);
         if (db) await db.rollback();
         res.status(500).json({ error: "Erro ao criar edifício." });
-    } finally {
-        if (db) await db.end();
-    }
-});
-//POST imagem nova na pagina material
-app.post(`/${BACKOFFICE_URL}/materiais/imagem`, authenticateToken, upload.single('file'), async (req, res) => {
-    if (!req.file) return res.status(400).json({ error: 'Imagem é obrigatória.' });
-    const newPath = `/img/${req.file.filename}`;
-    const { descricao, material_id } = req.body;
-    if (!material_id || isNaN(material_id)) return res.status(400).json({ error: 'material_id inválido.' });
-
-    let db;
-    try {
-        db = await connection();
-        const [result] = await db.execute(
-            'INSERT INTO materiais_imagem (material_id, path, descricao) VALUES (?, ?, ?)',
-            [material_id, newPath, descricao]
-        );
-        res.status(201).json({ id: result.insertId, path: `${baseUrl}${newPath}`, descricao: descricao || '' });
-
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Erro ao adicionar imagem.' });
     } finally {
         if (db) await db.end();
     }
@@ -628,58 +564,6 @@ app.put(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, upload.array('foto
         if (db) await db.end();
     }
 });
-
-//PUT imagem existente (file e/ou descrição)
-app.put(`/${BACKOFFICE_URL}/materiais/imagem/:id`, authenticateToken, upload.single('file'), async (req, res) => {
-    const { id } = req.params;
-    const { descricao } = req.body;
-    if (isNaN(id)) return res.status(400).json({ error: 'ID inválido.' });
-
-    let db;
-    try {
-        db = await connection();
-
-        let url;
-        let newPath;
-        if (req.file) {
-            newPath = `/img/${req.file.filename}`;
-            const [oldRow] = await db.execute('SELECT path FROM materiais_imagem WHERE id = ?', [id]);
-            if (oldRow.length && oldRow[0].path) {
-                const oldPath = path.join(__dirname, 'public', oldRow[0].path);
-                fs.unlink(oldPath, (err) => {
-                    if (err) console.warn(`Erro ao apagar imagem antiga: ${err.message}`);
-                });
-
-            }
-        }
-
-        const updates = [];
-        const params = [];
-
-        if (newPath) {
-            updates.push('path = ?');
-            params.push(newPath);
-        }
-        if (descricao !== undefined) {
-            updates.push('descricao = ?');
-            params.push(descricao);
-        }
-        if (updates.length === 0) {
-            return res.status(400).json({ error: 'Nada para atualizar.' });
-        }
-        params.push(id);
-
-        const query = `UPDATE materiais_imagem SET ${updates.join(', ')} WHERE id = ?`;
-        await db.execute(query, params);
-
-        res.json({ id, ...(newPath ? { url: `${baseUrl}${newPath}` } : {}), ...(descricao !== undefined ? { descricao } : {}) });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Erro ao atualizar imagem.' });
-    } finally {
-        if (db) await db.end();
-    }
-});
 //PUT página material (textos)
 createUpdateEndpoint('/materiais', 'materiais', ['descricao_pt', 'descricao_en']);
 
@@ -687,7 +571,6 @@ createUpdateEndpoint('/materiais', 'materiais', ['descricao_pt', 'descricao_en']
 //DELETEs
 createDeleteEndpoint('/contactos', 'Contactos');
 createDeleteEndpoint('/equipa', 'Equipa');
-createDeleteEndpoint('/materiais/imagem', 'materiais_imagem');
 //DELETE excluir um edificio e suas imagens
 app.delete(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, async (req, res) => {
     const { id } = req.params;
@@ -741,31 +624,8 @@ createEndpoint('/bibliografia', 'SELECT texto_html FROM Bibliografia', () => [],
 createEndpoint('/equipa', 'SELECT nome, cargo FROM Equipa', () => [], rows => rows);
 createEndpoint('/equipa/:id', 'SELECT * FROM equipa WHERE id = ?', req => [req.params.id], rows => rows);
 createEndpoint('/contactos', 'SELECT nome, email FROM contactos', () => [], rows => rows);
-createEndpoint(
-    '/overview',
-    `
-SELECT 
-  o.id,
-  o.descricao_pt,
-  f.filme_url,
-  l.link_url
-FROM overview o
-LEFT JOIN overview_filmes f ON f.overview_id = o.id
-LEFT JOIN overview_outros_links l ON l.overview_id = o.id
-  `,
-    () => [],
-    rows => Object.values(
-        rows.reduce((acc, { id, descricao_pt, filme_url, link_url }) => {
-            if (!acc[id]) {
-                acc[id] = { descricao_pt, filmes: [], outros_links: [] };
-            }
-            if (filme_url && !acc[id].filmes.includes(filme_url)) acc[id].filmes.push(filme_url);
-            if (link_url && !acc[id].outros_links.includes(link_url)) acc[id].outros_links.push(link_url);
-            return acc;
-        }, {})
-    )
-);
-createEndpoint('/materiais', 'SELECT outros_links, filmes, descricao_pt FROM materiais', () => [], rows => rows);
+createEndpoint('/overview',`SELECT descricao_pt FROM overview`,() => [],rows => rows);
+createEndpoint('/materiais', 'SELECT descricao_pt FROM materiais', () => [], rows => rows);
 createEndpoint(
     '/cronologia',
     `

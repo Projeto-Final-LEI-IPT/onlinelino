@@ -64,7 +64,7 @@ function ContactsB() {
             setContacts(normalized);
             originalContacts.current = normalized;
         } catch {
-            showModal("Erro", "Erro interno. Por favor, tente novamente mais tarde.", "error");
+            showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
         } finally {
             setLoading(false);
         }
@@ -217,7 +217,7 @@ function ContactsB() {
             if (!response.ok) throw new Error("Erro ao guardar os contactos");
             showModal("Sucesso", "Contactos guardados com sucesso!", "success", () => window.location.reload());
         } catch {
-            showModal("Erro", "Erro interno. Por favor, tente novamente mais tarde.", "error");
+            showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
         } finally {
             setLoading(false);
         }

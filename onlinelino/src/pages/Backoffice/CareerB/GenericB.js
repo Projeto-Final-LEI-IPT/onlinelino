@@ -28,19 +28,20 @@ const isStructureValid = (html) => {
     const children = Array.from(container.children);
     if (children.length !== 5) return false;
 
-    const [p, h4Filmes, ulFilmes, h4Links, ulLinks] = children;
+    const [p, h4_1, ul_1, h4_2, ul_2] = children;
 
     return (
       p.tagName === "P" &&
-      h4Filmes.tagName === "H4" && h4Filmes.textContent.trim().toLowerCase() === "filmes" &&
-      ulFilmes.tagName === "UL" &&
-      h4Links.tagName === "H4" && h4Links.textContent.trim().toLowerCase() === "outros links" &&
-      ulLinks.tagName === "UL"
+      h4_1.tagName === "H4" &&
+      ul_1.tagName === "UL" &&
+      h4_2.tagName === "H4" &&
+      ul_2.tagName === "UL"
     );
   } catch {
     return false;
   }
 };
+
 
 function GenericB() {
   const [contentPT, setContentPT] = useState(STRUCTURE_TEMPLATE);
@@ -120,7 +121,7 @@ function GenericB() {
           originalContentEN.current = STRUCTURE_TEMPLATE;
         }
       } catch (err) {
-        showModal("Erro", "Erro interno. Por favor, tente novamente mais tarde.", "error");
+        showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
       } finally {
         setLoading(false);
       }
@@ -179,7 +180,7 @@ function GenericB() {
       originalContentPT.current = contentPT;
       originalContentEN.current = contentEN;
     } catch {
-      showModal("Erro", "Erro interno. Por favor, tente novamente mais tarde.", "error");
+      showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
     } finally {
       setLoading(false);
     }
