@@ -4,6 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../../../style/Backoffice.css";
 import { BACKOFFICE_URL, SERVER_URL, hasContentChanged } from "../../../Utils";
+import '../../../style/Loading.css'
 
 function MaterialsB() {
   const [textoPT, setTextoPT] = useState("");
@@ -278,11 +279,15 @@ function MaterialsB() {
     };
   }, [imagens]);
 
-  if (loading) return <p>Carregando...</p>;
   if (error) return <p className="text-red-500">Erro: {error}</p>;
 
   return (
     <div>
+      {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
       <NavbarBackoffice />
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "20px" }}>
         <h2 style={{ textAlign: "center", marginBottom: "40px" }}>Materiais</h2>

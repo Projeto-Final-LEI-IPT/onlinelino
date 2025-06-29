@@ -1,75 +1,106 @@
 import React, { useState, useEffect, useRef } from "react";
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import "../../../style/Backoffice.css";
+import '../../../style/Loading.css'
 import { BACKOFFICE_URL, SERVER_URL, hasContentChanged } from "../../../Utils";
+import ModalMessage from "../../../components/ModalMessage";
+import { useAuthModalGuard } from "../../Backoffice/useAuthModalGuard";
 
 function ContactsB() {
     const [contacts, setContacts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [modal, setModal] = useState({
+        open: false,
+        title: "",
+        message: "",
+        type: "info",
+        action: null,
+    });
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
     const [contactToRemove, setContactToRemove] = useState(null);
     const [contactNameToRemove, setContactNameToRemove] = useState("");
     const [showSuccessDialog, setShowSuccessDialog] = useState(false);
     const [removedContactInfo, setRemovedContactInfo] = useState(null);
-    const SESSION_TOKEN = localStorage.getItem('authorization');
     const originalContacts = useRef([]);
 
+    const showModal = (title, message, type = "info", actionCallback = null) => {
+        setModal({
+            open: true,
+            title,
+            message,
+            type,
+            action: actionCallback ? { label: "Login", onClick: actionCallback } : null,
+        });
+    };
+
+    const authChecked = useAuthModalGuard(showModal);
+    const SESSION_TOKEN = localStorage.getItem('authorization');
+
     const fetchContacts = async () => {
+        if (!SESSION_TOKEN) return;
+        setLoading(true);
         try {
-            setLoading(true);
             const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/contactos`, {
                 method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${SESSION_TOKEN}`,
-                }
+                headers: { Authorization: `Bearer ${SESSION_TOKEN}` },
             });
+            if (response.status === 401) {
+                showModal(
+                    "Sessão expirada",
+                    "Por favor, faça login novamente.",
+                    "warning",
+                    () => window.location.assign("/backoffice/login")
+                );
+                return;
+            }
             if (!response.ok) throw new Error("Erro ao buscar contactos");
             const data = await response.json();
-
             const normalized = data.map((contacto) => ({
                 id: contacto.id,
                 nome: contacto.nome || "",
                 email: contacto.email || "",
-                modificado_em: contacto.modificado_em || new Date().toISOString()
+                modificado_em: contacto.modificado_em || new Date().toISOString(),
             }));
-
             setContacts(normalized);
             originalContacts.current = normalized;
-        } catch (err) {
-            setError(err.message);
+        } catch {
+            showModal("Erro", "Erro interno. Por favor, tente novamente mais tarde.", "error");
         } finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
-        fetchContacts();
-    }, []);
-
+        if (authChecked) fetchContacts();
+    }, [authChecked]);
 
     const addContactField = () => {
-        setContacts([...contacts, {
-            id: `new-${Date.now()}`,
-            nome: "",
-            email: "",
-            modificado_em: new Date().toISOString()
-        }]);
+        setContacts((prev) => [
+            ...prev,
+            {
+                id: `new-${Date.now()}`,
+                nome: "",
+                email: "",
+                modificado_em: new Date().toISOString(),
+            },
+        ]);
     };
 
     const handleInputChange = (index, field, value) => {
-        const updatedContacts = [...contacts];
-        updatedContacts[index][field] = value;
-        updatedContacts[index].modificado_em = new Date().toISOString();
-        setContacts(updatedContacts);
+        setContacts((prev) => {
+            const updated = [...prev];
+            updated[index][field] = value;
+            updated[index].modificado_em = new Date().toISOString();
+            return updated;
+        });
     };
 
     const confirmRemoveContact = (index) => {
         const contact = contacts[index];
-
         if (String(contact.id).startsWith("new-")) {
             setRemovedContactInfo({ nome: contact.nome, email: contact.email });
-            setContacts(contacts.filter((_, i) => i !== index));
+            setContacts((prev) => prev.filter((_, i) => i !== index));
+            showSuccessModal();
         } else {
             setShowConfirmDialog(true);
             setContactToRemove(index);
@@ -78,32 +109,49 @@ function ContactsB() {
     };
 
     const removeContact = async () => {
+        if (contactToRemove === null) return;
         const contact = contacts[contactToRemove];
-
+        if (!SESSION_TOKEN) {
+            showModal(
+                "Autenticação necessária",
+                "Por favor, faça login para continuar.",
+                "warning",
+                () => window.location.assign("/backoffice/login")
+            );
+            resetConfirmDialog();
+            return;
+        }
         if (String(contact.id).startsWith("new-")) {
             setRemovedContactInfo({ nome: contact.nome, email: contact.email });
-            setContacts(contacts.filter((_, i) => i !== contactToRemove));
+            setContacts((prev) => prev.filter((_, i) => i !== contactToRemove));
             resetConfirmDialog();
             showSuccessModal();
             return;
         }
-
+        setLoading(true);
         try {
             const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/contactos/${contact.id}`, {
                 method: "DELETE",
-                headers: {
-                    "Authorization": `Bearer ${SESSION_TOKEN}`
-                }
+                headers: { Authorization: `Bearer ${SESSION_TOKEN}` },
             });
-
+            if (response.status === 401) {
+                showModal(
+                    "Sessão expirada",
+                    "Por favor, faça login novamente.",
+                    "warning",
+                    () => window.location.assign("/backoffice/login")
+                );
+                return;
+            }
             if (!response.ok) throw new Error("Erro ao remover o contacto");
-
             setRemovedContactInfo({ nome: contact.nome, email: contact.email });
-            resetConfirmDialog();
+            setContacts((prev) => prev.filter((_, i) => i !== contactToRemove));
             showSuccessModal();
-        } catch (err) {
-            alert(`Erro ao remover contacto: ${err.message}`);
+        } catch {
+            showModal("Erro", "Erro ao remover o contacto. Por favor, tente novamente.", "error");
+        } finally {
             resetConfirmDialog();
+            setLoading(false);
         }
     };
 
@@ -121,55 +169,93 @@ function ContactsB() {
         }, 3000);
     };
 
-    const validateEmail = (email) => {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    };
+    const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     const handleSave = async () => {
-        if (!hasContentChanged(originalContacts.current, contacts)) {
-            alert("Nenhuma alteração detetada. Nada foi salvo.");
+        if (!SESSION_TOKEN) {
+            showModal(
+                "Autenticação necessária",
+                "Por favor, faça login para continuar.",
+                "warning",
+                () => window.location.assign("/backoffice/login")
+            );
             return;
         }
-
-        for (let c of contacts) {
-            const nomeValido = c.nome && c.nome.trim() !== "";
-            const emailValido = c.email && c.email.trim() !== "";
-
-            if (!nomeValido || !emailValido) {
-                alert("Todos os contactos devem ter nome e email preenchidos.");
+        if (!hasContentChanged(originalContacts.current, contacts)) {
+            showModal("Sem Alterações", "Nenhuma alteração detetada. Nada foi salvo.", "info");
+            return;
+        }
+        for (const c of contacts) {
+            if (!c.nome.trim() || !c.email.trim()) {
+                showModal("Erro", "Todos os contactos devem ter nome e email preenchidos.", "error");
                 return;
             }
-
             if (!validateEmail(c.email)) {
-                alert(`Email inválido para o contacto "${c.nome}": ${c.email}`);
+                showModal("Erro", `Email inválido para o contacto "${c.nome}": ${c.email}`, "error");
                 return;
             }
         }
-
+        setLoading(true);
         try {
             const response = await fetch(`${SERVER_URL}/${BACKOFFICE_URL}/contactos`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${SESSION_TOKEN}`,
+                    Authorization: `Bearer ${SESSION_TOKEN}`,
                 },
                 body: JSON.stringify(contacts),
             });
-
+            if (response.status === 401) {
+                showModal(
+                    "Sessão expirada",
+                    "Por favor, faça login novamente.",
+                    "warning",
+                    () => window.location.assign("/backoffice/login")
+                );
+                return;
+            }
             if (!response.ok) throw new Error("Erro ao guardar os contactos");
-            alert("Contactos guardados com sucesso!");
-            window.location.reload();
-        } catch (err) {
-            alert(`Erro: ${err.message}`);
+            showModal("Sucesso", "Contactos guardados com sucesso!", "success", () => window.location.reload());
+        } catch {
+            showModal("Erro", "Erro interno. Por favor, tente novamente mais tarde.", "error");
+        } finally {
+            setLoading(false);
         }
     };
 
-    if (loading) return <p>A carregar contactos...</p>;
-    if (error) return <p className="text-red-500">Erro: {error}</p>;
+    if (!authChecked) {
+        return (
+            <ModalMessage
+                isOpen={modal.open}
+                onClose={() => setModal((m) => ({ ...m, open: false }))}
+                title={modal.title}
+                message={modal.message}
+                type={modal.type}
+                action={modal.action}
+            />
+        );
+    }
 
     return (
         <div>
+            <ModalMessage
+                isOpen={modal.open}
+                onClose={() => {
+                    setModal((m) => ({ ...m, open: false }));
+                    if (modal.type === "success") window.location.reload();
+                }}
+                title={modal.title}
+                message={modal.message}
+                type={modal.type}
+                action={modal.action}
+            />
+
+            {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
+
             <NavbarBackoffice />
             <div className="container">
                 <h2 className="title">Contactos</h2>
@@ -181,14 +267,14 @@ function ContactsB() {
                                     type="text"
                                     value={contact.nome}
                                     placeholder={`Nome do Contacto ${index + 1}`}
-                                    onChange={(e) => handleInputChange(index, 'nome', e.target.value)}
+                                    onChange={(e) => handleInputChange(index, "nome", e.target.value)}
                                     className="contact-input"
                                 />
                                 <input
                                     type="email"
                                     value={contact.email}
                                     placeholder={`Email do Contacto ${index + 1}`}
-                                    onChange={(e) => handleInputChange(index, 'email', e.target.value)}
+                                    onChange={(e) => handleInputChange(index, "email", e.target.value)}
                                     className="contact-input"
                                 />
                             </div>
@@ -198,8 +284,12 @@ function ContactsB() {
                         </div>
                     ))}
                     <div className="column">
-                        <button onClick={addContactField} className="addButton">Adicionar Contacto</button>
-                        <button onClick={handleSave} className="saveButton">Guardar</button>
+                        <button onClick={addContactField} className="addButton">
+                            Adicionar Contacto
+                        </button>
+                        <button onClick={handleSave} className="saveButton" disabled={loading}>
+                            Guardar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -209,18 +299,27 @@ function ContactsB() {
                     <div className="confirm-dialog">
                         <h3>Tem a certeza que deseja apagar o contacto "{contactNameToRemove}"?</h3>
                         <div className="confirm-buttons">
-                            <button onClick={removeContact} className="confirm-yes">Sim</button>
-                            <button onClick={resetConfirmDialog} className="confirm-no">Não</button>
+                            <button onClick={removeContact} className="confirm-yes" disabled={loading}>
+                                Sim
+                            </button>
+                            <button onClick={resetConfirmDialog} className="confirm-no" disabled={loading}>
+                                Não
+                            </button>
                         </div>
                     </div>
                 </div>
             )}
+
             {showSuccessDialog && removedContactInfo && (
                 <div className="confirm-overlay">
                     <div className="confirm-dialog">
                         <h3>Contacto removido com sucesso!</h3>
-                        <p><strong>Nome:</strong> {removedContactInfo.nome}</p>
-                        <p><strong>Email:</strong> {removedContactInfo.email}</p>
+                        <p>
+                            <strong>Nome:</strong> {removedContactInfo.nome}
+                        </p>
+                        <p>
+                            <strong>Email:</strong> {removedContactInfo.email}
+                        </p>
                     </div>
                 </div>
             )}

@@ -6,6 +6,7 @@ import L from 'leaflet';
 import { SERVER_URL, cleanObjectStrings } from '../../Utils';
 import { Link } from 'react-router-dom';
 import 'leaflet/dist/leaflet.css';
+import '../../style/Loading.css'
 
 // Corrige bug de ícones do Leaflet no React
 delete L.Icon.Default.prototype._getIconUrl;
@@ -21,47 +22,50 @@ const Map = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`${SERVER_URL}/mapaEdificios`);
-            if (!response.ok) throw new Error('Erro ao buscar dados do mapa');
-            const data = await response.json();
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${SERVER_URL}/mapaEdificios`);
+                if (!response.ok) throw new Error('Erro ao buscar dados do mapa');
+                const data = await response.json();
 
-            const cleanedData = data.map(edificio => {
-                const cleaned = cleanObjectStrings({
-                    titulo: edificio.titulo,
-                    data_projeto: edificio.data_projeto
+                const cleanedData = data.map(edificio => {
+                    const cleaned = cleanObjectStrings({
+                        titulo: edificio.titulo,
+                        data_projeto: edificio.data_projeto
+                    });
+                    return {
+                        ...edificio,
+                        titulo: cleaned.titulo,
+                        data_projeto: cleaned.data_projeto
+                    };
                 });
-                return {
-                    ...edificio,
-                    titulo: cleaned.titulo,
-                    data_projeto: cleaned.data_projeto
-                };
-            });
 
-            setEdificios(cleanedData);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+                setEdificios(cleanedData);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    fetchData();
-}, []);
+        fetchData();
+    }, []);
 
-
-    if (loading) return <h1>A carregar mapa...</h1>;
     if (error) return <h1>{error}</h1>;
 
     const validLocations = edificios.filter(e => e.latitude && e.longitude);
     const center = validLocations.length > 0
         ? [validLocations[0].latitude, validLocations[0].longitude]
         //Caso dê algum erro, vai redirecionar para o Politécnico de Tomar
-        : [39.600562,-8.3924043]; 
+        : [39.600562, -8.3924043];
 
     return (
         <>
+            {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <NavbarHome />
             <br />
             <Container>

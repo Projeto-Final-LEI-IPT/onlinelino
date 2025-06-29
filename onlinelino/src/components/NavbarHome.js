@@ -35,7 +35,7 @@ const NavbarHome = () => {
 
     const getLocalizedPath = (path) => {
         const lang = i18n.language;
-        const segments = path.split('/').filter(Boolean); // remove strings vazias
+        const segments = path.split('/').filter(Boolean); 
 
         if (segments.length === 0) return '/';
 

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/Container';
 import { SERVER_URL, cleanObjectStrings } from '../../Utils';
+import '../../style/Loading.css'
 
 const BuildingDetails = () => {
     const { id } = useParams();
@@ -48,11 +49,15 @@ const BuildingDetails = () => {
         fetchObra();
     }, [id]);
 
-    if (loading) return <h1>A carregar...</h1>;
     if (error) return <h1>{error}</h1>;
 
     return (
         <>
+        {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <NavbarHome />
             <br />
             <Container>

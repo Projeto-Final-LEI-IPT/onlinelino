@@ -3,6 +3,7 @@ import NavbarHome from "../../components/NavbarHome";
 import Container from "react-bootstrap/esm/Container";
 import { SERVER_URL } from "../../Utils";
 import { ContactsDO } from "../../server/Models/DataObjects";
+import '../../style/Loading.css'
 
 function Contacts() {
     const [contacts, setContacts] = useState(ContactsDO);
@@ -29,16 +30,17 @@ function Contacts() {
         fetchContacts();
     }, []);
 
-    if (loading) {
-        return <h1>Carregando...</h1>;
-    }
-
     if (error) {
         return <h1>Erro: {error}</h1>;
     }
 
     return (
         <>
+        {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <NavbarHome />
             <div
                 style={{

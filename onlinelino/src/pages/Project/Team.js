@@ -3,6 +3,7 @@ import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/esm/Container';
 import { SERVER_URL } from '../../Utils';
 import { TeamDO } from '../../server/Models/DataObjects';
+import '../../style/Loading.css'
 
 function Team() {
     const [team, setTeam] = useState([TeamDO]);
@@ -30,10 +31,6 @@ function Team() {
         fetchTeam();
     }, []);
 
-    if (loading) {
-        return <h1>Carregando...</h1>;
-    }
-
     if (error) {
         return <h1>Erro: {error}</h1>;
     }
@@ -43,6 +40,11 @@ function Team() {
 
     return (
         <>
+        {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <NavbarHome />
             <div
                 style={{

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavbarHome from "../../components/NavbarHome";
 import Container from "react-bootstrap/esm/Container";
 import { SERVER_URL, cleanObjectStrings } from '../../Utils';
+import '../../style/Loading.css';
 
 //FAZER REQUEST DO OVERVIEW
 function Generic() {
@@ -30,11 +31,15 @@ function Generic() {
         fetchOverview();
     }, []);
 
-    if (loading) return <h1>Carregando...</h1>;
     if (error) return <h1>{error}</h1>;
 
     return (
         <>
+        {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <NavbarHome />
             <div style={{ overflow: "hidden" }}>
                 <div
