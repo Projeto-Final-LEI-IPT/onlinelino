@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { SERVER_URL, cleanObjectStrings } from '../../Utils';
 import NavbarHome from '../../components/NavbarHome';
 import '../../style/List.css';
+import '../../style/Loading.css'
 
 function ListIndex() {
     const [edificios, setEdificios] = useState([]);
@@ -38,11 +39,15 @@ function ListIndex() {
         fetchEdificios();
     }, []);
 
-    if (loading) return <h1>Carregando…</h1>;
     if (error) return <h1>{error}</h1>;
 
     return (
         <>
+        {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <NavbarHome />
             <div style={{
                 backgroundImage: "url('/img/fundo_descricao.webp')",

@@ -3,6 +3,7 @@ import NavbarChronology from '../../components/NavbarChronology';
 import { Link } from 'react-router-dom';
 import { SERVER_URL, removeHtmlTags } from '../../Utils';
 import '../../style/Chronology.css';
+import '../../style/Loading.css'
 
 function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -114,11 +115,15 @@ function Chronology() {
     }
   }
 
-  if (loading) return <h1>A carregar...</h1>;
   if (error) return <h1>{error}</h1>;
 
   return (
     <>
+    {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
       <NavbarChronology />
       <div className="image-grid">
         {prepared.map((p) =>

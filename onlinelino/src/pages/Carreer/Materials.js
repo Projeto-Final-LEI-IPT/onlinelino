@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/Container';
 import { SERVER_URL } from '../../Utils';
+import '../../style/Loading.css'
 
 const Materials = () => {
     const [overview, setOverview] = useState(null);

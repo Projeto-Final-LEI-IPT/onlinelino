@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Container from "react-bootstrap/esm/Container";
 import { SERVER_URL, cleanObjectStrings } from "../Utils";
 import { HomePageDO } from "../server/Models/DataObjects";
+import '../style/Loading.css';
 
 function Home() {
 
@@ -35,12 +36,13 @@ function Home() {
         return <p className="text-red-500">Erro: {error}</p>;
     }
 
-    if (loading) {
-        return <p>A carregar...</p>;
-    }
-
     return (
         <>
+        {loading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <NavbarHome />
             <div
                 style={{
