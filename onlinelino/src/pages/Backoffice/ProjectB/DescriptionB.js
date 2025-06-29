@@ -58,7 +58,7 @@ function DescriptionB() {
           setOriginalDescricao(loaded);
         }
       } catch (err) {
-        showModal("Erro", "Erro interno. Por favor, tente novamente mais tarde.", "error");
+        showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
       } finally {
         setLoading(false);
       }
@@ -89,7 +89,7 @@ function DescriptionB() {
       if (!res.ok) throw new Error();
       showModal("Sucesso", "Descrição atualizada com sucesso.", "success");
     } catch {
-      showModal("Erro", "Erro interno. Por favor, tente novamente mais tarde.", "error");
+      showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
     }
   };
 

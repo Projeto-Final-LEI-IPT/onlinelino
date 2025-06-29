@@ -66,7 +66,7 @@ function BibliographyB() {
         setBibliografia(item);
         setOriginalBibliografia(item);
       } catch {
-        showModal("Erro", "Erro interno. Por favor, tente novamente mais tarde.", "error");
+        showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
       } finally {
         setLoading(false);
       }
@@ -135,7 +135,7 @@ function BibliographyB() {
       showModal("Sucesso", "Bibliografia atualizada com sucesso.", "success");
       setOriginalBibliografia(bibliografia);
     } catch {
-      showModal("Erro", "Erro interno. Por favor, tente novamente mais tarde.", "error");
+      showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
     } finally {
       setLoading(false);
     }

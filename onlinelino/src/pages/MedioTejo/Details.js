@@ -22,7 +22,6 @@ const BuildingDetails = () => {
 
                 const data = await response.json();
 
-                // Separa campos com HTML e os que devem ser limpos
                 const {
                     descricao_pt,
                     descricao_en,

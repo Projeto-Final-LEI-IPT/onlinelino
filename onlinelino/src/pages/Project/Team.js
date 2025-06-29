@@ -3,83 +3,124 @@ import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/esm/Container';
 import { SERVER_URL } from '../../Utils';
 import { TeamDO } from '../../server/Models/DataObjects';
-import '../../style/Loading.css'
+import '../../style/Loading.css';
+import ModalMessage from '../../components/ModalMessage';
 
 function Team() {
-    const [team, setTeam] = useState([TeamDO]);
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(true);
+  const [team, setTeam] = useState([TeamDO]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchTeam = async () => {
-            try {
-                const response = await fetch(`${SERVER_URL}/equipa`);
-                if (!response.ok) {
-                    const err = await response.json();
-                    throw new Error(err.error || 'Erro na requisição');
-                }
+  const [modal, setModal] = useState({
+    isOpen: false,
+    title: '',
+    message: '',
+    type: 'info',
+    action: null,
+  });
 
-                const data = await response.json();
-                setTeam(data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+  const showModal = (title, message, type = 'info', action = null) => {
+    setModal({
+      isOpen: true,
+      title,
+      message,
+      type,
+      action,
+    });
+  };
 
-        fetchTeam();
-    }, []);
+  const closeModal = () => {
+    setModal({ ...modal, isOpen: false });
+  };
 
-    if (error) {
-        return <h1>Erro: {error}</h1>;
-    }
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const response = await fetch(`${SERVER_URL}/equipa`);
+        if (!response.ok) {
+          const err = await response.json();
+          throw new Error(err.error || 'Erro na requisição');
+        }
 
-    const investigadores = team.filter(p => p.cargo.toLowerCase() === 'investigador');
-    const colaboradores = team.filter(p => p.cargo.toLowerCase() === 'colaborador' || p.cargo.toLowerCase() === 'estudante');
+        const data = await response.json();
+        setTeam(data);
+      } catch (err) {
+        showModal('Erro ao carregar equipe', err.message, 'error');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return (
-        <>
-        {loading && (
-                <div className="loading-overlay">
-                    <div className="spinner"></div>
-                </div>
-            )}
-            <NavbarHome />
-            <div
-                style={{
-                    backgroundImage: "url('/img/fundo_descricao.webp')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    minHeight: "100vh",
-                    paddingTop: "2rem",
-                    paddingBottom: "2rem",
-                }}
-            >
-                <Container
-                    className="container"
-                    style={{
-                        backgroundColor: "rgba(234, 216, 193, 0.85)",
-                        padding: "2rem",
-                        marginLeft: "auto",
-                        marginRight: "0",
-                    }}
-                >
-                    <h4>Equipa</h4>
-                    <br />
-                    <h5>Investigadores:</h5>
-                    {investigadores.map((membro, i) => (
-                        <ul key={`inv-${i}`}><li>{membro.nome}</li></ul>
-                    ))}
-                    <hr />
-                    <h5>Colaboradores:</h5>
-                    {colaboradores.map((membro, i) => (
-                        <ul key={`col-${i}`}><li>{membro.nome}, {membro.cargo}</li></ul>
-                    ))}
-                </Container>
-            </div>
-        </>
-    );
+    fetchTeam();
+  }, []);
+
+  const investigadores = team.filter(
+    (p) => p.cargo.toLowerCase() === 'investigador'
+  );
+  const colaboradores = team.filter(
+    (p) =>
+      p.cargo.toLowerCase() === 'colaborador' ||
+      p.cargo.toLowerCase() === 'estudante'
+  );
+
+  return (
+    <>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
+
+      <NavbarHome />
+
+      <div
+        style={{
+          backgroundImage: "url('/img/fundo_descricao.webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: '100vh',
+          paddingTop: '2rem',
+          paddingBottom: '2rem',
+        }}
+      >
+        <Container
+          className="container"
+          style={{
+            backgroundColor: 'rgba(234, 216, 193, 0.85)',
+            padding: '2rem',
+            marginLeft: 'auto',
+            marginRight: '0',
+          }}
+        >
+          <h4>Equipa</h4>
+          <br />
+          <h5>Investigadores:</h5>
+          {investigadores.map((membro, i) => (
+            <ul key={`inv-${i}`}>
+              <li>{membro.nome}</li>
+            </ul>
+          ))}
+          <hr />
+          <h5>Colaboradores:</h5>
+          {colaboradores.map((membro, i) => (
+            <ul key={`col-${i}`}>
+              <li>
+                {membro.nome}, {membro.cargo}
+              </li>
+            </ul>
+          ))}
+        </Container>
+      </div>
+
+      <ModalMessage
+        isOpen={modal.isOpen}
+        onClose={closeModal}
+        title={modal.title}
+        message={modal.message}
+        type={modal.type}
+        action={modal.action}
+      />
+    </>
+  );
 }
 
 export default Team;

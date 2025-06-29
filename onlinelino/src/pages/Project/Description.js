@@ -4,75 +4,96 @@ import { HomePageDO } from "../../server/Models/DataObjects";
 import NavbarHome from "../../components/NavbarHome";
 import { SERVER_URL, cleanObjectStrings } from "../../Utils";
 import Footer from "../../components/Footer";
-import '../../style/Loading.css'
+import ModalMessage from "../../components/ModalMessage";
+import '../../style/Loading.css';
 
 function Home() {
+  const [descricao, setDescricao] = useState(HomePageDO);
+  const [loading, setLoading] = useState(true);
 
-    const [descricao, setDescricao] = useState(HomePageDO);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+  const [modal, setModal] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "info",
+    action: null,
+  });
 
-    //GET da Descricao da Home Page
-    useEffect(() => {
-        const fetchDescricao = async () => {
-            try {
-                const response = await fetch(`${SERVER_URL}/descricao`);
-                if (!response.ok) {
-                    throw new Error('Erro ao buscar a descrição');
-                }
-                const data = await response.json();
-                setDescricao(cleanObjectStrings(data[0]) || HomePageDO);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+  const showModal = (title, message, type = "info", action = null) => {
+    setModal({ isOpen: true, title, message, type, action });
+  };
 
-        fetchDescricao();
-    }, []);
+  const closeModal = () => {
+    setModal({ ...modal, isOpen: false });
+  };
 
-    if (error) {
-        return <p className="text-red-500">Erro: {error}</p>;
-    }
+  useEffect(() => {
+    const fetchDescricao = async () => {
+      try {
+        const response = await fetch(`${SERVER_URL}/descricao`);
+        if (!response.ok) {
+          throw new Error("Erro ao buscar a descrição");
+        }
+        const data = await response.json();
+        setDescricao(cleanObjectStrings(data[0]) || HomePageDO);
+      } catch (err) {
+        showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return (
-        <>
-        {loading && (
-                <div className="loading-overlay">
-                    <div className="spinner"></div>
-                </div>
-            )}
-            <NavbarHome />
-            <div
-                style={{
-                    backgroundImage: "url('/img/fundo_descricao.webp')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    minHeight: "100vh",
-                    paddingTop: "2rem",
-                    paddingBottom: "2rem",
-                }}
-            >
-                <Container
-                    style={{
-                        backgroundColor: "rgba(234, 216, 193, 0.85)",
-                        padding: "2rem",
-                        marginLeft: "auto",
-                        marginRight: "0",
-                    }}>
-                    {descricao && descricao.descricao_pt
-                        ? descricao.descricao_pt.split('\n').map((par, idx) => (
-                            <p key={idx}>{par}</p>
-                        ))
-                        : <p>Nenhuma descrição disponível.</p>
-                    }
-                </Container>
-            </div>
-            <Footer />
-        </>
-    );
+    fetchDescricao();
+  }, []);
+
+  return (
+    <>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+        </div>
+      )}
+
+      <NavbarHome />
+
+      <div
+        style={{
+          backgroundImage: "url('/img/fundo_descricao.webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+          paddingTop: "2rem",
+          paddingBottom: "2rem",
+        }}
+      >
+        <Container
+          style={{
+            backgroundColor: "rgba(234, 216, 193, 0.85)",
+            padding: "2rem",
+            marginLeft: "auto",
+            marginRight: "0",
+          }}
+        >
+          {descricao && descricao.descricao_pt ? (
+            descricao.descricao_pt.split("\n").map((par, idx) => <p key={idx}>{par}</p>)
+          ) : (
+            <p>Nenhuma descrição disponível.</p>
+          )}
+        </Container>
+      </div>
+
+      <Footer />
+
+      <ModalMessage
+        isOpen={modal.isOpen}
+        onClose={closeModal}
+        title={modal.title}
+        message={modal.message}
+        type={modal.type}
+        action={modal.action}
+      />
+    </>
+  );
 }
-
 
 export default Home;
