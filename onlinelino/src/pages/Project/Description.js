@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import Container from "react-bootstrap/esm/Container";
 import { HomePageDO } from "../../server/Models/DataObjects";
 import NavbarHome from "../../components/NavbarHome";
@@ -8,6 +9,7 @@ import ModalMessage from "../../components/ModalMessage";
 import '../../style/Loading.css';
 
 function Home() {
+  const { i18n } = useTranslation();
   const [descricao, setDescricao] = useState(HomePageDO);
   const [loading, setLoading] = useState(true);
 
@@ -46,6 +48,11 @@ function Home() {
     fetchDescricao();
   }, []);
 
+  const currentLang = i18n.language || 'pt';
+  const descricaoText = currentLang.startsWith('en')
+    ? descricao.descricao_en
+    : descricao.descricao_pt;
+
   return (
     <>
       {loading && (
@@ -74,8 +81,8 @@ function Home() {
             marginRight: "0",
           }}
         >
-          {descricao && descricao.descricao_pt ? (
-            descricao.descricao_pt.split("\n").map((par, idx) => <p key={idx}>{par}</p>)
+          {descricaoText ? (
+            descricaoText.split("\n").map((par, idx) => <p key={idx} dangerouslySetInnerHTML={{ __html: par }} />)
           ) : (
             <p>Nenhuma descrição disponível.</p>
           )}

@@ -624,14 +624,14 @@ app.delete(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, async (req, res
 });
 
 // Frontoffice GETs
-createEndpoint('/home', 'SELECT descricao_pt FROM Home', () => [], rows => rows);
+createEndpoint('/home', 'SELECT descricao_pt, descricao_en FROM Home', () => [], rows => rows);
 createEndpoint('/descricao', 'SELECT descricao_pt, descricao_en FROM Descricao', () => [], rows => rows);
 createEndpoint('/bibliografia', 'SELECT texto_html FROM Bibliografia', () => [], rows => rows);
 createEndpoint('/equipa', 'SELECT nome, cargo FROM Equipa', () => [], rows => rows);
 createEndpoint('/equipa/:id', 'SELECT * FROM equipa WHERE id = ?', req => [req.params.id], rows => rows);
 createEndpoint('/contactos', 'SELECT nome, email FROM contactos', () => [], rows => rows);
-createEndpoint('/overview',`SELECT descricao_pt FROM overview`,() => [],rows => rows);
-createEndpoint('/materiais', 'SELECT descricao_pt FROM materiais', () => [], rows => rows);
+createEndpoint('/overview',`SELECT descricao_pt, descricao_en FROM overview`,() => [],rows => rows);
+createEndpoint('/materiais', 'SELECT descricao_pt, descricao_en FROM materiais', () => [], rows => rows);
 createEndpoint(
     '/cronologia',
     `

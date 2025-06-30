@@ -4,8 +4,11 @@ import Container from "react-bootstrap/esm/Container";
 import { SERVER_URL } from "../../Utils";
 import ModalMessage from "../../components/ModalMessage";
 import '../../style/Loading.css';
+import { useTranslation } from "react-i18next";
 
 function Contacts() {
+  const { t } = useTranslation(); 
+
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -31,19 +34,19 @@ function Contacts() {
         const response = await fetch(`${SERVER_URL}/contactos`);
         if (!response.ok) {
           const err = await response.json();
-          throw new Error(err.error || "Erro ao buscar contactos");
+          throw new Error(err.error || t('contacts.loadErrorTitle'));
         }
         const data = await response.json();
         setContacts(Array.isArray(data) ? data : []);
       } catch (err) {
-        showModal("Erro interno.", "Por favor, tente novamente mais tarde.", "error");
+        showModal(t('contacts.loadErrorTitle'), t('contacts.loadErrorMessage'), "error");
       } finally {
         setLoading(false);
       }
     };
 
     fetchContacts();
-  }, []);
+  }, [t]);
 
   return (
     <>
@@ -73,7 +76,7 @@ function Contacts() {
             marginRight: "0",
           }}
         >
-          <h4>Contactos</h4>
+          <h4>{t('contacts.title')}</h4>
           <br />
           {contacts.length > 0 ? (
             contacts.map((item, index) => (
@@ -84,7 +87,7 @@ function Contacts() {
               </ul>
             ))
           ) : (
-            <p>Nenhum contacto disponível.</p>
+            <p>{t('contacts.noContacts')}</p>
           )}
         </Container>
       </div>

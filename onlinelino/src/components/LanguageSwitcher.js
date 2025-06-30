@@ -8,16 +8,16 @@ function LanguageSwitcher() {
 
   // Function to handle language change
   const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng); // Change the language using i18n
-    localStorage.setItem('selectedLanguage', lng); // Save selected language to localStorage
-    setSelectedLanguage(lng); // Update state to reflect selected language
+    i18n.changeLanguage(lng); 
+    localStorage.setItem('selectedLanguage', lng); 
+    setSelectedLanguage(lng); 
   };
 
   // Effect to set the language from localStorage on component mount
   useEffect(() => {
     const savedLanguage = localStorage.getItem('selectedLanguage');
     if (savedLanguage) {
-      i18n.changeLanguage(savedLanguage); // Set language from localStorage
+      i18n.changeLanguage(savedLanguage); 
     }
   }, [i18n]);
 
