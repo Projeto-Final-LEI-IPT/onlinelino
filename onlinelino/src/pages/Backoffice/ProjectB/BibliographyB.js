@@ -30,14 +30,13 @@ function BibliographyB() {
     });
   };
 
-  // Usa o hook para verificar autenticação e mostrar modal se não houver token
   const authChecked = useAuthModalGuard(showModal);
 
   useEffect(() => {
-    if (!authChecked) return; // Espera autenticação
+    if (!authChecked) return; 
 
     const SESSION_TOKEN = localStorage.getItem("authorization");
-    if (!SESSION_TOKEN) return; // Caso token sumir entre a checagem e o fetch
+    if (!SESSION_TOKEN) return; 
 
     const fetchBibliografia = async () => {
       setLoading(true);

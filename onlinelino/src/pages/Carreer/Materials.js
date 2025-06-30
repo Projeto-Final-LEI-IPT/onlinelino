@@ -4,8 +4,11 @@ import Container from 'react-bootstrap/Container';
 import { SERVER_URL, cleanObjectStrings } from '../../Utils';
 import ModalMessage from '../../components/ModalMessage.js';
 import '../../style/Loading.css';
+import { useTranslation } from 'react-i18next';
 
 const Materials = () => {
+    const { t, i18n } = useTranslation();
+
     const [overview, setOverview] = useState(null);
     const [loading, setLoading] = useState(true);
     const [modal, setModal] = useState({
@@ -40,14 +43,26 @@ const Materials = () => {
                 const cleaned = cleanObjectStrings(data[0]);
                 setOverview(cleaned);
             } catch (err) {
-                showModal('Erro interno.', "Por favor, tente novamente mais tarde.", 'error');
+                showModal(t('materials.errorTitle'), t('materials.errorMessage'), 'error');
             } finally {
                 setLoading(false);
             }
         };
 
         fetchOverview();
-    }, []);
+    }, [t]);
+
+    const getDescriptionByLanguage = () => {
+        if (!overview) return null;
+        const lang = i18n.language;
+        if (lang.startsWith('pt')) {
+            return overview.descricao_pt;
+        }
+        if (lang.startsWith('en')) {
+            return overview.descricao_en;
+        }
+        return overview.descricao_pt;
+    };
 
     return (
         <>
@@ -93,59 +108,15 @@ const Materials = () => {
                             width: "100%",
                         }}
                     >
-                        <h4>Materiais</h4>
+                        <h4>{t('materials.title')}</h4>
                         <br />
-                        {overview?.descricao_pt && (
-                            <p style={{ whiteSpace: "pre-line" }}>{overview.descricao_pt}</p>
-                        )}
-                        <br />
-                        {overview?.filmes?.length > 0 && (
-                            <>
-                                <h6>Filmes</h6>
-                                <ul>
-                                    {overview.filmes.map((url, i) => (
-                                        <li key={`filme-${i}`}>
-                                            <a
-                                                style={{
-                                                    wordBreak: "break-word",
-                                                    overflowWrap: "break-word",
-                                                    display: "inline-block",
-                                                    maxWidth: "100%",
-                                                }}
-                                                href={url}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            >
-                                                {url}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </>
-                        )}
-                        {overview?.outros_links?.length > 0 && (
-                            <>
-                                <h6>Outros links</h6>
-                                <ul>
-                                    {overview.outros_links.map((link, i) => (
-                                        <li key={`link-${i}`}>
-                                            <a
-                                                style={{
-                                                    wordBreak: "break-word",
-                                                    overflowWrap: "break-word",
-                                                    display: "inline-block",
-                                                    maxWidth: "100%",
-                                                }}
-                                                href={link}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            >
-                                                {link}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </>
+                        {getDescriptionByLanguage() ? (
+                            <div
+                                style={{ whiteSpace: 'pre-line' }}
+                                dangerouslySetInnerHTML={{ __html: getDescriptionByLanguage() }}
+                            />
+                        ) : (
+                            <p>{t('materials.noInformation')}</p>
                         )}
                     </Container>
                 </div>

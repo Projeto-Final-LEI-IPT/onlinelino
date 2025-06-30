@@ -4,12 +4,12 @@ import Container from 'react-bootstrap/esm/Container';
 import { SERVER_URL } from '../../Utils';
 import { TeamDO } from '../../server/Models/DataObjects';
 import '../../style/Loading.css';
-import ModalMessage from '../../components/ModalMessage';
+import ModalMessage from '../../components/ModalMessage.js';
+import { useTranslation } from 'react-i18next';
 
 function Team() {
   const [team, setTeam] = useState([TeamDO]);
   const [loading, setLoading] = useState(true);
-
   const [modal, setModal] = useState({
     isOpen: false,
     title: '',
@@ -17,6 +17,7 @@ function Team() {
     type: 'info',
     action: null,
   });
+  const { t } = useTranslation('translation');
 
   const showModal = (title, message, type = 'info', action = null) => {
     setModal({
@@ -44,22 +45,20 @@ function Team() {
         const data = await response.json();
         setTeam(data);
       } catch (err) {
-        showModal('Erro ao carregar equipe', err.message, 'error');
+        showModal(t('loadErrorTitle'), err.message, 'error');
       } finally {
         setLoading(false);
       }
     };
 
     fetchTeam();
-  }, []);
+  }, [t]);
 
   const investigadores = team.filter(
     (p) => p.cargo.toLowerCase() === 'investigador'
   );
   const colaboradores = team.filter(
-    (p) =>
-      p.cargo.toLowerCase() === 'colaborador' ||
-      p.cargo.toLowerCase() === 'estudante'
+    (p) => p.cargo.toLowerCase() === 'colaborador'
   );
 
   return (
@@ -91,16 +90,16 @@ function Team() {
             marginRight: '0',
           }}
         >
-          <h4>Equipa</h4>
+          <h4>{t('team.title')}</h4>
           <br />
-          <h5>Investigadores:</h5>
+          <h5>{t('team.investigators')}:</h5>
           {investigadores.map((membro, i) => (
             <ul key={`inv-${i}`}>
               <li>{membro.nome}</li>
             </ul>
           ))}
           <hr />
-          <h5>Colaboradores:</h5>
+          <h5>{t('team.collaborators')}:</h5>
           {colaboradores.map((membro, i) => (
             <ul key={`col-${i}`}>
               <li>

@@ -4,10 +4,13 @@ import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/Container';
 import ModalMessage from '../../components/ModalMessage';
 import '../../style/Loading.css';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18next';
 
 const Bibliography = () => {
   const [htmlContent, setHtmlContent] = useState('');
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   const [modal, setModal] = useState({
     isOpen: false,
@@ -42,7 +45,7 @@ const Bibliography = () => {
           setHtmlContent('');
         }
       } catch (err) {
-        showModal('Erro interno.', 'Por favor, tente novamente mais tarde.', 'error');
+        showModal(t('bibliography.loadErrorTitle'), t('bibliography.loadErrorMessage'), 'error');
       } finally {
         setLoading(false);
       }
@@ -50,6 +53,9 @@ const Bibliography = () => {
 
     fetchBibliografia();
   }, []);
+
+  console.log(i18n.getResourceBundle('pt', 'translation'));
+
 
   return (
     <>
@@ -78,12 +84,12 @@ const Bibliography = () => {
             marginRight: "0",
           }}
         >
-          <h4>Bibliografia</h4>
+          <h4>{t('bibliography.title')}</h4>
           <br />
           {htmlContent ? (
             <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
           ) : (
-            <p>Nenhum item disponível.</p>
+            <p>{t('bibliography.noItems')}</p>
           )}
         </Container>
       </div>

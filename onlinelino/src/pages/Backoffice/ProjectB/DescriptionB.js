@@ -32,11 +32,10 @@ function DescriptionB() {
     });
   };
 
-  // Usa o hook para checar token e disparar modal de autenticação
   const authChecked = useAuthModalGuard(showModal);
 
   useEffect(() => {
-    if (!authChecked) return; // Espera autenticação antes de buscar os dados
+    if (!authChecked) return; 
 
     const fetchDescricao = async () => {
       setLoading(true);
@@ -96,7 +95,6 @@ function DescriptionB() {
   const handleChange = (lang) => (value) =>
     setDescricao((prev) => ({ ...prev, [`descricao_${lang}`]: value }));
 
-  // Se ainda não confirmou a autenticação, mostra só o modal
   if (!authChecked) {
     return (
       <ModalMessage

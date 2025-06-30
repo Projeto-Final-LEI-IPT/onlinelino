@@ -53,7 +53,6 @@ const Login = () => {
             setEmailError('');
         }
 
-        // Validação da senha
         if (!password) {
             setPasswordError('O campo não pode estar vazio');
             isValid = false;
@@ -133,7 +132,7 @@ const Login = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         onBlur={handlePasswordBlur}
-                        style={{ paddingRight: '40px' }} // espaço para o ícone
+                        style={{ paddingRight: '40px' }}
                     />
                     <button
                         type="button"
