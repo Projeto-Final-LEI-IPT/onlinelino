@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; 
 import NavbarHome from '../../components/NavbarHome';
 import Container from 'react-bootstrap/Container';
 import { SERVER_URL, cleanObjectStrings } from '../../Utils';
-import '../../style/Loading.css'
+import '../../style/Loading.css';
 
 const BuildingDetails = () => {
     const { id } = useParams();
+    const navigate = useNavigate(); 
     const [edificio, setEdificio] = useState(null);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
@@ -16,12 +17,15 @@ const BuildingDetails = () => {
             try {
                 const response = await fetch(`${SERVER_URL}/edificio/${id}`);
                 if (!response.ok) {
+                    if (response.status === 404) {
+                        navigate('/not-found', { replace: true }); 
+                        return;
+                    }
                     const err = await response.json();
-                    throw new Error(err.error);
+                    throw new Error(err.error || 'Erro ao buscar dados');
                 }
 
                 const data = await response.json();
-
                 const {
                     descricao_pt,
                     descricao_en,
@@ -46,13 +50,13 @@ const BuildingDetails = () => {
         };
 
         fetchObra();
-    }, [id]);
+    }, [id, navigate]); 
 
     if (error) return <h1>{error}</h1>;
 
     return (
         <>
-        {loading && (
+            {loading && (
                 <div className="loading-overlay">
                     <div className="spinner"></div>
                 </div>

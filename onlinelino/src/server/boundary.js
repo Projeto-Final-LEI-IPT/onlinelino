@@ -50,10 +50,16 @@ const handleRequest = async (req, res, query, paramsExtractor, transform) => {
         db = await connection();
         const params = paramsExtractor(req);
         const [rows] = await db.execute(query, params);
+        if (!rows.length) {
+            const error = new Error("Edifício não encontrado");
+            error.statusCode = 404;
+            throw error;
+          }
         res.json(transform(rows));
     } catch (error) {
-        res.status(500).send('Erro interno. Tente novamente mais tarde');
-        console.log(error);
+        const status = error.statusCode || 500;
+        res.status(status).send(error.message || 'Erro interno');
+        console.error(error);      
     } finally {
         if (db) await db.end();
     }
