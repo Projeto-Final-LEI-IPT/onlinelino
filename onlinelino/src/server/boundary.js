@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
-const baseUrl = process.env.BASE_URL || 'http://onlinelino.ipt.pt:8080';
+const baseUrl ='https://onlinelino.ipt.pt:8080';
 const cors = require('cors');
 const morgan = require('morgan');
 const sharp = require('sharp');
@@ -11,6 +11,12 @@ const fs = require('fs');
 const multer = require('multer');
 const connection = require('/onlinelino/src/server/dbConfig.js');
 const createResponseOnSuccess = require('./Utils.js');
+const https = require('https');
+
+const sslOptions = {
+    key: fs.readFileSync(path.resolve(__dirname, '../server/ssl/server.key')),
+    cert: fs.readFileSync(path.resolve(__dirname, '../server/ssl/server.crt'))
+  };  
 
 dotenv.config();
 const app = express();
@@ -734,5 +740,7 @@ createEndpoint(
     () => [baseUrl],
     rows => rows
   );
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+  https.createServer(sslOptions, app).listen(8080, () => {
+    console.log('Servidor HTTPS rodando na porta 8080');
+  });
 connection();
