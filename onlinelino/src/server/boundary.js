@@ -21,7 +21,6 @@ const sslOptions = {
 dotenv.config();
 const app = express();
 
-const PORT = 8080;
 const BACKOFFICE_URL = 'backoffice';
 
 app.use(cors({ origin: '*', methods: ['GET', 'POST', 'DELETE', 'PUT'], allowedHeaders: ['Content-Type', 'Authorization'] }));
@@ -44,7 +43,7 @@ const authenticateToken = (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1];
     if (!token) return res.status(403).json({ error: 'Autenticação necessária.' });
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) return res.status(403).json({ error: 'Autenticação necessária.' });
+        if (err) return res.status(403).json({ error: 'Token inválido.' });
         req.user = user;
         next();
     });
