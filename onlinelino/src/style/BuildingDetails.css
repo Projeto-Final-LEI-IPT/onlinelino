@@ -1,0 +1,82 @@
+/* Container principal do conteúdo do edifício */
+.building-container {
+  padding: 1rem;
+}
+
+/* Título do edifício */
+.building-container h4 {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* Subtítulos como "Tipologia", "Data", etc */
+.building-container h6 {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Texto geral */
+.building-container p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Estilização das imagens */
+.building-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Wrapper de cada imagem e legenda */
+.building-image-wrapper {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Legenda da imagem */
+.building-caption {
+  font-style: italic;
+  color: #555;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* Responsividade para tablets e telemóveis */
+@media screen and (max-width: 768px) {
+  .building-container {
+    padding: 0.75rem;
+  }
+
+  .building-container h4 {
+    font-size: 1.4rem;
+  }
+
+  .building-container p,
+  .building-caption {
+    font-size: 0.95rem;
+  }
+
+  .building-container h6 {
+    font-size: 1rem;
+  }
+}
+
+/* Extra pequeno (telemóveis pequenos) */
+@media screen and (max-width: 400px) {
+  .building-container {
+    padding: 0.5rem;
+  }
+
+  .building-container h4 {
+    font-size: 1.2rem;
+  }
+
+  .building-container p,
+  .building-caption {
+    font-size: 0.9rem;
+  }
+}
