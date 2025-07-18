@@ -291,7 +291,7 @@ const BuildingDetailsB = () => {
       if (!response.ok) throw new Error("Erro ao excluir edifício");
 
       showModal("Sucesso", "Edifício excluído com sucesso!", "success");
-      navigate("/backoffice/MedioTejoB/Buildings");
+      if(!showModal.open){navigate("/backoffice/MedioTejoB/Buildings");}
     } catch (err) {
       showModal("Erro", "Erro ao excluir: " + err.message, "error");
     }
@@ -322,13 +322,16 @@ const BuildingDetailsB = () => {
   return (
     <>
       <ModalMessage
-        show={modal.open}
+        isOpen={modal.open}
         title={modal.title}
         message={modal.message}
         type={modal.type}
         onClose={() => setModal(prev => ({ ...prev, open: false }))}
         action={modal.action}
+        onConfirm={modal.onConfirm}
+        onCancel={modal.onCancel}
       />
+
 
       {loading && (
         <div className="loading-overlay">
