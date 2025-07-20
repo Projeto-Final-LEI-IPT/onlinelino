@@ -14,8 +14,8 @@ const createResponseOnSuccess = require('./Utils.js');
 const https = require('https');
 
 const sslOptions = {
-    key: fs.readFileSync(path.resolve(__dirname, '../server/ssl/server.key')),
-    cert: fs.readFileSync(path.resolve(__dirname, '../server/ssl/server.crt'))
+    key: fs.readFileSync(path.resolve(__dirname, '../server/ssl/onlinelino.ipt.pt-key.pem')),
+    cert: fs.readFileSync(path.resolve(__dirname, '../server/ssl/onlinelino.ipt.pt-chain.pem'))
   };  
 
 dotenv.config();
@@ -43,7 +43,7 @@ const authenticateToken = (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1];
     if (!token) return res.status(403).json({ error: 'Autenticação necessária.' });
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) return res.status(403).json({ error: 'Token inválido.' });
+        if (err) return res.status(403).json({ error: 'Token Inválido.' });
         req.user = user;
         next();
     });
@@ -598,25 +598,28 @@ app.delete(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, async (req, res
             [id]
         );
 
-        // Deletar edifício 
+        // Deletar edifício
         const [result] = await db.execute('DELETE FROM Edificio WHERE id = ?', [id]);
         if (result.affectedRows === 0) {
             await db.rollback();
             return res.status(404).json({ error: 'Edifício não encontrado.' });
         }
 
-        // Confirmar transação
         await db.commit();
 
-        // Agora apagar os ficheiros físicos 
         fotos.forEach((foto) => {
             if (foto.caminho) {
-                const filePath = path.join(__dirname, 'public', foto.caminho);
+                const realPath = foto.caminho.replace(/^\/img\//, 'img/backoffice/');
+                const filePath = path.join(__dirname, 'public', realPath);
                 fs.unlink(filePath, (err) => {
-                    if (err) console.warn(`Erro ao apagar o ficheiro ${filePath}:`, err.message);
+                    if (err) {
+                        console.warn(`Erro ao apagar o ficheiro ${filePath}:`, err.message);
+                    }
                 });
             }
         });
+
+        console.info(`Imagens do edifício com ID ${id} excluídas com sucesso.`);
 
         res.status(200).json({ message: 'Edifício excluído com sucesso.', id });
     } catch (error) {
@@ -627,6 +630,7 @@ app.delete(`/${BACKOFFICE_URL}/edificio/:id`, authenticateToken, async (req, res
         if (db) await db.end();
     }
 });
+
 
 // Frontoffice GETs
 createEndpoint('/home', 'SELECT descricao_pt, descricao_en FROM Home', () => [], rows => rows);

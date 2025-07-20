@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import NavbarBackoffice from "../../../components/NavbarBackoffice";
 import Container from 'react-bootstrap/Container';
 import { SERVER_URL, BACKOFFICE_URL } from '../../../Utils';
+import ModalMessage from "../../../components/ModalMessage";
 import ReactQuill from "react-quill";
 
 const BuildingCreateB = () => {
@@ -22,6 +23,8 @@ const BuildingCreateB = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
 
 
 
@@ -66,20 +69,20 @@ const BuildingCreateB = () => {
 
 
   const handleUploadImagem = (e) => {
-  const file = e.target.files[0];
-  if (file) {
-    const maxSizeMB = 1; 
-    const maxSizeBytes = maxSizeMB * 1024 * 1024;
+    const file = e.target.files[0];
+    if (file) {
+      const maxSizeMB = 1;
+      const maxSizeBytes = maxSizeMB * 1024 * 1024;
 
-    if (file.size > maxSizeBytes) {
-      alert(`A imagem é muito grande. Por favor, escolha uma imagem com menos de ${maxSizeMB}MB.`);
-      return;
+      if (file.size > maxSizeBytes) {
+        alert(`A imagem é muito grande. Por favor, escolha uma imagem com menos de ${maxSizeMB}MB.`);
+        return;
+      }
+
+      const preview = URL.createObjectURL(file);
+      setImagens(prev => [...prev, { file, caminho: preview, descricao: "", isLocal: true }]);
     }
-
-    const preview = URL.createObjectURL(file);
-    setImagens(prev => [...prev, { file, caminho: preview, descricao: "", isLocal: true }]);
-  }
-};
+  };
 
   const handleDescricaoImagem = (index, novaDescricao) => {
     const novas = [...imagens];
@@ -139,8 +142,7 @@ const BuildingCreateB = () => {
 
       if (!response.ok) throw new Error("Erro ao criar edifício");
 
-      alert("Edifício criado com sucesso!");
-      navigate(`/backoffice/MedioTejoB/Buildings`);
+      setShowModal(true);
 
     } catch (err) {
       alert("Erro: " + err.message);
@@ -152,6 +154,18 @@ const BuildingCreateB = () => {
 
   return (
     <>
+      <ModalMessage
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        title="Sucesso"
+        message="Edifício criado com sucesso!"
+        type="info"
+        action={{
+          label: "Ver Edifícios",
+          onClick: () => navigate("/backoffice/MedioTejoB/Buildings")
+        }}
+      />
+
       <NavbarBackoffice />
       <Container style={{ paddingTop: '2rem', maxWidth: '800px' }}>
         <h4 style={{ marginBottom: '1.5rem' }}>Adicionar Novo Edifício</h4>
